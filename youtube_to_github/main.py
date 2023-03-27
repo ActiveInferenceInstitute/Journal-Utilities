@@ -3,6 +3,7 @@ import time
 import os
 import csv
 import shutil
+import time
 from typing import List, Generator, Dict
 # downloaded file
 from typing_extensions import Literal
@@ -335,7 +336,7 @@ def github_upload(files_to_upload: Dict[str, List[Dict[str, str]]]) -> None:
             file_name = file['filename']
             folder = file['folder']
             
-            folder = folder.replace('s', 'S').replace(' #', '_').split('.')[0]
+            folder = folder.replace('stream', 'Stream').replace(' #', '_').split('.')[0]
             git_path: str = f'{parent_folder}/{folder}/Audio/{file_name}'
 
             # get file contents for upload
@@ -344,7 +345,14 @@ def github_upload(files_to_upload: Dict[str, List[Dict[str, str]]]) -> None:
 
             # upload file
             #print(git_path)
-            repo.create_file(git_path, f'committing {folder} Audio', content, branch='main')
+            is_not_uploaded = True
+            while is_not_uploaded: # to retry uploading because of connection error
+                try:
+                    repo.create_file(git_path, f'committing {folder} Audio', content, branch='main')
+                except:
+                    time.sleep(4)
+                    continue
+                is_not_uploaded = False
 
             print(file_name, folder)
 
@@ -363,15 +371,18 @@ def main() -> None:
     with open('uploaded_links.json', 'r') as file:
         uploaded_links = json.load(file)['links']
     new_uploads: List[str] = list(set(all_streams) - set(uploaded_links))
-    
+
     files_downloaded = download_m4a(new_uploads)
 
     folder_names = ["Applied Active Inference Symposium", "BookStream", "GuestStream", "MathStream", "Livestream", "ModelStream", "OrgStream", "ReviewStream", "Roundtable", "Twitter Spaces"]
+    if not len(files_downloaded):
+        print("all files uploaded")
+        sys.exit()
 
     original_file_pairings, used_links = csv_get_folder(files_downloaded, folder_names)
     chunked_files = chunk_audio(original_file_pairings)
     print('All chunked files')
-    print(chunked)
+    print(chunked_files)
     github_upload(chunked_files)
 
     # saving what files have been used in previous runs
