@@ -267,7 +267,7 @@ def csv_get_folder(files_to_upload: List[str], folder_names: List[str]) -> Dict[
                 if youtube_id in file:
                     print(parent_folder_name, folder_name, youtube_id, youtube_title)
                     # modify symposium
-                    parent_folder_name.replace('Symposium', 'Applied Active Inference Symposium')
+                    parent_folder_name = parent_folder_name.replace('Symposium', 'Applied Active Inference Symposium')
                     files_to_insert[parent_folder_name].append({'filename': file, 'folder': folder_name})
                     found_index = index
                     youtube_links_to_files.append(youtube_link)
