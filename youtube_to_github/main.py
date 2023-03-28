@@ -264,7 +264,7 @@ def csv_get_folder(files_to_upload: List[str], folder_names: List[str]) -> Dict[
             youtube_title = row[4]
             found_index = -1
             for index, file in enumerate(files_to_upload):
-                if youtube_id in file:
+                if youtube_id in file and (folder_name in folder_names or folder_name == ‘Symposium’):
                     print(parent_folder_name, folder_name, youtube_id, youtube_title)
                     # modify symposium
                     parent_folder_name = parent_folder_name.replace('Symposium', 'Applied Active Inference Symposium')
