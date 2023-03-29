@@ -372,6 +372,7 @@ def main() -> None:
     with open('uploaded_links.json', 'r') as file:
         uploaded_links = json.load(file)['links']
     new_uploads: List[str] = list(set(all_streams) - set(uploaded_links))
+    print(new_uploads, '\n', all_streams, '\n', uploaded_links) # TEST statement
 
     files_downloaded = download_m4a(new_uploads)
 
