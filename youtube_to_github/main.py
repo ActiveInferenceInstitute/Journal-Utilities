@@ -261,11 +261,14 @@ def csv_get_folder(files_to_upload: List[str], folder_names: List[str]) -> Dict[
             parent_folder_name = row[0]
             folder_name = row[1]
             youtube_link = row[3]
-            youtube_id = youtube_link.split('/')[-1].split('v=')[-1]
+            youtube_id = youtube_link.split('/')[-1].split('v=')[-1].split('&')[0]
             youtube_title = row[4]
             found_index = -1
+            if parent_folder_name not in folder_names and parent_folder_name != 'Symposium':
+                unknown_folder_to_insert.append(youtube_id)
+                continue
             for index, file in enumerate(files_to_upload):
-                if youtube_id in file and (folder_name in folder_names or folder_name == 'Symposium'):
+                if youtube_id in file:
                     print(parent_folder_name, folder_name, youtube_id, youtube_title)
                     # modify symposium
                     parent_folder_name = parent_folder_name.replace('Symposium', 'Applied Active Inference Symposium')
