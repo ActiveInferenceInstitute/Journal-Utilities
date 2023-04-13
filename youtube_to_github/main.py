@@ -5,6 +5,7 @@ import csv
 import shutil
 import time
 import sys
+import logging
 from typing import List, Generator, Dict
 # downloaded file
 from typing_extensions import Literal
@@ -25,6 +26,12 @@ type_property_map = {
     "streams": "videoRenderer",
     "shorts": "reelItemRenderer"
 }
+
+logging.basicConfig(filename='info.txt',
+                    filemode='a',
+                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                    datefmt='%H:%M:%S',
+                    level=logging.INFO)
 
 def get_initial_data(session: requests.Session, url: str) -> str:
     session.cookies.set("CONSENT", "YES+cb", domain=".youtube.com")
@@ -352,8 +359,10 @@ def github_upload(files_to_upload: Dict[str, List[Dict[str, str]]]) -> None:
             is_not_uploaded = True
             while is_not_uploaded: # to retry uploading because of connection error
                 try:
-                    repo.create_file(git_path, f'committing {folder} Audio', content, branch='main')
-                except:
+                    repo.create_file(git_path, f'committing {file_name} Audio', content, branch='main')
+                    logging.info(f'uploaded {file_name} -- {git_path}')
+                except Exception as error:
+                    logging.error(f'github upload: {error}')
                     time.sleep(4)
                     continue
                 is_not_uploaded = False
@@ -362,39 +371,49 @@ def github_upload(files_to_upload: Dict[str, List[Dict[str, str]]]) -> None:
 
 
 def main() -> None:
-    # Get the links from the channel
-    youtube_link = settings.youtube_channel
+    chunked_files = {}
+    if not os.path.isfile('chunked.json'):
+        # Get the links from the channel
+        youtube_link = settings.youtube_channel
+        
+        channel_id = get_channel_id_and_name(youtube_link)
+
+        # TODO could replace this with grabbing the links from the CSV
+        all_streams = [f'https://www.youtube.com/watch?v={video["videoId"]}' for video in get_channel(channel_id, content_type='streams')]
+        all_streams.extend(f'https://www.youtube.com/watch?v={video["videoId"]}' for video in get_channel(channel_id, content_type='videos'))
+
+        # check what links are new
+        with open('uploaded_links.json', 'r') as file:
+            uploaded_links = json.load(file)['links']
+        new_uploads: List[str] = list(set(all_streams) - set(uploaded_links))
+        print(new_uploads, '\n', all_streams, '\n', uploaded_links) # TEST statement
+
+        files_downloaded = download_m4a(new_uploads)
+
+        folder_names = ["Applied Active Inference Symposium", "BookStream", "GuestStream", "MathStream", "Livestream", "ModelStream", "OrgStream", "ReviewStream", "Roundtable", "Twitter Spaces"]
+        if not len(files_downloaded):
+            print("all files uploaded")
+            sys.exit()
+
+        original_file_pairings, used_links = csv_get_folder(files_downloaded, folder_names)
+        chunked_files = chunk_audio(original_file_pairings)
+        print('All chunked files')
+        print(chunked_files)
+        with open('chunked.json', 'w') as file: # write chunked results to file for future runs if errors
+            json.dump(chunked_files, file)
+    else:
+        with open('chunked.json', 'r') as file:
+            chunked_files = json.load(file)
+        print('uploading already chunked files if wanting to get new files rerun this program after successfully uploading the current chunked files')
     
-    channel_id = get_channel_id_and_name(youtube_link)
-
-    # TODO could replace this with grabbing the links from the CSV
-    all_streams = [f'https://www.youtube.com/watch?v={video["videoId"]}' for video in get_channel(channel_id, content_type='streams')]
-    all_streams.extend(f'https://www.youtube.com/watch?v={video["videoId"]}' for video in get_channel(channel_id, content_type='videos'))
-
-    # check what links are new
-    with open('uploaded_links.json', 'r') as file:
-        uploaded_links = json.load(file)['links']
-    new_uploads: List[str] = list(set(all_streams) - set(uploaded_links))
-    print(new_uploads, '\n', all_streams, '\n', uploaded_links) # TEST statement
-
-    files_downloaded = download_m4a(new_uploads)
-
-    folder_names = ["Applied Active Inference Symposium", "BookStream", "GuestStream", "MathStream", "Livestream", "ModelStream", "OrgStream", "ReviewStream", "Roundtable", "Twitter Spaces"]
-    if not len(files_downloaded):
-        print("all files uploaded")
-        sys.exit()
-
-    original_file_pairings, used_links = csv_get_folder(files_downloaded, folder_names)
-    chunked_files = chunk_audio(original_file_pairings)
-    print('All chunked files')
-    print(chunked_files)
     github_upload(chunked_files)
 
     # saving what files have been used in previous runs
     uploaded_links.extend(used_links)
     with open('uploaded_links.json', 'w') as file:
         json.dump({'links': uploaded_links}, file)
-    # remove files (locally) https://stackoverflow.com/questions/6996603/how-can-i-delete-a-file-or-folder-in-python
+    #os.remove('chunked.json') # delete as all files were uploaded
+    # remove folders  (locally) https://stackoverflow.com/questions/6996603/how-can-i-delete-a-file-or-folder-in-python
     shutil.rmtree('original')
     shutil.rmtree('chunked')
 
@@ -406,5 +425,7 @@ TODO
 https://community.coda.io/t/export-your-table-data-to-a-csv/30779
 https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github
 
+# to get info on the files that have been uploaded
+https://waylonwalker.com/git-python-all-commits/
 # change links to only be the linkIds for easy comparison? if trying to use CSV youtube links.. 
 '''
