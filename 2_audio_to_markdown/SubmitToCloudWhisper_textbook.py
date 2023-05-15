@@ -1,6 +1,6 @@
 #! ...python3
-acIIAuthKey  = "fe7613ac922e4d2791b13dbf8d1b9635"
-davesAuthKey = "a14f484d11984e00bf7105cda4bc0c9a"
+acIIAuthKey  = "xxx"
+davesAuthKey = "xxx"
 useThisAuthKey = acIIAuthKey
 
 # cd "/mnt/d/Documents/FEP-AI/2022 Livestreams/ls042/ls042-0"
