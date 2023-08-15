@@ -14,6 +14,7 @@ import yt_dlp # python3.8 -m pip install -U yt-dlp
 from github import Github # python3.8 -m pip install PyGithub 
 from pydub import AudioSegment # 2 packages to install to get to work
 from pydub.utils import make_chunks
+import whisper # python3.8 -m pip install git+https://github.com/openai/whisper.git
 # local
 import settings
 
@@ -324,6 +325,59 @@ def chunk_audio(files_to_upload: Dict[str, List[Dict[str, str]]]) -> Dict[str, L
     return chunked_files_to_upload
 
 
+''' # TODO insert
+Step 4: create transcript from whisper.ai
+'''
+def make_transcript_file(file_name: str):
+    model = whisper.load_model('base')
+    result = model.transcribe(f'./chunked/{file_name}', fp16=False)
+
+    '''
+    # load audio and pad/trim it to fit 30 seconds
+    audio = whisper.load_audio(f'./chunked/{file_name}')
+    audio = whisper.pad_or_trim(audio)
+
+    # make log-Mel spectrogram and move to the same device as the model
+    mel = whisper.log_mel_spectrogram(audio).to(model.device)
+
+    # decode the audio
+    options = whisper.DecodingOptions(fp16=False)
+    result = whisper.decode(model, mel, options)
+
+    # print the recognized text
+    transcript_file_name = f'./transcripts/Transcript {file_name}.txt'
+    with open(transcript_file_name, 'w') as file:
+        file.write(result.text)
+    '''
+
+    # print the recognized text
+    transcript_file_name = f'./transcripts/Transcript {file_name}.txt'
+    with open(transcript_file_name, 'w') as file:
+        file.write(result['text'])
+
+    return transcript_file_name
+
+
+def create_transcripts(files_to_upload: Dict[str, List[Dict[str, str]]]) -> Dict[str, List[Dict[str, str]]]:
+
+    make_folder('transcripts') # creating a folder named tramscripts
+    transcript_files_to_upload: Dict[str, Dict[str, str]] = {}
+
+    print(files_to_upload)
+
+    for parent_folder, files in files_to_upload.items():
+        transcript_files_to_upload[parent_folder] = []
+        for file in files:
+            file_name = file['filename']
+            folder = file['folder']
+
+            transcript = make_transcript_file(file_name)
+            print(f'exporting: {transcript}')
+            transcript_files_to_upload[parent_folder].append({'filename': transcript, 'folder': folder})
+
+    return transcript_files_to_upload
+
+
 '''
 Step 5: uploading to github
 '''
@@ -405,8 +459,9 @@ def main() -> None:
         with open('chunked.json', 'r') as file:
             chunked_files = json.load(file)
         print('uploading already chunked files if wanting to get new files rerun this program after successfully uploading the current chunked files')
-    
-    github_upload(chunked_files)
+
+    transcripts = create_transcripts(chunked_files)
+    github_upload(transcripts)
 
     # saving what files have been used in previous runs
     uploaded_links.extend(used_links)
@@ -428,4 +483,8 @@ https://docs.github.com/en/repositories/working-with-files/managing-large-files/
 # to get info on the files that have been uploaded
 https://waylonwalker.com/git-python-all-commits/
 # change links to only be the linkIds for easy comparison? if trying to use CSV youtube links.. 
+# instead of chunking the files -- just get the transcript from the file --> and upload to github
+# don't remove the original files
 '''
+
+# TESTING with tbHZC6D39C4 video
