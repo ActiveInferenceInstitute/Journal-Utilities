@@ -22,6 +22,7 @@ import math
 import json
 from os.path import exists
 from html.parser import HTMLParser
+import re
 
 if __name__ == "__main__":
     print(f"Arguments count: {len(sys.argv)}")
@@ -62,6 +63,7 @@ srtPubF      = ""
 speakerLabelsUsed = []
 
 inSpeakerDir = "/mnt/d/Documents/FEP-AI/Active Inference Podcast/"
+#in public "../"
 inSpeakers = "AllSpeakers.csv"
 
 docLabel = sys.argv[1]
@@ -87,11 +89,12 @@ else:
 print('speakers File: ' + "'" + speakerFile + "'")
 
 # globals
-speakerDesc = {}
-srtSpeaker = ""
+speakerDesc  = {}
+srtSpeaker   = ""
 srtPosCount  = 0
 srtStartTime = 0
 srtEndTime   = 0
+pauseLength  = 0.75
 rawParags    = {}
 
 # ++++++ notes ++++++
@@ -361,6 +364,55 @@ def loadParagFile():
 
     print(rawParags)
 #
+
+#Here's the translation of the Wolfram Language function `loadIndexes` to Python:
+
+
+def loadIndexes(indexFileName):
+    phrasesToIndex = {}
+    lookupWordPat = r"\b(a|an|the|of|in|and|is|to|it|that|this|for|with|on|from|by|at|as|but|they|not|or|we|you|i|he|she|me|him|her|my|your|their|our|us|them|some|any|all|many|much|few|each|every|other)\b"
+    maxPhraseLen = 100  # assuming a maximum phrase length
+
+    with open(indexFileName, 'r') as file:
+        file.readline()  		# skip header
+        indexLineNum = 0
+        line = file.readline().strip()
+        while line:
+            indexLineNum += 1
+            indexFields = line.split("\t")
+            keyPhrase = indexFields[0].strip()
+            keyWordCount = len(keyPhrase.split())
+            if keyWordCount > maxPhraseLen:		# skip ignore too-long phrases
+                line = file.readline().strip()
+                continue
+
+            keyWord1 = keyPhrase.split()[0].lower()
+            keyWord1 = re.sub(lookupWordPat, "", keyWord1.strip())
+            keyWord0 = keyWord1
+
+            if keyWord0 != keyWord1:
+                pass
+                # Handle WordStem logic if needed
+                # e.g., keyWord0 = WordStem(keyWord1)
+                # if keyWord1 not in maybeNorms:
+                #     maybeNorms[keyWord1] = keyWord0
+
+            reference = indexFields[1].strip()
+
+            if keyWord1 not in phrasesToIndex:
+                phrasesToIndex[keyWord1] = {keyWordCount: [keyPhrase]}
+            else:
+                if keyWordCount not in phrasesToIndex[keyWord1]:
+                    phrasesToIndex[keyWord1][keyWordCount] = [keyPhrase]
+                else:
+                    phrasesToIndex[keyWord1][keyWordCount].append(keyPhrase)
+
+            line = file.readline().strip()
+
+    return phrasesToIndex
+
+#Note: Please make sure to import the required libraries, such as `re` for regular expressions, before using this translated function. Additionally, this translation assumes that the `maybeNorms` variable and related commented logic are not necessary for the Python implementation.
+
 
 def writeToMD(textOut, lineCount, mySpeakerName, startTime, endTime):
     global paragTimes
@@ -749,10 +801,11 @@ else:
         
         #
         if rowLen > 4 and row[4] is not None and len(row[4]) > 0:
-            confid = float(row[4])
+            confid = row[4]
+            #confid = float(row[4])
             #reportString += ", confidence " + row[3] + " "
         else:
-            confid = ""
+            confid = 0.5
         
         #
         # dropped textual "startTime"
