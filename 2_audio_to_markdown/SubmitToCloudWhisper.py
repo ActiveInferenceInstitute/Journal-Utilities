@@ -1,6 +1,6 @@
 #! ...python3
 
-acIIAuthKey  = "15683d311c6e4769915e064f579faae6"
+acIIAuthKey =  "5a030052b923451aa82ce5776a91fd34"     # "15683d311c6e4769915e064f579faae6"
 davesAuthKey = "a14f484d11984e00bf7105cda4bc0c9a"
 useThisAuthKey = acIIAuthKey
 
@@ -78,11 +78,10 @@ if len(sys.argv) > 4:
 
 
 
-# ---------------------
-
+# ----- utility functions ----------------
 
 def ToDisplayTime(tt):
-    ts=float(tt)
+    ts = float(tt)
     h0=int(ts/3600000.0)
     hh=""
     if h0 > 9:
@@ -113,10 +112,66 @@ def ToSRTTime(tt):
     return to_time
 
 
+# ----- utility functions ----------------
+
+#Here's the translation of the Wolfram Language function `loadIndexes` to Python:
+import re
+
+def loadIndexes(indexFileName):
+    phrasesToIndex = {}
+    lookupWordPat = r"\b(a|an|the|of|in|and|is|to|it|that|this|for|with|on|from|by|at|as|but|they|not|or|we|you|i|he|she|me|him|her|my|your|their|our|us|them|some|any|all|many|much|few|each|every|other)\b"
+    maxPhraseLen = 100  # assuming a maximum phrase length
+
+    with open(indexFileName, 'r') as file:
+        file.readline()  		# skip header
+        indexLineNum = 0
+        line = file.readline().strip()
+        while line:
+            indexLineNum += 1
+            indexFields = line.split("\t")
+            keyPhrase = indexFields[0].strip()
+            keyWordCount = len(keyPhrase.split())
+            if keyWordCount > maxPhraseLen:		# skip ignore too-long phrases
+                line = file.readline().strip()
+                continue
+
+            keyWord1 = keyPhrase.split()[0].lower()
+            keyWord1 = re.sub(lookupWordPat, "", keyWord1.strip())
+            keyWord0 = keyWord1
+
+            if keyWord0 != keyWord1:
+                pass
+                # Handle WordStem logic if needed
+                # e.g., keyWord0 = WordStem(keyWord1)
+                # if keyWord1 not in maybeNorms:
+                #     maybeNorms[keyWord1] = keyWord0
+
+            reference = indexFields[1].strip()
+
+            if keyWord1 not in phrasesToIndex:
+                phrasesToIndex[keyWord1] = {keyWordCount: [keyPhrase]}
+            else:
+                if keyWordCount not in phrasesToIndex[keyWord1]:
+                    phrasesToIndex[keyWord1][keyWordCount] = [keyPhrase]
+                else:
+                    phrasesToIndex[keyWord1][keyWordCount].append(keyPhrase)
+
+            line = file.readline().strip()
+
+    return phrasesToIndex
+
+#Note: Please make sure to import the required libraries, such as `re` for regular expressions, before using this translated function. Additionally, this translation assumes that the `maybeNorms` variable and related commented logic are not necessary for the Python implementation.
+
 
 # ---------------------
 
+# prepare to call AssemblyAI's TRANSCRIBE API.
 
+# Really, load thru INDEXES option (colon-separated file-list)
+
+loadIndexes(indexFileName)
+indexFileNames = []
+indexFileNames.append("")
 #"audio_url": " + onlinePath + "/" + onlineFile + ",
 #"audio_url": "http://crisiscenter.us/AILab01/Karl_Friston_Applied_Active_Inference_Symposium_2021-06-22/Quadrille.wav",
 
@@ -1324,10 +1379,11 @@ json = {
     "audio_url": audio_url,
     "word_boost": wordBoostList,
     "custom_spelling": customSpellingList,
+    "boost_param": "low",       # "default" "high"    
     #"summarization": True,
     #"summary_type": "bullets",
     "speaker_labels": True,         # not yet supported for Portuguese
-    "language_model": "large",
+    "language_model": "medium",      # "large"
     "entity_detection": True,
     "auto_highlights": True,
     "iab_categories": True,

@@ -1,43 +1,10 @@
 #! ...python3
-acIIAuthKey  = "15683d311c6e4769915e064f579faae6"
-davesAuthKey = "a14f484d11984e00bf7105cda4bc0c9a"
+acIIAuthKey  = "5a030052b923451aa82ce5776a91fd34"     # "1b98316b53374f6f877961104b8f2e40"
+davesAuthKey = "69a859d5af954f4f99adb583c76380a5"
 useThisAuthKey = acIIAuthKey
 
 # cd "/mnt/d/Documents/FEP-AI/2022 Livestreams/ls042/ls042-0"
-#   python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" "ls042-0" "http://crisiscenter.us/AILab01/2022Livestreams" "ls042-0.m4a" | tee ls042-0_whisper_m4a.json &
-
-# cd "/mnt/d/Documents/FEP-AI/2021 Livestreams/ls025"
-#   python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" "ls025-2" "http://crisiscenter.us/AILab01/2022Gueststreams" "ls025-2.m4a" | tee ls025-2.m4a.json &
-
-# cd "/mnt/d/Documents/FEP-AI/2022 GuestStream/Mass 2022 GuestStreams"
-#   #python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" "gs014-1" "http://crisiscenter.us/AILab01/2022Gueststreams" "gs014-1.m4a" | tee gs014-1.m4a.json &
-
-#cd "/mnt/d/Documents/FEP-AI/2022 Livestreams/Mass 2022 Livestreams"
-    #python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" ls048-1 "http://crisiscenter.us/AILab01/2022Livestreams" "ls048-1.m4a" | tee ls048-1.m4a.json &
-    # myID['ls048-0']= "rx1rvgss4t-2e6c-46ee-a0d4-42777283a9b1"
-    # myID['ls048-1']= 'rxytoplp16-7b8b-41a6-be1b-78a0a837d8d4'
-
-#cd "/mnt/d/Documents/FEP-AI/2022 Livestreams/Mass 2022 Livestreams"
-    #python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" ls048-1 "http://crisiscenter.us/AILab01/2022Livestreams" "ls048-1.m4a" | tee ls048-1.m4a.json &
-
-#cd "/mnt/d/Documents/FEP-AI/2021 Livestreams/ls016/"   rxzfu6wsa1-06f3-4028-8bf7-355d7f61eb00
-    #python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" ls016-1 "http://crisiscenter.us/AILab01/2022Livestreams" "ls016.m4a" | tee ls016-1.m4a.json &
-
-#D:\Documents\FEP-AI\Active Inference Podcast\Transcribe via Whisper.json
-#call with python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/Transcribe via Whisper.py" ls037-0 "http://crisiscenter.us/AILab01/2022Livestreams" "ls037-0.m4a"	rs3z2z81w6-4507-4918-b001-7c08ebad22a6
-#call with python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/Transcribe via Whisper.py" ls037-1 "http://crisiscenter.us/AILab01/2022Livestreams" "ls037-1.mp3" | tee ls037-1.mp3.json	rsury59afm-90b2-4049-9d08-cbb116e36808
-#cd /mnt/d/Documents/FEP-AI/2022 Livestreams/ActInf Livestream #037 Stephen Mann - Free Energy A User's Guide/ls037-2
-    #python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" ls037-2 "http://crisiscenter.us/AILab01/2022Livestreams" "ls037-2.m4a" | tee ls037-2.m4a.json	
-#cd /mnt/d/Music/Fugs
-   #python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" PBF "http://crisiscenter.us/misc" "DrStrangelovePreciousBodilyFluids.m4a" | tee PBF.m4a.json rsuh9skgre-a056-486e-8138-2e6608d21f04
-#cd "/mnt/d/Documents/FEP-AI/2022 Livestreams/ActInf Livestream #040 - Chris Fields... A free energy principle for generic quantum systems/ls040-1"
-#   python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" ls040-1 "http://crisiscenter.us/AILab01/2022Livestreams" "ls040-1.m4a" | tee ls040-1.m4a.json
-
-#cd "/mnt/d/Documents/FEP-AI/2022 Livestreams\ActInf Livestream #041 - Axel Constant - Extended Active Inference beyond Skulls/ls040-1"
-#   python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" ls041-1 "http://crisiscenter.us/AILab01/2022Livestreams" "ls041-1.m4a" | tee ls041-1.m4a.json
-#cd "/mnt/d/Documents/FEP-AI/2022 Livestreams/ls042/ls042-0"
-#   python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" ls042-0 "http://crisiscenter.us/AILab01/2022Livestreams" "ls042-0.m4a" | tee ls042-0.m4a.json
-
+#   python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper_textbook.py" "ls042-0" "http://crisiscenter.us/AILab01/2022Livestreams" "ls042-0.m4a" | tee ls042-0_whisper_m4a.json &
 
 # For more logic, see "Transcribe ls036 Modelling ourselves.txt" in "D:\Documents\FEP-AI\2022 Livestreams\ActInf Livestream #036 Modeling Ourselves"
 
@@ -47,6 +14,7 @@ import sys
 import math
 import csv
 import json
+
 
 #call with python3 - BerlinSym2021KJFKey "http://crisiscenter.us/AILab01/Karl_Friston_Applied_Active_Inference_Symposium_2021-06-22" "Quadrille.wav"
 #call with python3 - quadriTest "http://crisiscenter.us/AILab01/Karl_Friston_Applied_Active_Inference_Symposium_2021-06-22" "Quadrille.wav"	rzw49dpr1n-4856-4172-adf4-e502720c93de
@@ -75,65 +43,101 @@ if len(sys.argv) > 4:
     outputPath = sys.argv[4]
     print("outputPath: " + "'" + outputPath + "'")
 
+# modifiable globals
+auto_highlights_value = True
+language_model_value = "medium",     # "large"  "medium"
 
-
-# ---------------------
-
-
-def ToDisplayTime(tt):
-    ts=float(tt)
-    h0=int(ts/3600000.0)
-    hh=""
-    if h0 > 9:
-        hh = str(100+h0)
-        hh = hh[1:3] + ":"
-    elif h0 > 0:
-        hh = str(h0) + ":"
-    
-    m0=int( (ts-(3600000.0*h0))/60000.0)
-    mm=str(100+m0)
-    s0=int( (ts - (3600000.0*h0) - (60000.0*m0) ) /1000.0)
-    ss=str(100+s0)
-    to_time= hh + mm[1:3] + ":" + ss[1:3]
-    return to_time
-
-
-def ToSRTTime(tt):
-    ts=float(tt)
-    h0=int(ts/3600000.0)
-    hh = str(100+h0)
-    m0=int( (ts-(3600000.0*h0))/60000.0)
-    mm=str(100+m0)
-    s0=int( (ts - (3600000.0*h0) - (60000.0*m0) ) /1000.0)
-    ss=str(100+s0)
-    mms0=int(ts - (3600000.0*h0) - (6000*m0) - s0)
-    mms=str(1000+mms0)
-    to_time= hh[1:3] + ":" + mm[1:3] + ":" + ss[1:3] + "," + mms[1:4]
-    return to_time
-
-
-
-# ---------------------
-
-
-#"audio_url": " + onlinePath + "/" + onlineFile + ",
-#"audio_url": "http://crisiscenter.us/AILab01/Karl_Friston_Applied_Active_Inference_Symposium_2021-06-22/Quadrille.wav",
-
-endpoint = "https://api.assemblyai.com/v2/transcript"
-audio_url = onlinePath + "/" + onlineFile
-
-#    "speaker_labels": True,
-
-# for a fatter list - one containing an error - see "SubmitToCloudWhisper - Copy (13) - Try word_boost, spell again.py"
-
-#following word_boost list was 'generated' from YouTube SRT using srtToCsv.py (plus some filtering in a spreadsheet)
-json = {
-    "audio_url": audio_url,
-    "word_boost": [
+word_boost_list = [
+"ActInf Lab",
+"basal ganglia",
+"Bayes rule",
+"Bayesian mechanics",
+"Bayes",
+"Bayesian ontology",
+"Bayesian brain",
+"Bayesian surprise",
+"birdsong",
+"cortical microcircuit",
+"Da Costa",
+"Bert DeVries",
+"DeVries",
+"Dirichlet distribution",
+"dopamine",
+"ergodicity",
+"Bayesian",
+"Euler Lagrange equations",
+"factor graph",
+"FEP",
+"free energy",
+"Free Energy Principle",
+"generalized coordinates of motion",
+"generalized synchrony",
+"generative adversarial networks",
+"goal directed behaviour",
+"habits",
+"Hamiltonian",
+"hippocampus",
+"hybrid models",
+"ideomotor theory",
+"information gain",
+"interoceptive inference",
+"Jakub",
+"Jensen",
+"KL divergence",
+"Kullback Leibler divergence",
+"Laplace approximation",
+"Lorenz systems",
+"Lotka Volterra systems",
+"meta Bayesianism",
+"microcircuit",
+"motivation",
+"navigation",
+"NESS",
+"neurotransmitters",
+"Newtonian dynamics",
+"nonequilibrium steady state",
+"Occam",
+"optimality",
+"parametric empirical Bayes",
+"Parkinson",
+"Partially Observed Markov Decision Process",
+"PEB",
+"perceptual control theory",
+"planning",
+"POMDP",
+"qualia",
+"random dynamical system",
+"reading",
+"reinforcement learning",
+"saccades",
+"self evidencing",
+"social dynamics",
+"softmax",
+"synaptic efficacy",
+"self organization",
+"surprise",
+"Taylor series",
+"thalamus",
+"Thomas Metzinger",
+"value function",
+"variational autoencoders",
+"variational free energy",
+"variational Laplace",
+"variational message passing",
+"working memory",
+"Parkinsonism",
+"Parkinsonian",
+# ---------
 "Thomas Parr",
+"Parr",
+"Giovanni Pezzulo",
+"Pezzulo",
+"Rohan",
 "Lagrange",
 "Lagrangian",
 "centripetal force",
+"Mahault Albarracin",
+"Mahault",
 "Beren Millidge",
 "Anil Seth",
 "Axel Constant",
@@ -167,6 +171,7 @@ json = {
 "Friston blanket",
 "Karl Friston",
 "Karl J. Friston",
+"Karl",
 "Markov blanket",
 "Markov decision",
 "Stephen",
@@ -198,7 +203,6 @@ json = {
 "Bellman equation",
 "Bijan Khezri",
 #
-"I",
 "I'll",
 "I've",
 "I'm",
@@ -275,11 +279,29 @@ json = {
 "terminology",
 "trajectories",
 "uncertainty",
-"understanding",
 "variational"
-],
-    "custom_spelling": [ 
+]
+
+custom_spelling_list = [ 
+{"from": ["fep"], "to": "FEP"},
+{"from": ["hamiltonian"], "to": "Hamiltonian"},
+{"from": ["jensen"], "to": "Jensen"},
+{"from": ["bayesianism"], "to": "Bayesianism"},
+{"from": ["ness"], "to": "NESS"},
+{"from": ["occam"], "to": "Occam"},
+{"from": ["parkinson"], "to": "Parkinson"},
+{"from": ["peb"], "to": "PEB"},
+{"from": ["pomdp"], "to": "POMDP"},
+{"from": ["parkinsonism"], "to": "Parkinsonism"},
+{"from": ["parkinsonian"], "to": "Parkinsonian"},
+# ----
+{"from": ["Yaakup","Jakup"], "to": "Jakub"},
+{"from": ["Yvonne","ivan"], "to": "Ivan"},
+{"from": ["rohan","Rohan","Roland"], "to": "Rohan"},
 {"from": ["ali"], "to": "Ali"},
+{"from": ["mahault", "Malva", "mal", "mao"], "to": "Mahault"},
+{"from": ["Abarasan","Hasan"], "to": "Albarracin"},
+{"from": ["Saffron"], "to": "Safron"},
 {"from": ["parr"], "to": "Parr"},
 {"from": ["beren"], "to": "Beren"},
 {"from": ["millidge"], "to": "Millidge"},
@@ -289,9 +311,12 @@ json = {
 {"from": ["verbelen"], "to": "Verbelen"},
 {"from": ["actinf"], "to": "ActInf"},
 {"from": ["bayesian"], "to": "Bayesian"},
+{"from": ["jakub","yakub","yacub"], "to": "Jakub"},
 {"from": ["daniel"], "to": "Daniel"},
-{"from": ["friston"], "to": "Friston"},
+{"from": ["karl", "carl"], "to": "Karl"},
+{"from": ["fristen", "friston"], "to": "Friston"},
 {"from": ["markov"], "to": "Markov"},
+{"from": ["ness"], "to": "NESS"},
 {"from": ["youtube"], "to": "YouTube"},
 {"from": ["gueststream"], "to": "GuestStream"},
 {"from": ["livestream"], "to": "Livestream"},
@@ -300,25 +325,80 @@ json = {
 {"from": ["orgstream"], "to": "OrgStream"},
 #
 {"from": ["bleu"], "to": "Bleu"},
+{"from": ["actinflab", "Activeflab"], "to": "ActInfLab"},
 {"from": ["google"], "to": "Google"},
-{"from": ["elizabethan"], "to": "Elizabethan"},
 {"from": ["aristotelian"], "to": "Aristotelian"},
-{"from": ["i"], "to": "I"},
 {"from": ["i'm"], "to": "I'm"},
 {"from": ["i'll"], "to": "I'll"},
 {"from": ["i've"], "to": "I've"},
-{"from": ["shakespeare"], "to": "Shakespeare"},
 #-------------------
 {"from": ["lagrange"], "to": "Lagrange"},
 {"from": ["lagrangian"], "to": "Lagrangian"}
-],
+]
+
+# ---------------------
+
+
+def ToDisplayTime(tt):
+    ts=float(tt)
+    h0=int(ts/3600000.0)
+    hh=""
+    if h0 > 9:
+        hh = str(100+h0)
+        hh = hh[1:3] + ":"
+    elif h0 > 0:
+        hh = str(h0) + ":"
+    
+    m0=int( (ts-(3600000.0*h0))/60000.0)
+    mm=str(100+m0)
+    s0=int( (ts - (3600000.0*h0) - (60000.0*m0) ) /1000.0)
+    ss=str(100+s0)
+    to_time= hh + mm[1:3] + ":" + ss[1:3]
+    return to_time
+
+
+def ToSRTTime(tt):
+    ts=float(tt)
+    h0=int(ts/3600000.0)
+    hh = str(100+h0)
+    m0=int( (ts-(3600000.0*h0))/60000.0)
+    mm=str(100+m0)
+    s0=int( (ts - (3600000.0*h0) - (60000.0*m0) ) /1000.0)
+    ss=str(100+s0)
+    mms0=int(ts - (3600000.0*h0) - (6000*m0) - s0)
+    mms=str(1000+mms0)
+    to_time= hh[1:3] + ":" + mm[1:3] + ":" + ss[1:3] + "," + mms[1:4]
+    return to_time
+
+
+
+# ---------------------
+
+
+#"audio_url": " + onlinePath + "/" + onlineFile + ",
+#"audio_url": "http://crisiscenter.us/AILab01/Karl_Friston_Applied_Active_Inference_Symposium_2021-06-22/Quadrille.wav",
+
+endpoint = "https://api.assemblyai.com/v2/transcript"
+audio_url = onlinePath + "/" + onlineFile
+
+#    "speaker_labels": True,
+
+# for a fatter list - one containing an error - see "SubmitToCloudWhisper - Copy (13) - Try word_boost, spell again.py"
+
+#following word_boost list was 'generated' from YouTube SRT using srtToCsv.py (plus some filtering in a spreadsheet)
+json = {
+    "audio_url":       audio_url,
+    "word_boost":      word_boost_list,
+    "custom_spelling": custom_spelling_list,
     #"summarization": True,
     #"summary_type": "bullets",
-    "boost_param": "low",       # "default" "high"
+    "word_boost":      word_boost_list,
+    "custom_spelling": custom_spelling_list,
+    "auto_highlights": auto_highlights_value,
+    "language_model":  language_model_value,     # "large"  "medium"
+    "boost_param": "low",           # "default" "high"
     "speaker_labels": True,         # not yet supported for Portuguese
-    "language_model": "large",
     "entity_detection": True,
-    "auto_highlights": True,
     "iab_categories": True,
     "auto_chapters": True,
     "sentiment_analysis": True,
@@ -341,6 +421,7 @@ import time
 import sys
 import math
 import csv
+
 #myId = "rsuh9skgre-a056-486e-8138-2e6608d21f04"
 while myStatus == "queued" or myStatus == "processing":
     time.sleep(120)
@@ -575,6 +656,52 @@ for count, entity in enumerate(entities):
 
 eef.close()
 
+
+
+#------- auto-highlights -------------------
+ 
+if auto_highlights_value:
+    auto_highlights_returned = jj.get('auto_highlights_result')
+    if auto_highlights_returned.get('status') == "success":
+        highlightFileName = docLabel + "_" + onlineFile + ".highlight.csv"
+        hhf = open(highlightFileName, "w")
+        highlightOut = "docLabel" + "\t" + "start" + "\t" + "end" + "\t" + "count" + "\t" + 'rank' + "\t" + 'text'
+        hhf.write(highlightOut)
+        hhf.write("\r\n")
+        #
+        highlightDetFileName = docLabel + "_" + onlineFile + ".highlightDetails.csv"
+        hdf = open(highlightDetFileName, "w")
+        highlightDetOut = "docLabel" + "\t" + "start" + "\t" + "end" + "\t" + "count" + "\t" + 'rank' + "\t" + 'text'
+        hdf.write(highlightDetOut)
+        hdf.write("\r\n")
+        #
+        highlights = auto_highlights_returned.get('results')
+        for hiCount, highlight in enumerate(highlights):
+            count = highlight.get('count')
+            rank  = highlight.get('rank')
+            text  = highlight.get('text')
+            firstStart   = 999999999
+            lastEnd      = 0
+            timestamps   = highlight.get('timestamps')
+            for myCount, timestamp in enumerate(timestamps):
+                start = timestamp.get('start')
+                end   = timestamp.get('end')
+                if start < firstStart:
+                    firstStart = start
+                if end > lastEnd:
+                    lastEnd = end
+                highlightDetOut = docLabel + "\t" + str(start) + "\t" + str(end) + "\t" + str(1 + myCount) + "\t" + str(rank) + "\t" + text
+                hdf.write(highlightDetOut)
+                hdf.write("\r\n")
+            #
+            highlightOut = docLabel + "\t" + str(firstStart) + "\t" + str(lastEnd) + "\t" + str(count) + "\t" + str(rank) + "\t" + text
+            hhf.write(highlightOut)
+            hhf.write("\r\n")
+        #
+        hdf.close()
+        hhf.close()        
+    #
+#
 
 #------- paragraphs -------------------
 
