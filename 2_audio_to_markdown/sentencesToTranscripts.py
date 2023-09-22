@@ -15,6 +15,10 @@
 #
 #AllSpeakers "/mnt/d/Documents/FEP-AI/Active Inference Podcast/AllSpeakers.csv"
 
+# DEFECTS
+#   1. Timestamps in generated .SRT often have wrong values.
+#
+
 import csv
 import time
 import sys
@@ -414,7 +418,7 @@ def loadIndexes(indexFileName):
 #Note: Please make sure to import the required libraries, such as `re` for regular expressions, before using this translated function. Additionally, this translation assumes that the `maybeNorms` variable and related commented logic are not necessary for the Python implementation.
 
 
-def writeToMD(textOut, lineCount, mySpeakerName, startTime, endTime):
+def writeToMD(textOut, lineCount, mySpeakerName, startTime, endTime, timerTime):
     global paragTimes
     print(f'In writeToMD, lineCount: {lineCount}, textOut: {textOut}')
     print(textOut)
@@ -426,6 +430,9 @@ def writeToMD(textOut, lineCount, mySpeakerName, startTime, endTime):
         mDPubF.write("\r\n")
     elif str(startTime) in paragTimes:
         mDPubF.write("\r\n" + ToDisplayTime(startTime) + " " + textOut)
+        mDPubF.write("\r\n")
+    elif timerTime:
+        mDPubF.write(ToDisplayTime(startTime) + " " + textOut)
         mDPubF.write("\r\n")
     else:
         mDPubF.write(textOut)
@@ -784,9 +791,9 @@ else:
         #print(start)
         #reportString += "Sentence starts at millisecond " + row[0] + ", "
         end = int(row[1])
+        timerTime = False
         #reportString += "ends at " + row[1] + " "
         # Whisper extract now generates sentNum at row[2]
-        
         speechDuration = end - start
         
         if rowLen > 2 and row[2] is not None and len(row[2]) > 0:
@@ -890,6 +897,7 @@ else:
                     displayTime = ToDisplayTime(start)
                     reportString = displayTime + " "
                     lastReportTime = reportableTime
+                    timerTime = True
                 else:
                     reportString = ""
                 #
@@ -928,6 +936,7 @@ else:
                     if len(accumedParag) > 0:
                         sPubF.write(accumedParag)
                         sPubF.write("\r\n")
+                        timerTime = True
                         accumedParag = ""
                     #
                     #if len(startTime) > 0:
@@ -959,7 +968,7 @@ else:
         if len(text) > 0:     # SRT written out for each non-empty sentence. 
             srtStartTime = start
             srtEndTime   = end    # reminder: take new start as old end
-            writeToMD(text, srtPosCount, srtSpeaker, srtStartTime, srtEndTime)      # pro forma
+            writeToMD(text, srtPosCount, srtSpeaker, srtStartTime, srtEndTime, timerTime)      # pro forma
             # use speakername; ignore paragraph info
             print(f'before writeToSrt(text: {text}, srtPosCount: {srtPosCount}, srtSpeaker: {srtSpeaker}, srtStartTime: {srtStartTime}, srtEndTime: {srtEndTime}')
             srtPosCount  = writeToSrt(text, srtPosCount, srtSpeaker, srtStartTime, srtEndTime)
