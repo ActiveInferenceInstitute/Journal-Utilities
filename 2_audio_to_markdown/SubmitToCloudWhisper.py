@@ -1,53 +1,38 @@
 #! ...python3
 
-acIIAuthKey =  "5a030052b923451aa82ce5776a91fd34"     # "15683d311c6e4769915e064f579faae6"
-davesAuthKey = "a14f484d11984e00bf7105cda4bc0c9a"
-useThisAuthKey = acIIAuthKey
+# DEFECTS
+#   1. Timestamps in generated .SRT should align with upstream SRT (so open this if present).
+#       Same for .MD, as far as possible.
+#   2. ALLOW several formats of timestamp in inputs to all processing.
+#   3. CREATE convenient-timestamp formats everywhere.
+#   4. Directly put out .json dumps of main, sentences, paragraphs return values
+#       Coded.
+#   5. Dump only skeleton of trace to sysout (related to (4))
+#   6. Allow optional sources: 6a. work ID in AssemblyAI's cloud (bypass Step 1)
+#      6b. Local json/txt file (if 'dirty,' i.e. old ".json" then search for indicated content)
+#   7. Optional "raw" alternate input in any of several formats. Normalize punctuation, capitalization (per options)
+#      7a. Scraped YouTube transcript.
+#      7b. Adobe 
+#   8. If alternate input is present, optionally (a) insert {}, [], [[]] (this with overridable default trigger length)
+#      8b. Explicit CHANGES output
+#   9. Suppress spurious sentence breaks, e.g. at NEVEREOS punctuation where following fragment starts with lower case (or non-cap)
+#      9b. Allow more aggressive sentence-integrity logic; may rely on reparsing.
+#   10. More flexible sentence numbering, with explicit start and increment numbers.
 
 # cd "/mnt/d/Documents/FEP-AI/2022 Livestreams/ls042/ls042-0"
 #   python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" "ls042-0" "http://crisiscenter.us/AILab01/2022Livestreams" "ls042-0.m4a" | tee ls042-0_whisper_m4a.json &
-
-# cd "/mnt/d/Documents/FEP-AI/2021 Livestreams/ls025"
-#   python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" "ls025-2" "http://crisiscenter.us/AILab01/2022Gueststreams" "ls025-2.m4a" | tee ls025-2.m4a.json &
-
-# cd "/mnt/d/Documents/FEP-AI/2022 GuestStream/Mass 2022 GuestStreams"
-#   #python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" "gs014-1" "http://crisiscenter.us/AILab01/2022Gueststreams" "gs014-1.m4a" | tee gs014-1.m4a.json &
-
-#cd "/mnt/d/Documents/FEP-AI/2022 Livestreams/Mass 2022 Livestreams"
-    #python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" ls048-1 "http://crisiscenter.us/AILab01/2022Livestreams" "ls048-1.m4a" | tee ls048-1.m4a.json &
-    # myID['ls048-0']= "rx1rvgss4t-2e6c-46ee-a0d4-42777283a9b1"
-    # myID['ls048-1']= 'rxytoplp16-7b8b-41a6-be1b-78a0a837d8d4'
-
-#cd "/mnt/d/Documents/FEP-AI/2022 Livestreams/Mass 2022 Livestreams"
-    #python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" ls048-1 "http://crisiscenter.us/AILab01/2022Livestreams" "ls048-1.m4a" | tee ls048-1.m4a.json &
-
-#cd "/mnt/d/Documents/FEP-AI/2021 Livestreams/ls016/"   rxzfu6wsa1-06f3-4028-8bf7-355d7f61eb00
-    #python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" ls016-1 "http://crisiscenter.us/AILab01/2022Livestreams" "ls016.m4a" | tee ls016-1.m4a.json &
-
-#D:\Documents\FEP-AI\Active Inference Podcast\Transcribe via Whisper.json
-#call with python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/Transcribe via Whisper.py" ls037-0 "http://crisiscenter.us/AILab01/2022Livestreams" "ls037-0.m4a"	rs3z2z81w6-4507-4918-b001-7c08ebad22a6
-#call with python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/Transcribe via Whisper.py" ls037-1 "http://crisiscenter.us/AILab01/2022Livestreams" "ls037-1.mp3" | tee ls037-1.mp3.json	rsury59afm-90b2-4049-9d08-cbb116e36808
-#cd /mnt/d/Documents/FEP-AI/2022 Livestreams/ActInf Livestream #037 Stephen Mann - Free Energy A User's Guide/ls037-2
-    #python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" ls037-2 "http://crisiscenter.us/AILab01/2022Livestreams" "ls037-2.m4a" | tee ls037-2.m4a.json	
-#cd /mnt/d/Music/Fugs
-   #python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" PBF "http://crisiscenter.us/misc" "DrStrangelovePreciousBodilyFluids.m4a" | tee PBF.m4a.json rsuh9skgre-a056-486e-8138-2e6608d21f04
-#cd "/mnt/d/Documents/FEP-AI/2022 Livestreams/ActInf Livestream #040 - Chris Fields... A free energy principle for generic quantum systems/ls040-1"
-#   python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" ls040-1 "http://crisiscenter.us/AILab01/2022Livestreams" "ls040-1.m4a" | tee ls040-1.m4a.json
-
-#cd "/mnt/d/Documents/FEP-AI/2022 Livestreams\ActInf Livestream #041 - Axel Constant - Extended Active Inference beyond Skulls/ls040-1"
-#   python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" ls041-1 "http://crisiscenter.us/AILab01/2022Livestreams" "ls041-1.m4a" | tee ls041-1.m4a.json
-#cd "/mnt/d/Documents/FEP-AI/2022 Livestreams/ls042/ls042-0"
-#   python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" ls042-0 "http://crisiscenter.us/AILab01/2022Livestreams" "ls042-0.m4a" | tee ls042-0.m4a.json
-
 
 # For more logic, see "Transcribe ls036 Modelling ourselves.txt" in "D:\Documents\FEP-AI\2022 Livestreams\ActInf Livestream #036 Modeling Ourselves"
 
 import requests
 import time
+from datetime import datetime
 import sys
 import math
 import csv
-import json
+import json as jsfmt
+import re
+
 
 #call with python3 - BerlinSym2021KJFKey "http://crisiscenter.us/AILab01/Karl_Friston_Applied_Active_Inference_Symposium_2021-06-22" "Quadrille.wav"
 #call with python3 - quadriTest "http://crisiscenter.us/AILab01/Karl_Friston_Applied_Active_Inference_Symposium_2021-06-22" "Quadrille.wav"	rzw49dpr1n-4856-4172-adf4-e502720c93de
@@ -56,7 +41,7 @@ import json
 #call with python3 - ls051-0-2 "http://crisiscenter.us/AILab01/2022Livestreams" "ls051-0-2.mp3"	rsk599qwnx-7e0e-49c2-bafd-8cb0ad4745db
 
 #python3 - ls036-0 "http://crisiscenter.us/AILab01/2022Livestreams" "ls036-0.m4a"
-#call with python3 - ls036-2 "http://crisiscenter.us/AILab01/2022Livestreams" "ls036-2.m4a"	
+#call with python3 - "ls036-2" "http://crisiscenter.us/AILab01/2022Livestreams" "ls036-2.m4a"
 
 if __name__ == "__main__":
     print(f'Arguments count: {len(sys.argv)}')
@@ -64,24 +49,381 @@ if __name__ == "__main__":
         print("Need at least docLabel, onlinePath, and onlineFile; exiting!")
         quit()
     
+#
+dt_string = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+# modifiable globals
+## affect transcription call
+useThisAuthKey        = ""
+authKeyFilename       = ""
+auto_highlights_value = True
+language_model        = "medium"     # "large"  "medium"
+boost_param_value     = "low"           # "default" "high"
+language_detection    = False
+speaker_labels_value  = True         # not yet supported for Portuguese
+entity_detection_value = True
+iab_categories_value  = False
+auto_chapters_value   = True
+sentiment_analysis_value = False
+language_code         = "en_us"
+
+##
+onlinePath            = ""          # used only when initially invoking transcription
+outputPath            = "."
+transcriptId          = ""
+custom_spell_boosted  = False       # should we add any single-word word_boost to custom_spelling, if non-trivial?
+# audio_start_from    = 0         # presence is trigger
+# audio_end_at        = 0         # presence is trigger
+# speech_threshold    = 0.9461       # presence is trigger
+# punctuate           = True      # False
+# format_text         = True      # False
+# dual_channel      = True       # presence is trigger
+# disfluencies      = True       #      presence is trigger
+# redact_pii (complex)
+# filter_profanity  = True
+
+vaultDir        = "/mnt/d/Documents/FEP-AI/ActiveInferenceVault/"
+authKeyFilename = "acIIAuthKey.txt"     # holds AssemblyAI authorization key belonging to Active Inference Institute
+#       "5a03************************fd34"     # "1b98************************2e40"
+#       davesAuthKey = "30e7************************5b88"   # old "69a8************************80a5"
+#       useThisAuthKey = acIIAuthKey
+
+# populable globals
+word_boost_list           = []
+boost_param               = []
+word_boost_file_list      = []
+custom_spelling_list      = []
+custom_spelling_file_list = []
+
+# static globals
+lookupWordPat = r"\b(a|an|the|of|in|and|is|to|it|that|this|for|with|on|from|by|at|as|but|they|not|or|we|you|i|he|she|me|him|her|my|your|their|our|us|them|some|any|all|many|much|few|each|every|other)\b"
+
+
+#       Note: Please make sure to import the required libraries, such as `re` for regular expressions, before using this translated function. Additionally, this translation assumes that the `maybeNorms` variable and related commented logic are not necessary for the Python implementation.
+def get_input_options(scl):
+    global vaultDir, authKeyFilename, word_boost_file_list, custom_spelling_file_list, custom_spell_boosted
+    global boost_param, outputPath, cap_files, index_files, onlinePath
+    global parse_map_files, language_detection
+    global language_code, language_model, wordBoostList
+
+    scl_len = len(scl)
+    # ii typically = 4 
+    return_dict = {}
+    ii = 0
+    while ii < scl_len:
+        label = scl[ii].upper()     # .replace("_","")
+        value = scl[ii + 1].strip()
+        ii += 2
+        
+        #if label == "TRANSCRIPTS":
+        #    if ":" in value:
+        #        file_names = value.split(":")
+        #    else:
+        #        file_names = [value]
+        #    return_dict["transcripts"] = file_names
+        
+        if label == "OUTPUTPATH":
+            outputPath = value
+            return_dict["OUTPUTPATH"] = outputPath
+        
+        elif label == "VAULTDIR":   # override directory to hide secrets
+            vaultDir = value
+            return_dict["VAULTDIR"] = vaultDir
+        
+        elif label == "AUTHKEYFILENAME":    # override name of file (in vault) holding AssemblyAI authorization key
+            authKeyFilename = value
+            return_dict["AUTHKEYFILENAME"] = authKeyFilename
+        
+        elif label == "ONLINEPATH":
+            onlinePath = value
+            return_dict["ONLINEPATH"] = onlinePath
+        
+        elif label == "CAPFILES":
+            if ":" in value:
+                cap_files = value.split(":")
+            else:
+                cap_files = [value]
+            return_dict["CAPFILES"] = cap_files
+        
+        elif label == "PARSEMAPFILES":
+            if ":" in value:
+                parse_map_files = value.split(":")
+            else:
+                parse_map_files = [value]
+            return_dict["PARSEMAPFILES"] = parse_map_files
+        
+        elif label == "INDEXES":
+            if ":" in value:
+                index_files = value.split(":")
+            else:
+                index_files = [value]
+            return_dict["INDEXES"] = index_files
+        
+        elif label == "WORD_BOOST_FILE_LIST":
+            if ":" in value:
+                word_boost_file_list = value.split(":")
+            else:
+                word_boost_file_list = [value]
+            return_dict["WORD_BOOST_FILE_LIST"] = word_boost_file_list
+        
+        elif label == "CUSTOM_SPELLING_FILE_LIST":
+            if ":" in value:
+                custom_spelling_file_list = value.split(":")
+            else:
+                custom_spelling_file_list = [value]
+            return_dict["CUSTOM_SPELLING_FILE_LIST"] = custom_spelling_file_list
+      
+        elif label == "BOOST_PARAM":
+            boost_param = value.strip()
+            return_dict["BOOST_PARAM"] = boost_param
+        
+        elif label == "LANGUAGE_MODEL":
+            language_model = value.strip()
+            return_dict["LANGUAGE_MODEL"] = language_model
+        
+        elif label == "LANGUAGE_CODE":
+            language_code = value.strip()
+            return_dict["LANGUAGE_CODE"] = language_code
+        
+        elif label == "INDEXES":
+            if ":" in value:
+                index_files = value.split(":")
+            else:
+                index_files = [value]
+            return_dict["INDEXES"] = index_files
+        
+        elif label == "OPTIONS":
+            options = value.split(" ")
+            return_dict["OPTIONS"] = options
+
+        elif label == "TRANSCRIPTID":
+            transcriptId = value
+            return_dict["TRANSCRIPTID"] = transcriptId
+
+        elif label == "AUDIO_START_FROM":
+            audio_start_from = value
+            return_dict["AUDIO_START_FROM"] = audio_start_from
+
+        elif label == "AUDIO_END_AT":
+            audio_end_at = value
+            return_dict["AUDIO_END_AT"] = audio_end_at
+        #
+        elif label == "AUTO_CHAPTERS":
+            if value in ['True', 'Y', 'YES', 'TRUE', 1, '1', 'T']:
+                auto_chapters_value = True
+                return_dict["AUTO_CHAPTERS"] = auto_chapters_value
+            elif value in ['False', 'N', 'NO', 'FALSE', 0, '0', 'F']:
+                auto_chapters_value = False
+                return_dict["AUTO_CHAPTERS"] = auto_chapters_value
+            #
+        elif label == "CUSTOM_SPELL_BOOSTED":
+            if value in ['True', 'Y', 'YES', 'TRUE', 1, '1', 'T']:
+                custom_spell_boosted = True
+                return_dict["CUSTOM_SPELL_BOOSTED"] = custom_spell_boosted
+            elif value in ['False', 'N', 'NO', 'FALSE', 0, '0', 'F']:
+                custom_spell_boosted = False
+                return_dict["CUSTOM_SPELL_BOOSTED"] = custom_spell_boosted
+            #
+        elif label == "AUTO_HIGHLIGHTS":
+            if value in ['True', 'Y', 'YES', 'TRUE', 1, '1', 'T']:
+                auto_highlights_value = True
+                return_dict["AUTO_HIGHLIGHTS"] = auto_highlights_value
+            elif value in ['False', 'N', 'NO', 'FALSE', 0, '0', 'F']:
+                auto_highlights_value = False
+                return_dict["AUTO_HIGHLIGHTS"] = auto_highlights_value
+            #
+        elif label == "DISFLUENCIES":
+            if value in ['True', 'Y', 'YES', 'TRUE', 1, '1', 'T']:
+                disfluencies = True
+                return_dict["DISFLUENCIES"] = disfluencies
+            elif value in ['False', 'N', 'NO', 'FALSE', 0, '0', 'F']:
+                disfluencies = False
+                return_dict["DISFLUENCIES"] = disfluencies
+            #
+        elif label == "DUAL_CHANNEL":
+            if value in ['True', 'Y', 'YES', 'TRUE', 1, '1', 'T']:
+                dual_channel = True
+                return_dict["DUAL_CHANNEL"] = dual_channel
+            elif value in ['False', 'N', 'NO', 'FALSE', 0, '0', 'F']:
+                dual_channel = False
+                return_dict["DUAL_CHANNEL"] = dual_channel
+            #
+        elif label == "ENTITY_DETECTION":
+            if value in ['True', 'Y', 'YES', 'TRUE', 1, '1', 'T']:
+                entity_detection_value = True
+                return_dict["ENTITY_DETECTION"] = entity_detection_value
+            elif value in ['False', 'N', 'NO', 'FALSE', 0, '0', 'F']:
+                entity_detection_value = False
+                return_dict["ENTITY_DETECTION"] = entity_detection_value
+            #
+        elif label == "FILTER_PROFANITY":
+            if value in ['True', 'Y', 'YES', 'TRUE', 1, '1', 'T']:
+                filter_profanity = True
+                return_dict["FILTER_PROFANITY"] = filter_profanity
+            elif value in ['False', 'N', 'NO', 'FALSE', 0, '0', 'F']:
+                filter_profanity = False
+                return_dict["FILTER_PROFANITY"] = filter_profanity
+            #
+        elif label == "FORMAT_TEXT":
+            if value in ['True', 'Y', 'YES', 'TRUE', 1, '1', 'T']:
+                format_text = True
+                return_dict["FORMAT_TEXT"] = format_text
+            elif value in ['False', 'N', 'NO', 'FALSE', 0, '0', 'F']:
+                format_text = False
+                return_dict["FORMAT_TEXT"] = format_text
+            #
+        elif label == "IAB_CATEGORIES":
+            if value in ['True', 'Y', 'YES', 'TRUE', 1, '1', 'T']:
+                iab_categories_value = True
+                return_dict["IAB_CATEGORIES"] = iab_categories_value
+            elif value in ['False', 'N', 'NO', 'FALSE', 0, '0', 'F']:
+                iab_categories_value = False
+                return_dict["IAB_CATEGORIES"] = iab_categories_value
+            #
+        elif label == "LANGUAGE_DETECTION":
+            if value in ['True', 'Y', 'YES', 'TRUE', 1, '1', 'T']:
+                language_detection = True
+                return_dict["LANGUAGE_DETECTION"] = language_detection
+            elif value in ['False', 'N', 'NO', 'FALSE', 0, '0', 'F']:
+                language_detection = False
+                return_dict["LANGUAGE_DETECTION"] = language_detection
+            #
+        elif label == "PUNCTUATE":
+            if value in ['True', 'Y', 'YES', 'TRUE', 1, '1', 'T']:
+                punctuate = True
+                return_dict["PUNCTUATE"] = punctuate
+            elif value in ['False', 'N', 'NO', 'FALSE', 0, '0', 'F']:
+                punctuate = False
+                return_dict["PUNCTUATE"] = punctuate
+            #
+        elif label == "SENTIMENT_ANALYSIS":
+            if value in ['True', 'Y', 'YES', 'TRUE', 1, '1', 'T']:
+                sentiment_analysis_value = True
+                return_dict["SENTIMENT_ANALYSIS"] = sentiment_analysis_value
+            elif value in ['False', 'N', 'NO', 'FALSE', 0, '0', 'F']:
+                sentiment_analysis_value = False
+                return_dict["SENTIMENT_ANALYSIS"] = sentiment_analysis_value
+            #
+        elif label == "SPEAKER_LABELS":
+            if value in ['True', 'Y', 'YES', 'TRUE', 1, '1', 'T']:
+                speaker_labels_value = True
+                return_dict["SPEAKER_LABELS"] = speaker_labels_value
+            elif value in ['False', 'N', 'NO', 'FALSE', 0, '0', 'F']:
+                speaker_labels_value = False
+                return_dict["SPEAKER_LABELS"] = speaker_labels_value
+            #
+        #
+    #
+    return return_dict
+#
+
 
 #for i, arg in enumerate(sys.argv):
 #    print(f'Argument {i:>6}: {arg}')
 
-docLabel = sys.argv[1]
-onlinePath = sys.argv[2]
-onlineFile = sys.argv[3]
-print("docID, onlinePath, onlineFile " + "'" + docLabel + "', '" +  onlinePath + "', '" + onlineFile + "'")
-if len(sys.argv) > 4:
-    outputPath = sys.argv[4]
-    print("outputPath: " + "'" + outputPath + "'")
+docLabel   = sys.argv[1]
+onlineFile = sys.argv[2]    # only mandatory use is to generate file names. May also be name of actual online file.
+#onlinePath = sys.argv[2]    # used only if actually fetching data from an online file.
+#onlineFile = sys.argv[3]    # only mandatory use is to generate file names. May also be name of actual online file.
+print("docLabel, onlineFile " + "'" + docLabel + "', '" + onlineFile + "'")
+if len(sys.argv) > 3:           # optional component of argv is flat property value list
+    inputParams = sys.argv[3:]
+    print(f'inputParams: {inputParams}')
+    # fetch keyword parameters
+    inputOptions = get_input_options(inputParams)  # directly sets several globals; ignore first two (explicit) incoming args
+    #outputPath = sys.argv[4]
+    #print("outputPath: " + "'" + outputPath + "'")
+    print("All keyword parameters, aka 'inputOptions'")
+    print(inputOptions)
+
+    # Fetch all resources indicated in parameters
+    print("word_boost_file_list")
+    print(word_boost_file_list)
+    print()
+    
+    customSpellDict = {}
+    for wordBoostFile in word_boost_file_list:
+        file = open(wordBoostFile, mode='r', newline=None)
+        boostWords = file.readlines()        # read all lines at once
+        #print("boostWords")
+        #print(boostWords)
+        file.close()
+        for boostWord in boostWords:
+            boostWord = boostWord.strip()
+            #print(boostWord)
+            if boostWord[0:1] != "#":    # suppress this line
+                if boostWord not in word_boost_list:
+                    word_boost_list.append(boostWord)
+                    #custom_spelling_list.append({"from": [boostWord.lower()], "to": boostWord},)
+                    if custom_spell_boosted:
+                        if len(boostWord.split()) == 1:      # single word
+                            boostWordLower = boostWord.lower()
+                            if boostWordLower != boostWord:
+                                if boostWord in customSpellDict:
+                                    if boostWordLower not in customSpellDict[boostWord]:
+                                        customSpellDict[boostWord].append(boostWordLower)
+                                    #
+                                else:
+                                    customSpellDict[boostWord] = [boostWordLower]
+                            #
+                        #
+                    #
+                #custom_spelling_list.append({"from": [boostWord.lower()], "to": boostWord},)
+                #{"from": ["fristen", "friston"], "to": "Friston"},
+            #
+        #
+    #
+    print()
+    print("customSpellDict from word_boost:")
+    print(customSpellDict)
+    print()
+    
+    #print("word_boost_list:")
+    #print(word_boost_list)
+    #print()
+    
+    for customSpellingFile in custom_spelling_file_list:
+        file = open(customSpellingFile, "r", newline=None)
+        customSpellings = file.readlines()        # read all lines at once
+        #print("boostWords")
+        #print(boostWords)
+        file.close()
+        for customSpelling in customSpellings:
+            #print(customSpelling)
+            customSpellingPieces = customSpelling.strip("\n").split("\t")
+            #print(customSpellingPieces)
+            customSpellingFrom = customSpellingPieces[0]   #.strip("\n")
+            #print(customSpellingFrom)
+            if customSpellingFrom[0:1] != "#":
+                customSpellingTo   = customSpellingPieces[1]   #.strip()
+                #print(customSpellingTo)
+                #custom_spelling_list.append({"from": [customSpellingFrom], "to": customSpellingTo})
+                if customSpellingTo in customSpellDict:
+                    if customSpellingFrom not in customSpellDict[customSpellingTo]:
+                        customSpellDict[customSpellingTo].append(customSpellingFrom)
+                    #
+                else:
+                    customSpellDict[customSpellingTo] = [customSpellingFrom]
+                #
+            #
+        #
+    #
+    customSpellDictKeys = customSpellDict.keys()
+    for customSpellingTo in customSpellDictKeys:
+        custom_spelling_list.append({"from": customSpellDict[customSpellingTo], "to": customSpellingTo})
+        #    for customSpellingFrom in customSpellDict[]
+    #
+    #custom_spelling_list.append({"from": [customSpellingFrom], "to": customSpellingTo})
+    #
+#
 
 
 
-# ----- utility functions ----------------
+# ---------------------
+
 
 def ToDisplayTime(tt):
-    ts = float(tt)
+    ts=float(tt)
     h0=int(ts/3600000.0)
     hh=""
     if h0 > 9:
@@ -112,14 +454,15 @@ def ToSRTTime(tt):
     return to_time
 
 
-# ----- utility functions ----------------
-
+#   append string to list "called by name"
+def appendToList(name, list):
+    if name not in list:
+        list.append(name)
+#
 #Here's the translation of the Wolfram Language function `loadIndexes` to Python:
-import re
 
 def loadIndexes(indexFileName):
     phrasesToIndex = {}
-    lookupWordPat = r"\b(a|an|the|of|in|and|is|to|it|that|this|for|with|on|from|by|at|as|but|they|not|or|we|you|i|he|she|me|him|her|my|your|their|our|us|them|some|any|all|many|much|few|each|every|other)\b"
     maxPhraseLen = 100  # assuming a maximum phrase length
 
     with open(indexFileName, 'r') as file:
@@ -159,19 +502,11 @@ def loadIndexes(indexFileName):
             line = file.readline().strip()
 
     return phrasesToIndex
-
-#Note: Please make sure to import the required libraries, such as `re` for regular expressions, before using this translated function. Additionally, this translation assumes that the `maybeNorms` variable and related commented logic are not necessary for the Python implementation.
-
+#
 
 # ---------------------
 
-# prepare to call AssemblyAI's TRANSCRIBE API.
 
-# Really, load thru INDEXES option (colon-separated file-list)
-
-loadIndexes(indexFileName)
-indexFileNames = []
-indexFileNames.append("")
 #"audio_url": " + onlinePath + "/" + onlineFile + ",
 #"audio_url": "http://crisiscenter.us/AILab01/Karl_Friston_Applied_Active_Inference_Symposium_2021-06-22/Quadrille.wav",
 
@@ -182,1251 +517,95 @@ audio_url = onlinePath + "/" + onlineFile
 
 # for a fatter list - one containing an error - see "SubmitToCloudWhisper - Copy (13) - Try word_boost, spell again.py"
 
-wordBoostList = [
-"Dalton Sakthivadivel",
-"Thomas Parr",
-"Lagrange",
-"Lagrangian",
-"centripetal force",
-"centripetal",
-"Jorge Esteves",
-"Zoe McParlin",
-"Francesco Cerritelli",
-"Beren Millidge",
-"Anil Seth",
-"Christopher L Buckley",
-"Chris Buckley",
-"Axel Constant",
-"Andy Clark",
-"Michael Kirchhoff",
-"Lancelot Costa",
-"Axel Constant",
-"Andy Clark",
-"Michael Kirchhoff",
-"Tim Verbelen",
-"Toon Van de Maele",
-"Bart Dhoedt",
-"Adam Safron",
-"Tim Verbelen",
-"Toon Van de Maele",
-"Bart Dhoedt",
-"Adam Safron",
-"Verbelen",
+if len(transcriptId) == 0:      # need AssemblyAI authKey
+    #vaultDir        = "/mnt/d/Documents/FEP-AI/ActiveInferenceVault/"
+    print("authKeyFilename:")
+    print(authKeyFilename)
+    authKeyFilePath = vaultDir + authKeyFilename
+    file = open(authKeyFilePath, "r", newline=None)
+    useThisAuthKey = file.read().strip("\n")        # read all lines at once
+    print("useThisAuthKey")
+    print(useThisAuthKey)
+    file.close()
 #
-"ActInf Lab GuestStream",
-"ActInf Lab Livestream",
-"ActInf Lab MathStream",
-"ActInf Lab ModelStream",
-"ActInf Lab OrgStream",
-"ActInf Lab project",
-"ActInf Livestream",
-"ActInf",
-"ActInfLab project",
-"Active Inference",
-"Active Inference GuestStream",
-"Active Inference Institute",
-"Active Inference Lab",
-"Active Inference Livestream",
-"Active Inference MathStream",
-"Active Inference ModelStream",
-"Active Inference OrgStream",
-"Bayesian",
-"Bayesian inference",
-"Bleu",
-"Daniel",
-"Dean",
-"Dot One",
-"Dot Two",
-"Dot Zero",
-"Free Energy Principle",
-"Friston",
-"Friston blanket",
-"Karl Friston",
-"Karl J. Friston",
-"Livestream Number",
-"Markov",
-"Markov blanket",
-"Markov decision",
-"Stephen",
-"YouTube",
-# -----------------
-"radial parameterisation",
-"tangential forces",
-"parameterisation",
-"tangential",
-"Principle of Least Action",
-"Least Action",
-"Aaron Fath",
-"Aaron J Fath",
-"Abbas Edalat",
-"accuracy",
-"ActInf Lab",
-"action oriented representation",
-"action planning",
-"action prediction",
-"action",
-"active states",
-"active",
-"activity",
-"Adam Linson",
-"Adam Safron",
-"Safron",
-"adaptive",
-"address",
-"Adeel Razi",
-"advantage function",
-"affect",
-"affordance",
-"agency",
-"agent",
-"agreement",
-"Aikaterini Fotopoulou",
-"Alessandra Pedrocchi",
-"Alex Kiefer",
-"Alexander Strobel",
-"align",
-"allostasis",
-"allostat",
-"ambiguity",
-"Amir Omidvarnia",
-"ancestral",
-"Andrea Gajardo Vidal",
-"Andreas Kleinschmidt",
-"Andrew Corcoran",
-"Andrew W Corcoran",
-"Anna Belardinelli",
-"Annemie Ploeger",
-"Anthony Chen",
-"Anthony G Chen",
-"Anthony Zador",
-"and",
-"ants",
-"ant",
-"anxiety",
-"architectures",
-"Ari E Kahn",
-"Ari Kahn",
-"Arnold Pfeffer",
-"aspects",
-"assumptions",
-"asymmetry",
-"attention",
-"Attial",
-"attributes",
-"awareness",
-"bacterium like",
-"Ballard",
-"Bart Dhoedt",
-"Bayesian statistics physics",
-"behavior",
-"belief updating",
-"belief",
-"beliefs",
-"Bellman equation",
-"Bellman",
-"Beni",
-"Benjamin Illingworth",
-"Benucci",
-"Bert de Vries",
-"Bert de Vries",
-"Bijan Khezri",
-"Bijan",
-"bioelectric",
-"biological",
-"Biology and Philosophy",
-"biology",
-"Bitcoin",
-"blanket states",
-"Blei",
-"blueprint",
-"bottom up",
-"Botvinick",
-"boundary",
-"brain architecture",
-"brain evolution",
-"brain",
-"Brea",
-"Bull",
-"Buzsaki",
-"Canada",
-"canonical",
-"capacity curve",
-"Carnap",
-"Casper Hesp",
-"Cathy J Price",
-"Cathy Price",
-"Chang Kim",
-"Chang Sub Kim",
-"Chantelle Gaylor",
-"Chantelle M Gaylor",
-"chaos",
-"Charles C H Hong",
-"Christian Guckelsberger",
-"Christoph Mathys",
-"Christoph Salge",
-"Christopher D Frith",
-"Christopher Frith",
-"Christopher Lynn",
-"Christopher W Lynn",
-"Beren Milledge",
-"Anil Seth",
-"Calgary",
-"Chance",
-"Christopher L. Buckley",
-"Claudia Clopath",
-"Clopath",
-"Coda",
-"cognition",
-"cognitive niche",
-"cognitive science",
-"cognitive scientist",
-"cognitive studies",
-"cognitive",
-"coherence",
-"coherent",
-"comma",
-"communication",
-"competition",
-"complexity",
-"computational",
-"computer",
-"concept",
-"concepts",
-"connectivity",
-"Conor Heins",
-"Conor",
-"continuum",
-"control error",
-"control theory",
-"control",
-"controlled process",
-"controller",
-"controls",
-"conversation",
-"Conway",
-"correlation",
-"Costa",
-"counterfactuals",
-"COVID",
-"cue",
-"culture",
-"cybernetics",
-"cycle",
-"D Maisto",
-"DAG",
-"DAGs",
-"Daniel Polani",
-"Daniel Williams",
-"Danielle Bassett",
-"Danielle de Kerckhove",
-"Danielle Kerckhove",
-"Danielle S Bassett",
-"Daphne Demekas",
-"Daphne",
-"Dario Cuevas Rivera",
-"Dario Cuevas Rivera",
-"Dario Rivera",
-"data",
-"Dauwels",
-"David Benrimoh",
-"David Benton",
-"David Cittern",
-"David Green",
-"David Krakauer",
-"David McKay",
-"David W Green",
-"Dayan",
-"DCM",
-"de Vries",
-"Declan Lewis",
-"Deneve",
-"Dennett",
-"Diana Morelen",
-"differentiate",
-"dimension",
-"Dimitrije Markovi",
-"Dirichlet",
-"distinctions",
-"disturbance",
-"domain",
-"Dot EDU",
-"Dutch",
-"dynamics",
-"Earle Jamieson",
-"ecological",
-"Edda Bilek",
-"Edelman",
-"Eirik Sovik",
-"Elenora Guanziroli",
-"emergence",
-"Emmanuel Dauce",
-"Emmanuel Dauce",
-"enactivism",
-"encoding",
-"endstopping",
-"energy",
-"English",
-"ensemble",
-"Ensor Palacios",
-"Ensor Rafael Palacios",
-"entorhinal",
-"environment",
-"enzymes",
-"epistemic value",
-"ergodicity",
-"Erik Rietveld",
-"errors",
-"Ettore Ambrosini",
-"evidence",
-"evolution",
-"Evolutionary Anthropology",
-"exafferent",
-"examples",
-"expectation",
-"expected free energy",
-"exploration",
-"explore",
-"external states",
-"exteroception",
-"Fabienne Picard",
-"Fabrice Bartolomei",
-"Faisal Mushtaq",
-"feedback control",
-"feedback",
-"Felix A Pollock",
-"Felix Pollock",
-"Feynman",
-"field",
-"fitness",
-"flagella",
-"Florian Ott",
-"flow",
-"fMRI imaging",
-"fMRI",
-"force",
-"foraging",
-"forage",
-"forward model",
-"framework",
-"Francesco Donnarumma",
-"Francesco Rigoli",
-"Franco Molteni",
-"Franz Kuchling",
-"Frederike H Petzschner",
-"Frederike Petzschner",
-"free energy",
-"free",
-"function",
-"gain",
-"generalized capacity curve",
-"generalized free energy",
-"generative model",
-"generative models",
-"generative process",
-"generative",
-"Geoffrey Bingham",
-"Georgi Georgiev",
-"Geraint Rees",
-"Gerry Edelman",
-"Giovanni Pezzulo",
-"Giuseppe Pagnoni",
-"goal directed",
-"Graeme D Jackson",
-"Graeme Jackson",
-"Grigorios A Pavliotis",
-"Grigorios Pavliotis",
-"Guido Hesselmann",
-"Hae Jeong Park",
-"Hae Park",
-"Harrison",
-"Hayley A Young",
-"Hayley Young",
-"Hebbian",
-"Helene Haker",
-"Helmholtz Decomposition",
-"Helmholtzian",
-"Helmholtz",
-"heuristic",
-"hidden states",
-"Hideaki",
-"hierarchical model",
-"hierarchical",
-"Hinton",
-"Hipolito",
-"Hohwy",
-"homeostatic",
-"homeostat",
-"Hugo Bottemanne",
-"Brennan",
-"Alexander Tschantz",
-"Iain Couzin",
-"implication",
-"inclination",
-"independent",
-"individual",
-"individuals",
-"indoctrination",
-"Ines Hipolito",
-"introduction",
-"Francesco",
-"Jorge",
-"Cerritelli",
-"Esteves",
-"musculoskeletal",
-"Albarracin",
-"Andersen",
-"Anna Lembke",
-"Atreides",
-"Azarian",
-"Bayesianism",
-"Bobby Azarian",
-"Brett",
-"Brett Andersen",
-"Brett P. Andersen",
-"Dalton A R Sakthivadivel",
-"Dalton Sakthivadivel",
-"David Douglass",
-"Dean Tickles",
-"Dobson",
-"Facchin",
-"Giovanni",
-"Giovanni Rolla",
-"John Vervaeke",
-"Julian",
-"Julian Kiverstein",
-"Kiverstein",
-"Kyrtin",
-"Alessandro Barp",
-"Guilherme Franca",
-"Mark Girolami",
-"Alessandro",
-"Barp",
-"Guilherme","Franca",
-"Girolami",
-"Michael Jordan",
-"Kyrtin Atreides",
-"Lembke",
-"Mahault",
-"Marco",
-"Marco Facchin",
-"Proksch",
-"Ramstead",
-"Ronen",
-"Ronen Tamari",
-"Shanna",
-"Shanna Dobson",
-"Shannon Proksch",
-"Stephen Sillett",
-"Tamari",
-"Vervaeke",
-"William Fischer",
-"Monod",
-"epistemic",
-"literalist",
-"instrumentalism",
-"literalist fallacy",
-"deflationary account",
-"deflationary",
-"vehicle externalism",
-"externalism",
-"schizotypy",
-"diametric",
-"stigmergic social annotation",
-"collective sensemaking",
-"sensemaking",
-"stigmergic",
-"social annotation",
-"annotation",
-"Shahaf",
-"radically enactive cognition",
-"radically enactive",
-"Gibsonian",
-"dialetheia",
-"Deleuze",
-"condensed object",
-"haecceity",
-"Grothendieck",
-"governance",
-"Ines",
-"inference",
-"influence",
-"information geometry",
-"information",
-"informational",
-"interactions",
-"interface",
-"internal model",
-"internal representation",
-"internal states",
-"interoception",
-"interoceptive",
-"interpretation",
-"inverse model",
-"Isomura",
-"Jablonka",
-"Jack Brookes",
-"Jakob Hohwy",
-"Jakub Limanowski",
-"Jakub Smekal",
-"Jakub",
-"James C Harris",
-"James Cooke",
-"James E Cooke",
-"James E Swain",
-"James Fallon",
-"James H Fallon",
-"James Harris",
-"James Swain",
-"James Whittington",
-"Tolman Eichenbaum Machine",
-"Javier Sanchez Canizares",
-"Jean Decety",
-"Jelle Bruineberg",
-"Jelle",
-"Jiyoung Kang",
-"Johannes Lohmann",
-"John Doherty",
-"John O Doherty",
-"Jonathan P Roiser",
-"Jonathan Roiser",
-"Judea Pearl",
-"Jun Tani",
-"Justyna Ekert",
-"Justyna O Ekert",
-"Kai Ueltzhoffer",
-"Kant",
-"Kappel",
-"Karl J Friston",
-"Karl",
-"Katherine L Rosenblum",
-"Katherine Rosenblum",
-"Khezri",
-"Kilner",
-"Kirchhoff",
-"Klaas E Stephan",
-"Klaas Stephan",
-"Kuchling",
-"Kuhn",
-"Laje",
-"Lamme",
-"Lancelot",
-"language",
-"Lars Muckli",
-"Laurence J Kirmayer",
-"Laurence Kirmayer",
-"Laurent Perrinet",
-"learning",
-"least action",
-"least",
-"leave it to",
-"leave to",
-"left it to",
-"left to",
-"Leipzig",
-"levels",
-"Lieke de Boer",
-"Lilian A E Weber",
-"linguistics department",
-"Linsker",
-"Lisa Barrett",
-"Lisa Feldman Barrett",
-"living system",
-"local",
-"Lorenzo Niero",
-"loss function",
-"Lyapunov",
-"M Berk Mirza",
-"M Mirza",
-"macaque",
-"Maell Cullen",
-"Mahault Albarracin",
-"Majid Beni",
-"Majid D Beni",
-"Majid",
-"Mangor Pedersen",
-"Manuel Baltieri",
-"Marc Tittgemeyer",
-"Marcello Costantini",
-"Maria Muzik",
-"Mark Mon Williams",
-"Mark Solms",
-"Mark Williams",
-"Markov decision process",
-"Marolla",
-"Marta Gandolla",
-"Martin Biehl",
-"Martin Butz",
-"Martin V Butz",
-"Martin Voss",
-"match.com",
-"material",
-"maths",
-"MATLAB",
-"Matthew M Nour",
-"Matthew Nour",
-"Mattia Veronese",
-"Max Planck",
-"Maxwell J D Ramstead",
-"Maxwell Ramstead",
-"maze",
-"measurement noise",
-"measurement",
-"membrane",
-"mesoanatomical",
-"metacognition",
-"Micah Allen",
-"Michael Levin",
-"Michael Moutoussis",
-"Michael Weisberg",
-"Michael",
-"Mike Levin",
-"Milledge",
-"mind",
-"minimization",
-"minimizing",
-"model based",
-"model selection",
-"model",
-"modelers",
-"modularity",
-"Moser",
-"multimodal expansion",
-"multimodal",
-"multiple",
-"narrative",
-"Nathaniel Nyema",
-"neoplasia",
-"neuroimaging",
-"neuromodulator",
-"niche",
-"Nick S Ward",
-"Nick Ward",
-"noise",
-"nonclassical",
-"Noor Sajid",
-"novelty",
-"numbers",
-"objective function",
-"observation",
-"Oliver D Howes",
-"Oliver Howes",
-"Olivier Sigaud",
-"Omar Khachouf",
-"Omar T Khachouf",
-"online",
-"ontology",
-"operating point",
-"operations",
-"order",
-"OrgStream",
-"osteopath",
-"osteopathy",
-"overload",
-"overridable",
-"Ozan Catal",
-"parse",
-"partial",
-"participants",
-"particle",
-"Pasco Fearon",
-"Patrice Duquette",
-"Patrick Connolly",
-"Paul B Badcock",
-"Paul Badcock",
-"Paul Fletcher",
-"Peirce",
-"perception",
-"performance",
-"perspective",
-"perturbation",
-"Peter Bossaerts",
-"Peter Culmer",
-"Peter Uhlhaas",
-"Peter Vincent",
-"Pezzulo",
-"phase",
-"Philipp Schwartenbeck",
-"Philipp Sterzer",
-"philosophy",
-"phyletic gradualism",
-"physics",
-"physiological",
-"Piaget",
-"plant",
-"plasticity",
-"play",
-"policy selection",
-"policy",
-"polyethism",
-"POMDP",
-"position",
-"possibility",
-"posterior",
-"pragmatic value",
-"pragmatics",
-"pragmatism",
-"prediction error",
-"prediction",
-"Predictive Coding",
-"predictive processing",
-"predictive regulation",
-"Predrag Petrovic",
-"preference",
-"principle",
-"prior",
-"probabilistic graphical model",
-"process noise",
-"process theory",
-"processes",
-"processing",
-"professional setting",
-"program",
-"prompting",
-"punctuated equilibrium",
-"pymdp",
-"conor",
-"quantum",
-"question",
-"questions",
-"Quigley",
-"radical enactivist",
-"Rao and Ballard",
-"Raphael Kaplan",
-"Raymond Dolan",
-"Raymond J Dolan",
-"reafferent",
-"reality",
-"realize",
-"recognition model",
-"recognition",
-"reference distribution",
-"reference trajectory",
-"reflective",
-"refrigerator",
-"regime of attention",
-"regulated resource",
-"relationships",
-"representation",
-"representational",
-"representationalism",
-"representations",
-"response curve",
-"Richard E Rosch",
-"Richard M Wilkie",
-"Richard Rosch",
-"Richard Wilkie",
-"Rick A Adams",
-"Rick Adams",
-"Riemann",
-"Robin Carhart Harris",
-"Robin Harris",
-"role",
-"Rosalyn J Moran",
-"Rosalyn Moran",
-"Ross",
-"Roy de Kleijn",
-"Roy Kleijn",
-"rules",
-"Rutger Goekoop",
-"Ryan Smith",
-"Ryota Kanai",
-"S Ho",
-"S Shaun Ho",
-"Saee Paliwal",
-"salience",
-"Samarth Swarup",
-"Samuel P L Veissiere",
-"Samuel Veissiere",
-"Sandra Iglesias",
-"saturation value",
-"scale",
-"scenario",
-"science",
-"section",
-"selection",
-"Sennesh",
-"sense states",
-"Sepideh Sadaghiani",
-"set point",
-"set",
-"settling point",
-"settling range",
-"Shaun Gallagher",
-"Shaun Ho",
-"Shimazaki",
-"Sillett",
-"Simon C Smith",
-"Simon Smith",
-"solenoidal ",
-"SPM",
-"stability",
-"state estimate",
-"state space",
-"state",
-"states",
-"stationarity",
-"Stefan J Kiebel",
-"Stefan Kiebel",
-"Stefano Poletti",
-"Stephen Fleming",
-"Stephen Fox",
-"Stephen Lawrie",
-"Stephen M Fleming",
-"Stephen M Lawrie",
-"Stephen Mann",
-"Sterling Street",
-"stigmergic",
-"stigmergy",
-"stimuli",
-"stochastic optimal control",
-"stock",
-"structures",
-"Sukhi Shergill",
-"surprise",
-"surround",
-"Sussillo",
-"synaptic",
-"Takazumi Matsumoto",
-"Takuya Isomura",
-"Takuya",
-"Tarik Dahoun",
-"Taylor Series",
-"Taylor",
-"teaching",
-"teleology",
-"temporal depth",
-"theorem",
-"theory",
-"Theriault",
-"thermodynamics of the brain",
-"thermodynamics",
-"Thomas Goschke",
-"Thomas H B FitzGerald",
-"Thomas Hope",
-"Thomas M Hope",
-"Thomas Parr",
-"threshold value",
-"Tim Gard",
-"Tim Verbelen",
-"Tim Verbelen",
-"time scales",
-"Timothy Behrens",
-"Tobias Nolte",
-"Toon Van de Maele",
-"top down",
-"Torigoe",
-"Toronto",
-"transfer function",
-"transfer",
-"transition",
-"truth",
-"Turrigiano",
-"uncertainty",
-"understanding",
-"University of Surrey",
-"value function",
-"variable",
-"variational free energy",
-"variational",
-"vehicles",
-"Veissiere",
-"viscerosensory signaling",
-"viscerosensory",
-"vision",
-"Vivien Ainley",
-"Volterra series",
-"Volterra",
-"Wael Deredy",
-"Wael El Deredy",
-"wayfinding",
-"Yoshio Nakamura",
-"Zador",
-"zebra",
-"Zhang",
-"Zina M Manjaly",
-"Zina Manjaly",
+
+if len(transcriptId) == 0:
+    print()
+    print("word_boost_list:")
+    print(word_boost_list)
+    print()
+    print("custom_spelling_list:")
+    print(custom_spelling_list)
+    print()
+
+    json = {
+        "audio_url":       audio_url,
+        "word_boost":      word_boost_list,
+        "custom_spelling": custom_spelling_list,
+        #"summarization": True,
+        #"summary_type": "bullets",
+        #"content_safety": True,
+        "auto_highlights": auto_highlights_value,
+        "language_model":  language_model,     # "large"  "medium"
+        "boost_param": boost_param_value,           # "default" "high"
+        "speaker_labels": speaker_labels_value,         # not yet supported for Portuguese
+        "entity_detection": entity_detection_value,
+        "iab_categories": iab_categories_value,
+        "auto_chapters": auto_chapters_value,
+        "sentiment_analysis": sentiment_analysis_value,
+        "language_code": language_code        #"pt"
+        }
+
+    print("json to AssemblyAI:")
+    print(json)
+    #quit()
+
+
+    #headers = {"authorization": "a14f484d11984e00bf7105cda4bc0c9a","content-type": "application/json"}
+    headers = {"authorization": useThisAuthKey,"content-type": "application/json"}
+    response = requests.post(endpoint, json=json, headers=headers)                      # critical API call
+    #print(response.json())
+    jj=response.json()
+    transcriptId=jj.get('id')
+    print(transcriptId)
+    myStatus=jj.get('status')
+    print(myStatus)
+    time.sleep(30)
+else:
+    myStatus = "processing"
 #
-"I",
-"I'll",
-"I've",
-"I'm"
-]
-
-# (temporary) value of custom_spelling
-customSpellingList = [ 
-{"from": ["dalton"], "to": "Dalton"},
-{"from": ["sakthivadivel"], "to": "Sakthivadivel"},
-{"from": ["lancelot"], "to": "Lancelot"},
-{"from": ["noor"], "to": "Noor"},
-{"from": ["sajid"], "to": "Sajid"},
-{"from": ["conor"], "to": "Conor"},
-{"from": ["heins"], "to": "Heins"},
-{"from": ["kai"], "to": "Kai"},
-{"from": ["ueltzhoffer"], "to": "Ueltzhoffer"},
-{"from": ["parr"], "to": "Parr"},
-{"from": ["zoe"], "to": "Zoe"},
-{"from": ["mcparlin"], "to": "McParlin"},
-{"from": ["francesco"], "to": "Francesco"},
-{"from": ["cerritelli"], "to": "Cerritelli"},
-{"from": ["jorge"], "to": "Jorge"},
-{"from": ["esteves"], "to": "Esteves"},
-{"from": ["beren"], "to": "Beren"},
-{"from": ["millidge"], "to": "Millidge"},
-{"from": ["anil"], "to": "Anil"},
-{"from": ["pease","peas"], "to": "Pease"},
-{"from": ["seth"], "to": "Seth"},
-{"from": ["verbelen"], "to": "Verbelen"},
-{"from": ["actinf"], "to": "ActInf"},
-{"from": ["bayesian"], "to": "Bayesian"},
-{"from": ["daniel"], "to": "Daniel"},
-{"from": ["friston"], "to": "Friston"},
-{"from": ["markov"], "to": "Markov"},
-{"from": ["youtube"], "to": "YouTube"},
-{"from": ["gueststream"], "to": "GuestStream"},
-{"from": ["livestream"], "to": "Livestream"},
-{"from": ["mathstream"], "to": "MathStream"},
-{"from": ["modelstream"], "to": "ModelStream"},
-{"from": ["orgstream"], "to": "OrgStream"},
-#
-{"from": ["bleu"], "to": "Bleu"},
-{"from": ["google"], "to": "Google"},
-{"from": ["elizabethan"], "to": "Elizabethan"},
-{"from": ["post-it"], "to": "Post-It"},
-{"from": ["aristotelian"], "to": "Aristotelian"},
-{"from": ["i"], "to": "I"},
-{"from": ["i'm"], "to": "I'm"},
-{"from": ["i'll"], "to": "I'll"},
-{"from": ["i've"], "to": "I've"},
-{"from": ["shakespeare"], "to": "Shakespeare"},
-#-------------------
-{"from": ["lagrange"], "to": "Lagrange"},
-{"from": ["lagrangian"], "to": "Lagrangian"},
-{"from": ["frankenstein"], "to": "Frankenstein"},
-{"from": ["atreides"], "to": "Atreides"},
-{"from": ["buddhist"], "to": "Buddhist"},
-{"from": ["buddhists"], "to": "Buddhists"},
-{"from": ["congress"], "to": "Congress"},
-{"from": ["court"], "to": "Court"},
-{"from": ["curtin"], "to": "Curtin"},
-{"from": ["david"], "to": "David"},
-{"from": ["hawking's"], "to": "Hawking's"},
-{"from": ["hitchhiker's"], "to": "Hitchhiker's"},
-{"from": ["jason"], "to": "Jason"},
-{"from": ["jonathan"], "to": "Jonathan"},
-{"from": ["kirsten"], "to": "Kirsten"},
-{"from": ["marvin"], "to": "Marvin"},
-{"from": ["mercurio"], "to": "Mercurio"},
-{"from": ["modern"], "to": "Modern"},
-{"from": ["natura"], "to": "Natura"},
-{"from": ["nord"], "to": "Nord"},
-{"from": ["october"], "to": "October"},
-{"from": ["scala"], "to": "Scala"},
-{"from": ["simon"], "to": "Simon"},
-{"from": ["stephen"], "to": "Stephen"},
-{"from": ["u.s"], "to": "U.S"},
-#-------------------
-{"from": ["alzheimer's"], "to": "Alzheimer's"},
-{"from": ["andrew"], "to": "Andrew"},
-{"from": ["armenia"], "to": "Armenia"},
-{"from": ["arty"], "to": "Arty"},
-{"from": ["astra"], "to": "Astra"},
-{"from": ["atari"], "to": "Atari"},
-{"from": ["bacon"], "to": "Bacon"},
-{"from": ["bacon's"], "to": "Bacon's"},
-{"from": ["becca"], "to": "Becca"},
-{"from": ["bible"], "to": "Bible"},
-{"from": ["bridges"], "to": "Bridges"},
-{"from": ["bucky"], "to": "Bucky"},
-{"from": ["cartesian"], "to": "Cartesian"},
-{"from": ["chalmers"], "to": "Chalmers"},
-{"from": ["charles"], "to": "Charles"},
-{"from": ["chris"], "to": "Chris"},
-{"from": ["christ"], "to": "Christ"},
-{"from": ["claussen"], "to": "Claussen"},
-{"from": ["cleanword"], "to": "cleanWord"},
-{"from": ["clive"], "to": "Clive"},
-{"from": ["clive's"], "to": "Clive's"},
-{"from": ["clyde"], "to": "Clyde"},
-{"from": ["comas"], "to": "Comas"},
-{"from": ["communications"], "to": "Communications"},
-{"from": ["constructor"], "to": "Constructor"},
-{"from": ["coppola"], "to": "Coppola"},
-{"from": ["corey"], "to": "Corey"},
-{"from": ["cycles"], "to": "Cycles"},
-{"from": ["deek's"], "to": "Deek's"},
-{"from": ["dick's"], "to": "Dick's"},
-{"from": ["dna"], "to": "DNA"},
-{"from": ["dobson"], "to": "Dobson"},
-{"from": ["dosh"], "to": "Dosh"},
-{"from": ["duluth"], "to": "Duluth"},
-{"from": ["dustin"], "to": "Dustin"},
-{"from": ["eastern"], "to": "Eastern"},
-{"from": ["english"], "to": "English"},
-{"from": ["fantasia"], "to": "Fantasia"},
-{"from": ["fep"], "to": "FEP"},
-{"from": ["fields"], "to": "Fields"},
-{"from": ["france"], "to": "France"},
-{"from": ["francis"], "to": "Francis"},
-{"from": ["freud"], "to": "Freud"},
-{"from": ["fuller's"], "to": "Fuller's"},
-{"from": ["giants"], "to": "Giants"},
-{"from": ["global"], "to": "Global"},
-{"from": ["gotham"], "to": "Gotham"},
-{"from": ["groff"], "to": "Groff"},
-{"from": ["guiles"], "to": "Guiles"},
-{"from": ["hannah"], "to": "Hannah"},
-{"from": ["harold"], "to": "Harold"},
-{"from": ["hedwig"], "to": "Hedwig"},
-{"from": ["hegel"], "to": "Hegel"},
-{"from": ["ian"], "to": "Ian"},
-{"from": ["ide"], "to": "IDE"},
-{"from": ["indic"], "to": "Indic"},
-{"from": ["indy"], "to": "Indy"},
-{"from": ["jedi"], "to": "Jedi"},
-{"from": ["jeffrey"], "to": "Jeffrey"},
-{"from": ["johnny"], "to": "Johnny"},
-{"from": ["kandinsky"], "to": "Kandinsky"},
-{"from": ["klein"], "to": "Klein"},
-{"from": ["mappy"], "to": "Mappy"},
-{"from": ["maslow's"], "to": "Maslow's"},
-{"from": ["mr"], "to": "Mr"},
-{"from": ["nash"], "to": "Nash"},
-{"from": ["nietzsche"], "to": "Nietzsche"},
-{"from": ["orlando's"], "to": "Orlando's"},
-{"from": ["paul"], "to": "Paul"},
-{"from": ["peter"], "to": "Peter"},
-{"from": ["plato"], "to": "Plato"},
-{"from": ["rgb"], "to": "RGB"},
-{"from": ["riverbanks"], "to": "Riverbanks"},
-{"from": ["robert"], "to": "Robert"},
-{"from": ["rosalyn"], "to": "Rosalyn"},
-{"from": ["roth"], "to": "Roth"},
-{"from": ["sadi"], "to": "Sadi"},
-{"from": ["sadie"], "to": "Sadie"},
-{"from": ["saidi"], "to": "Saidi"},
-{"from": ["seth"], "to": "Seth"},
-{"from": ["shanna"], "to": "Shanna"},
-{"from": ["shawna"], "to": "Shawna"},
-{"from": ["smothers"], "to": "Smothers"},
-{"from": ["stanford"], "to": "Stanford"},
-{"from": ["uv"], "to": "UV"},
-{"from": ["young's"], "to": "Young's"},
-{"from": ["zeman"], "to": "Zeman"},
-# --------------------------
-{"from": ["aaron"], "to": "Aaron"},
-{"from": ["alexandria"], "to": "Alexandria"},
-{"from": ["aristotle"], "to": "Aristotle"},
-{"from": ["asm"], "to": "ASM"},
-{"from": ["byron"], "to": "Byron"},
-{"from": ["china"], "to": "China"},
-{"from": ["china's"], "to": "China's"},
-{"from": ["earth"], "to": "Earth"},
-{"from": ["eve"], "to": "Eve"},
-{"from": ["iphone"], "to": "iPhone"},
-{"from": ["jesuits"], "to": "Jesuits"},
-{"from": ["jesus"], "to": "Jesus"},
-{"from": ["king"], "to": "King"},
-{"from": ["korea"], "to": "Korea"},
-{"from": ["leonardo"], "to": "Leonardo"},
-{"from": ["monas"], "to": "Monas"},
-{"from": ["nasa"], "to": "NASA"},
-{"from": ["newton"], "to": "Newton"},
-{"from": ["newtonian"], "to": "Newtonian"},
-{"from": ["northern"], "to": "Northern"},
-{"from": ["paris"], "to": "Paris"},
-{"from": ["ramon"], "to": "Ramon"},
-{"from": ["sdf"], "to": "SDF"},
-{"from": ["serbia"], "to": "Serbia"},
-#  -------------------------------
-{'from': ['attial'], 'to': 'Attial'},
-{'from': ['ballard'], 'to': 'Ballard'},
-{'from': ['bayesian'], 'to': 'Bayesian'},
-{'from': ['bellman'], 'to': 'Bellman'},
-{'from': ['Benny','beni'], 'to': 'Beni'},
-{'from': ['beren','beran'], 'to': 'Beren'},
-{'from': ['millage','milledge'], 'to': 'Milledge'},
-{'from': ['anil'], 'to': 'Anil'},
-{'from': ['benucci'], 'to': 'Benucci'},
-{'from': ['Bijan'], 'to': 'Bijan'},
-{'from': ['bitcoin'], 'to': 'Bitcoin'},
-{'from': ['blei'], 'to': 'Blei'},
-{'from': ['bleu','Blue'], 'to': 'Bleu'},
-{'from': ['botvinick'], 'to': 'Botvinick'},
-{'from': ['brea'], 'to': 'Brea'},
-{'from': ['bull'], 'to': 'Bull'},
-{'from': ['buzsaki'], 'to': 'Buzsaki'},
-{'from': ['canada'], 'to': 'Canada'},
-{'from': ['carnap'], 'to': 'Carnap'},
-{'from': ['clopath'], 'to': 'Clopath'},
-{'from': ['coda'], 'to': 'Coda'},
-{'from': ['daphne','dakki'], 'to': 'Daphne'},
-{'from': ['conor','connor'], 'to': 'Conor'},
-{'from': ['demekas'], 'to': 'Demekas'},
-{'from': ['conway'], 'to': 'Conway'},
-{'from': ['costa'], 'to': 'Costa'},
-{'from': ['covid'], 'to': 'COVID'},
-{'from': ['francesco'], 'to': 'Francesco'},
-{'from': ['jorge'], 'to': 'Jorge'},
-{'from': ['cerritelli'], 'to': 'Cerritelli'},
-{'from': ['esteves'], 'to': 'Esteves'},
-{'from': ['albarracin'], 'to': 'Albarracin'},
-{'from': ['andersen'], 'to': 'Andersen'},
-{'from': ['atreides'], 'to': 'Atreides'},
-{'from': ['azarian'], 'to': 'Azarian'},
-{'from': ['bayesianism'], 'to': 'Bayesianism'},
-{'from': ['brett'], 'to': 'Brett'},
-{'from': ['dobson'], 'to': 'Dobson'},
-{'from': ['facchin'], 'to': 'Facchin'},
-{'from': ['giovanni'], 'to': 'Giovanni'},
-{'from': ['julian'], 'to': 'Julian'},
-{'from': ['kiverstein'], 'to': 'Kiverstein'},
-{'from': ['kyrtin'], 'to': 'Kyrtin'},
-{'from': ['lembke'], 'to': 'Lembke'},
-{'from': ['mahault'], 'to': 'Mahault'},
-{'from': ['marco'], 'to': 'Marco'},
-{'from': ['proksch'], 'to': 'Proksch'},
-{'from': ['ramstead'], 'to': 'Ramstead'},
-{'from': ['ronen'], 'to': 'Ronen'},
-{'from': ['shanna'], 'to': 'Shanna'},
-{'from': ['tamari'], 'to': 'Tamari'},
-{'from': ['vervaeke'], 'to': 'Vervaeke'},
-{'from': ['monod'], 'to': 'Monod'},
-{'from': ['gueststream'], 'to': 'Gueststream'},
-{'from': ['shahaf'], 'to': 'Shahaf'},
-{'from': ['gibsonian'], 'to': 'Gibsonian'},
-{'from': ['deleuze'], 'to': 'Deleuze'},
-{'from': ['grothendieck'], 'to': 'Grothendieck'},
-{'from': ['dag'], 'to': 'DAG'},
-{'from': ['dags'], 'to': 'DAGs'},
-{'from': ['daniel'], 'to': 'Daniel'},
-{'from': ['dauwels'], 'to': 'Dauwels'},
-{'from': ['dayan'], 'to': 'Dayan'},
-{'from': ['dcm'], 'to': 'DCM'},
-{'from': ['dean'], 'to': 'Dean'},
-{'from': ['deneve'], 'to': 'Deneve'},
-{'from': ['dennett'], 'to': 'Dennett'},
-{'from': ['dirichlet'], 'to': 'Dirichlet'},
-{'from': ['dutch'], 'to': 'Dutch'},
-{'from': ['edelman'], 'to': 'Edelman'},
-{'from': ['english'], 'to': 'English'},
-{'from': ['feynman'], 'to': 'Feynman'},
-{'from': ['fmri'], 'to': 'fMRI'},
-{'from': ['Calfistan','fristen','friston','Tristan'], 'to': 'Friston'},
-{'from': ['harrison'], 'to': 'Harrison'},
-{'from': ['hebbian'], 'to': 'Hebbian'},
-{'from': ['hinds','hines'], 'to': 'Heins'},
-{'from': ['helmholtz'], 'to': 'Helmholtz'},
-{'from': ['hideaki'], 'to': 'Hideaki'},
-{'from': ['hinton'], 'to': 'Hinton'},
-{'from': ['hipolito'], 'to': 'Hipolito'},
-{'from': ['Howe','hohwy'], 'to': 'Hohwy'},
-{'from': ['brennan'], 'to': 'Brennan'},
-{'from': ['Ian'], 'to': 'Iain'},
-{'from': ['Cousin'], 'to': 'Couzin'},
-{'from': ['ines','Innes','inez'], 'to': 'Ines'},
-{'from': ['isomura'], 'to': 'Isomura'},
-{'from': ['jablonka'], 'to': 'Jablonka'},
-{'from': ['jelle'], 'to': 'Jelle'},
-{'from': ['kappel'], 'to': 'Kappel'},
-{'from': ['carl','Calf'], 'to': 'Karl'},
-{'from': ['Khezri'], 'to': 'Khezri'},
-{'from': ['kilner'], 'to': 'Kilner'},
-{'from': ['kirchhoff'], 'to': 'Kirchhoff'},
-{'from': ['kuchling'], 'to': 'Kuchling'},
-{'from': ['kuhn'], 'to': 'Kuhn'},
-{'from': ['laje'], 'to': 'Laje'},
-{'from': ['lamme'], 'to': 'Lamme'},
-{'from': ['lancelot'], 'to': 'Lancelot'},
-{'from': ['leipzig'], 'to': 'Leipzig'},
-{'from': ['linsker'], 'to': 'Linsker'},
-{'from': ['lyapunov'], 'to': 'Lyapunov'},
-{'from': ['majid'], 'to': 'Majid'},
-{'from': ['markov','markoff'], 'to': 'Markov'},
-{'from': ['marolla'], 'to': 'Marolla'},
-{'from': ['matlab'], 'to': 'MATLAB'},
-{'from': ['michael'], 'to': 'Michael'},
-{'from': ['moser'], 'to': 'Moser'},
-{'from': ['orgstream'], 'to': 'OrgStream'},
-{'from': ['pezzulo'], 'to': 'Pezzulo'},
-{'from': ['piaget', 'PSJA'], 'to': 'Piaget'},
-{'from': ['plank','Pluck'], 'to': 'Planck'},
-{'from': ['pineapple'], 'to': 'pymdp'},
-{'from': ['pomdp'], 'to': 'POMDP'},
-{'from': ['quigley'], 'to': 'Quigley'},
-{'from': ['riemann'], 'to': 'Riemann'},
-{'from': ['ross'], 'to': 'Ross'},
-{'from': ['sennesh'], 'to': 'Sennesh'},
-{'from': ['shimazaki'], 'to': 'Shimazaki'},
-{'from': ['sillett'], 'to': 'Sillett'},
-{'from': ['spm'], 'to': 'SPM'},
-{'from': ['stephen'], 'to': 'Stephen'},
-{'from': ['sussillo'], 'to': 'Sussillo'},
-{'from': ['takuya'], 'to': 'Takuya'},
-{'from': ['taylor'], 'to': 'Taylor'},
-{'from': ['theriault'], 'to': 'Theriault'},
-{'from': ['tolman'], 'to': 'Tolman'},
-{'from': ['torigoe'], 'to': 'Torigoe'},
-{'from': ['toronto'], 'to': 'Toronto'},
-{'from': ['turrigiano'], 'to': 'Turrigiano'},
-{'from': ['veissiere'], 'to': 'Veissiere'},
-{'from': ['volterra', 'voltaire'], 'to': 'Volterra'},
-{'from': ['zador'], 'to': 'Zador'},
-{'from': ['zhang'], 'to': 'Zhang'}
-]
-
-#following word_boost list was 'generated' from YouTube SRT using srtToCsv.py (plus some filtering in a spreadsheet)
-json = {
-    "audio_url": audio_url,
-    "word_boost": wordBoostList,
-    "custom_spelling": customSpellingList,
-    "boost_param": "low",       # "default" "high"    
-    #"summarization": True,
-    #"summary_type": "bullets",
-    "speaker_labels": True,         # not yet supported for Portuguese
-    "language_model": "medium",      # "large"
-    "entity_detection": True,
-    "auto_highlights": True,
-    "iab_categories": True,
-    "auto_chapters": True,
-    "sentiment_analysis": True,
-    "language_code": "en_us"        #"pt"
-}
-headers = {"authorization": "a14f484d11984e00bf7105cda4bc0c9a","content-type": "application/json"}
-response = requests.post(endpoint, json=json, headers=headers)
-#print(response.json())
-jj=response.json()
-myId=jj.get('id')
-print(myId)
-myStatus=jj.get('status')
-print(myStatus)
-time.sleep(30)
-
 
 import requests
 import time
 import sys
-import math
-import csv
-#myId = "rsuh9skgre-a056-486e-8138-2e6608d21f04"
 
+#transcriptId = "rsuh9skgre-a056-486e-8138-2e6608d21f04"
 while myStatus == "queued" or myStatus == "processing":
     time.sleep(120)
-    endpoint = "https://api.assemblyai.com/v2/transcript/" + myId
-    headers = {"authorization": "a14f484d11984e00bf7105cda4bc0c9a"}
+    endpoint = "https://api.assemblyai.com/v2/transcript/" + transcriptId
+    headers = {"authorization": useThisAuthKey}
     response = requests.get(endpoint, headers=headers)
     #print(response.json())
     jj=response.json()
     myStatus=jj.get('status')
     print(myStatus)
 
+#headers = {"authorization": "a14f484d11984e00bf7105cda4bc0c9a"}
 
 print()
 print()
 print("Dump JSON response:")
-print(jj)
+#print(jj)
 print()
-print(myId)
+print(transcriptId)
 print(myStatus)
+
+# dump JSON direct from AssemblyAI return
+mainJsonPubPath = docLabel + "_" + onlineFile + "_trace.main.json"
+mjf = open(mainJsonPubPath, "w")
+mjf.write(jsfmt.dumps(jj))
+mjf.close()
+
 
 if myStatus != "completed":
     myError = jj.get('error')
@@ -1437,161 +616,159 @@ if myStatus != "completed":
 
 # ----------- words (apparently always identical to those from paragraphs) ----------
 
-
 wordFileName = docLabel + "_" + onlineFile + ".words.csv"
-wwf = open(wordFileName, "w")
-wordOut = "start\tend\tspeaker\twconfidence\ttext"
-wwf.write(wordOut)
-wwf.write("\r\n")
+#wwf = open(wordFileName, "w")
 
-words = jj.get('words')
+#words = jj.get('words')
 
-for count, word in enumerate(words):
-    wtext=word.get('text')
-    wstart=word.get('start')
-    wend=word.get('end')
-    wconfid=word.get('confidence')
-    wspeaker=word.get('speaker')
-    #
-    wordOut = str(wstart) + "\t" + str(wend) + "\t"
-    if wspeaker != None:
-        wordOut = wordOut + wspeaker
-    #
-    wordOut = wordOut + "\t" + str(wconfid) + "\t"
-    if wtext != None:
-         wordOut = wordOut + wtext
-    #
-    #wordOut = str(wstart) + "\t" + str(wend) + "\t" + wspeaker + "\t" + str(wconfid) + "\t" + wtext    
-    wwf.write(wordOut)	#    #print(utterOut)	, delimiter='\t', lineterminator='\t\n'
-    wwf.write("\r\n")
+#for count, word in enumerate(words):
+#    wtext=word.get('text')
+#    wstart=word.get('start')
+#    wend=word.get('end')
+#    wconfid=word.get('confidence')
+#    wspeaker=word.get('speaker')
+#    #
+#    wordOut = str(wstart) + "\t" + str(wend) + "\t"
+#    if wspeaker != None:
+#        wordOut = wordOut + wspeaker
+#    
+#    #
+#    wordOut = wordOut + "\t" + str(wconfid) + "\t"
+#    if wtext != None:
+#        wordOut = wordOut + wtext
+#    
+#    #
+#    #wordOut = str(wstart) + "\t" + str(wend) + "\t" + wspeaker + "\t" + str(wconfid) + "\t" + wtext    
+#    wwf.write(wordOut)	#    #print(utterOut)	, delimiter='\t', lineterminator='\t\n'
+#    wwf.write("\r\n")
 
-wwf.close()
+#wwf.close()
 
 
 # ----------- IAB categories ----------
-
-iabCats = jj.get('iab_categories_result')
-catStatus=iabCats.get('status')
-if catStatus == 'success':
-    catDetFileName = docLabel + "_" + onlineFile + ".categoryDetails.csv"
-    cdf = open(catDetFileName, "w")
-    catDetOut = "start" + "\t" + "end" + "\t" + 'relevance' + "\t" + 'label'
-    cdf.write(catDetOut)
-    cdf.write("\r\n")
-    catDetails=iabCats.get('results')
-    for rCount, cDKey in enumerate(catDetails):     # retrieve by POSITION
-        #for count, cKey in enumerate(cDKey):            # retrieve by KEY
-        cTKey  = cDKey.get('timestamp')
-        #print(cTKey)
-        cStart = cTKey.get('start')         # will use same timestamps for all label/relevance pairs
-        #print(cStart)
-        cEnd   = cTKey.get('end')
-        #print(cEnd)
-        cLabels  = cDKey.get('labels')
-        #print(cLabels)
-        for labelCount, labelPair in enumerate(cLabels):    # retrieve by POSITION
-            cRelev = labelPair.get('relevance')
-            cLabel = labelPair.get('label')
-            catDetOut = str(cStart) + "\t" + str(cEnd) + "\t" + str(cRelev) + "\t" + str(cLabel)
-            #print(catDetOut)
-            cdf.write(catDetOut)	#    print(utterOut)	, delimiter='\t', lineterminator='\t\n'
-            cdf.write("\r\n")
+if iab_categories_value:
+    iabCats = jj.get('iab_categories_result')
+    catStatus=iabCats.get('status')
+    if catStatus == 'success':
+        catDetFileName = docLabel + "_" + onlineFile + ".categoryDetails.csv"
+        cdf = open(catDetFileName, "w")
+        catDetOut = "start" + "\t" + "end" + "\t" + 'relevance' + "\t" + 'label'
+        cdf.write(catDetOut)
+        cdf.write("\r\n")
+        catDetails=iabCats.get('results')
+        for rCount, cDKey in enumerate(catDetails):     # retrieve by POSITION
+            #for count, cKey in enumerate(cDKey):            # retrieve by KEY
+            cTKey  = cDKey.get('timestamp')
+            #print(cTKey)
+            cStart = cTKey.get('start')         # will use same timestamps for all label/relevance pairs
+            #print(cStart)
+            cEnd   = cTKey.get('end')
+            #print(cEnd)
+            cLabels  = cDKey.get('labels')
+            #print(cLabels)
+            for labelCount, labelPair in enumerate(cLabels):    # retrieve by POSITION
+                cRelev = labelPair.get('relevance')
+                cLabel = labelPair.get('label')
+                catDetOut = str(cStart) + "\t" + str(cEnd) + "\t" + str(cRelev) + "\t" + str(cLabel)
+                #print(catDetOut)
+                cdf.write(catDetOut)	#    print(utterOut)	, delimiter='\t', lineterminator='\t\n'
+                cdf.write("\r\n")
         
-    
-    cdf.close()
+        cdf.close()
 
-
-# also (separately) save summaries (i.e. session-level IAB categories)
-if catStatus == 'success':
-    catFileName = docLabel + "_" + onlineFile + ".categories.csv"
-    ccf = open(catFileName, "w")
-    catOut="key" + "\t" + "relevance"
-    ccf.write(catOut)	#    print(utterOut)	, delimiter='\t', lineterminator='\t\n'
-    ccf.write("\r\n")
-    summaries=iabCats.get('summary')
-    summKeys=summaries.keys()
-    for count, cKey in enumerate(summKeys):
-        cRelev=summaries.get(cKey)
-        catOut=cKey + "\t" + str(cRelev)
+    # also (separately) save summaries (i.e. session-level IAB categories)
+    if catStatus == 'success':
+        catFileName = docLabel + "_" + onlineFile + ".categories.csv"
+        ccf = open(catFileName, "w")
+        catOut="key" + "\t" + "relevance"
         ccf.write(catOut)	#    print(utterOut)	, delimiter='\t', lineterminator='\t\n'
         ccf.write("\r\n")
-
-
-    ccf.close()
-
-
+        summaries=iabCats.get('summary')
+        summKeys=summaries.keys()
+        for count, cKey in enumerate(summKeys):
+            cRelev=summaries.get(cKey)
+            catOut=cKey + "\t" + str(cRelev)
+            ccf.write(catOut)	#    print(utterOut)	, delimiter='\t', lineterminator='\t\n'
+            ccf.write("\r\n")
+        #
+        ccf.close()
+    #
+#
 # ----------- chapters ----------
 chapterVec = []
 chapterVecs = []
-chapFileName = docLabel + "_" + onlineFile + ".chapters.csv"
-ccf = open(chapFileName, "w")
+if auto_chapters_value:
+    chapFileName = docLabel + "_" + onlineFile + ".chapters.csv"
+    ccf = open(chapFileName, "w")
 
-chapters = jj.get('chapters')   # also insert timestamp
-#write header
-chapterOut = "start" + "\t" + "end" + "\t" + "startTime" + "\t" + "summary" + "\t" + "headline" + "\t" + "gist"
-ccf.write(chapterOut)
-ccf.write("\r\n")
-
-for count, chapter in enumerate(chapters):
-    cSummary=chapter.get('summary')
-    cHeadline=chapter.get('headline')
-    cGist=chapter.get('gist')
-    cStart=chapter.get('start')
-    cStartTime = ToDisplayTime(cStart)     #supplement with legible timestamp
-    cEnd=chapter.get('end')
-    chapterOut = str(cStart) + "\t" + str(cEnd) + "\t" + str(cStartTime) + "\t" + cSummary + "\t" + cHeadline + "\t" + cGist
+    chapters = jj.get('chapters')   # also insert timestamp
+    #write header
+    chapterOut = "start" + "\t" + "end" + "\t" + "startTime" + "\t" + "summary" + "\t" + "headline" + "\t" + "gist"
     ccf.write(chapterOut)
     ccf.write("\r\n")
-    chapterVec=[cStart, cEnd, cSummary, cHeadline, cGist]
-    chapterVecs.append(chapterVec)
-ccf.close()
 
+    for count, chapter in enumerate(chapters):
+        cSummary=chapter.get('summary')
+        cHeadline=chapter.get('headline')
+        cGist=chapter.get('gist')
+        cStart=chapter.get('start')
+        cStartTime = ToDisplayTime(cStart)     #supplement with legible timestamp
+        cEnd=chapter.get('end')
+        chapterOut = str(cStart) + "\t" + str(cEnd) + "\t" + str(cStartTime) + "\t" + cSummary + "\t" + cHeadline + "\t" + cGist
+        ccf.write(chapterOut)
+        ccf.write("\r\n")
+        chapterVec=[cStart, cEnd, cSummary, cHeadline, cGist]
+        chapterVecs.append(chapterVec)
+    ccf.close()
+#
 
 # ----------- sentiment analysis ----------
 
-ss=jj.get('sentiment_analysis_results')
-#print(ss)
+if sentiment_analysis_value:
+    ss=jj.get('sentiment_analysis_results')
+    #print(ss)
 
-#   Better to use CSV package throughout!
-#with open('records.tsv', 'w', newline='') as tsvfile:
-#    writer = csv.writer(tsvfile, delimiter='\t', lineterminator='\n')
-#    for record in SeqIO.parse("/home/fil/Desktop/420_2_03_074.fastq", "fastq"):
-#        writer.writerow([record.id, record.seq, record.format("qual")])
+    #   Better to use CSV package throughout!
+    #with open('records.tsv', 'w', newline='') as tsvfile:
+    #    writer = csv.writer(tsvfile, delimiter='\t', lineterminator='\n')
+    #    for record in SeqIO.parse("/home/fil/Desktop/420_2_03_074.fastq", "fastq"):
+    #        writer.writerow([record.id, record.seq, record.format("qual")])
 
-sentimentFileName = docLabel + "_" + onlineFile + ".sentiments.csv"
-ssf = open(sentimentFileName, "w")
+    sentimentFileName = docLabel + "_" + onlineFile + ".sentiments.csv"
+    ssf = open(sentimentFileName, "w")
 
-sentimOut = "start" + "\t" + "end" + "\t" + "speaker" + "\t" +  'sentiment' + "\t" + "confidence" + "\t" + "text"
-ssf.write(sentimOut)	#    print(sentimOut)	, delimiter='\t', lineterminator='\t\n'
-ssf.write("\r\n")
-
-#with open(sentimentFileName, 'w', encoding='utf8', newline='') as csvfile:
-#    writer = csv.writer(csvfile, delimiter=',', lineterminator='\n')
-#    writer.writeheader(["start","end","speaker","sentiment","confidenct","text"])
-#    #for record in SeqIO.parse("/home/fil/Desktop/420_2_03_074.fastq", "fastq"):
-#        writer.writerow([record.id, record.seq, record.format("qual")])
-
-for count, sentim in enumerate(ss):
-    stext = sentim.get('text')
-    sstart = sentim.get('start')
-    send = sentim.get('end')
-    ssentim = sentim.get('sentiment')
-    sconfid = sentim.get('confidence')
-    sspeaker = sentim.get('speaker')
-    #sentimOut = str(sstart) + "\t" + str(send) + "\t" + sspeaker + "\t" + ssentim + "\t" + str(sconfid) + "\t" + stext
-    sentimOut = str(sstart) + "\t" + str(send) + "\t"
-    if sspeaker != None:
-        sentimOut = sentimOut + sspeaker
-    
-    #
-    sentimOut = sentimOut + "\t" + str(sconfid) + "\t" + stext
+    sentimOut = "start" + "\t" + "end" + "\t" + "speaker" + "\t" +  'sentiment' + "\t" + "confidence" + "\t" + "text"
     ssf.write(sentimOut)	#    print(sentimOut)	, delimiter='\t', lineterminator='\t\n'
     ssf.write("\r\n")
 
-ssf.close()
+    #with open(sentimentFileName, 'w', encoding='utf8', newline='') as csvfile:
+    #    writer = csv.writer(csvfile, delimiter=',', lineterminator='\n')
+    #    writer.writeheader(["start","end","speaker","sentiment","confidenct","text"])
+    #    #for record in SeqIO.parse("/home/fil/Desktop/420_2_03_074.fastq", "fastq"):
+    #        writer.writerow([record.id, record.seq, record.format("qual")])
+
+    for count, sentim in enumerate(ss):
+        stext = sentim.get('text')
+        sstart = sentim.get('start')
+        send = sentim.get('end')
+        ssentim = sentim.get('sentiment')
+        sconfid = sentim.get('confidence')
+        sspeaker = sentim.get('speaker')
+        #sentimOut = str(sstart) + "\t" + str(send) + "\t" + sspeaker + "\t" + ssentim + "\t" + str(sconfid) + "\t" + stext
+        sentimOut = str(sstart) + "\t" + str(send) + "\t"
+        if sspeaker != None:
+            sentimOut = sentimOut + sspeaker
+        
+        #
+        sentimOut = sentimOut + "\t" + str(sconfid) + "\t" + stext
+        ssf.write(sentimOut)	#    print(sentimOut)	, delimiter='\t', lineterminator='\t\n'
+        ssf.write("\r\n")
+
+    ssf.close()
+#
 
 # ----------- utterances ----------
-
+#if utterances...
 utteranceFileName = docLabel + "_" + onlineFile + ".utterances.csv"
 uuf = open(utteranceFileName, "w")
 
@@ -1621,54 +798,104 @@ uuf.close()
 
 
 # ----------- entities ----------
+if entity_detection_value:
+    entityFileName = docLabel + "_" + onlineFile + ".entities.csv"
+    eef = open(entityFileName, "w")
 
-entityFileName = docLabel + "_" + onlineFile + ".entities.csv"
-eef = open(entityFileName, "w")
-
-entityOut = "text" + "\t" + 'entity_type' + "\t" + "\t" + "start" + "\t" + "end"
-eef.write(entityOut)
-eef.write("\r\n")
-
-entities = jj.get('entities')
-for count, entity in enumerate(entities):
-    eType=entity.get('entity_type')
-    eText=entity.get('text')
-    eStart=entity.get('start')
-    eEnd=entity.get('end')
-    entityOut = eText + "\t" + eType + "\t" + "\t" + str(eStart) + "\t" + str(eEnd)
+    entityOut = "text" + "\t" + 'entity_type' + "\t" + "\t" + "start" + "\t" + "end"
     eef.write(entityOut)
     eef.write("\r\n")
 
-
+    entities = jj.get('entities')
+    for count, entity in enumerate(entities):
+        eType=entity.get('entity_type')
+        eText=entity.get('text')
+        eStart=entity.get('start')
+        eEnd=entity.get('end')
+        entityOut = eText + "\t" + eType + "\t" + "\t" + str(eStart) + "\t" + str(eEnd)
+        eef.write(entityOut)
+        eef.write("\r\n")
+    #
 eef.close()
+#
 
+
+#------- auto-highlights -------------------
+ 
+if auto_highlights_value:
+    auto_highlights_returned = jj.get('auto_highlights_result')
+    if auto_highlights_returned.get('status') == "success":
+        highlightFileName = docLabel + "_" + onlineFile + ".highlight.csv"
+        hhf = open(highlightFileName, "w")
+        highlightOut = "docLabel" + "\t" + "start" + "\t" + "end" + "\t" + "count" + "\t" + 'rank' + "\t" + 'text'
+        hhf.write(highlightOut)
+        hhf.write("\r\n")
+        #
+        highlightDetFileName = docLabel + "_" + onlineFile + ".highlightDetails.csv"
+        hdf = open(highlightDetFileName, "w")
+        highlightDetOut = "docLabel" + "\t" + "start" + "\t" + "end" + "\t" + "count" + "\t" + 'rank' + "\t" + 'text'
+        hdf.write(highlightDetOut)
+        hdf.write("\r\n")
+        #
+        highlights = auto_highlights_returned.get('results')
+        for hiCount, highlight in enumerate(highlights):
+            count = highlight.get('count')
+            rank  = highlight.get('rank')
+            text  = highlight.get('text')
+            firstStart   = 999999999
+            lastEnd      = 0
+            timestamps   = highlight.get('timestamps')
+            for myCount, timestamp in enumerate(timestamps):
+                start = timestamp.get('start')
+                end   = timestamp.get('end')
+                if start < firstStart:
+                    firstStart = start
+                if end > lastEnd:
+                    lastEnd = end
+                highlightDetOut = docLabel + "\t" + str(start) + "\t" + str(end) + "\t" + str(1 + myCount) + "\t" + str(rank) + "\t" + text
+                hdf.write(highlightDetOut)
+                hdf.write("\r\n")
+            #
+            highlightOut = docLabel + "\t" + str(firstStart) + "\t" + str(lastEnd) + "\t" + str(count) + "\t" + str(rank) + "\t" + text
+            hhf.write(highlightOut)
+            hhf.write("\r\n")
+        #
+        hdf.close()
+        hhf.close()        
+    #
+#
 
 #------- paragraphs -------------------
 
-
-#needs myId, docLabel, onlineFile
-#myId       ="rsuh9skgre-a056-486e-8138-2e6608d21f04"
+#needs transcriptId, docLabel, onlineFile
+#transcriptId       ="rsuh9skgre-a056-486e-8138-2e6608d21f04"
 #docLabel   = "mo007-1-SP"
 #onlineFile = "mo007-1.m4a"
 
 import requests
 import time
 import sys
-import math
-import csv
 
-endpoint = "https://api.assemblyai.com/v2/transcript/" + myId + "/paragraphs"
-headers = {"authorization": "a14f484d11984e00bf7105cda4bc0c9a"}
+endpoint = "https://api.assemblyai.com/v2/transcript/" + transcriptId + "/paragraphs"
+#headers = {"authorization": "a14f484d11984e00bf7105cda4bc0c9a"}
+headers = {"authorization": useThisAuthKey}
 response = requests.get(endpoint, headers=headers)
 time.sleep(60)
 kk=response.json()
 print("")
 print("")
 print(" *** Response from /paragraphs call ***")
-print(kk)
+
+#print(kk)
 print("")
 print(" *************************************")
 print("")
+
+# dump JSON direct from AssemblyAI return
+paragJsonPubPath = docLabel + "_" + onlineFile + "_trace.paragraphs.json"
+pjf = open(paragJsonPubPath, "w")
+pjf.write(jsfmt.dumps(kk))
+pjf.close()
 
 parags=kk.get("paragraphs")	#fetch all paragraphs
 paragCount = len(parags)	#how many paragraphs?
@@ -1815,11 +1042,14 @@ for sp in paragSpeakerKeys:
 
 #--------- Sentence(s) -----------------
 
-#myId="rs8dx3ybuk-75db-405d-950b-560ec269d003"
+# dump JSON direct from AssemblyAI return
+sentJsonPubPath  = docLabel + "_" + onlineFile + "_trace.sentences.json"
 
-endpoint = "https://api.assemblyai.com/v2/transcript/" + myId + "/sentences"
+#transcriptId="rs8dx3ybuk-75db-405d-950b-560ec269d003"
+endpoint = "https://api.assemblyai.com/v2/transcript/" + transcriptId + "/sentences"
+#headers = {"authorization": "a14f484d11984e00bf7105cda4bc0c9a"}
 headers = {
-    "authorization": "a14f484d11984e00bf7105cda4bc0c9a"}
+    "authorization": useThisAuthKey}
 sResponse = requests.get(endpoint, headers=headers)
 time.sleep(30)
 sss=sResponse.json()
@@ -1828,7 +1058,13 @@ print(myStatus)
 print("")
 print("")
 print(" *** Response from /sentences call ***")
-print(sss)
+# dump JSON direct from AssemblyAI return
+sentencesJsonPubPath = docLabel + "_" + onlineFile + "_trace.sentences.json"
+sjf = open(sentencesJsonPubPath, "w")
+sjf.write(jsfmt.dumps(sss))
+sjf.close()
+
+#print(sss)
 print("")
 print(" *************************************")
 print("")
@@ -1916,8 +1152,6 @@ sswf.close()
 import requests
 import time
 import sys
-import math
-import csv
 
 #docLabel = "parseSRT" 
 #onlineFile = "ls040-0"
@@ -1925,10 +1159,11 @@ import csv
 srtFileName = docLabel + "_" + onlineFile + ".srt"
 srtf = open(srtFileName, "w")
 
-#myId="rsfzjbpypn-f1ff-4dc4-9aca-0526544dc4ed"
+#transcriptId="rsfzjbpypn-f1ff-4dc4-9aca-0526544dc4ed"
 
-endpoint = "https://api.assemblyai.com/v2/transcript/" + myId + "/srt?chars_per_caption=40"        # "/srt?chars_per_caption=40"  "/paragraphs"
-headers = {"authorization": "a14f484d11984e00bf7105cda4bc0c9a"}
+endpoint = "https://api.assemblyai.com/v2/transcript/" + transcriptId + "/srt?chars_per_caption=40"        # "/srt?chars_per_caption=40"  "/paragraphs"
+#headers = {"authorization": "a14f484d11984e00bf7105cda4bc0c9a"}
+headers = {"authorization": useThisAuthKey}
 sResponse = requests.get(endpoint, headers=headers)
 
 srtf.write(sResponse.text)
