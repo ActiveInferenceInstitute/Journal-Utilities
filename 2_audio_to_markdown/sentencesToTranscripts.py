@@ -47,7 +47,7 @@ if __name__ == "__main__":
 #   [inSentDir]/inWords    Improves timestamp splitting; optional
 #	outDir/ One destination for everything
 #Parameters:
-#   charsPerCaption    For SRT: Max line len in chars
+#   maxCharsPerCaption    For SRT: Max line len in chars
 
 """
 start	end	sentNum	speaker	confidence	text
@@ -55,20 +55,63 @@ start	end	sentNum	speaker	confidence	text
 2173360	2181120	472		0	And the title of her talk is Dead Man's Labor, reading Alfred Korzybski's Manhood of Humanity.
 2183440	2191440	473		0	Yeah. Hello. Good morning, good afternoon and good evening. I do like this full mix of time zones that
 """
-
-charsPerCaption = 40    # cloned from AssemblyAI default - allow override from command line!
-
 #outDir = "/mnt/d/Documents/FEP-AI/2022 Livestreams/ActInf Livestream #035 A tale of Two architectures/ls035-0/publish"
 
-mDPubF = ""
+mDPubF       = ""
 pPubF        = ""
 sPubF        = ""
 srtPubF      = ""
 speakerLabelsUsed = []
 
+# overridable globals
+outDir       = "."    #publish to working directory!
+speakerFile  = "/mnt/d/Documents/FEP-AI/Active Inference Podcast/AllSpeakers.csv"
 inSpeakerDir = "/mnt/d/Documents/FEP-AI/Active Inference Podcast/"
+maxCharsPerCaption = 40    # cloned from AssemblyAI default - set up override!
+
+# other globals
+speakerDesc  = {}
+srtSpeaker   = ""
+srtPosCount  = 0
+srtStartTime = 0
+srtEndTime   = 0
+pauseLength  = 0.75
+rawParags    = {}
+
 #in public "../"
 inSpeakers = "AllSpeakers.csv"
+
+def get_input_options(scl):
+    global outDir, speakerFile, inSpeakerDir, maxCharsPerCaption
+
+    scl_len = len(scl)
+    # ii typically = 4 
+    return_dict = {}
+    ii = 0
+    while ii < scl_len:
+        label = scl[ii].upper().replace("_","")     # to match keyword to logic, uppercase and ignore underbars
+        value = scl[ii + 1].strip()
+        ii += 2
+        #
+        if label == "OUTDIR":
+            outDir = value
+            return_dict["OUTDIR"] = outDir
+        #
+        elif label == "SPEAKERFILE":
+            speakerFile = value
+            return_dict["SPEAKERFILE"] = speakerFile
+        #
+        elif label == "INSPEAKERDIR":
+            inSpeakerDir = value
+            return_dict["INSPEAKERDIR"] = inSpeakerDir
+        #
+        elif label == "MAXCHARSPERCAPTION":
+            maxCharsPerCaption = value
+            return_dict["MAXCHARSPERCAPTION"] = maxCharsPerCaption
+        #
+    #
+    return return_dict
+#
 
 docLabel = sys.argv[1]
 inSentDir = sys.argv[2]
@@ -79,27 +122,19 @@ print("docLabel, inSentDir, inSentFile " + "'" + docLabel + "', '" +  inSentDir 
 inParagFile   = inSentFile.replace('.sentences.', '.paragraphs.')
 
 if len(sys.argv) > 4:
-    outDir = sys.argv[4]
-else:
-    outDir = "."    #publish to working directory!
+    #outDir = sys.argv[4]
+    inputParams = sys.argv[4:]
+    print(f'inputParams: {inputParams}')
+    # fetch keyword parameters
+    inputOptions = get_input_options(inputParams)  # directly sets several globals; ignore first two (explicit) incoming args
+    print("All keyword parameters, aka 'inputOptions'")
+    print(inputOptions)
+#
 
 print("outDir: " + "'" + outDir + "'")
 
-if len(sys.argv) > 5:
-    speakerFile = sys.argv[5]
-else:
-    speakerFile = "/mnt/d/Documents/FEP-AI/Active Inference Podcast/AllSpeakers.csv"
-
 print('speakers File: ' + "'" + speakerFile + "'")
 
-# globals
-speakerDesc  = {}
-srtSpeaker   = ""
-srtPosCount  = 0
-srtStartTime = 0
-srtEndTime   = 0
-pauseLength  = 0.75
-rawParags    = {}
 
 # ++++++ notes ++++++
 
@@ -253,7 +288,9 @@ def speakerIdToName(doc, id, myTime):
     #
 #
 def loadParagFile():
-    global inParagPath, rawParags
+    global inParagPath, rawParags, current_speaker
+    reportString     = ""
+    reportStringNoTS = ""
 
     parag_file = open(inParagPath, "r", newline=None)
     if (parag_file == None):
@@ -269,12 +306,9 @@ def loadParagFile():
                 #print(row)
                 #if row[0] is not None and len(row[0]) > 0:
                 reportString = ""
+                reportStringNoTS = ""
                 start = row[0]
-                #print(start)
-                #reportString += "Paragraph starts at millisecond " + row[0] + ", "
                 end = row[1]            
-                #reportString += "ends at " + row[1] + " "
-                # Whisper extract now inserts paragNum as row[2]
                 if row[2] is not None and len(row[2]) > 0:
                     paragNum = row[2]
                 else:
@@ -289,27 +323,23 @@ def loadParagFile():
                 #
                 if rowLen > 4 and row[4] is not None and len(row[4]) > 0:
                     confid = row[4]
-                    #reportString += ", confidence " + row[3] + " "
                 else:
                     confid = ""
                 
                 #
                 if rowLen > 5 and row[5] is not None and len(row[4]) > 0:
                     startTime = row[5]
-                    #reportString += '"' + row[4].strip('\n') + '"'
                 else:
                     startTime = ""
                 #
                 if rowLen > 5 and row[5] is not None and len(row[5]) > 0:
                     text = row[5]
-                    #reportString += '"' + row[5].strip('\n') + '"'
                 else:
                     text = ""
                 #
                 textLen = len(text)
                 if rowLen > 6 and row[6] is not None and len(row[6]) > 0:
                     wordCount = row[6]
-                    #reportString += '"' + row[7].strip('\n') + '"'
                 else:
                     wordCount = len(text.split())
                 #
@@ -318,27 +348,18 @@ def loadParagFile():
                 rawParags.update( {start : [end, speaker, confid, firstWordCount, lastWordCount] } )
                 #
                 #
-                if len(speaker)>0 or len(startTime) > 0 or len(text) > 0 or len(correctedText) > 0:
+                if len(speaker)>0 or len(startTime) > 0 or len(text) > 0:
                     # Now build next one, two, or three lines of output ([emptyLine] [speaker line] text)
-                    if len(correctedText) > 0:
-                        myText = correctedText
-                    else:
-                        myText = text
+                    myText = text
                     # lastBlank = testSrt.rFind(" ")
                     #
                     if len(speaker) > 0 and speaker != current_speaker:
                         #pPubF.write("")     # empty line before next speech act
                         #pPubF.write("\r\n")
-                        reportString = startTime + " " # + speakerIdToName(speaker) + ":"        # Also account for missing or illformed start-time
-                        
-                        reportString += speakerIdToName(docLabel, speaker, reportableTime) + ":"
-                        #
-                        #xx=speakerIdToName(docLabel, speaker, reportableTime)
-                        #if len(speaker) == 1:
-                        #    reportString += "Speaker " + speaker + ":"      # use lookup instead
-                        #else:
-                        #    reportString += speaker + ":"
-                        #
+                        reportString     = startTime + " " # + speakerIdToName(speaker) + ":"        # Also account for missing or illformed start-time
+                        mySpeakerName    = speakerIdToName(docLabel, speaker, reportableTime) + ":"
+                        reportString     += mySpeakerName
+                        reportStringNoTS = mySpeakerName                # treat reportStringNoTS as empty
                         #
                         print(reportString)
                         #pPubF.write(reportString)
@@ -354,14 +375,11 @@ def loadParagFile():
                         print(reportString)
                         #pPubF.write(reportString)
                         #pPubF.write("\r\n")
-                    
                     #
-                
                 #
-            
+            #
         #
         print(f'Processed {pCount} paragraphs.')
-
     #
     parag_file.close()
     #pPubF.close()
@@ -442,7 +460,9 @@ def writeToMD(textOut, lineCount, mySpeakerName, startTime, endTime, timerTime):
 
 
 def writeToSrt(textOut, lineCount, mySpeakerName, inStartTime, inEndTime):
-    global charsPerCaption
+    ## minimum inter-line pause 16 ms. SRT_MIN_ENDLINE_GAP
+
+    global maxCharsPerCaption
     #print("In writeToSrt, lineCount:")
     #print(lineCount)
     startTime = inStartTime
@@ -458,13 +478,14 @@ def writeToSrt(textOut, lineCount, mySpeakerName, inStartTime, inEndTime):
     charsRem  = len(textRem)
     inTimeRem   = endTime - startTime
     timeRem   = inTimeRem
-    msPerChar = (timeRem / charsRem) if charsRem > 0 else charsRem
+    msPerChar = (timeRem / charsRem) if charsRem > 0 else 0.01  #arbitrary
+
     inMsPerChar = msPerChar
-    oc1 = charsPerCaption+1     # lets us see a single character at end of window
+    oc1 = maxCharsPerCaption+1     # lets us see a single character at end of window
     oc2 = oc1 + 1               # sees single character at end of window
 
     while charsRem > 0:         # should try to split last pair of lines evenly
-        if charsRem <= charsPerCaption:
+        if charsRem <= maxCharsPerCaption:
             myLineCount += 1
             srtPubF.write(str(myLineCount))
             srtPubF.write("\r\n")
@@ -547,7 +568,7 @@ def writeToSrt(textOut, lineCount, mySpeakerName, inStartTime, inEndTime):
         charsRem  = len(textRem)
         timeRem   = endTime - startTime
         msPerChar = (timeRem / charsRem) if charsRem > 0 else charsRem
-        oc1 = charsPerCaption+1     # lets us see a single character at end of window
+        oc1 = maxCharsPerCaption+1     # lets us see a single character at end of window
         oc2 = oc1 + 1               # sees single character at end of window
         #if charsRem > 0:         # should try to split last pair of lines evenly
         
@@ -574,8 +595,6 @@ inSpeakers = "AllSpeakers.csv"
 #inSentFile = "ls036-0_ls036-0.m4a.paragraphs.csv"
 #inSentDir = "/mnt/d/Documents/FEP-AI/2022 Org Streams/os003"
 #inSentFile = "Bijan_os003-1.m4a.paragraphs.csv"
-
-charsPerCaption = 40    # cloned from AssemblyAI default - set up override!
 
 #CSV column headers:
 #   paragraph: start, end, speaker, confid, text
@@ -705,28 +724,32 @@ if exists(inParagPath):
 #inSentPath = inSentDir + "/" + inSentFile
 inSentPath = inSentDir + inSentFile
 
-sentPubPath = outDir
-srtPubPath  = outDir
-mDPubPath   = outDir
+sentPubPath     = outDir
+sentPubPathNoTS = outDir
+srtPubPath      = outDir
+mDPubPath       = outDir
 
-sentPubPath += inSentFile + "_transcript.txt"
-srtPubPath  += inSentFile + "_transcript.srt"
-mDPubPath   += inSentFile + "_transcript.md"
+srtPubPath      += inSentFile + "_transcript.srt"
+mDPubPath       += inSentFile + "_transcript.md"
+sentPubPath     += inSentFile + "_transcript.txt"
+sentPubPathNoTS += inSentFile + "_transcriptNoTS.txt"   # Per Paul P, create version of text output with no timestamps
 
 print("to write-open sentPubPath:")
 print(sentPubPath)
 
-sPubF   = open(sentPubPath, "w")
-srtPubF = open(srtPubPath, "w")
-mDPubF  = open(mDPubPath, "w")
+srtPubF   = open(srtPubPath, "w")
+mDPubF    = open(mDPubPath, "w")
+sPubF     = open(sentPubPath, "w")
+sPubFNoTS = open(sentPubPathNoTS, "w")
 
-#   charsPerCaption limits character length of (brand-new!) SRT file - check above for override logic
+#   maxCharsPerCaption limits character length of (brand-new!) SRT file - check above for override logic
 
-rawSents = {}
-accumedParag = ""
-accumedSrt = ""
-sent_count = 0
-sentWordCount = 0
+rawSents         = {}
+accumedParag     = ""
+accumedParagNoTS = ""
+accumedSrt       = ""
+sent_count     = 0
+sentWordCount  = 0
 lastReportTime = 0
 currentSpeaker = "(Unknown Speaker)"
 lastReportTime = 0
@@ -737,31 +760,6 @@ srtLineLen   = len(srtLine)
 #srtEnd   = ToSRTTime(srtEndTime)
 #srtLine = setStart + " --> "
 #lastBlank = testSrt.rFind(" ")
-"""
->>> a="I am the witch, Doctor!"
->>> print(a.rfind(" "))
-15
->>> h="abc"
->>> a=h.rfind("b")
->>> print(a)
-1
->>> print(h.rfind("b"))
-1
->>> print(h.rfind("a"))
-0
->>> print(h.rfind("c"))
-2
->>> print(h.rfind("d"))
--1
-
->>> h="aba"
->>> print(h.rfind("a"))
-2
->>> print(h.rfind("b"))
-1
->>> print(h.rfind("c"))
--1
- """
 
 paragTimes = rawParags.keys()
 print("paragTimes")
@@ -787,6 +785,7 @@ else:
         #print(row)
         #if row[0] is not None and len(row[0]) > 0:
         reportString = ""
+        reportStringNoTS = ""
         start = int(row[0])
         #print(start)
         #reportString += "Sentence starts at millisecond " + row[0] + ", "
@@ -856,16 +855,24 @@ else:
                     sPubF.write("\r\n")
                     accumedParag = ""
                 #
+                if len(accumedParagNoTS) > 0:                    
+                    sPubFNoTS.write(accumedParagNoTS)
+                    sPubFNoTS.write("\r\n")
+                    accumedParagNoTS = ""
+                #
                 sPubF.write("")     # empty line before next speech act
                 sPubF.write("\r\n")
+                sPubFNoTS.write("")     # empty line before next speech act
+                sPubFNoTS.write("\r\n")
                 #if len(startTime) > 0:
                 #    reportableTime = int(hhMmSsToTime(startTime))
                 #    reportString   = startTime
                 #else:
                 reportString   = ToDisplayTime(start)
-                #
                 #reportString += " " 		# + speakerIdToName(speaker) + ":"        # Also account for missing or illformed start-time
                 reportString += " " + speakerName + ":"
+
+                reportStringNoTS = speakerName + ":"    # note: Timing has NO impact on NoTS output!
                 
                 #xx=speakerIdToName(docLabel, speaker, reportableTime)
                 #if len(speaker) == 1:
@@ -874,23 +881,37 @@ else:
                 #    reportString += " " + speaker + ":"
                 #
                 print(reportString)
-                sPubF.write(reportString)
+                sPubF.write(reportString)       # contains only speaker name (or ersatz name "Speaker X")
                 sPubF.write("\r\n")
+                sPubFNoTS.write(reportStringNoTS)
+                sPubFNoTS.write("\r\n")
+
                 currentSpeaker = speaker
                 lastReportTime = reportableTime                    
                 reportString = myText
+                reportStringNoTS = myText
                 print(reportString)
                 if len(accumedParag) > 0:
                     accumedParag += " " + reportString
                 else:
                     accumedParag = reportString
                 #
-            elif paragBreak:
+                if len(accumedParagNoTS) > 0:
+                    accumedParagNoTS += " " + reportStringNoTS
+                else:
+                    accumedParagNoTS = reportStringNoTS
+                #
+            elif paragBreak:        # New paragraph within current speech!
                 print("New paragraph per transcription heuristic")
                 if len(accumedParag) > 0:
                     sPubF.write(accumedParag)
                     sPubF.write("\r\n")
                     accumedParag = ""
+                #
+                if len(accumedParag) > 0:
+                    sPubFNoTS.write(accumedParagNoTS)
+                    sPubFNoTS.write("\r\n")
+                    accumedParagNoTS = ""
                 #
                 reportableTime = start
                 if (0 + reportableTime) > (60000 + lastReportTime):	# Only some 'forced paragraphs' need timestamp
@@ -903,12 +924,18 @@ else:
                 #
                 reportString += myText
                 print(reportString)
+                reportStringNoTS = myText       # no preceding timestamp
                 #sPubF.write(reportString)
                 #sPubF.write("\r\n")
                 if len(accumedParag) > 0:
                     accumedParag += " " + reportString
                 else:
                     accumedParag = reportString
+                #
+                if len(accumedParagNoTS) > 0:
+                    accumedParagNoTS += " " + reportStringNoTS
+                else:
+                    accumedParagNoTS = reportStringNoTS
                 #
                 if len(accumedSrt) > 0:
                     accumedSrt += " " + reportString
@@ -936,8 +963,8 @@ else:
                     if len(accumedParag) > 0:
                         sPubF.write(accumedParag)
                         sPubF.write("\r\n")
-                        timerTime = True
-                        accumedParag = ""
+                        timerTime        = True
+                        accumedParag     = ""
                     #
                     #if len(startTime) > 0:
                     #    displayTime = startTime
@@ -951,12 +978,19 @@ else:
                 #
                 reportString += myText
                 print(reportString)
+                reportStringNoTS += myText
+                
                 #sPubF.write(reportString)
                 #sPubF.write("\r\n")
                 if len(accumedParag) > 0:
                     accumedParag += " " + reportString
                 else:
                     accumedParag = reportString
+                #
+                if len(accumedParagNoTS) > 0:
+                    accumedParagNoTS += " " + reportStringNoTS
+                else:
+                    accumedParagNoTS = reportStringNoTS
                 #
                 if len(accumedSrt) > 0:
                     accumedSrt += " " + reportString
@@ -979,7 +1013,12 @@ else:
     if len(accumedParag) > 0:
         sPubF.write(accumedParag)
         sPubF.write("\r\n")
-        accumedParag = ""
+        accumedParag     = ""
+    #
+    if len(accumedParagNoTS) > 0:
+        sPubFNoTS.write(accumedParagNoTS)
+        sPubFNoTS.write("\r\n")
+        accumedParagNoTS = ""
     #
     print(f'Processed {pCount} sentences.')
 
@@ -987,4 +1026,5 @@ else:
 sent_file.close()
 sPubF.close()
 srtPubF.close()
+sPubFNoTS.close()
 mDPubF.close()
