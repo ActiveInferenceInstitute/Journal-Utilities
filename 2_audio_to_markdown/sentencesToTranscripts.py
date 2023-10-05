@@ -68,11 +68,14 @@ outDir       = "."    #publish to working directory!
 speakerFile  = "/mnt/d/Documents/FEP-AI/Active Inference Podcast/AllSpeakers.csv"
 inSpeakerDir = "/mnt/d/Documents/FEP-AI/Active Inference Podcast/"
 maxCharsPerCaption = 40    # cloned from AssemblyAI default - set up override!
+srtPosStart = 0             # One less than starting line number (terminolog?) in SRT output
+srtPosInc   = 1               # increment of line number in SRT output
 
 # other globals
+minInterSrtGap = 0.000     # Milliseconds
 speakerDesc  = {}
 srtSpeaker   = ""
-srtPosCount  = 0
+# srtPosInc
 srtStartTime = 0
 srtEndTime   = 0
 pauseLength  = 0.75
@@ -83,7 +86,7 @@ inSpeakers = "AllSpeakers.csv"
 
 def get_input_options(scl):
     global outDir, speakerFile, inSpeakerDir, maxCharsPerCaption
-
+    global srtPosStart, srtPosInc
     scl_len = len(scl)
     # ii typically = 4 
     return_dict = {}
@@ -109,6 +112,14 @@ def get_input_options(scl):
             maxCharsPerCaption = value
             return_dict["MAXCHARSPERCAPTION"] = maxCharsPerCaption
         #
+        elif label == "SRTPOSSTART":
+            srtPosStart = value
+            return_dict["SRTPOSSTART"] = srtPosStart
+        #
+        elif label == "SRTPOSINC":
+            srtPosInc = value
+            return_dict["SRTPOSINC"] = srtPosInc
+        #
     #
     return return_dict
 #
@@ -130,6 +141,7 @@ if len(sys.argv) > 4:
     print("All keyword parameters, aka 'inputOptions'")
     print(inputOptions)
 #
+srtPosCount  = srtPosStart  # defaults to 0, overridable
 
 print("outDir: " + "'" + outDir + "'")
 
@@ -462,7 +474,7 @@ def writeToMD(textOut, lineCount, mySpeakerName, startTime, endTime, timerTime):
 def writeToSrt(textOut, lineCount, mySpeakerName, inStartTime, inEndTime):
     ## minimum inter-line pause 16 ms. SRT_MIN_ENDLINE_GAP
 
-    global maxCharsPerCaption
+    global maxCharsPerCaption, minInterSrtGap
     #print("In writeToSrt, lineCount:")
     #print(lineCount)
     textOut = textOut.strip()
@@ -511,9 +523,9 @@ def writeToSrt(textOut, lineCount, mySpeakerName, inStartTime, inEndTime):
                 srtPubF.write(str(myLineCount))
                 srtPubF.write("\r\n")
                 srtStart = ToSRTTime(startTime)
-                timeRem   = endTime - startTime
-                msPerChar = (timeRem / charsRem)
+                #msPerChar = (timeRem / charsRem)       # should re-calculate on actual remaining characters and time!
                 endTime  = startTime + int(msPerChar * myTextLen)
+                timeRem   = endTime - startTime
                 srtEnd   = ToSRTTime(endTime)
                 srtLine  = srtStart + " --> " + srtEnd
                 srtPubF.write(srtLine)
@@ -524,8 +536,8 @@ def writeToSrt(textOut, lineCount, mySpeakerName, inStartTime, inEndTime):
                 srtPubF.write("\r\n")       # close this SRT block
                 textRem  = textRem[prevSpace:].strip()   # remainder
                 charsRem = len(textRem)
-                startTime = endTime
-            else:
+                startTime = endTime + minInterSrtGap
+            else:       # this "line" is very long! - break at arbitrary location.
                 #  Maybe add test for line terminators, notably "-"
                 nextSpace = wordsText.find(" ")
                 if nextSpace < 0:   # solid block of text; dump all
@@ -550,6 +562,7 @@ def writeToSrt(textOut, lineCount, mySpeakerName, inStartTime, inEndTime):
                     srtStart  = ToSRTTime(startTime)
                     timeRem   = endTime - startTime
                     msPerChar = (timeRem / charsRem)
+                    newStartTime = endTime + minInterSrtGap
                     endTime   = startTime + int(msPerChar * myTextLen)
                     srtEnd    = ToSRTTime(endTime)
                     srtLine   = srtStart + " --> " + srtEnd
@@ -559,6 +572,7 @@ def writeToSrt(textOut, lineCount, mySpeakerName, inStartTime, inEndTime):
                     srtPubF.write("\r\n")
                     srtPubF.write("")
                     srtPubF.write("\r\n")
+                    startTime = newStartTime
                     textRem   = textRem[nextSpace:].strip()
                     charsRem  = len(textRem)
                 #
@@ -1005,6 +1019,7 @@ else:
             srtStartTime = start
             srtEndTime   = end    # reminder: take new start as old end
             writeToMD(text, srtPosCount, srtSpeaker, srtStartTime, srtEndTime, timerTime)      # pro forma
+            #
             # use speakername; ignore paragraph info
             print(f'before writeToSrt(text: {text}, srtPosCount: {srtPosCount}, srtSpeaker: {srtSpeaker}, srtStartTime: {srtStartTime}, srtEndTime: {srtEndTime}')
             srtPosCount  = writeToSrt(text, srtPosCount, srtSpeaker, srtStartTime, srtEndTime)
