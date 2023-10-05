@@ -465,6 +465,7 @@ def writeToSrt(textOut, lineCount, mySpeakerName, inStartTime, inEndTime):
     global maxCharsPerCaption
     #print("In writeToSrt, lineCount:")
     #print(lineCount)
+    textOut = textOut.strip()
     startTime = inStartTime
     endTime   = inEndTime
     myLineCount = lineCount
@@ -476,6 +477,7 @@ def writeToSrt(textOut, lineCount, mySpeakerName, inStartTime, inEndTime):
         #                                   detailed SRT time-labels useless for reconstructing speech timing
     textRem   += textOut.strip()
     charsRem  = len(textRem)
+
     inTimeRem   = endTime - startTime
     timeRem   = inTimeRem
     msPerChar = (timeRem / charsRem) if charsRem > 0 else 0.01  #arbitrary
@@ -484,7 +486,7 @@ def writeToSrt(textOut, lineCount, mySpeakerName, inStartTime, inEndTime):
     oc1 = maxCharsPerCaption+1     # lets us see a single character at end of window
     oc2 = oc1 + 1               # sees single character at end of window
 
-    while charsRem > 0:         # should try to split last pair of lines evenly
+    while charsRem > 0:         # should add logic to try to split last pair of lines evenly
         if charsRem <= maxCharsPerCaption:
             myLineCount += 1
             srtPubF.write(str(myLineCount))
@@ -714,8 +716,13 @@ parag_count = 0
 paragWordCount = 0
 current_speaker = "(Unknown Speaker)"
 #with io.open("file", "r", newline=None) as fd:
+print("inParagPath:")
+print(inParagPath)
 if exists(inParagPath):
-    loadParagFile
+    print("exists(inParagPath)")
+    loadParagFile()
+else:
+    print("NO inParagPath!")
 #
 
 
@@ -908,7 +915,7 @@ else:
                     sPubF.write("\r\n")
                     accumedParag = ""
                 #
-                if len(accumedParag) > 0:
+                if len(accumedParagNoTS) > 0:
                     sPubFNoTS.write(accumedParagNoTS)
                     sPubFNoTS.write("\r\n")
                     accumedParagNoTS = ""
@@ -927,16 +934,11 @@ else:
                 reportStringNoTS = myText       # no preceding timestamp
                 #sPubF.write(reportString)
                 #sPubF.write("\r\n")
-                if len(accumedParag) > 0:
-                    accumedParag += " " + reportString
-                else:
-                    accumedParag = reportString
+
+                accumedParag = reportString
                 #
-                if len(accumedParagNoTS) > 0:
-                    accumedParagNoTS += " " + reportStringNoTS
-                else:
-                    accumedParagNoTS = reportStringNoTS
-                #
+                accumedParagNoTS = reportStringNoTS
+                # 
                 if len(accumedSrt) > 0:
                     accumedSrt += " " + reportString
                 else:
@@ -979,7 +981,7 @@ else:
                 reportString += myText
                 print(reportString)
                 reportStringNoTS += myText
-                
+
                 #sPubF.write(reportString)
                 #sPubF.write("\r\n")
                 if len(accumedParag) > 0:
