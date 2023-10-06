@@ -337,9 +337,9 @@ if len(sys.argv) > 3:           # optional component of argv is flat property va
     print(inputOptions)
 
     # Fetch all resources indicated in parameters
-    print("word_boost_file_list")
-    print(word_boost_file_list)
-    print()
+    #print("word_boost_file_list")
+    #print(word_boost_file_list)
+    #print()
     
     customSpellDict = {}
     for wordBoostFile in word_boost_file_list:
@@ -374,9 +374,9 @@ if len(sys.argv) > 3:           # optional component of argv is flat property va
         #
     #
     print()
-    print("customSpellDict from word_boost:")
-    print(customSpellDict)
-    print()
+    #print("customSpellDict from word_boost:")
+    #print(customSpellDict)
+    #print()
     
     #print("word_boost_list:")
     #print(word_boost_list)
@@ -524,19 +524,18 @@ if len(transcriptId) == 0:      # need AssemblyAI authKey
     authKeyFilePath = vaultDir + authKeyFilename
     file = open(authKeyFilePath, "r", newline=None)
     useThisAuthKey = file.read().strip("\n")        # read all lines at once
-    print("useThisAuthKey")
-    print(useThisAuthKey)
+    #print("useThisAuthKey")    # No, do not print the KEY!!!
     file.close()
 #
 
 if len(transcriptId) == 0:
-    print()
-    print("word_boost_list:")
-    print(word_boost_list)
-    print()
-    print("custom_spelling_list:")
-    print(custom_spelling_list)
-    print()
+    #print()
+    #print("word_boost_list:")
+    #print(word_boost_list)
+    #print()
+    #print("custom_spelling_list:")
+    #print(custom_spelling_list)
+    #print()
 
     json = {
         "audio_url":       audio_url,
