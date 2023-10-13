@@ -147,6 +147,11 @@ print("outDir: " + "'" + outDir + "'")
 
 print('speakers File: ' + "'" + speakerFile + "'")
 
+if (speakerFile):
+    inSpeakers = speakerFile
+
+print('inSpeakerDir: ' + "'" + inSpeakerDir + "'")
+
 
 # ++++++ notes ++++++
 
@@ -462,7 +467,7 @@ def writeToMD(textOut, lineCount, mySpeakerName, startTime, endTime, timerTime):
         mDPubF.write("\r\n" + ToDisplayTime(startTime) + " " + textOut)
         mDPubF.write("\r\n")
     elif timerTime:
-        mDPubF.write(ToDisplayTime(startTime) + " " + textOut)
+        mDPubF.write("\r\n" + ToDisplayTime(startTime) + " " + textOut)
         mDPubF.write("\r\n")
     else:
         mDPubF.write(textOut)
@@ -599,10 +604,10 @@ def writeToSrt(textOut, lineCount, mySpeakerName, inStartTime, inEndTime):
 
 #outDir = "/mnt/d/Documents/FEP-AI/2022 Livestreams/ActInf Livestream #035 A tale of Two architectures/ls035-1/publish"
 
-inSpeakerDir = "/mnt/d/Documents/FEP-AI/2022 Livestreams/ActInf Livestream #040 - Chris Fields... A free energy principle for generic quantum systems/ls040-1_noSpeaker"
-inSpeakers = "noSpeaker_ls040-0.Speakers.csv"
-inSpeakerDir = "/mnt/d/Documents/FEP-AI/Active Inference Podcast"
-inSpeakers = "AllSpeakers.csv"
+# inSpeakerDir = "/mnt/d/Documents/FEP-AI/2022 Livestreams/ActInf Livestream #040 - Chris Fields... A free energy principle for generic quantum systems/ls040-1_noSpeaker"
+# inSpeakers = "noSpeaker_ls040-0.Speakers.csv"
+# inSpeakerDir = "/mnt/d/Documents/FEP-AI/Active Inference Podcast"
+# inSpeakers = "AllSpeakers.csv"
 
 
 #inSentDir = "/mnt/d/Documents/FEP-AI/2022 Livestreams/ActInf Livestream #040 - Chris Fields... A free energy principle for generic quantum systems/ls040-1_noSpeaker"
