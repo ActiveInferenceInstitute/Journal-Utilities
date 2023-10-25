@@ -457,20 +457,21 @@ def writeToMD(textOut, lineCount, mySpeakerName, startTime, endTime, timerTime):
     global paragTimes
     print(f'In writeToMD, lineCount: {lineCount}, textOut: {textOut}')
     print(textOut)
-    #
+    
+    srt_metadata = "[[start:" + str(startTime) + "][end:" + str(endTime) + "]] "
     if len(mySpeakerName.strip()) > 0:
         mDPubF.write("\r\n" + ToDisplayTime(startTime) + " _" + mySpeakerName.strip() + ":_")
         mDPubF.write("\r\n")
-        mDPubF.write(textOut)
+        mDPubF.write(srt_metadata + textOut)
         mDPubF.write("\r\n")
     elif str(startTime) in paragTimes:
-        mDPubF.write("\r\n" + ToDisplayTime(startTime) + " " + textOut)
+        mDPubF.write("\r\n" + ToDisplayTime(startTime) + " " + srt_metadata + textOut)
         mDPubF.write("\r\n")
     elif timerTime:
-        mDPubF.write("\r\n" + ToDisplayTime(startTime) + " " + textOut)
+        mDPubF.write("\r\n" + ToDisplayTime(startTime) + " " + srt_metadata + textOut)
         mDPubF.write("\r\n")
     else:
-        mDPubF.write(textOut)
+        mDPubF.write(srt_metadata + textOut)
         mDPubF.write("\r\n")
     #
 #

@@ -181,7 +181,7 @@ Specific speakers use certain vocal gestures characteristically as fime-fillers,
 Notable in this group are “you know” and “I mean.”  
 It is only by acquaintance with a given speaker’s vocal habits, that one can reliably distinguish these various usages – and thus accurately re-represent their use in any single speech turn.
 
-ARTIFACTS of some input techniques
+#### ARTIFACTS of some input techniques
 
 By design, Adobe Premiere Pro deletes filler words that it detects, notably “um” and “uh.”
 
