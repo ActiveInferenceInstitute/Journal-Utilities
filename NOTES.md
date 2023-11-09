@@ -28,24 +28,16 @@ deontic value
 
 save the file to the session's metadata folder: word_boost.txt
 
-### Create the custom_spelling.txt file
+### Create the custom_spelling.csv file
 
-A single word (no spaces nor hyphens), which (I think) is treated as case insensitive inside AssemblyAI; a space character, then a "to" word with the correct spelling.
+A single word (no spaces nor hyphens), which (I think) is treated as case insensitive inside AssemblyAI; a comma, then a "to" word with the correct spelling.
 
-```txt
-actinf ActInf
-bayesian Bayesian
+```csv
+actinf,ActInf
+bayesian,Bayesian
 ```
 
 save the file to the session's metadata folder: custom_spelling.txt
-
-### Create an speakers.csv file
-
-```csv
-DocLabel,Speaker Label,Displayed Speaker Name,Full Speaker Name,First Turn,RangeFrom,RangeTo,Notes,,,,
-CCL2023-08,A,Daniel,Daniel Friedman,00:08,,,,,,,
-CCL2023-08,B,Mahault,Mahault Albarracin,00:29,,,,,,,
-```
 
 save the file to the session's metadata folder: speakers.csv
 
@@ -58,5 +50,29 @@ cd into the session's metadata folder
 run this command:
 
 ```bash
-python '/mnt/md0/projects/Journal-Utilities/2_audio_to_markdown/SubmitToCloudWhisper.py' 'CCL2023-08' 'wMeQ52fdz_U1vbhGE4mmiDYCFlc1QgH3CFrv3Ah2HXg' ONLINEPATH 'https://arweave.net' AUTHKEYFILENAME '/mnt/md0/projects/Journal-Utilities/2_audio_to_markdown/authkey.txt' WORD_BOOST_FILE_LIST 'word_boost.txt' SENTIMENT_ANALYSIS False IAB_CATEGORIES False CUSTOM_SPELL_BOOSTED True CUSTOM_SPELLING_FILE_LIST 'custom_spelling.txt' | tee 'trace.txt'
+python '/mnt/md0/projects/Journal-Utilities/2_audio_to_markdown/SubmitToCloudWhisper.py' 'CCL2023-08' 'wMeQ52fdz_U1vbhGE4mmiDYCFlc1QgH3CFrv3Ah2HXg' ONLINEPATH 'https://arweave.net' AUTHKEYFILENAME '/mnt/md0/projects/Journal-Utilities/2_audio_to_markdown/authkey.txt' WORD_BOOST_FILE_LIST 'word_boost.txt' SENTIMENT_ANALYSIS False IAB_CATEGORIES False CUSTOM_SPELL_BOOSTED True CUSTOM_SPELLING_FILE_LIST 'custom_spelling.csv' | tee 'trace.txt'
 ```
+
+## Create the Editable Transcript
+
+### Create an <filename> speakers.csv file
+
+Look at `<filename>.paragSpeakers.csv` to create `<filename>.speakers.csv` in this format:
+
+```csv
+DocLabel,Speaker Label,Displayed Speaker Name,Full Speaker Name,First Turn,RangeFrom,RangeTo,Notes,,,,
+CCL2023-08,A,Daniel,Daniel Friedman,00:08,,,,,,,
+CCL2023-08,B,Mahault,Mahault Albarracin,00:29,,,,,,,
+```
+
+Save in the session's metadata folder
+
+### Run the sentencesToTranscripts.py script
+
+cd to the session's Transcripts/Prose folder and run this command:
+
+```bash
+python '/mnt/md0/projects/Journal-Utilities/2_audio_to_markdown/sentencesToTranscripts.py' 'CCL2023-08' '/mnt/md0/projects/ActiveInferenceJournal/Courses/ActiveInferenceForTheSocialSciences/NormsScripts_Lecture/Metadata' 'CCL2023-08_wMeQ52fdz_U1vbhGE4mmiDYCFlc1QgH3CFrv3Ah2HXg.sentences.csv' INSPEAKERDIR '/mnt/md0/projects/ActiveInferenceJournal/Courses/ActiveInferenceForTheSocialSciences/NormsScripts_Lecture/Metadata' SPEAKERFILE 'CCL2023-08_wMeQ52fdz_U1vbhGE4mmiDYCFlc1QgH3CFrv3Ah2HXg.speakers.csv' | tee CCL2023-08.m4a_transcript.json
+```
+
+/mnt/md0/projects/ActiveInferenceJournal/Courses/ActiveInferenceForTheSocialSciences/NormsScripts_Lecture/Metadata/CCL2023-08_wMeQ52fdz_U1vbhGE4mmiDYCFlc1QgH3CFrv3Ah2HXg.speakers.csv

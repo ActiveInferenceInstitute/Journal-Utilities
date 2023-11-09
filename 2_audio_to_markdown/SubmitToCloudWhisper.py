@@ -390,7 +390,7 @@ if len(sys.argv) > 3:           # optional component of argv is flat property va
         file.close()
         for customSpelling in customSpellings:
             #print(customSpelling)
-            customSpellingPieces = customSpelling.strip("\n").split()
+            customSpellingPieces = customSpelling.strip("\n").split(",")
             #print(customSpellingPieces)
             customSpellingFrom = customSpellingPieces[0]   #.strip("\n")
             #print(customSpellingFrom)
