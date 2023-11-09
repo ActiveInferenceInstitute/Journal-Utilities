@@ -58,7 +58,7 @@ useThisAuthKey        = ""
 authKeyFilename       = ""
 auto_highlights_value = True
 language_model        = "medium"     # "large"  "medium"
-boost_param_value     = "low"           # "default" "high"
+boost_param_value     = "default"           # "default" "high"
 language_detection    = False
 speaker_labels_value  = True         # not yet supported for Portuguese
 entity_detection_value = True
@@ -82,7 +82,7 @@ custom_spell_boosted  = False       # should we add any single-word word_boost t
 # redact_pii (complex)
 # filter_profanity  = True
 
-vaultDir        = "/mnt/d/Documents/FEP-AI/ActiveInferenceVault/"
+vaultDir        = ""
 authKeyFilename = "acIIAuthKey.txt"     # holds AssemblyAI authorization key belonging to Active Inference Institute
 #       "5a03************************fd34"     # "1b98************************2e40"
 #       davesAuthKey = "30e7************************5b88"   # old "69a8************************80a5"
@@ -390,7 +390,7 @@ if len(sys.argv) > 3:           # optional component of argv is flat property va
         file.close()
         for customSpelling in customSpellings:
             #print(customSpelling)
-            customSpellingPieces = customSpelling.strip("\n").split("\t")
+            customSpellingPieces = customSpelling.strip("\n").split()
             #print(customSpellingPieces)
             customSpellingFrom = customSpellingPieces[0]   #.strip("\n")
             #print(customSpellingFrom)
