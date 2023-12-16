@@ -23,3 +23,23 @@ Even if AllSpeakers.csv is correct, the raw, editable .txt file may still have t
 --------
 
 Initial Scripts 1 & 2, and initial README contributed by Dave Douglass, November 2022. 
+
+
+
+## Create Virtual Environment
+
+```
+python3 -m venv venv
+```
+
+Activate Virtual Environment
+
+```
+source venv/bin/activate
+```
+
+Install Dependencies, docxtpl uses python-docx and jinja2
+
+```
+pip install docxtpl beautifulsoup4 markdown
+```
