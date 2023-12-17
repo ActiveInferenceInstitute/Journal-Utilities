@@ -1,7 +1,6 @@
 import re
-from docxtpl import DocxTemplate, RichText, InlineImage
+from docx import Document
 from docx.shared import Mm
-import jinja2
 from bs4 import BeautifulSoup
 import markdown
 
@@ -12,11 +11,20 @@ def parse_markdown(file_path):
     clean_markdown = []
     srt_entries = []
     srt_index = 1
+    metadata_block = True  # Flag to indicate we are in the metadata block
 
     for line in markdown:
+        # Check if we are past the metadata block
+        if line.strip() == '---':
+            metadata_block = False
+
         # Remove timestamp annotations for markdown
         clean_line = re.sub(r'\[\[start:\d+]\[end:\d+]]', '', line)
         clean_markdown.append(clean_line)
+
+        # Skip metadata lines for SRT processing
+        if metadata_block:
+            continue
 
         # Extract timestamps and text for SRT
         timestamps = re.findall(r'\[\[start:(\d+)]\[end:(\d+)]]', line)
@@ -45,28 +53,42 @@ def format_timestamp(ms):
     return f"{hours:02}:{minutes:02}:{seconds:02},{milliseconds:03}"
 
 
-def markdown_to_richtext(md_text):
+def markdown_to_docx(template_path, md_text, docx_filename):
     html = markdown.markdown(md_text)
     soup = BeautifulSoup(html, features='html.parser')
 
-    rt = RichText()
+    doc = Document(template_path)
 
-    for tag in soup.find_all(True):
-            if tag.name == 'p':
-                # For paragraphs, start a new RichText object or add a line break if not the first paragraph
-                if rt.xml:
-                    rt.add('\n')
-                for child in tag.children:
-                    if child.name == 'strong':
-                        rt.add(child.get_text(), bold=True)
-                    elif child.name == 'em':
-                        rt.add(child.get_text(), italic=True)
-                    else:
-                        rt.add(child.get_text())
-            else:
-                for child in tag.children:
-                    rt.add(child.get_text())
-    return rt
+    # Add Title
+    # doc.add_heading('Test Title', 0)
+    # Subtitle
+    doc.add_paragraph('12/16/2023~ Version #1.0', style='Subtitle')
+
+    for tag in soup.find_all():
+        # if tag.name == 'h1':
+        #     doc.add_heading(tag.get_text(), 1)
+        # elif tag.name == 'h2':
+        #     doc.add_heading(tag.get_text(), 2)
+        # # Add additional handling for other elements (paragraphs, bold, italic, etc.)
+        # else:
+        doc.add_paragraph(tag.get_text())
+
+    # Add footer
+    
+
+    # context = {
+    #     'title': 'Test Title',
+    #     'date': '12/16/2023',
+    #     'markdowntext': rt,
+    #     'version': '1.0',
+    #     'doi': 'https://doi.org/10.5281/zenodo.1234567',
+    #     'terms': [
+    #         {'term': 'yellow', 'definition': 'color of a banana'},
+    #         {'term': 'red', 'definition': 'color of an apple'},
+    #     ]
+    # }
+
+    doc.save(docx_filename)
 
 # an instance of core or supplemental terms and place them as an appendix item
 
@@ -82,22 +104,4 @@ def write_output_files(markdown, srt, template_path, markdown_path, srt_path, do
     with open(srt_path, 'w') as srt_file:
         srt_file.writelines(srt)
 
-    # Create at docx file from a template
-    tpl = DocxTemplate(template_path)
-
-    rt = markdown_to_richtext('\n'.join(markdown))
-
-    # Convert the markdown to 
-    context = {
-        'title': 'Test Title',
-        'date': '12/16/2023',
-        'markdowntext': rt,
-        'version': '1.0',
-        'doi': 'https://doi.org/10.5281/zenodo.1234567',
-        'terms': [
-            {'term': 'yellow', 'definition': 'color of a banana'},
-            {'term': 'red', 'definition': 'color of an apple'},
-        ]
-    }
-    tpl.render(context)
-    tpl.save(docx_path)
+    markdown_to_docx(template_path, '\n'.join(markdown), docx_path)

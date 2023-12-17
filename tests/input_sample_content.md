@@ -1,5 +1,17 @@
-# Physics as Information Processing - Session 1, "Historical Perspective"
-![Chris Fields presents "Physics as Information Processing" at Active Inference Institute, 2023](../../Video/cFPIP-01L_00001.png)
+---
+title:  'Physics as Information Processing - Lecture 1, "Historical Perspective"'
+author:
+- name: Chris Fields
+  id: Chris
+  orcid: https://orcid.org/0000-0002-4812-0744
+- name: Daniel Friedman
+  id: Daniel
+  orcid: https://orcid.org/0000-0001-6232-9096
+date: "2023-05-18"
+doi: 10.5281/zenodo.9999999
+version: 0.1.0
+---
+![Chris Fields presents "Physics as Information Processing" at Active Inference Institute, 2023](images/cFPIP-01L_00001.png)
 
 ## INTRODUCTION
 00:05 _Daniel:_
@@ -16,7 +28,7 @@
 ## HISTORICAL PERSPECTIVE: PHYSICS
 01:49 [[start:109210][end:126810]] This is a course on "Physics as Information Processing," and this first session will be a historical perspective on the idea that physics is, or is about, information processing.
 
-![Wittgenstein, Landaur, Wheeler](../../Video/Slide2.PNG)
+![Wittgenstein, Landaur, Wheeler](images/Slide2.PNG)
 
 [[start:127310][end:138478]] And I'll just start with a few quotations that span the middle of the 20th century - from **[Ludwig] Wittgenstein** in the 1920s saying "The world is all that is the case,"
 [[start:138564][end:143490]] so, defining the world in terms of facts, not objects;
