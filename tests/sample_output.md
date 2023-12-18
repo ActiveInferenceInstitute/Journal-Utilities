@@ -3,10 +3,16 @@ title:  'Physics as Information Processing - Lecture 1, "Historical Perspective"
 author:
 - name: Chris Fields
   id: Chris
+  affiliation:
   orcid: https://orcid.org/0000-0002-4812-0744
 - name: Daniel Friedman
   id: Daniel
+  affiliation:
   orcid: https://orcid.org/0000-0001-6232-9096
+contributor:
+- name: David S. Douglass
+  affiliation: ActiveInferenceInstitute
+  orcid: https://orcid.org/0000-0001-7894-8019
 date: "2023-05-18"
 doi: 10.5281/zenodo.9999999
 version: 0.1.0
@@ -32,3 +38,20 @@ version: 0.1.0
 
  And I'll just start with a few quotations that span the middle of the 20th century - from **[Ludwig] Wittgenstein** in the 1920s saying "The world is all that is the case,"
  so, defining the world in terms of facts, not objects;
+
+## Appendix: Terminology
+
+Active Inference
+
+:   Active Inference is a Process Theory related to Free Energy Principle .
+
+Inference
+
+:   Process of reaching a (local or global) conclusion within a Model, for example with Bayesian Inference.
+
+Information
+
+:   Measured in bits, the reduction of Uncertainty on a Belief distribution of some type. Usually Syntactic (Shannon) but also can be Semantic (e.g. Bayesian ).
+
+Active Inference Institute
+https://activeinference.org
