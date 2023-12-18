@@ -3,10 +3,16 @@ title:  'Physics as Information Processing - Lecture 1, "Historical Perspective"
 author:
 - name: Chris Fields
   id: Chris
+  affiliation:
   orcid: https://orcid.org/0000-0002-4812-0744
 - name: Daniel Friedman
   id: Daniel
+  affiliation:
   orcid: https://orcid.org/0000-0001-6232-9096
+contributor:
+- name: David S. Douglass
+  affiliation: ActiveInferenceInstitute
+  orcid: https://orcid.org/0000-0001-7894-8019
 date: "2023-05-18"
 doi: 10.5281/zenodo.9999999
 version: 0.1.0
