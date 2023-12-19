@@ -20,25 +20,31 @@ class TestMarkdownParser(unittest.TestCase):
             self.expected_srt = file.readlines()
 
         # Input file
-        self.input_sample_content_md = '/mnt/md0/projects/Journal-Utilities/tests/input_sample_content.md'
-
-        # Template file
-        self.template_docx = '/mnt/md0/projects/Journal-Utilities/5_markdown_to_final/template.docx'
+        self.path_sample_content_md = '/mnt/md0/projects/Journal-Utilities/tests/'
+        self.input_sample_content_md = 'input_sample_content.md'
 
         # Output files
         self.output_markdown = '/mnt/md0/projects/Journal-Utilities/tests/sample_output.md'
         self.output_srt = '/mnt/md0/projects/Journal-Utilities/tests/sample_output.srt'
-        self.output_docx = '/mnt/md0/projects/Journal-Utilities/tests/sample_output.docx'
 
     def test_parse_markdown(self):
-        markdown, srt = parse_markdown(self.input_sample_content_md)
+        markdown, srt = parse_markdown(self.path_sample_content_md, self.input_sample_content_md)
         
         self.assertEqual(markdown, self.expected_markdown)
         self.assertEqual(srt, self.expected_srt)
 
     def test_write_output_files(self):
-        markdown, srt = parse_markdown(self.input_sample_content_md)
-        write_output_files(markdown, srt, self.template_docx, self.output_markdown, self.output_srt, self.output_docx)
+        markdown, srt = parse_markdown(self.path_sample_content_md, self.input_sample_content_md)
+        write_output_files(markdown, srt, self.output_markdown, self.output_srt)
+
+    def test_lecture_1(self):
+        path_content_md = '/mnt/md0/projects/ActiveInferenceJournal/Courses/PhysicsAsInformationProcessing_ChrisFields/Lecture_1/Transcripts/Prose/'
+        input_content_md = 'cFPIP-01L_Physics as Information Processing  ~ Chris Fields ~ Lecture 1.m4a.sentences.csv_transcript.md'
+        output_markdown_path = '/mnt/md0/projects/ActiveInferenceJournal/Courses/PhysicsAsInformationProcessing_ChrisFields/Lecture_1/Transcripts/Prose/cFPIP-01L.md'
+        output_srt_path = '/mnt/md0/projects/ActiveInferenceJournal/Courses/PhysicsAsInformationProcessing_ChrisFields/Lecture_1/Transcripts/Captions/cFPIP-01L.srt'
+
+        markdown, srt = parse_markdown(path_content_md, input_content_md)
+        write_output_files(markdown, srt, output_markdown_path, output_srt_path)
 
 if __name__ == '__main__':
     unittest.main()
