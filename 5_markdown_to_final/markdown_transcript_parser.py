@@ -22,7 +22,8 @@ def parse_markdown(md_path, md_file_name):
 
         # Remove timestamp annotations for markdown
         clean_line = re.sub(r'\[\[start:\d+]\[end:\d+]]', '', line)
-        clean_markdown.append(clean_line)
+        text = re.sub(r'\d{2}:\d{2} ', '', clean_line)
+        clean_markdown.append(text)
 
         # Skip metadata lines for SRT processing
         if metadata_block:
