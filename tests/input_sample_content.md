@@ -27,7 +27,3 @@ doi: 10.5281/zenodo.9999999
 
 [[start:127310][end:138478]] And I'll just start with a few quotations that span the middle of the 20th century - from **[Ludwig] Wittgenstein** in the 1920s saying "The world is all that is the case,"
 [[start:138564][end:143490]] so, defining the world in terms of facts, not objects;
-
-## Acknowledgements
-
-- David S. Douglass (Active Inference Institute) [![Orcid](images/orcid.png)](https://orcid.org/0000-0001-7894-8019)

@@ -26,20 +26,11 @@ Initial Scripts 1 & 2, and initial README contributed by Dave Douglass, November
 
 
 
-## Create Virtual Environment
+## Install Pandoc and texlive-xetex
+
+for font support, xeLaTeX and fontspec are required:
 
 ```
-python3 -m venv venv
+sudo apt-get install texlive-xetex
 ```
 
-Activate Virtual Environment
-
-```
-source venv/bin/activate
-```
-
-Install Dependencies, docxtpl uses python-docx and jinja2
-
-```
-pip install docxtpl beautifulsoup4 markdown
-```

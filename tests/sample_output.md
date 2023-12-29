@@ -27,24 +27,3 @@ _Chris:_
 
  And I'll just start with a few quotations that span the middle of the 20th century - from **[Ludwig] Wittgenstein** in the 1920s saying "The world is all that is the case,"
  so, defining the world in terms of facts, not objects;
-
-## Acknowledgements
-
-- David S. Douglass (Active Inference Institute) [![Orcid](images/orcid.png)](https://orcid.org/0000-0001-7894-8019)
-
-## Appendix: Terminology
-
-Active Inference
-
-:   Active Inference is a Process Theory related to Free Energy Principle.
-
-Inference
-
-:   Process of reaching a (local or global) conclusion within a Model, for example with Bayesian Inference.
-
-Information
-
-:   Measured in bits, the reduction of Uncertainty on a Belief distribution of some type. Usually Syntactic (Shannon) but also can be Semantic (e.g. Bayesian).
-
-
-![Act. Infer. Serve](images/logo.png){ width=5% } Act to connect with The Institute by [web](https://activeinference.org), [email](mailto:Blanket@ActiveInference.Institute), [YouTube](https://www.youtube.com/c/ActiveInference/videos), [Discord](https://discord.gg/8VNKNp4jtx), or [LinkedIn](https://www.linkedin.com/company/active-inference/).
