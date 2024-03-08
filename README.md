@@ -2,48 +2,65 @@
 Utilities and Documentation for creating contents for the Active Inference Journal
 https://github.com/ActiveInferenceInstitute/ActiveInferenceJournal
 
-(A) The Python scripts
+## Installation
 
-(1) invoke OpenAI Whisper Cloud service, and reformat the output to CSV.
-Invocation from local Linux command line. (The suffixed "&" makes each python invocation run in background. Each instance of the process polls OpenAI every two minutes, and kicks off the four steps of the Extract-and-save phase of processing when main processing of its request has completed or failed.)  
-```
-python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" "ls039-0" "http://crisiscenter.us/AILab01/2022Livestreams" "ActInf Livestream 039.0 ~ 'Morphogenesis as Bayesian inference'.m4a" | tee mass_ls039-0.m4a.json &
-python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" "ls039-1" "http://crisiscenter.us/AILab01/2022Livestreams" "ActInf Livestream 039.1 ~ 'Morphogenesis as Bayesian inference'.m4a" | tee mass_ls039-1.m4a.json &
-python3 "/mnt/d/Documents/FEP-AI/Active Inference Podcast/SubmitToCloudWhisper.py" "ls039-2" "http://crisiscenter.us/AILab01/2022Livestreams" "ActInf Livestream 039.2 ~ 'Morphogenesis as Bayesian inference'.m4a" | tee mass_ls039-2.m4a.json &
-```
-(2) extracts speech and context data from the new local CSVs, and create a simple text file that can be manually imported into a word processor and formatted with Title, Heading 1 (session), Heading 2 (speakers, contents, transcript).
-
-
-(B) The CSV should be filled out manually using any spreadsheet program.
-
-These data are read by sentencesToTranscripts script, so the latter can convert Whisper-generated speaker labels "A" "B"... into "Daniel" "Bleu"...
-Even if AllSpeakers.csv is correct, the raw, editable .txt file may still have to have Speaker adjusted - this happens when Whisper gets confused about accents or prosody.
-
-
---------
-
-Initial Scripts 1 & 2, and initial README contributed by Dave Douglass, November 2022. 
-
-
-## Step 5: Markdown to Final Outputs
-
-The `parse_markdown` function in `5_markdown_to_final/markdown_transcript_parser.py` converts the markdown file to an SRT and MD file (without timestamps). `write_output_files` will save the files to disk. Look at `tests/test_output_final_artifacts.py` for usage.
-
-In the case of a course with multiple lectures like Physics as Information Processsing , `concatenate_markdown_files` will combine the markdown files into one file. This file can then be converted to a PDF or HTML using pandoc.
-
-### Create a venv
+### Create a python virtual environment
 
 ```
 python -m venv venv
 source venv/bin/activate
 ```
 
-Install Pandoc
+### Install Pandoc, XeLaTeX
+Install [Pandoc](https://pandoc.org/installing.html) 
 
-for font support xeLaTeX required:
+install xeLaTeX for font support:
 ```
 sudo apt-get install texlive-xetex
 ```
+
+## Step 1: Download Audio Transcript
+
+Download the audio file from YouTube and upload to a https  accessible location.
+
+## Step 2: Generate Single Source Transcript
+
+### Setup environment variables
+Add new row in the Coda spreadsheet:
+https://coda.io/d/ActInf-Journal_dwYsKMwppRN/Tracking-Spreadsheet_supJk#_luEV4
+
+### Run transcription
+cd into the session's root folder
+```
+cd ActiveInferenceJournal/Courses/PhysicsAsInformationProcessing_ChrisFields/Discussion_1/
+```
+
+Copy transcribe command that calls `2_audio_to_markdown/SubmitToCloudWhisper.py`. Should look like this:
+```
+python '/mnt/md0/projects/Journal-Utilities/2_audio_to_markdown/SubmitToCloudWhisper.py' 'cFPIP-06W' '4WKy_TVLReB2KAN6cGr5zk-GvfzfsRAihgK7Kc_Equw' ONLINEPATH 'https://arweave.net' AUTHKEYFILENAME '/mnt/md0/projects/Journal-Utilities/2_audio_to_markdown/authkey.txt' WORD_BOOST_FILE_LIST 'word_boost.txt' SENTIMENT_ANALYSIS False IAB_CATEGORIES False CUSTOM_SPELL_BOOSTED True CUSTOM_SPELLING_FILE_LIST 'custom_spelling.csv' | tee 'trace.txt'
+```
+
+### Generate single source transcript
+
+update the AssemblyAI-generated speaker labels "A" "B"... into "Daniel" "Bleu".
+
+add words to the `word_boost.txt` file
+
+cd into the session's metadata folder
+```
+cd metadata/
+```
+
+Copy transcribe command that calls `2_audio_to_markdown/sentenceToTranscripts.py`. Should look like this:
+```
+python '/mnt/md0/projects/Journal-Utilities/2_audio_to_markdown/sentencesToTranscripts.py' 'cFPIP-06W' '/mnt/md0/projects/ActiveInferenceJournal/Courses/PhysicsAsInformationProcessing_ChrisFields/Discussion_6/Metadata' 'cFPIP-06W_4WKy_TVLReB2KAN6cGr5zk-GvfzfsRAihgK7Kc_Equw.sentences.csv' INSPEAKERDIR '/mnt/md0/projects/ActiveInferenceJournal/Courses/PhysicsAsInformationProcessing_ChrisFields/Discussion_6/Metadata' SPEAKERFILE 'cFPIP-06W_4WKy_TVLReB2KAN6cGr5zk-GvfzfsRAihgK7Kc_Equw.speakers.csv' | tee cFPIP-06W.m4a_transcript.json
+```
+
+## Step 5: Markdown to Final Outputs
+
+The `parse_markdown` function in `5_markdown_to_final/markdown_transcript_parser.py` converts the markdown file to an SRT and MD file (without timestamps). `write_output_files` will save the files to disk. Look at `tests/test_output_final_artifacts.py` for usage.
+
+In the case of a course with multiple lectures like Physics as Information Processsing , `concatenate_markdown_files` will combine the markdown files into one file. This file can then be converted to a PDF or HTML using pandoc.
 
 ### Convert Markdown to PDF
 
@@ -60,5 +77,11 @@ pandoc -f markdown-implicit_figures all_transcripts.md --lua-filter=images/schol
 ```
 
 remove all instances of `/mnt/md0/projects/ActiveInferenceJournal/Courses/PhysicsAsInformationProcessing_ChrisFields/` from the HTML file to make the images work.
+
+
+## Acknowledgements
+
+- Initial Scripts 1 & 2, and initial README contributed by Dave Douglass, November 2022.
+- Initial Scripts 5 contributed by Holly Grimm @hollygrimm, December 2023.
 
 
