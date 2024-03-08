@@ -25,12 +25,40 @@ Even if AllSpeakers.csv is correct, the raw, editable .txt file may still have t
 Initial Scripts 1 & 2, and initial README contributed by Dave Douglass, November 2022. 
 
 
+## Step 5: Markdown to Final Outputs
 
-## Install Pandoc and texlive-xetex
+The `parse_markdown` function in `5_markdown_to_final/markdown_transcript_parser.py` converts the markdown file to an SRT and MD file (without timestamps). `write_output_files` will save the files to disk. Look at `tests/test_output_final_artifacts.py` for usage.
 
-for font support, xeLaTeX and fontspec are required:
+In the case of a course with multiple lectures like Physics as Information Processsing , `concatenate_markdown_files` will combine the markdown files into one file. This file can then be converted to a PDF or HTML using pandoc.
 
+### Create a venv
+
+```
+python -m venv venv
+source venv/bin/activate
+```
+
+Install Pandoc
+
+for font support xeLaTeX required:
 ```
 sudo apt-get install texlive-xetex
 ```
+
+### Convert Markdown to PDF
+
+```
+cd /mnt/md0/projects/ActiveInferenceJournal/Courses/PhysicsAsInformationProcessing_ChrisFields
+pandoc --pdf-engine xelatex -f markdown-implicit_figures all_transcripts.md --lua-filter=images/scholarly-metadata.lua --lua-filter=images/author-info-blocks.lua -o all_transcripts.pdf
+```
+
+### Convert Markdown to HTML
+
+```
+cd /mnt/md0/projects/ActiveInferenceJournal/Courses/PhysicsAsInformationProcessing_ChrisFields
+pandoc -f markdown-implicit_figures all_transcripts.md --lua-filter=images/scholarly-metadata.lua --lua-filter=images/author-info-blocks.lua -o all_transcripts.html
+```
+
+remove all instances of `/mnt/md0/projects/ActiveInferenceJournal/Courses/PhysicsAsInformationProcessing_ChrisFields/` from the HTML file to make the images work.
+
 
