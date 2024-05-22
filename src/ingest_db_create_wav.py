@@ -134,6 +134,28 @@ async def create_wavfiles(directory):
             print(f"{video_path}")
             await extract_audio_and_update(db, video_path, session['id'])
 
+async def update_session_name():
+    """
+    Read in all the session records where session_name = NONE, set session_name = id without
+    "session:"
+
+    Returns:
+        None
+    """
+    async with Surreal(os.getenv("DB_URL")) as db:
+        await db.signin({
+            'user': os.getenv('DB_USER'),
+            'pass': os.getenv('DB_PASSWORD')
+        })
+        await db.use(os.getenv('DB_NAME'), os.getenv('DB_NAMESPACE'))
+
+        result = await db.query("SELECT * FROM session WHERE session_name is NONE")
+        for session in result[0]["result"]:
+            session_id = session['id']
+            session_name = session_id.replace("session:", "")
+            update_result = await db.query(f"UPDATE session SET session_name='{session_name}' WHERE id='{session_id}'")
+            print(f"Update session_name for {session_id}: {update_result}")
+
 if __name__ == "__main__":
     import asyncio
 
@@ -141,6 +163,5 @@ if __name__ == "__main__":
 
     asyncio.run(process_and_store_files(directory=file_directory))
     asyncio.run(create_wavfiles(directory=file_directory))
-    #asyncio.run(check_missing_mp4(directory=file_directory))
-    
-
+    # asyncio.run(check_missing_mp4(directory=file_directory))
+    # asyncio.run(update_session_name())
