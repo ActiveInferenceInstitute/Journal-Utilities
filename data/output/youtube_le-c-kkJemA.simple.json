@@ -1,0 +1,3266 @@
+[
+  {
+    "start": 9.397,
+    "end": 28.798,
+    "text": " all right everyone hello welcome to paper stream number 1.0 my name is daniel friedman and today we're going to be discussing an overview of the paper the relation between kin and multi-level selection and approach using causal graphs by samir okasha from 2016.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 30.339,
+    "end": 42.328,
+    "text": " so first just an overview on the reason for selecting this paper and then i'll go into goals and we'll jump into the dot zero so professor akasha is very fascinating professor",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 43.354,
+    "end": 66.743,
+    "text": " since 2016 and before as well has written a lot of really fundamental papers about theoretical biology so i've long seen this paper as kind of interesting and something that might be useful in the discussions around kin selection multi-level selection multi-level systems more generally bayesian graphs and never really had the time to dig in so uh the goal for today",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 67.583,
+    "end": 86.085,
+    "text": " was to first learn and explore kin and multi-level selection, two, to prepare for an upcoming lab meeting with the Lynxfeyer Lab next week, and three, initiate a new stream series where just on my own or with whoever else wants to join, like you if you're listening,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 86.946,
+    "end": 90.849,
+    "text": " We can talk about papers, do the dot zeros, do the dot ones, and beyond.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 91.369,
+    "end": 93.691,
+    "text": "So, on to the paper.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 94.612,
+    "end": 95.613,
+    "text": "But first, some memes.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 96.133,
+    "end": 97.094,
+    "text": "So, this first meme.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 98.115,
+    "end": 99.476,
+    "text": "On the top, there are two buttons.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 100.216,
+    "end": 103.218,
+    "text": "Ants are truly social and ants are you social.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 104.209,
+    "end": 106.03,
+    "text": " Those are the two affordances, two options.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 106.17,
+    "end": 111.812,
+    "text": "And on the bottom is the sweating entolinguist, the insect researcher who cares about their language.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 112.553,
+    "end": 114.594,
+    "text": "And then the citations give a little context.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 114.754,
+    "end": 124.178,
+    "text": "On the top is a citation by Professor Lynx-Veyer on the molecular and evolutionary genetic implications of being truly social for the social insects.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 124.918,
+    "end": 128.26,
+    "text": " We'll hear eusocial insects, social insects, truly social.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 128.46,
+    "end": 132.601,
+    "text": "I mean, after all, eusocial could be translated as truly social.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 133.102,
+    "end": 138.584,
+    "text": "So are ants like super social or are they truly social?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 138.984,
+    "end": 140.425,
+    "text": "And what are the implications for that?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 140.945,
+    "end": 150.75,
+    "text": "And then on the bottom is the Feinerman and Korman 2017 citation, individual versus collective cognition in social insects, which does an awesome job of...",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 151.61,
+    "end": 171.484,
+    "text": " clarifying that there's a continuum of cognitive processes in the ant colony, for example, from processes that are entirely on board the nestmate, like the perception of polarized light, for example, all the way up to truly colony-level cognitive processes and even those that involve the niche, like through stigmergy and nest architecture.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 172.024,
+    "end": 174.526,
+    "text": "And so here's the entolinguist just like, oh no, what do I do?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 176.377,
+    "end": 187.564,
+    "text": " And then here's another meme, perhaps a bit more obliquely related to the topic, but the first row says, pheromone signaling is just a virtue signal, not a deep take.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 188.664,
+    "end": 190.906,
+    "text": "Then pheromone signaling is a virtue signal,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 192.216,
+    "end": 194.578,
+    "text": " Then pheromone signaling is a virtue.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 195.119,
+    "end": 196.3,
+    "text": "That's where the ants are.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 196.58,
+    "end": 198.542,
+    "text": "These are the Pogonomyrmex ants in Arizona.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 199.583,
+    "end": 201.705,
+    "text": "Then pheromones are virtue.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 202.265,
+    "end": 203.707,
+    "text": "And finally, pheromones are virtual.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 204.047,
+    "end": 208.391,
+    "text": "So I'll leave it to the viewers slash interpretant what they think.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 209.392,
+    "end": 233.305,
+    "text": " and there will be totally space for questions if people are watching live and have questions maybe we can explore them but otherwise since it's an ongoing discussion with these topics and with the papers hopefully with the authors or with other people who have different perspectives to share we can always return to the questions all right so let's get into the okasha 2016 paper here's the abstract",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 234.434,
+    "end": 245.184,
+    "text": " Kin selection and multilevel selection are alternative approaches for studying the evolution of social behavior, the relation between which has long been a source of controversy.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 246.105,
+    "end": 254.853,
+    "text": "Many recent theorists regard the two approaches as ultimately equivalent, on the grounds that gene frequency change can be correctly expressed using either.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 255.934,
+    "end": 281.124,
+    "text": " however this shows only that the two are formally equivalent not that they offer equally good causal representations of the evolutionary process this article articulates the notion of an adequate causal representation using causal graphs and then seeks to identify circumstances under which kin and multi-level selection do and do not satisfy the test of causal adequacy",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 282.529,
+    "end": 283.39,
+    "text": " Nice abstract.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 283.69,
+    "end": 284.79,
+    "text": "How are we going to do that?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 285.251,
+    "end": 286.071,
+    "text": "Here's the roadmap.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 287.052,
+    "end": 295.938,
+    "text": "Section one provides an introduction and a justification of the context and a little bit of an appetizer for your attention.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 297.423,
+    "end": 310.79,
+    "text": " Section two provides a description of the fitness decompositions that are associated with the kin selection or KS and multi-level selection approaches, MLS.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 311.691,
+    "end": 318.694,
+    "text": "And I believe I'll be consistent in using light blue shading for kin selection and light red shading for multi-level selection.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 319.395,
+    "end": 326.519,
+    "text": "Section two introduces these two approaches in terms of their decomposition and then juxtaposes them.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 327.529,
+    "end": 336.313,
+    "text": " Section 3 is a really interesting philosophical and formal discussion on the concepts equivalence and causality.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 337.994,
+    "end": 345.877,
+    "text": "Akasha then turns to two problem cases, so two instances of particular setups that are going to be elucidating or didactic.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 346.378,
+    "end": 355.002,
+    "text": "Specifically, there's a case where the trait in question is non-social in the sense that it doesn't directly influence social phenotypes.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 355.942,
+    "end": 359.446,
+    "text": " And then secondly, the case of genotypic selection with meiotic drive.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 359.887,
+    "end": 374.824,
+    "text": "Meiotic drive being when during meiosis, while the gametes are being prepared, there is an asymmetrical segregation of different allelic variants, as opposed to a fair coin flip, which would be kind of like the null expectation.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 376.621,
+    "end": 389.049,
+    "text": " In section five, there's a return to this question of cause in the context of causal adequacy and using the Bayesian causal graph architecture to support this discussion.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 389.89,
+    "end": 400.957,
+    "text": "A basic idea is presented, and then in the name of fairness and clarity and comprehensiveness, cases are presented where kin selection is causally adequate,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 402.119,
+    "end": 404.901,
+    "text": " and where multilevel selection is causally adequate.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 406.062,
+    "end": 409.444,
+    "text": "Finally, there's a discussion that connects to some previous work.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 410.084,
+    "end": 412.105,
+    "text": "So let's go into the introduction section first.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 413.787,
+    "end": 425.914,
+    "text": "So Akasha writes, the evolution of social behavior has been analyzed in two different ways in the biology literature, the kin selection approach, KS, blue, and the multilevel selection approach, MLS, red.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 426.815,
+    "end": 431.078,
+    "text": "The kin selection approach emphasizes the genetic relatedness of social partners",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 432.059,
+    "end": 440.41,
+    "text": " kin, while the latter emphasizes the relative strengths of within and between group selection, which is to say populations with multi-level structure.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 441.952,
+    "end": 447.46,
+    "text": "The relationship between the two approaches has been a source of controversy ever since it was first broached by Hamilton in 1975.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 449.207,
+    "end": 455.914,
+    "text": " In earlier debates, biologists tended to regard kin and multi-level or group selection as alternatives to each other.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 456.194,
+    "end": 462.18,
+    "text": "For example, in the influential papers of Maynard Smith, 1976, and Dawkins, 1982.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 463.261,
+    "end": 472.69,
+    "text": "And indeed, many people do have a sense that these two approaches are in somehow or in some way oppositional to each other.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 473.19,
+    "end": 480.894,
+    "text": " If you believe in one or whatever, you find that the empirical data supports one, insert your modal logic there, the other one has been disreputed.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 481.094,
+    "end": 481.754,
+    "text": "There's a battle.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 482.394,
+    "end": 483.355,
+    "text": "Is it kin selection?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 483.575,
+    "end": 484.815,
+    "text": "Is it multi-level selection?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 485.435,
+    "end": 486.676,
+    "text": "I'm sure that's what the 80s were like.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 486.776,
+    "end": 487.436,
+    "text": "I wasn't there though.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 489.377,
+    "end": 500.022,
+    "text": "But many contemporary biologists maintain that kin selection and multi-level selection models of social evolution are actually equivalent on the grounds that gene frequency change can be correctly computed using either.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 501.598,
+    "end": 504.801,
+    "text": " Hint, that is Akasha's position, though there's more to it.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 506.002,
+    "end": 509.525,
+    "text": "And some have proposed translation manuals from going from one model to another.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 510.645,
+    "end": 516.831,
+    "text": "Though dissenters from this equivalence claim can be found, the majority of social evolution theorists appear to subscribe to it.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 517.571,
+    "end": 526.819,
+    "text": "And footnote two includes the citation beginning with Graphen 84, where the equivalence thesis is explicitly defended, and a lot more recent work,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 528.674,
+    "end": 533.795,
+    "text": " as well as some citations to dissenters from the equivalence thesis who are shown here.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 539.776,
+    "end": 552.079,
+    "text": "Also, there's an introduction to the causal graph concept letting us know, like, if not where we're going, what tools we're going to be using on the way there or when we get there, and that's the causal graph.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 553.092,
+    "end": 562.992,
+    "text": " So in the overview of the paper, Akasha writes, an explicit account of what it means for a description of evolutionary change to be causally adequate is then developed using causal graphs.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 563.273,
+    "end": 564.035,
+    "text": "That's in section five.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 566.192,
+    "end": 590.67,
+    "text": " causal graph approach enables us to identify cases in which kin selection is preferable to multi-level selection and cases in which the reverse is true the concluding discussion in six traces the implications of the theory developed here relates the theory to extant work and speculates about empirical examples that might exemplify the abstract causal relations depicted in the diagrams so on the bottom here first on the right",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 591.511,
+    "end": 593.772,
+    "text": " Explain, predict, design, and control.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 594.113,
+    "end": 599.816,
+    "text": "It's not the only way to say it, and it's not exhaustive or comprehensive, but that is in many ways what science does.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 600.536,
+    "end": 606.18,
+    "text": "And so the yellow highlighted part is highlighting that the causal graphs are going to help us explain and predict,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 607.322,
+    "end": 629.301,
+    "text": " then the purple highlighting depending on what color you see i don't know is going to be speculating about how that could be used to design and control which here are being described in the context of designing and controlling experiments and settings on the left is just a little teaser for what the bayesian graph or the causal graph looks like",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 630.595,
+    "end": 658.893,
+    "text": " bayesian graph has nodes that are random variables like statistical variables computer program variables and the edges are directed in this case and those represent relationships that are causal and so it's a bayesian graph graph is a little bit of a pun there because graph can mean visual like we're visualizing it as well as a graph like a network topology so it's a bayesian graph model where the edges have a causal interpretation and we'll come back to that a little bit later",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 659.773,
+    "end": 666.919,
+    "text": " So let's go into section two, where we're going to explore the kin selection and multi-level selection approaches from a technical perspective.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 668.48,
+    "end": 675.266,
+    "text": "Determining the relation between KS and MLS is complicated by the fact that neither has a canonical formulation that all parties agree on.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 677.067,
+    "end": 688.816,
+    "text": "To circumvent the problem, I consider a simplified model of social evolution that makes minimal assumptions and use it to derive maximally general formulations of both KS and MS that permits their explicit comparison.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 689.69,
+    "end": 694.752,
+    "text": " Here are the conditions for the population model that is gonna be used in this paper.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 695.973,
+    "end": 707.277,
+    "text": "There's a population of haploid individuals, that means they have one copy of each chromosome in their somatic cells, and the gametes also have one copy of each chromosome, living in groups of the same size.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 708.057,
+    "end": 718.682,
+    "text": "So in the metapopulation situation, the groups have the same size, and in the one population case, the group size is not shrinking or growing, and social interactions are occurring.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 719.562,
+    "end": 723.908,
+    "text": " The generations are non-overlapping, so it's kind of like an annual plant.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 724.469,
+    "end": 728.334,
+    "text": "The allele at a particular locus is coding for social behavior.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 728.975,
+    "end": 732.46,
+    "text": "And the question, does it apply to loci that are unrelated to social phenotypes?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 732.66,
+    "end": 734.462,
+    "text": "It does, and that's going to be on the next slide.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 736.175,
+    "end": 748.468,
+    "text": " The value p, p sub i, is the quote p-value of individual i. p sub i is 1 if that i-th individual has the allele variance, or p i equals 0 otherwise.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 748.628,
+    "end": 754.154,
+    "text": "So p-value here is not like a statistical p-value, rather it is like an average genotype value.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 756.429,
+    "end": 759.07,
+    "text": " The population-wide frequency of the allele is p-bar.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 759.371,
+    "end": 762.072,
+    "text": "Any variable with a bar over it is like the average.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 762.832,
+    "end": 768.794,
+    "text": "And that is, in this case, p-bar being the average of all individual p values, which is to say genotype values.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 770.235,
+    "end": 771.455,
+    "text": "Here's where we get to equation one.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 772.236,
+    "end": 785.161,
+    "text": "The reproductive output or fitness of individual i defined as the total number of successful gametes it contributes to the next generation is denoted w sub i. So w for fitness, p for genotype or character.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 787.264,
+    "end": 789.266,
+    "text": " The average fitness in the population is W bar.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 789.747,
+    "end": 791.128,
+    "text": "Mutation is assumed absent.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 791.588,
+    "end": 803.08,
+    "text": "Under these assumptions, the change in allele frequency over a single generation is given by delta P bar equals the covariance of W sub i comma P sub i divided by W bar.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 803.641,
+    "end": 807.064,
+    "text": "So that can be read as change in population level",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 807.785,
+    "end": 828.216,
+    "text": " genotype frequency is covariance of fitness and genotype scaled by the average fitness and that is also known as the price equation but there's like some complexities and multiple price equations and also equations don't really need to have last names associated with them but to learn more about that there's a really interesting book price of altruism by harman",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 829.236,
+    "end": 842.495,
+    "text": " as well as A Special Equation by Lintonin, Okasha, and Helantara, and other authors, but that's the special issue editors in the Phil Trans Royal Sock Bee series.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 843.638,
+    "end": 844.359,
+    "text": " special issue from 2020.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 845.5,
+    "end": 861.854,
+    "text": "So the first equation in this paper is introducing the price equation as kind of like the most general correlational classical way to be thinking about the situation of, as described here, a population of haploids, non-overlapping generations, and so on.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 863.655,
+    "end": 864.376,
+    "text": "Here's figure one.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 866.451,
+    "end": 877.894,
+    "text": " The text reads, Equation 1, the price equation, is always true but not always useful, as it does not discriminate between different reasons why an allele may positively co-vary with individual fitness.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 878.792,
+    "end": 888.695,
+    "text": " So just because two variables, height and weight or whatever, co-vary, it doesn't mean that one influences the other in either direction or whatever.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 889.035,
+    "end": 894.997,
+    "text": "This is like correlation is not equal to causation, but rearing its hydra of heads.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 896.098,
+    "end": 903.32,
+    "text": "And there's different reasons that one could imagine that there would be a covariance between allelic frequency and realized fitness.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 905.322,
+    "end": 914.591,
+    "text": " two possibilities or in fact just multiple possibilities are really different in terms of the phenotypes they give rise to but equation one the price equation is going to hold true in either case",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 916.192,
+    "end": 926.338,
+    "text": " To produce a more useful analysis of social evolution, the covariance term in equation one is gonna be decomposed into elements that are more biologically meaningful.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 927.259,
+    "end": 935.584,
+    "text": "And that is what the coming section is gonna be about, which is going from this most general correlation is correlation price equation",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 936.841,
+    "end": 944.063,
+    "text": " and decomposing the covariance into more useful terms that might map onto aspects of biological processes.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 944.443,
+    "end": 948.784,
+    "text": "And the questions are, which processes do they map onto and is that causally adequate?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 949.644,
+    "end": 956.266,
+    "text": "Is one justified in finding a correlation that has like a directionality or an ability to even influence it?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 956.826,
+    "end": 968.112,
+    "text": " So without stepping into or destroying correlation is not causation, how can we move beyond this pure covariance matrix approach and start to get at some of the causal structure of biological systems?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 969.493,
+    "end": 973.455,
+    "text": "So section 2.1, the multi-level selection decomposition.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 975.583,
+    "end": 982.688,
+    "text": " Since individuals are nested within groups, the covariance term, W and P, can be written as the sum of between and within group components.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 982.888,
+    "end": 986.711,
+    "text": "And this is following the work of Price, 72, and many, many others.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 987.511,
+    "end": 991.874,
+    "text": "So lowercase P and W are reflecting the P value.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 991.974,
+    "end": 993.915,
+    "text": "Again, that's genotypic, not statistical here.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 994.796,
+    "end": 998.178,
+    "text": "And fitness, W, of the jth individual in the kth group.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 998.759,
+    "end": 1003.442,
+    "text": "And capital P and W are going to reflect averages in the kth group.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1004.4,
+    "end": 1006.761,
+    "text": " here referred to as group p-value and group fitness.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1007.701,
+    "end": 1021.145,
+    "text": "It then follows that, and here's that covariance term from equation one, covariance of w sub i, p sub i, is decomposed, hence the MLS decomposition, into between group and within group covariance terms.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1021.965,
+    "end": 1025.386,
+    "text": "Expectations on a covariance within group and then a covariance between groups.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1026.286,
+    "end": 1032.048,
+    "text": "The first right-hand sum term of equation two is the covariance between group p-value and group fitness.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1032.881,
+    "end": 1034.242,
+    "text": " That's groups competing with each other.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1034.262,
+    "end": 1048.868,
+    "text": "And the second right-hand sum term is the average across groups expectation of the within group covariance, cove, between individual p-values and fitness, little w sub jk, little p sub jk.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1051.525,
+    "end": 1060.83,
+    "text": " Substituting 2, this decomposition, back into 1, hinging on that cove , you get this equation 3.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1061.891,
+    "end": 1070.756,
+    "text": "And equation 3 is useful for understanding not just the covariance term, but rather the average fitness and then the change in genotype.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1071.596,
+    "end": 1076.579,
+    "text": "And so that puts it totally consistent and compatible with the price equation as written in 1.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1078.223,
+    "end": 1084.648,
+    "text": " And this decomposition allows for describing a really broad range of social situations.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1085.528,
+    "end": 1099.619,
+    "text": "So several examples are captured here, but Akasha writes, equation three captures this idea that within and between group selection may pull in different directions, an idea central to much theorizing in the multi-level selection tradition.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1100.259,
+    "end": 1111.007,
+    "text": " So one can imagine like a situation where a given genotype or phenotype increases how good that group does, but then that individual does poorly.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1111.527,
+    "end": 1116.311,
+    "text": "That's sometimes said to be an altruism, like helping a group at the cost to oneself.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1116.971,
+    "end": 1123.456,
+    "text": "Or one could imagine the opposite situation being like the individual has higher fitness, but the group does worse.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1123.816,
+    "end": 1126.538,
+    "text": "And that could be like deleterious or even antisocial behavior.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1128.237,
+    "end": 1136.319,
+    "text": " And as with everything with papers, go check out the paper and I'm not giving a perfect or complete explanation, just kind of going through some thoughts.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1136.919,
+    "end": 1139.96,
+    "text": "So go and read more and go beyond it.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1141.04,
+    "end": 1145.161,
+    "text": "In section 2.2, the kin selection decomposition is presented.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1145.541,
+    "end": 1152.143,
+    "text": "So the key idea of the kin selection approach is that there are two distinct routes by which an allele can increase its frequency in a population.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1153.442,
+    "end": 1163.149,
+    "text": " First, enhancing the reproductive output of its bearer, that's called direct fitness, direct route, or enhancing the reproductive output of other carriers of the allele, the indirect route.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1163.75,
+    "end": 1168.673,
+    "text": "And the roots of the idea are present in Darwin on the Origin of Species and Haldane 32.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1169.334,
+    "end": 1173.177,
+    "text": "And it was Haldane, allegedly or whatever, who famously said,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1173.877,
+    "end": 1193.708,
+    "text": " I won't jump into the river to save my brother, but I'd do it for eight cousins or something else that involves this ultimately as later framed by Hamilton 64, some kind of an appeal to what is now known as RB is greater than C. Relatedness times the benefit is greater than the cost.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1194.648,
+    "end": 1198.89,
+    "text": "So if your relatedness is an eighth and then the benefit is one,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1200.436,
+    "end": 1203.819,
+    "text": " if the cost is less than an eighth, it's going to go forward.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1204.459,
+    "end": 1217.109,
+    "text": "Because that allele, even if it finds itself in the body of an individual that swears up and down that they want to survive, so this kin selection thinking goes, it still will be the case that that allele can spread",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1218.03,
+    "end": 1235.98,
+    "text": " by that individual having a net positive effect on its own spread through the loss of individual fitness of that body, but then the commensurate gain in fitness of the allele based upon the relatedness and the benefit provided.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1237.241,
+    "end": 1244.285,
+    "text": "So, the kin selection approach can be applied to our abstract model to yield another decomposition of total change using a well-known technique.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1245.865,
+    "end": 1256.083,
+    "text": " This is going to be a recoding that is going to predicate individual's fitness, W sub i, this is equation four.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1257.606,
+    "end": 1280.565,
+    "text": " on its own genotype value that's p sub i and on the average p value of its social partners p prime so this allows for a linear regression model beta is referring to a linear regression slope here there are partial regressions so this beta the first one is a regression um",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1284.504,
+    "end": 1290.509,
+    "text": " The first one is the partial regression of individual fitness on individual p-value controlled for social partners p-value.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1291.33,
+    "end": 1299.397,
+    "text": "And then, because the main term is this piece of i, and it's kind of like being marginalized in a Bayesian way, we could say, across the social partners.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1300.078,
+    "end": 1303.361,
+    "text": "And the second term is doing the opposite.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1305.163,
+    "end": 1309.287,
+    "text": "This is an error term, and that's like the lift of the regression.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1311.212,
+    "end": 1317.838,
+    "text": " Note that the equation 4 does not presume the true dependence of W on P, and P' is linear.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1318.058,
+    "end": 1321.02,
+    "text": "The regression equation can always be fitted thanks to the residual.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1321.361,
+    "end": 1322.922,
+    "text": "And that's what's great about models.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1323.122,
+    "end": 1323.983,
+    "text": "They can always be fit.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1325.29,
+    "end": 1327.252,
+    "text": " Equation four can be substituted into one.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1327.572,
+    "end": 1342.624,
+    "text": "So just like on the MLS, we were doing the decomposition of covariance and then we substitute it back into price equation to get to three from two plus one equals three numerically, but also in this situation.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1343.405,
+    "end": 1347.268,
+    "text": "And now four plus one is going to go to five.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1348.464,
+    "end": 1358.59,
+    "text": " So simplification of that insertion results in the left-hand side of equation five, W bar delta P bar is the same as it is on equation three.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1359.171,
+    "end": 1362.653,
+    "text": "So this is moving towards juxtaposing kin selection and multilevel selection.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1364.554,
+    "end": 1368.257,
+    "text": "There's then a relabeling of equation five",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1369.412,
+    "end": 1388.481,
+    "text": " such that these c r and b variables that's cost relatedness and benefit are clear with var p so var p stays the same between five and six and then these are relabeled b wp dot p prime is negative c and so on",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1390.398,
+    "end": 1413.111,
+    "text": " And that is where Hamilton's rule, so-called, again, last names don't need to be associated with equations, but this is RB is greater than C. It's like saying the genotype will go up in frequency under the condition that RB is greater than C. And that is kind of like a regression way to describe what is sometimes framed more in terms of game theory.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1417.151,
+    "end": 1426.957,
+    "text": " Now, one issue is not just comparing both kin selection and multi-level selection to the price equation, but actually to move forward with comparing them to each other explicitly.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1428.038,
+    "end": 1431.76,
+    "text": "And so here, equation 6 gets partitioned.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1432.741,
+    "end": 1438.905,
+    "text": "We can just take the first part and multiply var p by negative c and var p by rb.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1440.026,
+    "end": 1442.947,
+    "text": "And that results in this restatement of equation 6.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1444.324,
+    "end": 1449.726,
+    "text": " Now there's a direct effect on fitness, which is the negative cost.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1450.287,
+    "end": 1454.648,
+    "text": "So if the cost is positive, the direct effect on fitness is negative.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1455.409,
+    "end": 1462.292,
+    "text": "If the cost is negative, which is to say like there's a benefit, then the direct effect is positive.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1463.212,
+    "end": 1466.213,
+    "text": " And then analogously, there's the RB term.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1466.693,
+    "end": 1473.716,
+    "text": "So this is still within a regression framework of Hamilton's R, B, and C framing.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1475.357,
+    "end": 1479.418,
+    "text": "Note that the kin selection decomposition deals only with individual fitness.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1480.479,
+    "end": 1486.701,
+    "text": "The expressions for group fitness, big W sub K, and group fee value, big P sub K, do not feature in it.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1486.981,
+    "end": 1491.403,
+    "text": "This is the key point of contrast with a multilevel selection decomposition.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1494.307,
+    "end": 1497.95,
+    "text": " And then Akasha stresses the generality of the decomposition.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1498.491,
+    "end": 1509.08,
+    "text": "So that's one thing that even in section two becomes very interesting in a pair ant, which is that kin selection is only looking within one population.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1509.841,
+    "end": 1530.186,
+    "text": " and asking about differences in relatedness within one population whereas multi-level selection is explicitly looking at populations with structure so that's the decompositions seven equation is the decomposition of kin selection and equation three is the multi-level selection the fitness decomposition so on to section three",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1531.752,
+    "end": 1538.294,
+    "text": " The foregoing analysis helps explain why the multi-level selection and kin selection approaches are often regarded as equivalent.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1539.075,
+    "end": 1545.637,
+    "text": "In any group structured population, the total evolutionary change can be decomposed using either equation three or seven.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1546.777,
+    "end": 1559.382,
+    "text": "Moreover, it is easy to see that the kin selection criterion for the spread of a pro-social trait when the relatedness times the benefit is greater than the cost will be satisfied if and only if IFF",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1560.458,
+    "end": 1565.84,
+    "text": " the multi-level selection criterion between group is greater than within group is satisfied.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1566.38,
+    "end": 1580.186,
+    "text": "So the group representing like a family or a kin is equivalently able to be seen as a group within a multi-level selection situation or a kin within a single layered population.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1581.502,
+    "end": 1583.363,
+    "text": " Thus, the two approaches are formally equivalent.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1583.923,
+    "end": 1595.93,
+    "text": "Gene frequency change can be computed in two ways, by determining the magnitude of the between and within group components, that's the MLS decomposition, or the direct and indirect effects, that's the kin selection decomposition.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1596.43,
+    "end": 1598.612,
+    "text": "Both methods will always give the same answer.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1599.232,
+    "end": 1613.862,
+    "text": " So that's where there's kind of like a mic drop slash Okasha 2016 be cited because it's really a key point and it's treated as something more of like a personal preference, which yes, everything is a personal cognitive preference in a deep sense.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1614.723,
+    "end": 1627.652,
+    "text": "But this debate is often approached in a consequentialist or in some other framework by which people are resolving their thoughts on kin selection, multilevel selection.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1629.502,
+    "end": 1638.809,
+    "text": " So in section three, granting the formal equivalence of kin selection and multilevel selection, it does not follow that the choice between the two is subjective or aesthetic, as many authors imply.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1639.889,
+    "end": 1641.31,
+    "text": "So that kind of touches on that last point.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1641.871,
+    "end": 1644.533,
+    "text": "What does subjective or aesthetic mean?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1646.114,
+    "end": 1648.376,
+    "text": "And what is making somebody, quote, make a choice",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1649.508,
+    "end": 1659.515,
+    "text": " in a moment or a context or a situation towards kin selection, multilevel selection, or some other framework, including not selection or not evolution.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1660.845,
+    "end": 1670.387,
+    "text": " But the aim of evolutionary analysis is not solely to predict changes in gene frequency, but also to provide causal explanations of them inter alia, which means among other things.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1671.368,
+    "end": 1681.35,
+    "text": "So ideally, we want a description of evolution to provide insight into the causal factors responsible for the evolutionary change in question, in addition to computing the correct answer.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1683.011,
+    "end": 1683.671,
+    "text": "Well, what do you think?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1684.371,
+    "end": 1687.172,
+    "text": "What else do you want for a description of evolution?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1688.154,
+    "end": 1691.096,
+    "text": " Do you want a description of evolution or what do you want?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1692.777,
+    "end": 1700.143,
+    "text": "Where's development, ecology, neuroscience, and so on in this ideal version of a quote description of evolution?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1702.965,
+    "end": 1705.747,
+    "text": "There's a discussion on causality here.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1706.268,
+    "end": 1711.511,
+    "text": "The notion of causality rarely features explicitly in evolutionary models, but it is usually...",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1712.512,
+    "end": 1735.537,
+    "text": " assume that at least some of the dependencies between a model's variables reflect causal relationships in nature this is verging towards the instrumentalism and realism discourse area and that could be something that we could return to in the future but two big takeaways from this discussion are correlation is not causation and the map is not the territory",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1736.431,
+    "end": 1743.033,
+    "text": " while also we might want to be identifying real intervenable upon forces in the world.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1743.193,
+    "end": 1756.556,
+    "text": "Even if we acknowledge that we can only measure them via proxies or infer them sparsely, or that we may not be able to capture, quote, what it really is, we still can take like a realist or a pragmatist stance.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1757.496,
+    "end": 1760.277,
+    "text": "And a few more general questions like, what is evolution?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1761.357,
+    "end": 1764.458,
+    "text": "What is the field of evolutionary biology or evolutionary sciences?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1766.369,
+    "end": 1789.145,
+    "text": " is the relationship between different kinds or types of descriptive modeling approaches and different causality concepts like what kind of causal concepts are consistent with what kind of modeling frameworks where is kin selection and multi-level selection in all of this and how is this all connecting back to the bayesian graph so continuing on in section three",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1791.633,
+    "end": 1814.099,
+    "text": " turning to kin selection and multi-level selection are there circumstances in which one provides a more adequate causal representation of social evolution than the other this is like we've demonstrated a formal equivalence but also added this very very strong note that the choice between the two of them is not entirely subjective slash arbitrary",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1815.635,
+    "end": 1819.598,
+    "text": " So is there a reason why one might be preferred over the other?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1820.038,
+    "end": 1824.362,
+    "text": "Like why reviewer number two would have grounds to say that you should have done this instead of that.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1825.182,
+    "end": 1827.664,
+    "text": "And someone might answer no on the following grounds.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1828.785,
+    "end": 1839.032,
+    "text": "And so they could just say that, no, you're going to get within group spread in the same cases where you're going to see kin selection spread.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1840.2,
+    "end": 1860.536,
+    "text": " other words the um inequalities for having a positive fitness value are equivalent therefore kin selection and multi-level selection are explanatory and not just formally equivalent however as akasha is going to unpack the argument misses the point though helps to clarify the issue",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1862.11,
+    "end": 1879.666,
+    "text": " Because while it is true that MLS and KS inequalities are satisfied in exactly the same circumstances, it does not follow that the respective decompositions, reflected by equation 3 for MLS and 7 for KS, constitute equally good causal representations of the evolutionary process.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1882.128,
+    "end": 1895.977,
+    "text": " The idea of a description of evolutionary change being causally adequate or true to causal facts has often been appealed to in the literature on levels of selection, but never has been made fully precise, which is one reason why this is, I believe, a really key paper.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1897.904,
+    "end": 1911.012,
+    "text": " When the total evolutionary change is written using a statistical partition, hashtag active inference, hashtag particular partition, as above, a natural explication of this notion suggests itself.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1911.712,
+    "end": 1917.395,
+    "text": "Statistical associations between or among variables should reflect direct causal influences in the world.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1918.156,
+    "end": 1922.118,
+    "text": "The idea is spelled out in detail in Section 5 with the aid of causal graphs.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1923.976,
+    "end": 1929.738,
+    "text": " So, to fix ideas and to connect with the literature, I turn first to two problem cases.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1930.279,
+    "end": 1940.423,
+    "text": "In each problem case, one of the two approaches, KS and MLS, is causally adequate, but the other is causally misleading intuitively, though still formally accurate.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1941.483,
+    "end": 1944.965,
+    "text": "These cases will help illustrate the notion of causal adequacy.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1945.645,
+    "end": 1947.186,
+    "text": "And here's Professor Okasha at",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1949.54,
+    "end": 1955.405,
+    "text": " I guess, some kind of a legal desk on the scales in the sections to come.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1955.665,
+    "end": 1962.631,
+    "text": "We have MLS and KS, and we're going to hear from both sides, and then we're going to get to decide.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1963.871,
+    "end": 1965.292,
+    "text": " So what are those two cases?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1966.092,
+    "end": 1974.075,
+    "text": "We're not going to go into them in detail here because there's some further sections of the paper that we will go into that address them.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1974.796,
+    "end": 1982.259,
+    "text": "But the two cases are the non-social trait case where it's argued that the KS is causally adequate in this example.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1983.513,
+    "end": 1989.178,
+    "text": " because the trait evolves directly benefiting the individuals that have it, not the social partners or their groups.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 1989.938,
+    "end": 2006.573,
+    "text": "So, hint, in situations where traits are best understood as influencing the bearer of the trait's fitness, and that group fitness is primarily constituted by the summation of individual fitnesses, kin selection is causally adequate.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2007.473,
+    "end": 2011.397,
+    "text": "Whereas in section 4.2, genotypic selection with meiotic drive,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2012.569,
+    "end": 2034.977,
+    "text": " genotypic selection with drive case shows that sometimes the mls approach is causally adequate while the ks selection is not and so on the bottom left is an image meme pick your side but it has to do with the equal time fallacy which here's not really a fallacy but it's just the idea that for every opinion presenting some alternative opinion can be useful",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2035.817,
+    "end": 2047.476,
+    "text": " although people have second level debates of where and when and how it's useful and then on the right is um some hexagrams from the I Ching and if you look up Fernando Castro Chavez",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2048.393,
+    "end": 2059.519,
+    "text": " Their work has gone pretty deep into some esoterica of biology, DNA, interesting stuff with I Ching, but it's based upon this principle of opposition.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2059.539,
+    "end": 2061.961,
+    "text": "There's kind of a binary state for each of the hexagrams.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2062.141,
+    "end": 2066.243,
+    "text": "So sometimes just by having juxtaposition, we're going to learn a lot.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2067.144,
+    "end": 2075.008,
+    "text": "And if anything, this paper is helping us see where KS and MLS are one and the same, but also...",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2076.109,
+    "end": 2076.769,
+    "text": " They're differentiable.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2077.209,
+    "end": 2078.53,
+    "text": "So that's kind of the fascinating part.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2079.61,
+    "end": 2081.251,
+    "text": "Okay, here's another image meme.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2081.951,
+    "end": 2095.615,
+    "text": "So from section three, while it is true that MLS and KS inequalities are satisfied in exactly the same circumstances, it does not follow the decompositions constitute equally good causal representations of the evolutionary process.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2095.715,
+    "end": 2098.076,
+    "text": "And the guy's like, oh, that's kind of interesting.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2098.896,
+    "end": 2100.256,
+    "text": "Second row from section four.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2100.736,
+    "end": 2102.337,
+    "text": "Those are the two cases just described.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2104.113,
+    "end": 2130.025,
+    "text": " this ending of section four it's written there's a more general moral namely that the isomorphism identical structure of fitness structures does not necessarily imply isomorphism of the causal facts giving rise to those fitness structures and the guy's like oh that is very interesting that just because a fitness structure is a given way that the causal structure of the world might be different or multiple causal structures might map on to different fitness structures",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2131.035,
+    "end": 2146.367,
+    "text": " Third row, it is striking that although the genotype selection would drive and non-social trait cases are formally identical given the particular parameter values chosen, the MLS approach provides causal insight in the former but not the latter case and vice versa for KS.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2147.128,
+    "end": 2155.934,
+    "text": "So in the third row, the guy's like, whoa, I'm kind of starting to get it that there's a formal equivalence between KS and MLS, yet...",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2156.855,
+    "end": 2159.936,
+    "text": " they are also providing different causal explanations.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2159.996,
+    "end": 2169.32,
+    "text": "So in a scientific embodied situation, that doesn't mean that they're equally good to myself or to a reviewer too, yet they do have a formal equivalence, but that's not everything.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2170.103,
+    "end": 2184.674,
+    "text": " And then in the bottom row, to make progress, we need to clarify the notion of causal adequacy and then to find a general account of when kin selection and multilevel selection do and do not yield causally adequate descriptions of evolution in structured populations.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2185.175,
+    "end": 2187.616,
+    "text": "And that's like, whoa, now I'm ready to write that paper.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2188.957,
+    "end": 2193.121,
+    "text": "So on to section five, causal adequacy, a graphical approach.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2193.761,
+    "end": 2198.525,
+    "text": "So the basic idea in 5.1 is simple, according to Akasha.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2199.918,
+    "end": 2210.761,
+    "text": " A decomposition of evolutionary change is causally adequate if and only if the statistical associations that appear in the components reflect direct causal influences between the variables in question.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2211.362,
+    "end": 2216.783,
+    "text": "And so one can imagine that there's two ways in which that decomposition can fail to be causally adequate.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2217.383,
+    "end": 2219.804,
+    "text": "They're basically false positives and false negatives.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2220.564,
+    "end": 2225.166,
+    "text": "The first is you could have statistical associations that are spurious.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2226.937,
+    "end": 2233.281,
+    "text": " There's an edge between variables that are not actually involved in a causal influence, like changing one wouldn't directly change the other.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2234.261,
+    "end": 2243.286,
+    "text": "Or secondly, you might have statistical associations between variables that only indirectly causally influence each other.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2243.827,
+    "end": 2246.088,
+    "text": "And the meaning of indirect will be coming clear.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2247.489,
+    "end": 2255.491,
+    "text": " So to make this graphical and have a visual intuition, Akasha writes, the ideas are best illustrated by using causal graphs or path diagrams.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2256.291,
+    "end": 2265.794,
+    "text": "So again, we want to identify and have maximal statistical power to identify correlates of causes.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2266.754,
+    "end": 2269.295,
+    "text": "Correlates don't need to be just linear correlation.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2270.075,
+    "end": 2276.117,
+    "text": "More generally, they can be considered in a mutual information framework, but we want to reduce",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2277.29,
+    "end": 2283.674,
+    "text": " our false positive causal assertions, spurious findings, and our false negative causal assertions.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2284.515,
+    "end": 2299.125,
+    "text": "So this is kind of an empirical way to be sidestepping or working with the correlation is not causation question, which is to say, we're looking for correlates and not thinking that they're deeper than that of causates in the world.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2300.288,
+    "end": 2308.941,
+    "text": " And this isn't an Active Inference stream, but it is very related to some discussions that we've had, for example, in Active Inference live stream number 14.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2309.762,
+    "end": 2313.267,
+    "text": "And so here's just a slide for those who want to look at it.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2315.455,
+    "end": 2325.787,
+    "text": " Here's how Markov and the more general mathematical case was deployed by Pearl and others in the late 80s in the context of Bayesian statistics.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2326.328,
+    "end": 2333.156,
+    "text": "And then how Carl Friston and the work with free energy principle and active inference is bringing a new light to that.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2335.039,
+    "end": 2343.902,
+    "text": " And then also just to show that these kinds of graphical models have been applied to population genetics, and that's what we're going to see coming up.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2344.742,
+    "end": 2350.323,
+    "text": "But also these models have been applied to action perception models.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2350.883,
+    "end": 2353.204,
+    "text": "So here's like one action perception model.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2355.645,
+    "end": 2363.827,
+    "text": "And here's an example of the partially observable Markov decision process that's very commonly used in modern active inference simulations.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2365.216,
+    "end": 2375.02,
+    "text": " But we're going to keep on with the population genetics, but just know that this Bayesian graph framework, also one could ask about causal adequacy and so on in cognitive models.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2376.081,
+    "end": 2381.643,
+    "text": "So figure two, this is a case where kin selection is going to be causally adequate.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2383.664,
+    "end": 2391.267,
+    "text": "The reason why it's causally adequate is because we're going to go back to equation seven.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2392.401,
+    "end": 2398.523,
+    "text": " where the RB and the C terms are part of the decomposition of the overall price equation.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2399.263,
+    "end": 2406.605,
+    "text": "So the decomposition is not between groups, but rather it's being framed as a within group question about costs and benefit times relatedness.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2408.286,
+    "end": 2419.209,
+    "text": "Now we're going to imagine these three variables, P, that's the individual's genotype, P prime, the partner's genotype, and then the individual fitness for a given individual.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2420.43,
+    "end": 2425.271,
+    "text": " The direct effect on fitness is involving a negative C coefficient.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2425.291,
+    "end": 2432.233,
+    "text": "So I've added a red arrow, hopefully not confusingly with the red of multi-level selection, but just to be kind of like a local red here.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2433.273,
+    "end": 2446.536,
+    "text": "This edge has a C, and then this edge has an R, the bottom, and the right edge has a B. So this is how you can find the covariance between any two variables on an acyclic causal graph.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2447.355,
+    "end": 2456.282,
+    "text": " So like the R times B, if you imagine each of them were one half, by the time you get around the horn, you would have like one quarter of an effect.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2456.663,
+    "end": 2461.427,
+    "text": "And that's exactly the rules of covariance concatenation on graphs.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2462.828,
+    "end": 2474.818,
+    "text": "And so again, figure two is directly representing the causal paths of like the variables on the right side and the way that they influence what's on the left side.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2475.879,
+    "end": 2481.641,
+    "text": " There's one arrow that could be small or large in effect of direct effects on fitness from individuals.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2482.321,
+    "end": 2485.922,
+    "text": "And then this is around the horn mediated by partners' characters.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2486.642,
+    "end": 2494.044,
+    "text": "So again, just to provide a little context, we're using math and statistics to integrate how causes interact.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2495.115,
+    "end": 2503.165,
+    "text": " or one could take a slightly instrumental turn and say to integrate our modeling of how the causes are interacting.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2503.686,
+    "end": 2511.095,
+    "text": "So figure two is describing a situation where if that were really how things were, then kin selection would be doing great.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2512.757,
+    "end": 2512.977,
+    "text": "Okay.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2513.948,
+    "end": 2524.573,
+    "text": " Now there's a bit of an exploration, similarly to how the kin selection decomposition didn't include multiple levels.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2525.393,
+    "end": 2527.394,
+    "text": "Now that is going to be connected.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2529.193,
+    "end": 2554.554,
+    "text": " facilitate comparison between mls and ks we need to add these population level variables the group p value p big p sub k and group fitness big w sub k those variables have to be added into the causal graph so there's going to be a slight shift in notation instead of big p and big w which range over groups we're going to write big p and big w both of sub i's which range over individuals",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2555.635,
+    "end": 2563.217,
+    "text": " So this notational change does not affect the MLS decomposition because the covariances have been redefined as well.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2563.357,
+    "end": 2584.262,
+    "text": "So it's a slight relabeling that's just describing some tautological details that bring kin selection into a general framework where we can, for both MLS and KS, think of them basically next to each other rather than always needing to mediate through the price equation.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2586.674,
+    "end": 2589.916,
+    "text": " And then there's this very interesting comment later on.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2591.037,
+    "end": 2598.963,
+    "text": "Metaphysically, big P sub i is determined by little p and little p prime, not vice versa.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2599.123,
+    "end": 2601.645,
+    "text": "So the group character, group,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2602.608,
+    "end": 2606.27,
+    "text": " big P is determined by the little P character, not vice versa.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2607.05,
+    "end": 2615.554,
+    "text": "It's natural to depict this asymmetry by drawing arrows from Pi, little Pi and little Pi prime to big Pi as in figure three.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2616.215,
+    "end": 2627.06,
+    "text": "So figure three is representing the way in which like it's related to the concept of supervenience, which is about how systems are related to their constituents.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2628.547,
+    "end": 2654.766,
+    "text": " then there's the writing however this is a controversial metaphysical issue that it is better not to prejudge sorry i had to sneeze um in a causal graph where one variable supervenes on another when we consider hypothetically intervening on the supervenient variable",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2656.092,
+    "end": 2662.013,
+    "text": " We do not hold fixed the variables on which it supervenes, but rather alter them to preserve consistency.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2662.213,
+    "end": 2670.295,
+    "text": "Modulo, barring this convention, causal arrows going out of supervenient variables, if any, can be understood in the usual way.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2671.155,
+    "end": 2678.937,
+    "text": "And so check out the supervenience literature and also causal exclusion in the philosophy of mind literature.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2679.137,
+    "end": 2682.338,
+    "text": "And here's that J. Kim book that's cited.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2683.038,
+    "end": 2683.818,
+    "text": "Okay, moving forward.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2685.1,
+    "end": 2693.304,
+    "text": " Figure four, to summarize, it's possible to incorporate variables that are mathematically related, such as individual and group variables on a causal graph.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2694.305,
+    "end": 2703.55,
+    "text": "First, as if it's just a simple first thing to do, we need to determine the direction of metaphysical determination between the variables.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2704.47,
+    "end": 2713.195,
+    "text": "That might involve modal intuitions, empirical knowledge of the system being modeled or both, and then arrows can be drawn that reflects that relationship,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2714.511,
+    "end": 2732.269,
+    "text": " So here in figure four, we are seeing individual fitness and partner fitness being linked to group fitness in A. And there's a blue line because hint, hint, this is mapping really well to kin selection where the group fitness is resulting from how well individuals and their partners do.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2733.459,
+    "end": 2741.605,
+    "text": " Whereas here on the right, we see that the group fitness big W has an arrow pointing to individual and partner fitness.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2742.025,
+    "end": 2751.572,
+    "text": "So individuals within the group are doing as well as they can conditioned upon the group fitness and an allocation mechanism",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2753.123,
+    "end": 2761.293,
+    "text": " And so that is going to be really the heart of where Akasha is going to say that KS or MLS are going to have causal adequacy.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2762.155,
+    "end": 2770.505,
+    "text": "And there's an example provided of the situation in 4B that's really related to like the stag hunt and the work of scrims and others.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2771.266,
+    "end": 2793.213,
+    "text": " which is to say like if the group goes hunting and we're only going to work together to get one big game and then split it up the allocation mechanism that's like more like a multi-level selection situation because different groups of hunters are going to be comparing to each other based upon how well they can hunt and then secondarily how well they allocate within",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2794.033,
+    "end": 2815.384,
+    "text": " versus if everybody's going to go off individually into the forest and look for small stuff then it could be said that the food returns of the group like the group fitness are caused in that direction from the individual to the group so let's continue with cases where kin selection is causally adequate",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2816.317,
+    "end": 2842.628,
+    "text": " so in this case that is going to be graphed out here the group fitness big w is determined by little w and little w prime just as in figure 4a so again that's figure 4a on the left here what leads the group to have the fitness value it does is precisely that its constituent individuals have the fitness value that they do so here we have all the individuals and their covariances that's relatedness",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2843.772,
+    "end": 2863.099,
+    "text": " And then there's a separate creation of group fitness via, here's the C, and this is the cost to individual fitness, and here's the relatedness, and then ultimately the benefits as well on this other edge, I believe.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2864.159,
+    "end": 2872.642,
+    "text": "And the group fitness is being constituted by, in a primary way, individual's fitness.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2873.547,
+    "end": 2882.437,
+    "text": " Whereas the group character is only having a small or negligible or not primary role.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2883.198,
+    "end": 2886.842,
+    "text": "And so in this situation, kin selection is causally adequate.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2888.224,
+    "end": 2894.151,
+    "text": "And this is an earlier quote that's related to that, which is,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2895.942,
+    "end": 2906.989,
+    "text": " If the group is a mere collection of individuals, each of which is capable of surviving and reproducing independently, then intuitively fitness is a property of individuals in the first instance and the group fitness is derivative.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2907.649,
+    "end": 2909.671,
+    "text": "So that's kind of the case that we're looking at here.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2910.511,
+    "end": 2912.893,
+    "text": "That's figure five where kin selection is adequate.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2914.994,
+    "end": 2922.219,
+    "text": "Now, suppose we modify figure five by adding causal arrows from PI to WI and vice versa.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2923.413,
+    "end": 2948.076,
+    "text": " yielding figure six we no longer have a non-social trait so that's the difference between figure five and six the crossed over what one individual's trait is is influencing the fitness of another as opposed to only influencing its own fitness so now an individual's fitness is causally influenced by social partners we no longer have a non-social trait flip it we have a social trait",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2950.011,
+    "end": 2952.753,
+    "text": " The kin selection approach is still causally adequate.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2953.393,
+    "end": 2956.436,
+    "text": "And the B wasn't present here.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2956.456,
+    "end": 2962.58,
+    "text": "That was my mistake because there's no benefit being provided to partners yet.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2962.72,
+    "end": 2964.881,
+    "text": "So this is like a proto kin selection case.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2965.822,
+    "end": 2968.144,
+    "text": "And now it's like a real pure kin selection case.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2968.164,
+    "end": 2970.265,
+    "text": "We have the RB going around the horn.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2970.746,
+    "end": 2972.107,
+    "text": "That's the indirect path of fitness.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2973.808,
+    "end": 2977.23,
+    "text": " So where does figure six apply to?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2977.63,
+    "end": 2981.232,
+    "text": "Which is kind of like asking, where is kin selection going to be valid in this way?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2982.333,
+    "end": 2989.718,
+    "text": "And the key features are the presence of social interactions between individuals within groups, but the absence of a causal influence of group P value.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2989.998,
+    "end": 2994.541,
+    "text": "Again, that's the big P, the genotype value on either individual or group fitness.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 2995.341,
+    "end": 3002.066,
+    "text": "So it will be true if there's no group level functional organization and the groups exhibit no emergent properties of their own.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3004.352,
+    "end": 3008.615,
+    "text": " Many mammalian social groups, for example, arguably satisfy these conditions.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3010.177,
+    "end": 3020.465,
+    "text": "And then, as a hint looking forward, extensive social interactions take place within such groups, but the groups are not functionally integrated in the way that eusocial insect colonies are, for example.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3021.105,
+    "end": 3023.127,
+    "text": "Okay, now we turn to multilevel selection.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3024.266,
+    "end": 3031.311,
+    "text": " So figure eight in section 5.4, cases where multilevel selection is causally adequate.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3032.051,
+    "end": 3038.836,
+    "text": "So to depict a case where MLS is causally adequate, let us frame shift downwards again, as in the section 4.2.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3039.396,
+    "end": 3042.018,
+    "text": "So individuals are alleles and the groups are diploid.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3042.879,
+    "end": 3048.963,
+    "text": "So we're thinking about in a way like the minimum group, which is a diploid individual.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3050.325,
+    "end": 3051.606,
+    "text": " So that's kind of interesting.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3052.026,
+    "end": 3055.207,
+    "text": "This is really quite general in how it's being presented.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3056.308,
+    "end": 3064.752,
+    "text": "And first we're going to assume the situation where meiosis and gamete arrangement is fair, but that is going to be relaxed later.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3065.473,
+    "end": 3079.2,
+    "text": "But there are fitness differences between genotypes because of course, without differences in fitness and heritability of the fitness with respect to the phenotype and the environmental context, then you don't have this kind of directional selection.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3080.673,
+    "end": 3104.059,
+    "text": " There's two key points that make MLS justified and that's first that the group fitness is primary You'll note that the individual characters constitute a group character the group character then influences group fitness and Then the group fitness is going to propagate back to individuals fitness so",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3104.997,
+    "end": 3128.191,
+    "text": " that's different than where the individual fitness in the kin selection situation was like influencing its own fitness very directly whereas here individual fitness is better understood as being like partitioned or allocated or caused by how good the group does um so there's more explanation of that but this is genotypic selection with fair meiosis selection on a diploid organism",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3131.078,
+    "end": 3136.945,
+    "text": " This is just for anyone who wants to read it, but it's quite interesting discourse as much of the paper is.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3139.308,
+    "end": 3140.189,
+    "text": "And then lastly,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3141.641,
+    "end": 3154.704,
+    "text": " they're going to explore going a little bit deeper into this multi-level selection situation by also adding in the capacity for there to be genotypic selection as well as meiotic drive.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3155.384,
+    "end": 3163.685,
+    "text": "So the allele is going to be a meiotic driver, which means that it can end up with more than its proportionate share of the group.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3164.305,
+    "end": 3166.906,
+    "text": "So in the diploid case, that means like,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3168.197,
+    "end": 3171.18,
+    "text": " it ends up in the gammy more than 50% of the time.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3171.6,
+    "end": 3173.401,
+    "text": "But also this generalizes a lot.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3173.541,
+    "end": 3180.167,
+    "text": "So this could be like fair meiosis would be 100 people and the group makes $100 and everybody gets $1.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3181.508,
+    "end": 3195.88,
+    "text": "And the meiosis distortion, the drive distortion would be like somebody is taking more than their share, which is equivalent to saying somebody else is getting less than their share under that null expectation of uniform distribution across individuals.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3198.447,
+    "end": 3213.52,
+    "text": " This case is depicted in figure nine, which differs from figure eight in that an individual's allelic fitness, W, little i, now depends not just on group fitness, but also on the share of the group fitness that accrues to it, which is the allocation mechanism.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3213.941,
+    "end": 3223.489,
+    "text": "Since meiosis is not there, this share is not constant for all i. So that share may be measured by the deviation of individual's fitness from the mean fitness of its group.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3225.509,
+    "end": 3236.612,
+    "text": " Here, we have this kind of structure in eight, and then in nine, we see another node, the allocation mechanism, and that is nuancing individual's fitness.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3237.372,
+    "end": 3242.673,
+    "text": "But still, it's fair to say that like the business is making money and then allocating the profits.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3242.873,
+    "end": 3245.154,
+    "text": "That's like the multi-level selection situation.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3245.914,
+    "end": 3252.316,
+    "text": "Now the allocation could be fair or unfair, could be even or uneven, but that's different than,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3253.757,
+    "end": 3269.293,
+    "text": " a bunch of people are making money on individual businesses and then they're either totally just summating to a group outcome in figure five or in figure six, they're benefiting related people by giving them some of their money.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3270.151,
+    "end": 3277.841,
+    "text": " And then they're carrying a leal that is able to spread when the benefits provided times the relatedness are greater than the costs.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3278.481,
+    "end": 3287.313,
+    "text": "So, kin selection is like describing an aggregation of economic entities with a post hoc group fitness.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3287.673,
+    "end": 3288.514,
+    "text": "That's kind of the mood.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3289.375,
+    "end": 3299.062,
+    "text": " Whereas multi-level selection is seeing the causal relevance of the group's embodiment as upstream of their fitness.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3299.242,
+    "end": 3304.926,
+    "text": "And then there is allocation mechanisms, but the group's fitness is still important.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3306.527,
+    "end": 3308.529,
+    "text": "And now we're coming towards the end.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3311.69,
+    "end": 3320.034,
+    "text": " Interestingly, the circumstance where a causal influence along one path exactly cancels that along another is well known in the literature on causal modeling.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3320.454,
+    "end": 3325.637,
+    "text": "Pearl 2000, Causality, refers to this as instability, whereas Spiritus et al.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3326.337,
+    "end": 3327.538,
+    "text": "2001 call it unfaithfulness.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3327.698,
+    "end": 3328.538,
+    "text": "And here are those two books.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3329.719,
+    "end": 3349.789,
+    "text": " this phenomena complicates the task of inferring causality from correlational data for it implies that the joint probability distribution on a set of observed variables will be a misleading guide for the underlying causal structure so you can think about that like manifolds of misleading and misinformation amidst maps of meaning",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3351.897,
+    "end": 3361.924,
+    "text": " Another way to say it would be that these are points or manifolds or subspaces within cognitive experimental statistical spaces where",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3363.183,
+    "end": 3369.629,
+    "text": " resampling is uninformative or conflated or collinear or multilinear, as it's called in the linear regression case.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3370.349,
+    "end": 3391.307,
+    "text": "So in other words, these are situations where it's like, okay, I'm redrawing and I'm finding that economic outcomes are associated with this health outcome, but the way that I'm redrawing and modeling and the variables that are being included in the model is not reducing my uncertainty on whether one is causing the other.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3394.758,
+    "end": 3403.183,
+    "text": " This is precisely what we see in the genotypic selection with drive case, and it's precisely why the kin selection approach, as applies to this case, is misleading.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3404.744,
+    "end": 3418.812,
+    "text": "Because although related individuals do tend to do better, for example, while there's still an ability for this drive allele to be spreading in the population, it might look like kin selection is in effect.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3419.933,
+    "end": 3422.435,
+    "text": "But in fact, the causal graph",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3423.402,
+    "end": 3435.669,
+    "text": " is better understood as being a group fitness with an allocation differential rather than an unequal emergent summation, which is what the kin selection approach would kind of lead one to believe.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3438.731,
+    "end": 3450.558,
+    "text": "The above authors emphasize, that's Spiritus and Pearl, that instability and unfaithfulness respectively are likely to be a rare circumstance in practice as it only arises for specific parameter values.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3451.206,
+    "end": 3454.847,
+    "text": " Well, everything arises for specific parameter values.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3455.147,
+    "end": 3456.528,
+    "text": "That's what parameters do.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3457.028,
+    "end": 3467.852,
+    "text": "So to me, it seems like it's an empirical question and a situational one to what extent instability or other statistical artifacts might be influencing our work.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3470.413,
+    "end": 3477.035,
+    "text": "Again, it is interesting to consider whether Figure 9 might apply to organisms and social group rather than genes and genomes.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3479.056,
+    "end": 3485.108,
+    "text": " The crucial feature is that group fitness determines individual fitness, but the group's fitness is unequally divided.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3486.33,
+    "end": 3487.192,
+    "text": "Allocation mechanism.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3489.147,
+    "end": 3493.631,
+    "text": " so individuals can enhance their fitness either by boosting group fitness or by boosting their share of it.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3494.452,
+    "end": 3507.945,
+    "text": "Conceivably, this could apply to social groups with cooperative breeding and or reproductive division of labor, where individuals can only reproduce as part of their group, but in which reproductive competition among group members is not fully suppressed.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3508.546,
+    "end": 3513.691,
+    "text": "In such scenarios, the multi-level selection approach is likely to be causally adequate.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3514.921,
+    "end": 3521.455,
+    "text": " So, humans, bees, ants, termites, what do people think?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3524.332,
+    "end": 3544.439,
+    "text": " let's talk a little bit more about implications and some philosophy points so the foregoing analysis has a number of implications for the debate between kin selection and multi-level selection so these are the real takeaways that i think can move the discussion forward and they've been demonstrated very well in the paper first",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3545.359,
+    "end": 3572.417,
+    "text": " widespread view that the choice between ks and mls is a matter of modeling preference or computational convenience is untenable the formal equivalence of ks and mls does not imply that they constitute equally adequate causal representations of evolutionary change so just because you can fit any given data set with a quadratic regression or a linear regression or a negative exponential regression just because you can",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3573.516,
+    "end": 3581.524,
+    "text": " And even if they fit as well, doesn't mean that it's just purely a matter of preference.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3582.825,
+    "end": 3586.769,
+    "text": "Again, though, even in a deeper sense, preference is what breaks symmetry.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3587.55,
+    "end": 3592.234,
+    "text": "Second, claims for the global superiority of one of the two approaches are untenable.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3593.1,
+    "end": 3600.985,
+    "text": " Given our analysis of causal adequacy, it seems likely that empirical cases exist where only one of the two approaches counts as causally adequate.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3601.766,
+    "end": 3603.107,
+    "text": "So footnote 26.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3604.328,
+    "end": 3611.453,
+    "text": "So people have said that kin selection or multilevel selection in general, in the abstract,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3612.233,
+    "end": 3640.623,
+    "text": " has like won some sort of perceived battle and so these two points of akasha are really important to take because the first one is saying yes they're formally equivalent however there's more to it than than it just being a matter of aesthetics yet second claim at a deeper level the global battle cannot be won by one or the other um",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3641.559,
+    "end": 3644.58,
+    "text": " There's some notes on where KS fails.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3645.08,
+    "end": 3646.461,
+    "text": "So where does KS fail?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3648.081,
+    "end": 3651.002,
+    "text": "And this is always for the second less serious reason.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3651.582,
+    "end": 3655.744,
+    "text": "That is the B and the C terms of equation seven reflect indirect causal influences.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3657.164,
+    "end": 3664.227,
+    "text": "So if you go KS and you fail, it's because the B and the C terms are actually indirect.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3665.847,
+    "end": 3670.549,
+    "text": "By contrast, in some cases, the MLS fails to be causally adequate for the more serious reason.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3671.471,
+    "end": 3680.355,
+    "text": " Namely, the between-group term of equation 3 reflects correlation between variables that do not causally influence each other at all, but are joint effects of a common cause.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3680.955,
+    "end": 3688.918,
+    "text": "So in the MLS case, you might be accidentally doing a false positive, inferring a relationship that doesn't exist.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3689.998,
+    "end": 3694.14,
+    "text": "Whereas in the KS case, you're more in the false negative situation.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3695.643,
+    "end": 3696.503,
+    "text": " Pretty interesting.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3697.364,
+    "end": 3698.184,
+    "text": "And then on the right side.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3699.044,
+    "end": 3703.866,
+    "text": "This consideration highlights the fact that the chaos approach is reductionistic or individualistic.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3704.886,
+    "end": 3724.692,
+    "text": "Such an approach must always be possible since the evolutionary change of interest, delta P bar, is the change in the population mean of an individual property, P sub i. So in other words, because there are individuals, an individual-centric story is always going to be possible.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3726.049,
+    "end": 3732.135,
+    "text": " But that doesn't mean that, as he says, it does not follow that the chaos approach is always superior.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3732.996,
+    "end": 3743.127,
+    "text": "Where the causal path from P sub i and P prime sub i to W sub i, so the path from individual and partner genotype to individual fitnesses, are mediated by the group",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3744.048,
+    "end": 3767.898,
+    "text": " genotype and fitness value character value as in figures eight and nine the mls approach offers more insight this is an instance of the general moral that reductionistic explanations in science are not always superior great point um the dis the distinction between little fitness determining big fitness and the converse",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3769.013,
+    "end": 3771.295,
+    "text": " is clear at the abstract level of causal graphs.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3771.535,
+    "end": 3773.717,
+    "text": "Like once we draw it, it's easy to see it.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3774.438,
+    "end": 3780.102,
+    "text": "But it's not easy to see or say what biological features determine which side a given case falls on.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3781.283,
+    "end": 3786.788,
+    "text": "One relevant feature is whether individuals are capable of surviving and reproducing independently of their group,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3788.254,
+    "end": 3798.476,
+    "text": " If individuals can reproduce outside of a group context, then it is natural to regard a group's fitness as an aggregation of individual fitnesses, even if there are extensive social interactions.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3799.076,
+    "end": 3813.118,
+    "text": "So the arrow runs from little w to big W. But if it is not possible for individuals to reproduce outside of the group context, then the group is the primary bearer of fitness and the individual fitness is derivative.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3813.998,
+    "end": 3816.999,
+    "text": "But can a mammal reproduce outside of a group?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3819.482,
+    "end": 3835.914,
+    "text": " By the same token, if there is extensive reproductive division of labor within a group with some individuals specialized in somatic and others in reproductive tasks, as in some eusocial insect colonies, then the group is naturally treated as the primary bearer of fitness.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3837.179,
+    "end": 3841.5,
+    "text": " This conceptualization is standard, at least among some social insect biologists.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3842.08,
+    "end": 3853.664,
+    "text": "For example, Sealy, 1997, honeybee colonies are group level adaptive units, and Huldobler and Wilson, the super organism in 2009.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3856.684,
+    "end": 3865.407,
+    "text": "Let's take a journey back where way long ago, we saw that dissenters from the equivalence thesis",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3866.505,
+    "end": 3877.068,
+    "text": " included Van Veelen, Holdobler and Wilson, 2009, as well as some other work that involves Wilson and collaborators like the very famous Novak et al.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3877.468,
+    "end": 3877.709,
+    "text": "work.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3879.789,
+    "end": 3882.55,
+    "text": "So let's try to make sense of this.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3883.71,
+    "end": 3894.974,
+    "text": "Holdobler and Wilson, typified by their publications, reject the equivalence thesis in terms of the formal relationship between kin selection and multilevel selection.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3896.929,
+    "end": 3911.453,
+    "text": " However, they also see the superorganism so-called as being the bearer of traits and therefore, as we've seen today, more consistent with potentially a multi-level selection decomposition.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3913.514,
+    "end": 3921.116,
+    "text": "This is something that in lab meeting and in future discussions, it'll be great to dive into because the superorganism framing",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3922.253,
+    "end": 3924.374,
+    "text": " which is consistent with ants being social.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3925.375,
+    "end": 3930.298,
+    "text": "In other words, social among organisms means they're super organismal.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3930.718,
+    "end": 3932.339,
+    "text": "They're supra organismal.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3933.56,
+    "end": 3948.89,
+    "text": "That framing is relatively recent, whereas some of the earlier classic myrmecology work, ant work, by William Morton Wheeler, like 1911, the ant colony as an organism, takes that,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3950.725,
+    "end": 3956.629,
+    "text": " And that's exactly what was being hinted at in this meme, which is, are the ants like, they're so social.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3957.07,
+    "end": 3966.077,
+    "text": "You know, those nest mates, they're so individualistic, but also so driven by kin selection that it's like a super organism, how altruistic they are.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3966.497,
+    "end": 3971.0,
+    "text": "You know, when they sting and they defend the colony, that would be like truly social.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3971.541,
+    "end": 3974.343,
+    "text": "And that might be compatible with the kin selection framework.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3974.643,
+    "end": 3976.845,
+    "text": "Could they reproduce outside of a colony context?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3978.055,
+    "end": 3991.824,
+    "text": " Alternatively, have ants who are obligately eusocial colony living, have ants become eusocial, which is to say not super organismal, but rather organismal.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3992.813,
+    "end": 3995.056,
+    "text": " And how does that matter or differ?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 3995.597,
+    "end": 4002.047,
+    "text": "But these are all really important questions, again, that those who study insects and other systems would be keen to look at.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4002.908,
+    "end": 4008.477,
+    "text": "What about those ants that can reproduce just via clonal reproduction, like the clonal raider ants?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4014.218,
+    "end": 4032.307,
+    "text": " In cases where group fitness is primary and suppression mechanisms work near perfectly, so a well-regulated colony, a non-cancerous body of multicellular organisms, etc., it is common to treat the whole group as the adapted unit rather than as an aggregation of lower level units.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4033.027,
+    "end": 4039.39,
+    "text": " Biologists think like this when they treat a multicellular organism as an adapted unit rather than a mere aggregation of cell lineages.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4040.21,
+    "end": 4050.255,
+    "text": "A eukaryotic cell is an adapted unit rather than a mere aggregation of prokaryotic units, and a diploid genome as an adapted unit rather than a mere aggregation of alleles.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4051.315,
+    "end": 4059.499,
+    "text": "And Okasha's work is supporting that conceptualization because even when there's an imperfect suppression mechanism,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4060.481,
+    "end": 4069.805,
+    "text": " If the dominant arrow is still running from group fitness to individual fitness, even with a distortion mechanism, MLS is still causally adequate.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4070.946,
+    "end": 4074.447,
+    "text": "The important contrast is with cases where individual fitness is primary.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4075.007,
+    "end": 4082.01,
+    "text": "That is the arrow runs from little W to big W, in which case the MLS approach is causally inadequate.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4082.711,
+    "end": 4085.272,
+    "text": "And so the KS might play a role.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4086.727,
+    "end": 4110.927,
+    "text": " in certain empirical cases it may be indeterminate which causal graph fits the case best and thus indeterminate whether ks or mls is causally adequate and here are certain gray zones slime molds social bacteria volvox certain marine invertebrates in these cases it is unclear whether w metaphysically determines a big w metaphysically determines little w or vice versa",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4112.298,
+    "end": 4113.238,
+    "text": " But this is not a problem.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4113.858,
+    "end": 4119.36,
+    "text": "Indeed, such indeterminacy is only to be expected given the literature on evolutionary transitions.\"",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4119.96,
+    "end": 4141.467,
+    "text": "So I think this is a good, but it's a partial point, because while it's true that the literature on evolutionary transitions means that we might see a diversity of ways of existing before, during, and after a given transition, I want to add one extra point here, which is a 2019 paper by Lynx-Fayer and Johnson,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4142.358,
+    "end": 4164.602,
+    "text": " which is that within the social insects and within this evolutionary transitions literature more broadly, we can't use a ladder model as if there was some scalar value that represented, for example, sociality or extent of multicellularity, and that we could predict what direction things were going to be moving towards or not.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4165.022,
+    "end": 4167.823,
+    "text": "Not saying it's impossible to predict, but finding...",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4170.223,
+    "end": 4195.528,
+    "text": " species at ladder step four without more analysis and thinking about it in a higher dimensional space in terms of how their sociality is being elaborated quantified proxied etc it's not like there's this sweeping attraction from living in a solitary context to a social and then to use social there's more to say on that but just wanted to kind of drop that note",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4197.875,
+    "end": 4200.237,
+    "text": " How is this related to prior work?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4200.717,
+    "end": 4201.338,
+    "text": "So 6-1.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4203.199,
+    "end": 4211.286,
+    "text": "In recent incarnations of the KS versus MLS debate in biology, a number of authors have argued in favor of one approach and against the other.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4211.726,
+    "end": 4213.788,
+    "text": "Isn't that what happens so often?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4214.809,
+    "end": 4216.41,
+    "text": "These arguments are of two main sorts.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4217.811,
+    "end": 4225.717,
+    "text": "First, protagonists either reject the formal equivalence of KS and MLS, the equivalence deniers, or",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4226.684,
+    "end": 4227.864,
+    "text": " their equivalence respectors.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4228.585,
+    "end": 4233.707,
+    "text": "They accept the equivalence, but they advance pragmatic considerations in favor of one of them.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4234.527,
+    "end": 4238.209,
+    "text": "So why are there equivalence deniers?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4239.149,
+    "end": 4247.853,
+    "text": "The former is an option because to prove the formal equivalence of KS and MLS, the R, B, and C terms must be defined in a particular way.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4248.809,
+    "end": 4257.191,
+    "text": " So somebody might say that the terms lack meaning and therefore dispute that KS is going to apply broadly.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4258.392,
+    "end": 4259.652,
+    "text": "That's the point of Novak et al.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4261.192,
+    "end": 4270.055,
+    "text": "The second category of arguments, which is that there is an equivalence, however, there still is a reason to go for one over the other.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4271.69,
+    "end": 4279.894,
+    "text": " It's an option because predictably equivalent descriptions may differ in their computational tractability or ease of empirical application.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4280.534,
+    "end": 4285.476,
+    "text": "So someone might say, because it's simpler or because I'm familiar with it, this is just a superior way.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4285.836,
+    "end": 4287.137,
+    "text": "Like there's two ways to do it.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4287.697,
+    "end": 4293.34,
+    "text": "You know, you could cut it hamburger style, then hot dog style or vice versa, but I'm going to do it this way because that's how we do it.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4295.021,
+    "end": 4300.123,
+    "text": "The theory presented here also seeks to discriminate between KS and MLS, but in a different way.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4302.222,
+    "end": 4318.331,
+    "text": " Akash's approach has been to grant, at least for the sake of argument, the assumptions necessary to establish the formal equivalence of KS and MLS, but to emphasize another dimension, causal adequacy on which to compare the two approaches.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4319.551,
+    "end": 4329.797,
+    "text": "Unlike pragmatic factors, hinted at here, which are partly subjective, the question of whether a given description of evolutionary change is causally adequate is fully objective.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4331.758,
+    "end": 4334.862,
+    "text": " So long it is clear which causal graph is applicable.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4335.563,
+    "end": 4337.586,
+    "text": "Well, what does that mean?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4338.126,
+    "end": 4339.709,
+    "text": "So long as it is clear to who?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4340.55,
+    "end": 4342.112,
+    "text": "Which causal graph is applicable?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4343.193,
+    "end": 4344.675,
+    "text": "Where or why would that hold?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4345.549,
+    "end": 4349.09,
+    "text": " And how are we going to escape this partial subjectivity?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4349.83,
+    "end": 4356.353,
+    "text": "Now there's some very exciting recent work by Dalton S with the blanket index in free energy principle and g-theory.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4357.053,
+    "end": 4361.474,
+    "text": "And maybe that could make its way back into the evolutionary biology literature.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4362.795,
+    "end": 4364.035,
+    "text": "And then in conclusion.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4365.136,
+    "end": 4365.236,
+    "text": "So.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4366.499,
+    "end": 4373.702,
+    "text": " The opposition between kin selection and multilevel selection approaches to social evolution has long polarized evolutionary biologists.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4374.462,
+    "end": 4379.865,
+    "text": "Longer than people have even been alive in the field, there have been these debates.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4381.225,
+    "end": 4391.13,
+    "text": "In recent discussions, theorists have increasingly come to regard the two approaches as equivalent on the grounds that a correct expression for allele frequency change in structured populations can be written with either approach.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4392.452,
+    "end": 4401.675,
+    "text": " However, this establishes only that KS and MLS are formally equivalent, not that they constitute equally adequate causal descriptions of the evolutionary process.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4402.275,
+    "end": 4410.197,
+    "text": "And there's a really amazing link for later with active inference and the Aguilera paper, how particular is the physics of the free energy principle?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4410.617,
+    "end": 4421.14,
+    "text": "So how does the partitioning of the agent from the environment and perception, cognition, action, and impact, how does the partitioning in detail",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4422.324,
+    "end": 4448.343,
+    "text": " affect how particular how general how applicable a given principle or framework is really important in the evolutionary sciences and in the cognitive sciences and unsurprisingly at their intersection in evolutionary studies of cognitive systems the theory presented here does not pretend to be complete even if the theory is broadly on the right lines a number of important issues remain",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4449.944,
+    "end": 4458.692,
+    "text": " One is to get clearer about the implicit metaphysical commitments involved in the multilevel causal graphs above, which contain both individual and group variables.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4458.972,
+    "end": 4464.236,
+    "text": "So, one, how do we do sensemaking on complex multiscale Bayesian graphs?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4465.086,
+    "end": 4465.846,
+    "text": " critical question.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4466.666,
+    "end": 4476.209,
+    "text": "Another is to address the epistemological problem, how we come to know about things, of how we can tell which causal graph is correct in any given case.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4476.949,
+    "end": 4493.893,
+    "text": "So from a scientific practice epistemology perspective, let's say we were clear on the metaphysical commitments of multi-scale complex Bayesian graphs, how would we come to know and do model selection, validation, verification, and so on,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4494.807,
+    "end": 4501.233,
+    "text": " for a given case, a given system of interest, a given phenomena of interest, and a given data set that we have in hand.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4502.414,
+    "end": 4508.52,
+    "text": "And finally, further work is needed to map actual empirical cases onto the abstract framework developed here.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4509.561,
+    "end": 4513.525,
+    "text": "The cases discussed in the evolutionary transitions literature are an obvious starting point.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4514.366,
+    "end": 4516.748,
+    "text": "These all represent potential avenues for future work.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4517.699,
+    "end": 4524.848,
+    "text": " I'm super interested in this angle, and if anybody else has already done this or is interested in doing this, we should for sure talk more.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4526.851,
+    "end": 4535.582,
+    "text": "Lastly, the need for the above theory stems from the striking disjunction between the scientific explanations that evolutionary biologists aim to give, which are causal,",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4536.857,
+    "end": 4546.78,
+    "text": " Tinbergen's four questions style, and the formal models of the evolutionary process that they developed in which causal concepts do not feature explicitly.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4547.421,
+    "end": 4565.767,
+    "text": "For example, whether you're using Belzenstein's phylogenetic corrected regression or Landy and Arnold's multivariate quantitative genetic frameworks, or you're using some other formal model of evolution in terms of individuals and groups like the price equation, multilevel selection, kin selection, everything we've been talking about.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4567.148,
+    "end": 4570.403,
+    "text": " Cause is not in it unless it is.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4571.673,
+    "end": 4597.054,
+    "text": " And that is why it's such an innovation by Okasha to bring the directed Bayesian causal modeling framework to bear on the formal models of the evolutionary process, which without that Bayesian graph representation and decomposition is actually strikingly disjoint from the causal stories that evolutionary biologists tell and aim to tell.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4598.41,
+    "end": 4605.833,
+    "text": " This disjunction is not unique to evolutionary biology, less still so to social evolution theory, but it's a quite general problem.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4606.574,
+    "end": 4613.177,
+    "text": "It stems from the fact that a mathematical framework adequate for describing causal relations has only been developed fairly recently .",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4616.704,
+    "end": 4623.888,
+    "text": " That's super fascinating because one could replace a lot of the mentions of evolutionary biology with cognitive sciences.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4624.628,
+    "end": 4635.914,
+    "text": "And that would be like, hey, why weren't we having this causal discussion in the same way in cybernetics in the 50s, in ecological psychology in the 70s, in deep learning in the 90s?",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4636.494,
+    "end": 4642.357,
+    "text": "All of these things are being addressed in a new way in 2022 and beyond, in 2016 or before with this paper, but 2022 is where I'm at.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4647.406,
+    "end": 4658.055,
+    "text": " partially due to the propagation of concepts and frameworks and tools and software for causal analysis in this Bayesian graphical framework.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4658.436,
+    "end": 4668.404,
+    "text": "So the relevance of the Bayesian graphical framework in empirical and in basic research is really hard to assess at this time, but also hard to overstate.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4669.705,
+    "end": 4674.289,
+    "text": " Importing this framework into biology and the philosophy of biology is an important task for the future.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4674.91,
+    "end": 4678.913,
+    "text": "Pioneering first steps were taken by Shipley in 2000, but much remains to be done.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4679.834,
+    "end": 4685.438,
+    "text": "So that concludes our discussion today, the dot zero video.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4687.56,
+    "end": 4692.264,
+    "text": "There was a little bit of a live stream hiccup in the middle that I hope went okay on your side.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4693.225,
+    "end": 4695.527,
+    "text": "And let's just return to the title slide.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4696.55,
+    "end": 4704.281,
+    "text": " So the goal today was to learn about kin and multi-level selection models in the context of causal graphs on Bayes networks.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4705.323,
+    "end": 4708.688,
+    "text": "Two, to prepare for the upcoming Linksphere lab meeting next week.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4709.048,
+    "end": 4711.131,
+    "text": "And three, to initiate a new stream series",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4712.216,
+    "end": 4714.877,
+    "text": " Hopefully you have found these goals to be achieved.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4715.518,
+    "end": 4725.963,
+    "text": "If you have any other goals or if you have any other papers that you think would be cool to discuss in this format or something related to it, then for sure let me know because I'm down.",
+    "speaker": "SPEAKER_00"
+  },
+  {
+    "start": 4726.683,
+    "end": 4735.508,
+    "text": "So thanks everybody for watching and listening or reading or however, and see you in future streams.",
+    "speaker": "SPEAKER_00"
+  }
+]

@@ -1,0 +1,602 @@
+SPEAKER_02:
+Okay, so what we do at AtomWise, and this actually encompasses all of my personal research as well, which means that unlike our two colleagues, I can't present you with tons of stuff that directly talks about the data that I'm getting out of what I do, but I can sort of provide signs around it to get you an idea.
+
+But basically what we do, I was surprised to look at the demographics that we have as many biologists as showed up here.
+
+What we do is we try to detect the affinity of standard drug candidate molecules for specific receptor domains.
+
+So the biologically active receptor domains on medicinally important proteins.
+
+The idea is to do this essentially sight unseen.
+
+We rely on publicly published data from x-ray crystallography experiments.
+
+Basically, if you don't know what this is, you crystallize a protein.
+
+You refine a protein from
+
+cells.
+
+So you destroy them and get the protein out, usually through centrifugation.
+
+And then you clean it up and attempt to get it into a crystal.
+
+So you have sort of a regularly stacked
+
+arrangement, shoot x-rays at it, capture a diffractogram, so the reflection angles coming off the x-rays, and then a bunch of math takes place.
+
+And out of that, you get an electron density of the location of the atoms inside the protein.
+
+So we take these.
+
+These are actually just mathematical structures.
+
+And we do some trickery called docking to estimate where the most likely position of a candidate drug that hasn't been
+
+you know, crystallize with this protein where it ought to be inside of its biologically relevant binding pocket.
+
+And then we train a neural network to give us a biological activity based on that.
+
+It's a very complex, difficult problem.
+
+We get IC50, usually, or PKA scores from some type of assay.
+
+So IC50 is the inhibition concentration for whatever type of cell you have.
+
+the 50 of them die off within a period of time these are relative and so you have to have scientists manually transform the data but basically the idea is that we try to determine biological activity you can also get pks or pki so these are uh scores that come from like uh kinetics assay like to see you know at what point the activity of the protein uh stops going out so you have like a situation
+
+
+SPEAKER_01:
+Yes.
+
+
+SPEAKER_02:
+Yes, and the data is split and very large.
+
+We don't mix them together yet, but I will someday.
+
+Soon.
+
+Sunday soon.
+
+So the idea is here, just learning about what I do.
+
+We have this proprietary structural data.
+
+Some of it is public, but we make it proprietary by doing a bunch of action to it.
+
+Source experimental data, which we capture through working with labs or just off public domain.
+
+Build the training base.
+
+We do good stocking, which is just fitting the molecule.
+
+There are quite a bit of details in here with how we line up given examples of protein molecule docking structures.
+
+And then we put it through a convolutional neural net, which is basically what I'm going to be talking about today, actually.
+
+That's the topic of today's conversation, which is let's be philosophical about neural nets.
+
+That's actually what I'm going to talk to you about.
+
+If you want to talk more later about the fancy stuff that I had planned, I was going to give you a hint about what I'm working on and that is called tensor field networks.
+
+But I'm not going to do that now because that just would be too much math and it would take a long time to talk about.
+
+So I'm going to start up here at the top.
+
+And we'll go to the slideshow from the beginning.
+
+And now you can see my black box.
+
+Right, so we want to go inside the black box, right?
+
+We don't want to live in a world where people... So my colleagues here, everybody's into this dynamical systems, Lyapunov stuff.
+
+And I'm surprised at how many people really grabbed onto that.
+
+Generally...
+
+For the rest of us, when we use equations to make models of systems, they're usually in the form of machine learning models.
+
+That's what's in your phone.
+
+That's what's at Stitch Fix.
+
+That's managing your camera.
+
+So that's what I'm into.
+
+And I wanted to talk about the premier machine learning model of our time, which is the artificial neural network.
+
+I have opinions about whether or not that should be named that and talk about the way that the complexity community has been tackling some of the behaviors of this system.
+
+So other stuff later.
+
+Okay, so to answer Professor Fisher's question, what is complexity?
+
+Well, I think of the idea of complexity as dynamical systems.
+
+That's one way to do it.
+
+Another way to do it is to think of it as – I often think of it as a –
+
+an emergent behavior that occurs as a result of small autonomous units, right?
+
+And so you can go and you can get into like the cellular automata, like the game of life.
+
+Have people played that before?
+
+Played?
+
+Don't know if I'm old enough to have done it myself.
+
+
+SPEAKER_01:
+Yeah, by hand.
+
+
+SPEAKER_02:
+You get little wooden blocks.
+
+Ideally, when you actually build these things, they have this sort of unpredicted emergent behavior, which is sometimes adaptive star and useful star.
+
+And that's kind of how we think of the neural network today.
+
+And scientifically, I think of complexity as not only building this sort of reduced representation of a system, so you get the cellular automata, but using observations to refine it.
+
+So Dr. Fisher talked a lot about that.
+
+And that's kind of what I was going for today.
+
+So machine learning, a love story, right?
+
+The idea today is how did we go about getting machine learning from the complexity point of view?
+
+And Tom Mitchell famously described a computer being said to learn with a given experience with respect to some class and some performance measure if the performance in that measure increases with more experience, right?
+
+Name whatever experience it is, there are many ways to do it.
+
+And this started off sometime in the 50s with this idea.
+
+If we want to make an artificial brain, can we make it out of artificial neurons, right?
+
+So McCullough pits sometime in 43.
+
+I mean, this is like World War II, right?
+
+It's like literally during the war they're doing this research.
+
+Teach it to beat Nazis.
+
+Okay, so they come up with this model of the neuron.
+
+I think McCullough was...
+
+a biologist and Pitts was a logician.
+
+I'm showing it with three inputs and one output here.
+
+The McCulloch-Pitts neuron is very simple.
+
+Basically, it just takes a sum of its inputs and has some function where basically if the sum of the inputs is greater than zero, then it reproduces one.
+
+from its function, otherwise it reproduces zero.
+
+So it's basically a yes-no system.
+
+I leave it to the reader to determine if that is an actual, an accurate representation of this neuron.
+
+Where is X?
+
+Where's Y?
+
+I'm not sure.
+
+But we'll continue.
+
+That's a fantastic paper, by the way.
+
+That Pekatovich paper, that's great.
+
+You should read that.
+
+No, they don't call it the Y and X. This is actually an example of complexity being evolved to learn complexity.
+
+So they used a robotic evolution strategy to develop a probe
+
+to sample electrical currents on the surface of the neuron.
+
+So they actually use this complex, like a control systems approach to develop a molecular probe that lights up when the neuron sends out a signal.
+
+
+SPEAKER_01:
+You're trying to get accurate representation, so there's a guaranteed way not to make progress.
+
+Right, yes.
+
+How does it retain the hybrid nature of continuous signals resulting in discrete events?
+
+
+SPEAKER_02:
+Yeah, that's right.
+
+So the big thing is that you have, I mean, it's very long.
+
+The probe sends out one photon at a time, and you use a photon counter, and it's really beautiful.
+
+You can see the transduction of signals.
+
+Let's not get too much into that, but the Bekatovich paper is great.
+
+That's why I have the reference there.
+
+So this simple, this McCulloch-Pitz neuron is great.
+
+It provides some powerful utility, which I think is a good example of building these small automata and having them do
+
+Good stuff like we can basically get the or and and not functions out of them just by setting You know what the threshold is for G, right?
+
+So if all of these are greater than one Or one of them is greater than one then you can get or right so this one this one or this one Have a value of one or more than or it's greater than one right or zero more than zero basically they add to one and Then you have an or function, right?
+
+this or this if all of them sum up to three or greater then you have an and and then here you can have like a switching function where if you have any value in x1 then it sends out a zero
+
+And we can build these representations into tables, right?
+
+That's great.
+
+We can even, you know, simulate a whole computer with the McCulloch-Pitz neuron.
+
+But logical circuits are not really adaptive, right?
+
+I mean, that kind of is just using a computer to simulate a computer.
+
+So getting on to the newer forms of neurons, we have the perceptron, which actually was like a missile targeting tool for a while.
+
+You can build layers of these guys.
+
+And they're pretty good at picking out positive and negative labels.
+
+And they basically work by you build a layer of them.
+
+You have some input here.
+
+And if the sum of the input is greater than a threshold value, then it sends out a 1, if not 0.
+
+But the real innovation here is that these are trainable.
+
+So if you have an x which falls in the positive label set, and for some reason it's not being classified correctly, you add x to the weight for that particular type of x, that particular variable.
+
+And if it's in the negative, you subtract x from the weight.
+
+And so that's sort of like a first example of an adaptive automaton for this purpose.
+
+And these are great, except they're kind of limited to linear functions.
+
+It just, like, you know, if you have to have, if you have XOR, so for example, this function only produces a positive value if these two values are different, right?
+
+You have to have one plane crossing this way and one plane crossing that way.
+
+The perceptron can't do that.
+
+But there is something that can, and that's the modern artificial neuron.
+
+It can't do it individually, but in groups, you can do it.
+
+And the big difference here is that we don't fix the output to one.
+
+We actually set the output to be sort of a simulacrum of what a real neuron does.
+
+Which is it has sort of a gradated signal right there is a fully on and fully off But there's also some level in between right and we use this function called the activation function and
+
+And you make groups of these guys, and you can get something like regression.
+
+So this is a fun thing.
+
+I actually have code for it.
+
+So say that the long debate over sleep versus study is improving your grades.
+
+The truth is that sleep improves your grade a lot better than study.
+
+During the lecture.
+
+Yeah, during the lecture.
+
+Good night of sleep the night before will probably do a lot for your grade.
+
+I mean, assuming that you've done anything for the class.
+
+But anyway, you have some values.
+
+And we want to determine how this all works.
+
+So you put in, you have what's called an input layer of perceptrons.
+
+This is sort of like a virtual layer.
+
+And the value of sleep goes into each one of your perceptrons here.
+
+This is, say, your hidden layer.
+
+And the weights are adjusted until we find an accurate output for the amount of grade that you're going to get for a given input of sleep and study.
+
+And this is the basic principle of all deep learning that controls your phone and your car.
+
+The big question is, how do we actually improve these weights?
+
+Because we don't just subtract x. We actually have to subtract the amount that the weight changes as a function of the error that the whole thing produces.
+
+And that process is called back propagation, which I have many long slides on.
+
+We're not going to go over them.
+
+I just don't have the time and neither do you.
+
+We're all too hungry and tired.
+
+But if you want to talk about it more later, we can.
+
+Basically, back propagation uses reverse differentiation to cut down the number of computations that you have to have.
+
+If you actually spend some time looking at it, it's not that complicated.
+
+But anyway, this is a pretty simple system comparatively, right?
+
+I mean...
+
+So the titan of the modern era is the convolutional network, which is the thing I've been saying over and over again.
+
+And the big difference between the convolutional net, sorry for not putting up a reference.
+
+I'll make it up to them later.
+
+But basically, the idea is that instead of having flat layers of neurons, we actually have 2D and even 3D layers of neurons.
+
+So these guys consume data in the form of, say, an image, like you would with a protein, say, and they refine them through successive layers of what's called bottlenecking, basically changing the number of weights that each response
+
+responsible for.
+
+So basically, by shrinking layers, you enable it to learn a refined representation of the data as it comes in.
+
+And why is it convolutional?
+
+It's not convolutional in the traditional sense that we all learned when we were infants where you take an integral over two functions.
+
+It's convolutional in the sense that you learn these sort of filter representations.
+
+This is a parameter in the neural net.
+
+And the filter is sort of scanned over the input image.
+
+This is the input image.
+
+This is the filter.
+
+And you basically take the Hadamard product.
+
+You probably learned that in elementary school.
+
+And the Hadamard product is just the point-to-point product.
+
+And you sum it up.
+
+And that gets you this sort of reduced representation of the field above it.
+
+So modern nets actually learn the filter.
+
+And the filters actually are what represents the layers.
+
+
+SPEAKER_01:
+closer to sort of the discrete signal processing version of convolution but applied over sort of tensor or like higher up?
+
+It sounds like what you're describing.
+
+I'm trying to make the link.
+
+
+SPEAKER_02:
+It's actually sort of like the chaotic process inside of a human brain, right?
+
+You have an optical nerve that consumes something and then it
+
+It goes through, I mean, if you can map the inputs, it goes through different representations as the input passes all the way back to your, you know, the back of your, what is that, medulla or whatever?
+
+Yeah, that.
+
+So your occipital lobe, right?
+
+Your occipital lobe processes it and then refines what you're seeing.
+
+I have an image of that somewhere.
+
+But basically the idea is that you, your brain
+
+and I'm not even sure that this is how it was developed, but your brain learns refined representations in very much the same way that the convolutional neural net does.
+
+So this is the model of the brain?
+
+
+SPEAKER_01:
+Yes.
+
+
+SPEAKER_02:
+Kind of.
+
+It's more like a model of a model, right?
+
+And so I don't want to go down that road quite yet.
+
+I think that that's more of the issue here.
+
+
+SPEAKER_00:
+Would it be fair to conceptualize that as a multilayer volumetric version of a suborganizing map?
+
+
+SPEAKER_02:
+Except the self-organizing map allows it to have, I think self-organizing maps allow free association between units, right?
+
+Because that's the next step between that and a neural gas.
+
+So we're talking about much older models.
+
+This is like a pre-organized self-organizing map.
+
+You're giving it limits within which each SOM can possibly develop a representation.
+
+That's further way down, right?
+
+So for those of you that are a little left behind, just imagine that at the end we have to make a prediction.
+
+And so as it compares between the output of the net and its prediction, the weights are changing at each level.
+
+And I'm kind of going to get to that in a minute.
+
+So just this very simple process has led, and I could spend 25 minutes on this slide.
+
+I won't.
+
+But this very simple process has led to tremendously frightening outcomes.
+
+So this is the state of neural nets today.
+
+This thing is much smaller than I thought it would be.
+
+But basically, this paper is absolutely stunning.
+
+This data set that they're training it on is called the Clever data set and basically it asks the machine a question in English and the machine is asked to select out and learn however, you know, whatever question it is.
+
+So here you guys in the back can't possibly see this.
+
+They're asking the machine, what size is the cylinder that is left of the brown metal thing that is left of the big sphere?
+
+And it nailed this.
+
+So this particular one solves this set at 95.5% success rate.
+
+Like it can pick it out and this particular machine can even make measurements.
+
+on these.
+
+This one here, Google's so into this.
+
+I don't know why they're so into this.
+
+This is called a generative network.
+
+They spend a lot of time on it.
+
+This one is really impressive.
+
+They ask it to produce a description.
+
+So you write a description of a bird.
+
+An all-black bird with a distinct, thick, rounded bill.
+
+And then the machine actually generates pictures of birds, generated pictures of birds, that are photorealistic to the human eye that fits that description.
+
+Okay?
+
+
+SPEAKER_01:
+It generates a much less variable...
+
+I'm sadder than personally.
+
+Yes.
+
+
+SPEAKER_02:
+Yeah, right.
+
+Exactly.
+
+I think you're hitting exactly.
+
+Yes.
+
+And that's kind of where I wanted to go.
+
+So let's keep that.
+
+Yeah, one more minute.
+
+Keep that.
+
+Oh, please.
+
+Come on, man.
+
+Can I borrow like three minutes or four?
+
+All right.
+
+Just let me get through the jam.
+
+So this raises the larger question.
+
+If convolutional neural nets are the answer, what is the problem?
+
+Because this paper, this is a recent Complexity Crew paper, and they go inside and they're actually measuring the gradients, the changes in weights, as the network is learning.
+
+And as you make the network more deep and more powerful, so the more like Colossus this network is, the more like white noise the gradients start to look like.
+
+So the gradients themselves, right, the changes in weights are looking like white noise.
+
+So that makes us wonder what exactly is the network learning?
+
+Right?
+
+This crew here, fantastic paper.
+
+These guys are using a mutual information approach to study the behavior of the gradients inside the network.
+
+And so we're low on time, but basically the idea is that they have, they basically use this mutual information mapping to measure how well the next layer down does at representing the layer before.
+
+and also against the first input using mutual information.
+
+And we get these relatively complex trajectories.
+
+So as we go from cool to warm, that's the number of training cycles that the neural network has gone through.
+
+And actually what we see here is that the network
+
+So this is the trajectory and learning the original representation.
+
+And then this is the trajectory and learning the next layer down.
+
+And actually what we can use, you go up, that's the layer number.
+
+Actually, what you see here is that the network first
+
+learns a lot about what you're putting in and then starts to forget as it curves back.
+
+And as it reaches its final optimum, this is in some place that's not much like the way a human thinks, right?
+
+Or at least the way you think you think, which is sort of getting to Dr. Fisher's point
+
+which is that, has this story really been a success?
+
+I mean, have we actually modeled a human neuron?
+
+Could the pathway to this level of success have been shortened?
+
+And as a bigger picture, what can we do to refine this reduced representation?
+
+How meaningful is this really?
+
+And to my friend here in the front, is a mind really the same thing as reasoning, right?
+
+Did we actually build a brain with this stuff even though it appears to be reasoning?
+
+Or is this actually poking at some underlying structure, which is described apparently by white noise?
+
+So that's sort of my stump speech there.
+
+So I leave it to you to decide if we have modeled neurons.
+
+I think that the questions are big and still out there.
