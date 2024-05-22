@@ -3,9 +3,11 @@ This module processes and stores MP4 files in SurrealDB.
 """
 
 import os
-from surrealdb import Surreal
+import asyncio
+import csv
 import subprocess
 import re
+from surrealdb import Surreal
 from dotenv import load_dotenv
 load_dotenv('../.env')
 
@@ -48,7 +50,8 @@ async def process_and_store_files(directory):
 
 async def check_missing_mp4(directory):
     """
-    Read a list of MP4 files and add them to SurrealDB if not found, otherwise update the filename and transcribed values
+    Read a list of MP4 files and add them to SurrealDB if not found,
+    otherwise update the filename and transcribed values
 
     Args:
         directory (str): The directory containing the MP4 files to process.
@@ -78,7 +81,8 @@ async def check_missing_mp4(directory):
                 processed_name = bracket_match.group(1)
             if processed_name:
                 print(processed_name)
-                result = await db.query(f"SELECT * FROM session WHERE id = 'session:{processed_name}'")
+                result = await db.query(f"SELECT * FROM session WHERE id = \
+                                        'session:{processed_name}'")
                 if len(result[0]["result"]) == 0:
                     print(processed_name)
                     record = await db.create('session', {
@@ -92,19 +96,32 @@ async def check_missing_mp4(directory):
                     print(processed_name)
                     for session in result[0]["result"]:
                         session_id = session["id"]
-                        update_result = await db.query(f"UPDATE session SET filename='{filename}', transcribed=False WHERE id='{session_id}'")
+                        update_result = await db.query(f"UPDATE session SET filename='{filename}', \
+                                                       transcribed=False WHERE id='{session_id}'")
                         print(f"Merge result for session {session_id}: {update_result}")
 
 
 async def extract_audio_and_update(db, video_path, session_id):
-    output_audio_path = f"{video_path.replace('.mp4', '.wav')}"  # Modify as needed based on your directory structure
-    
+    """
+    Extract audio and update database
+
+    Args:
+        db (Surreal): database
+        video_path (str): MP4 path
+        session_id (str): session id for MP4 file
+
+    Returns:
+        None
+    """
+    output_audio_path = f"{video_path.replace('.mp4', '.wav')}"
+
     # Execute ffmpeg command to extract audio
     command = ['ffmpeg', '-i', video_path, '-ac', '1', '-ar', '16000', '-vn', output_audio_path]
     try:
         subprocess.run(command, check=True)
         # Merge the database record to indicate wav extraction is complete
-        update_result = await db.query(f"UPDATE session SET wav_extracted=True WHERE id='{session_id}'")
+        update_result = await db.query(f"UPDATE session SET wav_extracted=True \
+                                       WHERE id='{session_id}'")
         print(f"Merge result for session {session_id}: {update_result}")
         print(f"Audio extracted and database updated for session {session_id}")
     except subprocess.CalledProcessError as e:
@@ -127,7 +144,8 @@ async def create_wavfiles(directory):
         })
         await db.use(os.getenv('DB_NAME'), os.getenv('DB_NAMESPACE'))
 
-        result = await db.query("SELECT * FROM session WHERE wav_extracted IS NULL OR wav_extracted = false")
+        result = await db.query("SELECT * FROM session WHERE wav_extracted IS NULL \
+                                OR wav_extracted = false")
         for session in result[0]["result"]:
             filename = session["filename"]
             video_path = f"{directory}/{filename}"  # Adjust path as necessary
@@ -153,15 +171,66 @@ async def update_session_name():
         for session in result[0]["result"]:
             session_id = session['id']
             session_name = session_id.replace("session:", "")
-            update_result = await db.query(f"UPDATE session SET session_name='{session_name}' WHERE id='{session_id}'")
+            update_result = await db.query(f"UPDATE session SET session_name='{session_name}' \
+                                           WHERE id='{session_id}'")
             print(f"Update session_name for {session_id}: {update_result}")
 
-if __name__ == "__main__":
-    import asyncio
+async def insert_metadata(metadata_csv):
+    """
+    Read in all the session records where session_name = NONE, set session_name = id without
+    "session:"
 
+    Returns:
+        None
+    """
+    async with Surreal(os.getenv("DB_URL")) as db:
+        await db.signin({
+            'user': os.getenv('DB_USER'),
+            'pass': os.getenv('DB_PASSWORD')
+        })
+        await db.use(os.getenv('DB_NAME'), os.getenv('DB_NAMESPACE'))
+
+        # read in metadata_csv
+        with open(metadata_csv, 'r', encoding='utf-8') as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                session_id = row['id']
+                title = row['title']
+                description = row['description']
+                thumbnails = row['thumbnails']
+                published_at = row['publishedAt']
+                url = row['_URL']
+
+                if session_id == "hOto96Q8sYQ":
+                    # Check if the session exists
+                    result = await db.query(f"SELECT * FROM session WHERE id = 'session:{session_id}'")
+                    if len(result[0]["result"]) > 0:
+                        # Update the existing session
+                        existing_session_id = result[0]["result"][0]["id"]
+                        update_result = await db.query(f"UPDATE session SET title='{title}', \
+                                                    description='{description}', thumbnails='{thumbnails}', \
+                                                    published_at='{published_at}', url='{url}' \
+                                                    WHERE id='{existing_session_id}'")
+                        print(f"Updated metadata for session {session_id}: {update_result}")
+                    else:
+                        # Create a new session
+                        record = await db.create(f'session:{session_id}', {
+                            'session_name': id,
+                            'title': title,
+                            'description': description,
+                            'thumbnails': thumbnails,
+                            'published_at': published_at,
+                            'url': url,
+                            'wav_extracted': False,
+                            'transcribed': False
+                        })
+                        print(f"Inserted new session {id} with result: {record}")
+
+if __name__ == "__main__":
     file_directory = os.getenv('FILE_DIRECTORY')
 
-    asyncio.run(process_and_store_files(directory=file_directory))
-    asyncio.run(create_wavfiles(directory=file_directory))
+    # asyncio.run(process_and_store_files(directory=file_directory))
+    # asyncio.run(create_wavfiles(directory=file_directory))
     # asyncio.run(check_missing_mp4(directory=file_directory))
     # asyncio.run(update_session_name())
+    asyncio.run(insert_metadata("/mnt/md0/projects/Journal-Utilities/data/input/video_metadata_2024-05-17.csv"))
