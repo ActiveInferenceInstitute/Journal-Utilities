@@ -4,10 +4,10 @@ This module processes and stores MP4 files in SurrealDB.
 
 import os
 import asyncio
-import csv
 import subprocess
 import re
 from surrealdb import Surreal
+from pyytdata import get_video_info
 from dotenv import load_dotenv
 load_dotenv('../.env')
 
@@ -175,10 +175,9 @@ async def update_session_name():
                                            WHERE id='{session_id}'")
             print(f"Update session_name for {session_id}: {update_result}")
 
-async def insert_metadata(metadata_csv):
+async def insert_metadata_youtube_api():
     """
-    Read in all the session records where session_name = NONE, set session_name = id without
-    "session:"
+    Looks up metadata for all the sessions where title is none, and updates the metadata in the database
 
     Returns:
         None
@@ -190,41 +189,25 @@ async def insert_metadata(metadata_csv):
         })
         await db.use(os.getenv('DB_NAME'), os.getenv('DB_NAMESPACE'))
 
-        # read in metadata_csv
-        with open(metadata_csv, 'r', encoding='utf-8') as file:
-            reader = csv.DictReader(file)
-            for row in reader:
-                session_id = row['id']
-                title = row['title']
-                description = row['description']
-                thumbnails = row['thumbnails']
-                published_at = row['publishedAt']
-                url = row['_URL']
+        result = await db.query("SELECT * FROM session WHERE title is NONE")
 
-                if session_id == "hOto96Q8sYQ":
-                    # Check if the session exists
-                    result = await db.query(f"SELECT * FROM session WHERE id = 'session:{session_id}'")
-                    if len(result[0]["result"]) > 0:
-                        # Update the existing session
-                        existing_session_id = result[0]["result"][0]["id"]
-                        update_result = await db.query(f"UPDATE session SET title='{title}', \
-                                                    description='{description}', thumbnails='{thumbnails}', \
-                                                    published_at='{published_at}', url='{url}' \
-                                                    WHERE id='{existing_session_id}'")
-                        print(f"Updated metadata for session {session_id}: {update_result}")
-                    else:
-                        # Create a new session
-                        record = await db.create(f'session:{session_id}', {
-                            'session_name': id,
-                            'title': title,
-                            'description': description,
-                            'thumbnails': thumbnails,
-                            'published_at': published_at,
-                            'url': url,
-                            'wav_extracted': False,
-                            'transcribed': False
-                        })
-                        print(f"Inserted new session {id} with result: {record}")
+        for session in result[0]["result"]:
+            session_id = session['id']
+            session_name = session['session_name']
+
+            info = get_video_info(session_name)
+
+            # escape title and description
+            title = info.title.replace("'", "\\'")
+            description = info.description.replace("'", "\\'")
+
+            # Update the existing session
+            update_result = await db.query(f"UPDATE session SET title='{title}', \
+                                        description='{description}', thumbnails='{info.image_url}', \
+                                        published_at='{info.publisheddate}', url='{info.link}', \
+                                        channel_title='{info.channel_title}' \
+                                        WHERE id='{session_id}'")
+            print(f"Updated metadata for session {session_id}: {update_result}")
 
 if __name__ == "__main__":
     file_directory = os.getenv('FILE_DIRECTORY')
@@ -233,4 +216,4 @@ if __name__ == "__main__":
     # asyncio.run(create_wavfiles(directory=file_directory))
     # asyncio.run(check_missing_mp4(directory=file_directory))
     # asyncio.run(update_session_name())
-    asyncio.run(insert_metadata("/mnt/md0/projects/Journal-Utilities/data/input/video_metadata_2024-05-17.csv"))
+    asyncio.run(insert_metadata_youtube_api())
