@@ -107,6 +107,7 @@ pip install git+https://github.com/m-bain/whisperx.git
 pip install python-dotenv
 pip install mkl==2024.0 # downgrade to fix `libtorch_cpu.so: undefined symbol: iJIT_NotifyEvent`
 pip install surrealdb
+pip install pyytdata
 ```
 
 #### Install ffmpeg
@@ -121,7 +122,9 @@ wget -O - -q  https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/f
 ```bash
 cp .env.sample .env
 ```
-Update HUGGINGFACE_TOKEN with your token. 
+Update `HUGGINGFACE_TOKEN` value in `.env` with your token.
+
+Get the YouTube Data API v3 Key from https://console.developers.google.com/apis/ and update `API_KEY` value in `.env`.
 
 ### Start Database
 ```bash
