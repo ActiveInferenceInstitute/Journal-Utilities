@@ -100,58 +100,6 @@ async def check_missing_mp4(directory):
                                                        transcribed=False WHERE id='{session_id}'")
                         print(f"Merge result for session {session_id}: {update_result}")
 
-
-async def extract_audio_and_update(db, video_path, session_id):
-    """
-    Extract audio and update database
-
-    Args:
-        db (Surreal): database
-        video_path (str): MP4 path
-        session_id (str): session id for MP4 file
-
-    Returns:
-        None
-    """
-    output_audio_path = f"{video_path.replace('.mp4', '.wav')}"
-
-    # Execute ffmpeg command to extract audio
-    command = ['ffmpeg', '-i', video_path, '-ac', '1', '-ar', '16000', '-vn', output_audio_path]
-    try:
-        subprocess.run(command, check=True)
-        # Merge the database record to indicate wav extraction is complete
-        update_result = await db.query(f"UPDATE session SET wav_extracted=True \
-                                       WHERE id='{session_id}'")
-        print(f"Merge result for session {session_id}: {update_result}")
-        print(f"Audio extracted and database updated for session {session_id}")
-    except subprocess.CalledProcessError as e:
-        print(f"Failed to extract audio for session {session_id}: {str(e)}")
-
-async def create_wavfiles(directory):
-    """
-    Read in unprocessed MP4 files from the database and create WAV files
-
-    Args:
-        directory (str): The directory containing the MP4 files to process.
-
-    Returns:
-        None
-    """
-    async with Surreal(os.getenv("DB_URL")) as db:
-        await db.signin({
-            'user': os.getenv('DB_USER'),
-            'pass': os.getenv('DB_PASSWORD')
-        })
-        await db.use(os.getenv('DB_NAME'), os.getenv('DB_NAMESPACE'))
-
-        result = await db.query("SELECT * FROM session WHERE wav_extracted IS NULL \
-                                OR wav_extracted = false")
-        for session in result[0]["result"]:
-            filename = session["filename"]
-            video_path = f"{directory}/{filename}"  # Adjust path as necessary
-            print(f"{video_path}")
-            await extract_audio_and_update(db, video_path, session['id'])
-
 async def update_session_name():
     """
     Read in all the session records where session_name = NONE, set session_name = id without

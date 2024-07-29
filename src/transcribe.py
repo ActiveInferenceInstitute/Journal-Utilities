@@ -7,6 +7,7 @@ import os
 import json
 import logging
 import whisperx
+import subprocess
 from surrealdb import Surreal
 from dotenv import load_dotenv
 
@@ -44,6 +45,52 @@ class TranscriptionService:
                                                                     device=device)
         self.diarize_model = whisperx.DiarizationPipeline(use_auth_token=hf_token, device=device)
 
+    def download_audio(self, video_url, output_wav_file, ffmpeg_location='/usr/bin'):
+        """Function to download and prepare the audio file"""
+        subprocess.run(['yt-dlp', '-xv', '--ffmpeg-location', ffmpeg_location, '--audio-format', 'wav', '-o', output_wav_file, '--', video_url], check=True)
+
+    async def extract_audio_and_update(self, db, video_path, session_id):
+        output_audio_path = f"{video_path.replace('.mp4', '.wav')}"  # Modify as needed based on your directory structure
+        
+        # Execute ffmpeg command to extract audio
+        command = ['ffmpeg', '-i', video_path, '-ac', '1', '-ar', '16000', '-vn', output_audio_path]
+        try:
+            subprocess.run(command, check=True)
+            # Merge the database record to indicate wav extraction is complete
+            update_result = await db.query(f"UPDATE session SET wav_extracted=True WHERE id='{session_id}'")
+            print(f"Merge result for session {session_id}: {update_result}")
+            print(f"Audio extracted and database updated for session {session_id}")
+        except subprocess.CalledProcessError as e:
+            print(f"Failed to extract audio for session {session_id}: {str(e)}")
+
+    async def create_wavfiles(self, mp4_directory, db_url, db_user, db_password, db_name, db_namespace):
+        """
+        Read in unprocessed MP4 files from the database and create WAV files
+
+        Args:
+            mp4_directory (str): The directory containing the MP4 files to process.
+            db_url (str): Database URL
+            db_user (str): Database username
+            db_password (str): Database password
+            db_name (str): Database name
+            db_namespace (str): Database namespace
+
+        Returns:
+            None
+        """
+        async with Surreal(db_url) as db:
+            await db.signin({
+                'user': db_user,
+                'pass': db_password
+            })
+            await db.use(db_name, db_namespace)
+
+            result = await db.query("SELECT * FROM session WHERE wav_extracted IS NULL OR wav_extracted = false")
+            for session in result[0]["result"]:
+                filename = session["filename"]
+                video_path = f"{mp4_directory}/{filename}"  # Adjust path as necessary
+                print(f"{video_path}")
+                await self.extract_audio_and_update(db, video_path, session['id'])
 
     def remove_words(self, obj):
         """
@@ -173,10 +220,11 @@ async def transcribe_and_update(transcription_service, db, session, wav_director
         logging.error("An error occurred during transcribe and db update of %s record: %s",
                       session['filename'], e)
 
-async def create_wavfiles(db_url, db_user, db_password, db_name, db_namespace, wav_directory,
+async def process_untranscribed_sessions(db_url, db_user, db_password, db_name, db_namespace, wav_directory,
                           output_dir, hf_token, device, batch_size, compute_type):
     """
-    Read in unprocessed MP4 files from the database and create WAV files
+    Read in all the sessions in the database that haven't been transcribed and run
+    transcribe
     
     Args:
         db_url (str): Database URL
@@ -184,7 +232,7 @@ async def create_wavfiles(db_url, db_user, db_password, db_name, db_namespace, w
         db_password (str): Database password
         db_name (str): Database name
         db_namespace (str): Database namespace
-        wav_directory (str): The directory containing the MP4 files to process.
+        wav_directory (str): The directory containing the WAV files to process.
         output_dir (str): Path to folder to store the json and txt files
         hf_token (str): Hugging Face token for authentication.
         device (str): Device to use for computation (e.g., 'cuda').
@@ -212,6 +260,63 @@ async def create_wavfiles(db_url, db_user, db_password, db_name, db_namespace, w
     except (Exception) as e: # pylint: disable=broad-except
         logging.error("An error occurred during query and transcription: %s", e)
 
+async def download_and_transcribe(video_url, db_url, db_user, db_password, db_name, db_namespace,
+                                  wav_directory, output_dir, hf_token, device, batch_size, compute_type):
+    """
+    Downloads an audio file to the wav_directory, creates a session in the database,
+    transcribes the wav file, and saves the transcript to the output_dir
+
+    Args:
+        video_url: youtube video path in the format https://www.youtube.com/watch?v=v4sAeY06ngs
+        transcription_service (TranscriptionService): The transcription service instance.
+        db (Surreal): The database connection.
+        wav_directory (str): The directory containing the WAV files.
+        output_dir (str): Path to folder to store the json and txt files
+
+    Returns:
+        None
+    """
+    # Extract YouTube video ID from the URL
+    video_id = video_url.split("v=")[-1]
+    
+    # Construct the output WAV filename
+    output_wav_file = os.path.join(wav_directory, f"{video_id}.wav")
+    
+    try:
+        async with Surreal(db_url) as db:
+            await db.signin({'user': db_user, 'pass': db_password})
+            await db.use(db_name, db_namespace)
+
+            transcription_service = TranscriptionService(hf_token, device, batch_size, compute_type)
+
+            result = await db.query(f"SELECT * FROM session WHERE session_name = '{video_id}'")
+            if len(result[0]["result"]) != 0:
+                logging.error("Video ID %s already downloaded", video_id)
+                return
+
+            transcription_service.download_audio(video_url, output_wav_file)
+            logging.info("Successfully downloaded audio for video ID: %s", video_id)
+
+            # Create a new session in the database
+            session = {
+                "session_name": video_id,
+                "filename": f"{video_id}.wav",
+                "wav_extracted": True,
+                "transcribed": False
+            }
+            create_result = await db.create("session", session)
+            logging.info("Created new session in database: %s", create_result)
+
+            # Transcribe the audio and update the database
+            await transcribe_and_update(transcription_service, db, session, wav_directory, output_dir)
+    except subprocess.CalledProcessError as e:
+        logging.error("Failed to download audio for video ID %s: %s", video_id, str(e))
+        return
+    except Exception as e:
+        logging.error("Failed to create session in database: %s", str(e))
+        return
+
+
 if __name__ == '__main__':
     HF_TOKEN = os.getenv('HF_TOKEN')
     DEVICE = "cuda"
@@ -225,5 +330,10 @@ if __name__ == '__main__':
     DB_NAME = os.getenv('DB_NAME')
     DB_NAMESPACE = os.getenv('DB_NAMESPACE')
 
-    asyncio.run(create_wavfiles(DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE, WAV_DIRECTORY,
+    # asyncio.run(process_untranscribed_sessions(DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE, WAV_DIRECTORY,
+    #                             OUTPUT_DIR, HF_TOKEN, DEVICE, BATCH_SIZE, COMPUTE_TYPE))
+
+    VIDEO_URL = "https://www.youtube.com/watch?v=v4sAeY06ngs"
+    # TODO: Test
+    asyncio.run(download_and_transcribe(VIDEO_URL, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE, WAV_DIRECTORY,
                                 OUTPUT_DIR, HF_TOKEN, DEVICE, BATCH_SIZE, COMPUTE_TYPE))
