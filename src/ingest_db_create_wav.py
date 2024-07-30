@@ -157,11 +157,154 @@ async def insert_metadata_youtube_api():
                                         WHERE id='{session_id}'")
             print(f"Updated metadata for session {session_id}: {update_result}")
 
+
+async def update_category_series_episode_by_title(db_url, db_user, db_password, db_name, db_namespace):
+    """
+    select all the sessions, using the title, figure out category, series, and episode
+    
+    Args:
+        db_url (str): Database URL
+        db_user (str): Database username
+        db_password (str): Database password
+        db_name (str): Database name
+        db_namespace (str): Database namespace
+    """
+    
+    # if the title matches 'ActInf GuestStream \d+\.\d+', 'ActInf GuestStream #\d+\.\d+', or 'Active Inference GuestStream #\d+\.\d+'
+    # set the category to "GuestStream"
+    # if the title is 'ActInf GuestStream 067.1'
+    # set the series to the first matching number with "GuestStream_" prefix e.g. will be "GuestStream_067"
+    # set the episode to the second matching number "1"
+    async with Surreal(db_url) as db:
+        await db.signin({
+            'user': db_user,
+            'pass': db_password
+        })
+        await db.use(db_name, db_namespace)
+        result = await db.query("SELECT * FROM session")
+
+        for session in result[0]["result"]:
+            session_id = session['id']
+            title = session.get('title', '')
+
+            if title:
+                symposium_2021_pattern = r'Prof\. Karl Friston ~ Applied Active Inference Symposium'
+                symposium_2022_pattern = r'2nd Applied Active Inference Symposium'
+                bookstream_pattern = r'(Active Inference)? ?(?:~.*~)? ?BookStream #?(\d+)\.(\d+)'
+                social_sciences_pattern = r'(Active Inference for (?:the )?Social Sciences 2023|ActInf Social Sciences 2023)'
+                physics_info_pattern = r'Physics as Information Processing'
+                gueststream_pattern = r'(ActInf|Active Inference) GuestStream #?(\d+)\.(\d+)'
+                insights_pattern = r'Active Inference Insights (\d+)'
+                livestream_pattern = r'(ActInf|Active Inference) (?:Livestream|LiveStream) #?(\d+)\.(\d+)'
+                mathstream_pattern = r'ActInf MathStream (\d+)\.(\d+)'
+                modelstream_pattern = r'(ActInf|Active Inference) ModelStream #?(\d+)\.(\d+)'
+                orgstream_pattern = r'ActInf OrgStream #?(\d+)\.(\d+)'
+                reviewstream_pattern = r'(ReviewStream|Active Inference Livestream Review)'
+                roundtable_pattern = r'(ActInfLab|Active Inference Institute).*?(\d{4}).*?Quarterly Roundtable #(\d+)'
+                textbookgroup_pattern = r'ActInf Textbook Group ~ Cohort (\d+) ~ Meeting (\d+)'
+                twitterspaces_pattern = r'Active Inference ~ Twitter spaces #(\d+)'
+                
+                symposium_2021_match = re.search(symposium_2021_pattern, title)
+                symposium_2022_match = re.search(symposium_2022_pattern, title)
+                bookstream_match = re.search(bookstream_pattern, title)
+                social_sciences_match = re.search(social_sciences_pattern, title)
+                physics_info_match = re.search(physics_info_pattern, title)
+                gueststream_match = re.search(gueststream_pattern, title)
+                insights_match = re.search(insights_pattern, title)
+                livestream_match = re.search(livestream_pattern, title)
+                mathstream_match = re.search(mathstream_pattern, title)
+                modelstream_match = re.search(modelstream_pattern, title)
+                orgstream_match = re.search(orgstream_pattern, title)
+                reviewstream_match = re.search(reviewstream_pattern, title)
+                roundtable_match = re.search(roundtable_pattern, title)
+                textbookgroup_match = re.search(textbookgroup_pattern, title)
+                twitterspaces_match = re.search(twitterspaces_pattern, title)
+
+                if symposium_2021_match:
+                    category = "Applied Active Inference Symposium"
+                    series = "2021 Symposium with Karl Friston"
+                    episode = None
+                elif symposium_2022_match:
+                    category = "Applied Active Inference Symposium"
+                    series = "2022 Symposium on Robotics"
+                    episode = None
+                elif bookstream_match:
+                    category = "BookStream"
+                    series = f"BookStream_{bookstream_match.group(2).zfill(3)}"
+                    episode = bookstream_match.group(3)
+                elif social_sciences_match:
+                    category = "Courses/ActiveInferenceForTheSocialSciences"
+                    series = None
+                    episode = None
+                elif physics_info_match:
+                    category = "Courses/PhysicsAsInformationProcessing_ChrisFields"
+                    series = None
+                    episode = None
+                elif gueststream_match:
+                    category = "GuestStream"
+                    series = f"GuestStream_{gueststream_match.group(2).zfill(3)}"
+                    episode = gueststream_match.group(3)
+                elif insights_match:
+                    category = "Insights"
+                    series = f"Insights_{insights_match.group(1).zfill(3)}"
+                    episode = None
+                elif livestream_match:
+                    category = "Livestream"
+                    series = f"Livestream_{livestream_match.group(2).zfill(3)}"
+                    episode = livestream_match.group(3)
+                elif mathstream_match:
+                    category = "MathStream"
+                    series = f"MathStream_{mathstream_match.group(1).zfill(3)}"
+                    episode = mathstream_match.group(2)
+                elif modelstream_match:
+                    category = "ModelStream"
+                    series = f"ModelStream_{modelstream_match.group(2).zfill(3)}"
+                    episode = modelstream_match.group(3)
+                elif orgstream_match:
+                    category = "OrgStream"
+                    series = f"OrgStream_{orgstream_match.group(1).zfill(3)}"
+                    episode = orgstream_match.group(2)
+                elif reviewstream_match:
+                    category = "ReviewStream"
+                    series = None
+                    episode = None
+                elif roundtable_match:
+                    category = "Roundtable"
+                    series = f"Roundtable_{roundtable_match.group(2)}.{roundtable_match.group(3)}"
+                    episode = None
+                elif textbookgroup_match:
+                    category = f"TextbookGroup/ParrPezzuloFriston2022/Cohort_{textbookgroup_match.group(1)}"
+                    series = f"Meeting_{textbookgroup_match.group(2).zfill(3)}"
+                    episode = None
+                elif twitterspaces_match:
+                    category = "Twitter Spaces"
+                    series = f"TwitterSpaces_{twitterspaces_match.group(1).zfill(3)}"
+                    episode = None
+                else:
+                    continue  # Skip if no match
+
+                update_result = await db.query(f"""
+                    UPDATE session 
+                    SET 
+                        category = '{category}',
+                        series = {f"'{series}'" if series is not None else 'NONE'},
+                        episode = {f"'{episode}'" if episode is not None else 'NONE'}
+                    WHERE id = '{session_id}'
+                """)
+                print(f"Updated category, series, and episode for session {session_id}: {update_result}")
+
+
 if __name__ == "__main__":
-    file_directory = os.getenv('FILE_DIRECTORY')
+    file_directory = os.getenv('WAV_DIRECTORY')
+    DB_URL = os.getenv("DB_URL")
+    DB_USER = os.getenv('DB_USER')
+    DB_PASSWORD = os.getenv('DB_PASSWORD')
+    DB_NAME = os.getenv('DB_NAME')
+    DB_NAMESPACE = os.getenv('DB_NAMESPACE')
 
     # asyncio.run(process_and_store_files(directory=file_directory))
     # asyncio.run(create_wavfiles(directory=file_directory))
     # asyncio.run(check_missing_mp4(directory=file_directory))
     # asyncio.run(update_session_name())
-    asyncio.run(insert_metadata_youtube_api())
+    # asyncio.run(insert_metadata_youtube_api())
+    asyncio.run(update_category_series_episode_by_title(DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
