@@ -4,12 +4,23 @@ This module processes and stores MP4 files in SurrealDB.
 
 import os
 import asyncio
-import subprocess
+import shutil
 import re
+import logging
 from surrealdb import Surreal
 from pyytdata import get_video_info
 from dotenv import load_dotenv
 load_dotenv('../.env')
+
+# TODO: change all print statements to logging.* and pass in SURREALDB as arguments
+
+# Set up logging
+logging.basicConfig(
+    filename='transcription.log',
+    filemode='a',
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
 
 async def process_and_store_files(directory):
     """
@@ -293,11 +304,12 @@ async def update_category_series_episode_by_title(db_url, db_user, db_password, 
                 """)
                 print(f"Updated category, series, and episode for session {session_id}: {update_result}")
 
-async def copy_files_to_journal(journal_repo_path, db_url, db_user, db_password, db_name, db_namespace):
+async def copy_files_to_journal(output_dir, journal_repo_dir, db_url, db_user, db_password, db_name, db_namespace):
     """
-    copy files to journal_repo_path based on category, series, and episode
+    copy files from output_dir to journal_repo_dir based on category, series, and episode
     
     Args:
+        output_dir (str): Path to transcripts
         journal_repo_path (str): Full Journal Repo path
         db_url (str): Database URL
         db_user (str): Database username
@@ -312,28 +324,81 @@ async def copy_files_to_journal(journal_repo_path, db_url, db_user, db_password,
             'pass': db_password
         })
         await db.use(db_name, db_namespace)
-        result = await db.query("SELECT * FROM session where category is not None")
+        result = await db.query("SELECT * FROM session where category is 'Livestream'")
         for session in result[0]["result"]:
             session_id = session['id']
-            title = session.get('title', '')
+            filename = session.get('filename', '')
             category = session.get('category', '')
             series = session.get('series', '')
-            episode = session.get('series', '')
+            episode = session.get('episode', '')
 
+            # root_filename, remove .mp4 from filename youtube_gx9yAF607ko.mp4
+            root_filename = os.path.splitext(filename)[0]
 
+            # create full path by journal_repo_dir + '/' + category + '/' + series + '/Metadata'
+            print(f"journal_repo_dir: {journal_repo_dir}, category: {category}, series: {series}")
+
+            repo_path = os.path.join(journal_repo_dir, category, series, 'Metadata')
+            
+            # Create the directory if it doesn't exist
+            os.makedirs(repo_path, exist_ok=True)
+
+            source_files = [
+                f"{root_filename}.json",    
+                f"{root_filename}.simple.json",
+                f"{root_filename}.simple.txt"
+            ]
+
+            # new prefix: LiveStream_052.1_ with episode number Meeting_8_ without episode number
+            new_filename_prefix = series
+            if episode and episode != 'NONE':
+                new_filename_prefix += f".{episode}"
+            new_filename_prefix += "_"
+
+            for source_file in source_files:
+                source_path = os.path.join(output_dir, source_file)
+
+                # Create the new filename
+                file_parts = source_file.split('.')
+                if len(file_parts) > 2 and file_parts[-2] == 'simple':
+                    # Handle .simple.json and .simple.txt files
+                    new_filename = f"{new_filename_prefix}{root_filename}.simple.{file_parts[-1]}"
+                else:
+                    # Handle regular .json files
+                    new_filename = f"{new_filename_prefix}{root_filename}.{file_parts[-1]}"
+                
+                dest_path = os.path.join(repo_path, new_filename)
+
+                if os.path.exists(source_path):
+                    shutil.copy2(source_path, dest_path)
+                    logging.info("Copied %s to %s", source_file, dest_path)
+                else:
+                    logging.error("Source file not found: %s", source_path)
+
+            update_result = await db.query(f"""
+                UPDATE session 
+                SET 
+                    journal_filename = '{new_filename_prefix}{root_filename}.simple.txt'
+                WHERE id = '{session_id}'
+            """)
+            logging.info("Updated journal_filename %s: %s", session_id, update_result)
 
 
 if __name__ == "__main__":
-    file_directory = os.getenv('WAV_DIRECTORY')
+    WAV_DIRECTORY = os.getenv('WAV_DIRECTORY')
+    OUTPUT_DIR = os.getenv('OUTPUT_DIR')
+    JOURNAL_REPO_DIR = os.getenv('JOURNAL_REPO_DIR')
+
     DB_URL = os.getenv("DB_URL")
     DB_USER = os.getenv('DB_USER')
     DB_PASSWORD = os.getenv('DB_PASSWORD')
     DB_NAME = os.getenv('DB_NAME')
     DB_NAMESPACE = os.getenv('DB_NAMESPACE')
 
-    # asyncio.run(process_and_store_files(directory=file_directory))
-    # asyncio.run(create_wavfiles(directory=file_directory))
-    # asyncio.run(check_missing_mp4(directory=file_directory))
+    # asyncio.run(process_and_store_files(directory=WAV_DIRECTORY))
+    # asyncio.run(create_wavfiles(directory=WAV_DIRECTORY))
+    # asyncio.run(check_missing_mp4(directory=WAV_DIRECTORY))
     # asyncio.run(update_session_name())
     # asyncio.run(insert_metadata_youtube_api())
-    asyncio.run(update_category_series_episode_by_title(DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
+    # asyncio.run(update_category_series_episode_by_title(DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
+    asyncio.run(copy_files_to_journal(OUTPUT_DIR, JOURNAL_REPO_DIR, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
