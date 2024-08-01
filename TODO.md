@@ -1,7 +1,20 @@
 ## TODO
-- Daniel to review spreadsheet of the sessions that are missing categories
-- add `insert_metadata_youtube_api` to `download_and_transcribe`, `pip install yt-dlp` and test
 - move `data/output` transcripts to their respective folders in `ActiveInferenceJournal`
+    - Livestream done
+    - Applied Active Inference Symposium
+    - BookStream
+    - Courses/ActiveInferenceForTheSocialSciences
+    - Courses/PhysicsAsInformationProcessing_ChrisFields
+    - GuestStream
+    - Insights
+    - MathStream
+    - ModelStream
+    - OrgStream
+    - ReviewStream
+    - Roundtable
+    - TextbookGroup/ParrPezzuloFriston2022/Cohort_
+    - Twitter Spaces
+- add `insert_metadata_youtube_api` to `download_and_transcribe`, `pip install yt-dlp` and test
 - Collect speaker information for all transcripts
 
 ---
