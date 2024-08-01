@@ -250,7 +250,7 @@ async def update_category_series_episode_by_title(db_url, db_user, db_password, 
                     episode = None
                 elif livestream_match:
                     category = "Livestream"
-                    series = f"Livestream_{livestream_match.group(2).zfill(3)}"
+                    series = f"LiveStream_{livestream_match.group(2).zfill(3)}"
                     episode = livestream_match.group(3)
                 elif mathstream_match:
                     category = "MathStream"
@@ -292,6 +292,35 @@ async def update_category_series_episode_by_title(db_url, db_user, db_password, 
                     WHERE id = '{session_id}'
                 """)
                 print(f"Updated category, series, and episode for session {session_id}: {update_result}")
+
+async def copy_files_to_journal(journal_repo_path, db_url, db_user, db_password, db_name, db_namespace):
+    """
+    copy files to journal_repo_path based on category, series, and episode
+    
+    Args:
+        journal_repo_path (str): Full Journal Repo path
+        db_url (str): Database URL
+        db_user (str): Database username
+        db_password (str): Database password
+        db_name (str): Database name
+        db_namespace (str): Database namespace
+    """
+    
+    async with Surreal(db_url) as db:
+        await db.signin({
+            'user': db_user,
+            'pass': db_password
+        })
+        await db.use(db_name, db_namespace)
+        result = await db.query("SELECT * FROM session where category is not None")
+        for session in result[0]["result"]:
+            session_id = session['id']
+            title = session.get('title', '')
+            category = session.get('category', '')
+            series = session.get('series', '')
+            episode = session.get('series', '')
+
+
 
 
 if __name__ == "__main__":
