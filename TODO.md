@@ -1,11 +1,11 @@
 ## TODO
 - move `data/output` transcripts to their respective folders in `ActiveInferenceJournal`
-    - Livestream done
+    - Livestream - done
     - Applied Active Inference Symposium
-    - BookStream done
+    - BookStream - done
     - Courses/ActiveInferenceForTheSocialSciences
     - Courses/PhysicsAsInformationProcessing_ChrisFields
-    - GuestStream
+    - GuestStream - done
     - Insights
     - MathStream
     - ModelStream
