@@ -2,7 +2,7 @@
 - move `data/output` transcripts to their respective folders in `ActiveInferenceJournal`
     - Livestream done
     - Applied Active Inference Symposium
-    - BookStream
+    - BookStream done
     - Courses/ActiveInferenceForTheSocialSciences
     - Courses/PhysicsAsInformationProcessing_ChrisFields
     - GuestStream
