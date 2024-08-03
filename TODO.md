@@ -6,13 +6,13 @@
     - Courses/ActiveInferenceForTheSocialSciences
     - Courses/PhysicsAsInformationProcessing_ChrisFields
     - GuestStream - done
-    - Insights
-    - MathStream
+    - Insights - done
+    - MathStream - done
     - ModelStream
     - OrgStream
     - ReviewStream
     - Roundtable
-    - TextbookGroup/ParrPezzuloFriston2022/Cohort_
+    - TextbookGroup/ParrPezzuloFriston2022/Cohort_1 and 2
     - Twitter Spaces
 - add `insert_metadata_youtube_api` to `download_and_transcribe`, `pip install yt-dlp` and test
 - Collect speaker information for all transcripts
