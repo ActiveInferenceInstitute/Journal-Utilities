@@ -1,21 +1,5 @@
 ## TODO
-- move `data/output` transcripts to their respective folders in `ActiveInferenceJournal`
-    - Livestream - done
-    - Applied Active Inference Symposium - done
-    - BookStream - done
-    - Courses/ActiveInferenceForTheSocialSciences - done
-    - Courses/PhysicsAsInformationProcessing_ChrisFields - done
-    - GuestStream - done
-    - Insights - done
-    - MathStream - done
-    - ModelStream - done
-    - OrgStream - done
-    - ReviewStream - done
-    - Roundtable - done
-    - TextbookGroup/ParrPezzuloFriston2022/Cohort_1 - done
-    - TextbookGroup/ParrPezzuloFriston2022/Cohort_2
-    - Twitter Spaces - done
-- add all existing processed transcripts to database
+- add all existing processed transcripts in Metadata and Transcripts/Prose to database that were not in initial USB card
     - Roundtable_2023.2
 - add `insert_metadata_youtube_api` to `download_and_transcribe`, `pip install yt-dlp` and test
 - Collect speaker information for all transcripts
