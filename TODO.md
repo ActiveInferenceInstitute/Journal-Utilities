@@ -3,8 +3,8 @@
     - Livestream - done
     - Applied Active Inference Symposium - done
     - BookStream - done
-    - Courses/ActiveInferenceForTheSocialSciences
-    - Courses/PhysicsAsInformationProcessing_ChrisFields
+    - Courses/ActiveInferenceForTheSocialSciences - done
+    - Courses/PhysicsAsInformationProcessing_ChrisFields - done
     - GuestStream - done
     - Insights - done
     - MathStream - done
@@ -12,7 +12,8 @@
     - OrgStream - done
     - ReviewStream - done
     - Roundtable - done
-    - TextbookGroup/ParrPezzuloFriston2022/Cohort_1 and 2
+    - TextbookGroup/ParrPezzuloFriston2022/Cohort_1 - done
+    - TextbookGroup/ParrPezzuloFriston2022/Cohort_2
     - Twitter Spaces - done
 - add all existing processed transcripts to database
     - Roundtable_2023.2
