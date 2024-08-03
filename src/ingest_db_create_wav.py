@@ -324,7 +324,7 @@ async def copy_files_to_journal(output_dir, journal_repo_dir, db_url, db_user, d
             'pass': db_password
         })
         await db.use(db_name, db_namespace)
-        result = await db.query("SELECT * FROM session where category is 'MathStream'")
+        result = await db.query("SELECT * FROM session where category is 'OrgStream'")
         for session in result[0]["result"]:
             session_id = session['id']
             filename = session.get('filename', '')

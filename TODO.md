@@ -8,8 +8,8 @@
     - GuestStream - done
     - Insights - done
     - MathStream - done
-    - ModelStream
-    - OrgStream
+    - ModelStream - done
+    - OrgStream - done
     - ReviewStream
     - Roundtable
     - TextbookGroup/ParrPezzuloFriston2022/Cohort_1 and 2
