@@ -1,7 +1,4 @@
 ## TODO
-- update journal_filename for four sessions in the Projects folder
-- remove session where journal_filename (not applicable)
-
 - move Master MD file to Master folder for PIP and Social Sciences, update links in the Coda table
 - update session set master = Transcripts/Master/*.md
 - update session set journal_filename 
