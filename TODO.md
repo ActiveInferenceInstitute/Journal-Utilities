@@ -2,13 +2,13 @@
 - move WorkingCopy MD file to Transcripts/WorkingCopy folder for
     - [x] PIP
     - [x] Social Sciences
-    - [ ] 2023 Ecosystem Symposium
-    - [ ] update links in the Coda table
+    - [x] 2023 Ecosystem Symposium
+    - [x] update links in the Coda table
 
-- rename journal_filename to raw_transcript_filename
+- rename journal_filename to metadata_filename
 - rename processed_transcript_filename to prose_filename (or something like final prose output)
 
-- update session set master_filename = Transcripts/Master/*.md (except for 2023 Ecosystem Symposium where there are multiple episodes)
+- update session set workingcopy_filename = Transcripts/WorkingCopy/*.md (except for 2023 Ecosystem Symposium where there are multiple episodes)
 - update session set journal_filename 
 - update session set processed_transcript_filename
 
