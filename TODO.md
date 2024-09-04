@@ -1,16 +1,13 @@
 ## TODO
-- move WorkingCopy MD file to Transcripts/WorkingCopy folder for
+- [x] move WorkingCopy MD file to Transcripts/WorkingCopy folder for
     - [x] PIP
     - [x] Social Sciences
     - [x] 2023 Ecosystem Symposium
     - [x] update links in the Coda table
-
-- rename journal_filename to metadata_filename
-- rename processed_transcript_filename to prose_filename (or something like final prose output)
-
-- update session set workingcopy_filename = Transcripts/WorkingCopy/*.md (except for 2023 Ecosystem Symposium where there are multiple episodes)
-- update session set journal_filename 
-- update session set processed_transcript_filename
+- [x] clean up filename references
+    - [x] rename journal_filename to metadata_filename
+    - [x] rename processed_transcript_filename to prose_filename
+    - [x] update session set workingcopy_filename
 
 - add all existing processed transcripts in Metadata and Transcripts/Prose to database that were not in initial USB card
     - Roundtable_2023.2
