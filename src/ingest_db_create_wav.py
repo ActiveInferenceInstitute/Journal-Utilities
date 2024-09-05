@@ -272,7 +272,7 @@ def categorize_name(name, is_unique_event_name):
         orgstream_pattern = r'ActInf OrgStream #?(\d+)\.(\d+)'
         reviewstream_pattern = r'(ReviewStream|Active Inference Livestream Review)'
         roundtable_pattern = r'(ActInfLab|Active Inference Institute).*?(\d{4}).*?Quarterly Roundtable #(\d+)'
-        textbookgroup_pattern = r'ActInf Textbook Group ~ Cohort (\d+) ~ Meeting (\d+)'
+        textbookgroup_pattern = r'ActInf Textbook Group ~ Cohort (\d+) ~ (?:Meeting|Session) (\d+)'
         twitterspaces_pattern = r'Active Inference ~ Twitter spaces #(\d+)'
         
         # might need to add ActInf to the beginning of these patterns
@@ -402,7 +402,7 @@ async def update_category_series_episode_by_title(db_url, db_user, db_password, 
             'pass': db_password
         })
         await db.use(db_name, db_namespace)
-        result = await db.query("SELECT * FROM session")
+        result = await db.query("SELECT * FROM session where category is null;")
 
         for session in result[0]["result"]:
             session_id = session['id']
@@ -536,8 +536,8 @@ if __name__ == "__main__":
     # asyncio.run(create_wavfiles(directory=WAV_DIRECTORY))
     # asyncio.run(check_missing_mp4(directory=WAV_DIRECTORY))
     # asyncio.run(update_session_name())
-    asyncio.run(insert_metadata_youtube_api())
-    # asyncio.run(update_category_series_episode_by_title(DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
+    # asyncio.run(insert_metadata_youtube_api())
+    asyncio.run(update_category_series_episode_by_title(DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
     # asyncio.run(copy_files_to_journal(OUTPUT_DIR, JOURNAL_REPO_DIR, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
 
     # CODA_CSV = "/mnt/md0/projects/Journal-Utilities/data/input/livestream_fulldata_2024-09-05.csv"
