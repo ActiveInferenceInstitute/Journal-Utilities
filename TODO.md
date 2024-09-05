@@ -23,8 +23,10 @@
     - [x] Github (for GH path)
     - [x] Category
         - [x] category
-- [ ] use insert_metadata_youtube_api to get title, etc for coda items
+- [x] use insert_metadata_youtube_api to get title, etc for coda items
 - [ ] insert missing category, series, episode by title?
+- [ ] insert Guests, Other Participants, Slides URL, Github for non coda items
+- [ ] private video? x6rwST67ugU Literature as Uncertainty Practice – Creative Encounters with the World
 
 - create a "AssemblyAI" vs "WhisperX" column to label how transcripts were created
 - add all existing processed transcripts in Transcripts/ Metadata, WorkingCopy, Prose to database that were not in initial USB card

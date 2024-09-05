@@ -536,11 +536,11 @@ if __name__ == "__main__":
     # asyncio.run(create_wavfiles(directory=WAV_DIRECTORY))
     # asyncio.run(check_missing_mp4(directory=WAV_DIRECTORY))
     # asyncio.run(update_session_name())
-    # asyncio.run(insert_metadata_youtube_api())
+    asyncio.run(insert_metadata_youtube_api())
     # asyncio.run(update_category_series_episode_by_title(DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
     # asyncio.run(copy_files_to_journal(OUTPUT_DIR, JOURNAL_REPO_DIR, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
 
-    CODA_CSV = "/mnt/md0/projects/Journal-Utilities/data/input/livestream_fulldata_2024-09-05.csv"
-    asyncio.run(insert_missing_sessions_from_csv(CODA_CSV, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
+    # CODA_CSV = "/mnt/md0/projects/Journal-Utilities/data/input/livestream_fulldata_2024-09-05.csv"
+    # asyncio.run(insert_missing_sessions_from_csv(CODA_CSV, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
     # asyncio.run(insert_processed_files(JOURNAL_REPO_DIR, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
     
