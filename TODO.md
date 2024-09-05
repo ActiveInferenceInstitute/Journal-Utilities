@@ -10,21 +10,21 @@
     - [x] update session set workingcopy_filename
 
 - [x] create column and extract "Slides URL" from "Slides" hyperlink before saving as CSV see data/input/livestream_fulldata_macro_example.ods; rename first column "Category"; save as CSV with "," and "`"
-- [ ] incorporate Daniel's Coda table
-    - [ ] Youtube
-        - [ ] session_name
-        - [ ] url 4 formats https://www.youtube.com/live/_zW1BrLwACY https://www.youtube.com/watch?v=qztkjHf2g3g https://youtu.be/L6dhr5hUu8o
+- [x] incorporate Daniel's Coda table
+    - [x] Youtube
+        - [x]] session_name
+        - [x] url 4 formats https://www.youtube.com/live/_zW1BrLwACY https://www.youtube.com/watch?v=qztkjHf2g3g https://youtu.be/L6dhr5hUu8o
                 https://youtube.com/live/ps3B2dfmK5Y
-    - [ ] Guests (for speakers list)
-    - [ ] Other participants (for speakers list)
-    - [ ] Slides URL (for images)
-    - [ ] Unique Event Name
-        - [ ] episode "0" for Livestream #058.0, Livestream 2021 Review Livestream #021.04
-    - [ ] Github (for GH path)
-        - [ ] series
-        - [ ] category
-    - [ ] Category
-        - [ ] category
+    - [x] Guests (for speakers list)
+    - [x] Other participants (for speakers list)
+    - [x] Slides URL (for images)
+    - [x] Unique Event Name
+        - [x] episode "0" for Livestream #058.0, Livestream 2021 Review Livestream #021.04
+    - [x] Github (for GH path)
+    - [x] Category
+        - [x] category
+- [ ] use insert_metadata_youtube_api to get title, etc for coda items
+- [ ] insert missing category, series, episode by title?
 
 - create a "AssemblyAI" vs "WhisperX" column to label how transcripts were created
 - add all existing processed transcripts in Transcripts/ Metadata, WorkingCopy, Prose to database that were not in initial USB card
