@@ -27,12 +27,21 @@
 - [x] insert missing category, series, episode by title?
 - [x] add category 'Applied Active Inference Symposium/2023 Ecosystem Symposium/' and series 'First_Interval' or 'Second Interval' to two videos PVeyvHSAwmk rIemcswLfGg
 - [x] insert Guests, Other Participants, Slides URL, Github for non coda items
+
+- [x] add all existing processed transcripts in Transcripts/ Metadata, WorkingCopy, Prose to database that were not in initial USB card
+    - [x] query all sessions in the database where metadata_filename = None
+            e.g. GuestStream_056
+    - [x] look in the session's Journal folder Metadata/*.sentences.csv and set transcript_method = AssemblyAI and metadata_filename
+            ActiveInferenceJournal/GuestStream/GuestStream_056/Metadata/gs056-1_ActInf GuestStream 056.1 ~ Gregoire Sergeant Agency with structured latent state-spaces.wav.sentences.csv
+    - [x] look in session's Transcripts/WorkingCopy folder for a file, this is the workingcopy_filename       
+    - [x] look in session's Transcripts/Prose folder for a file, this is the prose_filename
+    - [x] clean up PIP, Social Sciences, 2023 Ecosystem Symposium to transcript_method = AssemblyAI and update metadata_filename
+    - [x] make sure metadata and prose files are correct for folders with multiple episodes GuestStream 015.3
+    - [x] fix the Applied Active Inference Symposium/2023 Ecosystem Symposium entries
+
 - [ ] private video? x6rwST67ugU Literature as Uncertainty Practice – Creative Encounters with the World
 - [ ] future livestreams, pubishedAt data is when the livestream is scheduled
 
-- create a "AssemblyAI" vs "WhisperX" column to label how transcripts were created
-- add all existing processed transcripts in Transcripts/ Metadata, WorkingCopy, Prose to database that were not in initial USB card
-    - Roundtable_2023.2
 - add `insert_metadata_youtube_api` to `download_and_transcribe`, `pip install yt-dlp` and test
 - Collect speaker information for all transcripts
 
