@@ -26,11 +26,9 @@
 - [x] use insert_metadata_youtube_api to get title, etc for coda items
 - [x] insert missing category, series, episode by title?
 - [x] add category 'Applied Active Inference Symposium/2023 Ecosystem Symposium/' and series 'First_Interval' or 'Second Interval' to two videos PVeyvHSAwmk rIemcswLfGg
-
-
-- [ ] insert Guests, Other Participants, Slides URL, Github for non coda items
+- [x] insert Guests, Other Participants, Slides URL, Github for non coda items
 - [ ] private video? x6rwST67ugU Literature as Uncertainty Practice – Creative Encounters with the World
-- [ ] future livestreams
+- [ ] future livestreams, pubishedAt data is when the livestream is scheduled
 
 - create a "AssemblyAI" vs "WhisperX" column to label how transcripts were created
 - add all existing processed transcripts in Transcripts/ Metadata, WorkingCopy, Prose to database that were not in initial USB card
