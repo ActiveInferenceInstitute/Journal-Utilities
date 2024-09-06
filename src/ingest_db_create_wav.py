@@ -174,6 +174,70 @@ async def insert_missing_sessions_from_csv(coda_csv, db_url, db_user, db_passwor
                         record = await db.create('session', new_session)
                         print(f"Inserted new session: {youtube_id}")
 
+def escape_string(value):
+    """Escape single quotes in a string, or return None if the value is None."""
+    return value.replace("'", "\\'") if value is not None else None
+
+async def insert_missing_session_data_from_csv(coda_csv, db_url, db_user, db_password, db_name, db_namespace):
+    """
+    read through coda_csv and update sessions by session_name
+
+    Args:
+        coda_csv (str): Full path to CSV
+        db_url (str): Database URL
+        db_user (str): Database username
+        db_password (str): Database password
+        db_name (str): Database name
+        db_namespace (str): Database namespace
+    """
+
+    async with Surreal(db_url) as db:
+        await db.signin({
+            'user': db_user,
+            'pass': db_password
+        })
+        await db.use(db_name, db_namespace)
+
+        # read in CSV line by line
+        with open(coda_csv, 'r') as csvfile:
+            csvreader = csv.DictReader(csvfile, quotechar="`")
+            for row in csvreader:
+                youtube_url = row.get('YouTube', '')
+                if youtube_url:
+                    # Extract YouTube ID from URL, it can be in one of four formats:
+                    # https://www.youtube.com/live/L6dhr5hUu8o https://www.youtube.com/watch?v=L6dhr5hUu8o https://youtu.be/L6dhr5hUu8o
+                    # https://youtube.com/live/L6dhr5hUu8o
+                    youtube_id_pattern = re.compile(r'(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|live\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})')
+                    match = youtube_id_pattern.search(youtube_url)
+                    if match:
+                        youtube_id = match.group(1)
+                    else:
+                        print(f"No valid YouTube ID found: {youtube_url}")
+                    
+                    # Check if session already exists
+                    result = await db.query(f"SELECT * FROM session where from_coda_csv is None and session_name = '{youtube_id}'")
+
+                    # for each record in result update slides_url, other_participants, guests, from_coda_csv, github
+                    for record in result[0]["result"]:
+                        session_id = record['id']
+
+                        guests = escape_string(row.get('Guests', None))
+                        github = escape_string(row.get('Github', None))
+                        other_participants = escape_string(row.get('Other Participants', None))
+                        slides_url = escape_string(row.get('Slides URL', None))
+
+                        # Execute the UPDATE query
+                        update_result = await db.query(f"""
+                            UPDATE session SET 
+                            guests='{guests}',
+                            github='{github}',
+                            other_participants='{other_participants}',
+                            slides_url='{slides_url}',
+                            from_coda_csv=True
+                            WHERE id='{session_id}'
+                        """)
+                        print(f"Updated session {session_id}: {update_result}")
+
 async def update_session_name():
     """
     Read in all the session records where session_name = NONE, set session_name = id without
@@ -537,10 +601,11 @@ if __name__ == "__main__":
     # asyncio.run(check_missing_mp4(directory=WAV_DIRECTORY))
     # asyncio.run(update_session_name())
     # asyncio.run(insert_metadata_youtube_api())
-    asyncio.run(update_category_series_episode_by_title(DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
+    # asyncio.run(update_category_series_episode_by_title(DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
     # asyncio.run(copy_files_to_journal(OUTPUT_DIR, JOURNAL_REPO_DIR, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
 
-    # CODA_CSV = "/mnt/md0/projects/Journal-Utilities/data/input/livestream_fulldata_2024-09-05.csv"
+    CODA_CSV = "/mnt/md0/projects/Journal-Utilities/data/input/livestream_fulldata_2024-09-05.csv"
     # asyncio.run(insert_missing_sessions_from_csv(CODA_CSV, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
+    asyncio.run(insert_missing_session_data_from_csv(CODA_CSV, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
     # asyncio.run(insert_processed_files(JOURNAL_REPO_DIR, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
     
