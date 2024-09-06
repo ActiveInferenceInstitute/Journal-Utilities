@@ -567,22 +567,95 @@ async def copy_files_to_journal(output_dir, journal_repo_dir, db_url, db_user, d
             logging.info("Updated journal_filename %s: %s", session_id, update_result)
 
 async def insert_processed_files(journal_repo_dir, db_url, db_user, db_password, db_name, db_namespace):
-    # async with Surreal(db_url) as db:
-    #     await db.signin({
-    #         'user': db_user,
-    #         'pass': db_password
-    #     })
-    #     await db.use(db_name, db_namespace)
-        for root, dirs, _ in os.walk(journal_repo_dir):
-            if 'Transcripts' in dirs:
-                transcript_prose_dir = os.path.join(root, 'Transcripts', 'Prose')
-                if os.path.exists(transcript_prose_dir):
-                    for file in os.listdir(transcript_prose_dir):
-                        if file != "blank_document.txt":
-                            full_path = os.path.join(transcript_prose_dir, file)
-                            print(full_path)
-                            # TODO: add to list of files for a session
-                    # TODO: insert the best file format for a session md > txt > odt > pdf
+    # Choose the best prose file where md > txt > odt > pdf
+    prose_file_priority = {'md': 3, 'txt': 2, 'odt': 1, 'pdf': 0}
+
+    async with Surreal(db_url) as db:
+        await db.signin({
+            'user': db_user,
+            'pass': db_password
+        })
+        await db.use(db_name, db_namespace)
+        result = await db.query("SELECT * FROM session where metadata_filename is None;")
+
+        for session in result[0]["result"]:
+            session_id = session['id']
+            category = session.get('category')
+            series = session.get('series')
+            # TODO: how to deal with multiple episodes in the Metadata folder
+            episode = session.get('episode', '')
+
+            logging.info("%s %s %s", category, series, episode)
+
+            if not category or not series or category is None or series is None:
+                logging.info("Category or Series missing for session %s", session_id)
+                continue
+
+            repo_path = os.path.join(journal_repo_dir, category, series, 'Metadata')
+            if os.path.exists(repo_path):
+                # check if a file exists that matches repo_path/*.sentences.csv
+                metadata_files = [f for f in os.listdir(repo_path) if f.endswith('.sentences.csv')]
+            
+                if metadata_files:
+                    # If there are matching files, use the first one
+                    metadata_filename = metadata_files[0]
+                else:
+                    # no files ended with .sentences.csv
+                    # look for any files in metadata_files that are not blank_document.txt
+                    # Look for any files that are not blank_document.txt
+                    metadata_files = [f for f in os.listdir(repo_path) if f != 'blank_document.txt']
+                    
+                    if metadata_files:
+                        # If there are non-blank files, use the first one
+                        # TODO: assumes AssemblyAI transcript method currently
+                        metadata_filename = metadata_files[0]
+                    else:
+                        metadata_filename = None
+                    
+                if metadata_filename:
+                    # Update the session record with the metadata filename
+                    update_result = await db.query(f"""
+                        UPDATE session 
+                        SET 
+                            metadata_filename = '{metadata_filename}',
+                            transcript_method = 'AssemblyAI',
+                            transcribed = True
+                        WHERE id = '{session_id}'
+                    """)
+                    logging.info("Updated metadata_filename for session %s: %s", session_id, metadata_filename)
+                else:
+                    logging.warning("Metadata file not found for session %s: %s", session_id, repo_path)
+            else:
+                logging.warning("Metadata directory not found for session %s: %s", session_id, repo_path)
+
+            # Check for WorkingCopy file
+            workingcopy_path = os.path.join(journal_repo_dir, category, series, 'Transcripts', 'WorkingCopy')
+            if os.path.exists(workingcopy_path):
+                workingcopy_files = [f for f in os.listdir(workingcopy_path) if f != 'blank_document.txt']
+                if workingcopy_files:
+                    workingcopy_filename = workingcopy_files[0]
+                    update_result = await db.query(f"""
+                        UPDATE session 
+                        SET 
+                            workingcopy_filename = '{workingcopy_filename}'
+                        WHERE id = '{session_id}'
+                    """)
+                    logging.info("Updated workingcopy_filename for session %s: %s", session_id, workingcopy_filename)
+
+            # Check for Prose file
+            prose_path = os.path.join(journal_repo_dir, category, series, 'Transcripts', 'Prose')
+            if os.path.exists(prose_path):
+                prose_files = [f for f in os.listdir(prose_path) if f != 'blank_document.txt']
+                if prose_files:
+                    prose_filename = max(prose_files, key=lambda f: prose_file_priority.get(f.split('.')[-1].lower(), -1))
+
+                    update_result = await db.query(f"""
+                        UPDATE session 
+                        SET 
+                            prose_filename = '{prose_filename}'
+                        WHERE id = '{session_id}'
+                    """)
+                    logging.info("Updated prose_filename for session %s: %s", session_id, prose_filename)
 
 
 if __name__ == "__main__":
@@ -604,8 +677,8 @@ if __name__ == "__main__":
     # asyncio.run(update_category_series_episode_by_title(DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
     # asyncio.run(copy_files_to_journal(OUTPUT_DIR, JOURNAL_REPO_DIR, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
 
-    CODA_CSV = "/mnt/md0/projects/Journal-Utilities/data/input/livestream_fulldata_2024-09-05.csv"
+    # CODA_CSV = "/mnt/md0/projects/Journal-Utilities/data/input/livestream_fulldata_2024-09-05.csv"
     # asyncio.run(insert_missing_sessions_from_csv(CODA_CSV, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
-    asyncio.run(insert_missing_session_data_from_csv(CODA_CSV, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
-    # asyncio.run(insert_processed_files(JOURNAL_REPO_DIR, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
+    # asyncio.run(insert_missing_session_data_from_csv(CODA_CSV, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
+    asyncio.run(insert_processed_files(JOURNAL_REPO_DIR, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
     
