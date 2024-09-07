@@ -39,6 +39,9 @@
     - [x] make sure metadata and prose files are correct for folders with multiple episodes GuestStream 015.3
     - [x] fix the Applied Active Inference Symposium/2023 Ecosystem Symposium entries
 
+- [ ] label videos that have been transcribed as AssemblyAI or WhisperX, some are both, default to AssemblyAI. Update the metadata_filename to point to *.sentences.csv for 30 files found in repo
+- [ ] label videos with simple.tx with WhisperX
+
 - [ ] private video? x6rwST67ugU Literature as Uncertainty Practice – Creative Encounters with the World
 - [ ] future livestreams, pubishedAt data is when the livestream is scheduled
 
