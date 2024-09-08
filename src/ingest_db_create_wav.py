@@ -8,6 +8,7 @@ import shutil
 import re
 import logging
 import csv
+import datetime
 from surrealdb import Surreal
 from pyytdata import get_video_info
 from dotenv import load_dotenv
@@ -221,6 +222,7 @@ async def insert_missing_session_data_from_csv(coda_csv, db_url, db_user, db_pas
                     for record in result[0]["result"]:
                         session_id = record['id']
 
+                        # TODO: add scheduledDate here
                         guests = escape_string(row.get('Guests', None))
                         github = escape_string(row.get('Github', None))
                         other_participants = escape_string(row.get('Other Participants', None))
@@ -234,6 +236,79 @@ async def insert_missing_session_data_from_csv(coda_csv, db_url, db_user, db_pas
                             other_participants='{other_participants}',
                             slides_url='{slides_url}',
                             from_coda_csv=True
+                            WHERE id='{session_id}'
+                        """)
+                        print(f"Updated session {session_id}: {update_result}")
+
+def parse_date(date_str):
+    try:
+        # Try parsing with time
+        return datetime.datetime.strptime(date_str, '%m/%d/%Y %I:%M %p').strftime('%Y-%m-%dT%H:%M:%S-08:00')
+    except ValueError:
+        try:
+            # Try parsing without time
+            return datetime.datetime.strptime(date_str, '%m/%d/%Y').strftime('%Y-%m-%dT%H:%M:%S-08:00')
+        except ValueError:
+            logging.error("Failed to parse date: %s", date_str)
+            return None
+
+async def insert_session_date_from_csv(coda_csv, db_url, db_user, db_password, db_name, db_namespace):
+    """
+    read through coda_csv and update session date by session_name
+
+    Args:
+        coda_csv (str): Full path to CSV
+        db_url (str): Database URL
+        db_user (str): Database username
+        db_password (str): Database password
+        db_name (str): Database name
+        db_namespace (str): Database namespace
+    """
+
+    async with Surreal(db_url) as db:
+        await db.signin({
+            'user': db_user,
+            'pass': db_password
+        })
+        await db.use(db_name, db_namespace)
+
+        # read in CSV line by line
+        with open(coda_csv, 'r') as csvfile:
+            csvreader = csv.DictReader(csvfile, quotechar="`")
+            for row in csvreader:
+                youtube_url = row.get('YouTube', '')
+                if youtube_url:
+                    # Extract YouTube ID from URL, it can be in one of four formats:
+                    # https://www.youtube.com/live/L6dhr5hUu8o https://www.youtube.com/watch?v=L6dhr5hUu8o https://youtu.be/L6dhr5hUu8o
+                    # https://youtube.com/live/L6dhr5hUu8o
+                    youtube_id_pattern = re.compile(r'(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|live\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})')
+                    match = youtube_id_pattern.search(youtube_url)
+                    if match:
+                        youtube_id = match.group(1)
+                    else:
+                        print(f"No valid YouTube ID found: {youtube_url}")
+                    
+                    # Check if session already exists
+                    result = await db.query(f"SELECT * FROM session where session_name = '{youtube_id}'")
+
+                    # for each record in result update date
+                    for record in result[0]["result"]:
+                        session_id = record['id']
+
+                        date_str = row.get('Date', None)
+                        if date_str:
+                            date = parse_date(date_str)
+                            if date:
+                                date = f"d'{date}'"
+                            else:
+                                date = None
+                        else:
+                            date = None
+
+                        # Execute the UPDATE query
+                        update_result = await db.query(f"""
+                            UPDATE session SET 
+                            scheduled_date={date}
                             WHERE id='{session_id}'
                         """)
                         print(f"Updated session {session_id}: {update_result}")
@@ -685,8 +760,9 @@ if __name__ == "__main__":
     # asyncio.run(update_category_series_episode_by_title(DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
     # asyncio.run(copy_files_to_journal(OUTPUT_DIR, JOURNAL_REPO_DIR, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
 
-    # CODA_CSV = "/mnt/md0/projects/Journal-Utilities/data/input/livestream_fulldata_2024-09-05.csv"
+    CODA_CSV = "/mnt/md0/projects/Journal-Utilities/data/input/livestream_fulldata_2024-09-05.csv"
     # asyncio.run(insert_missing_sessions_from_csv(CODA_CSV, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
     # asyncio.run(insert_missing_session_data_from_csv(CODA_CSV, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
-    asyncio.run(insert_processed_files(JOURNAL_REPO_DIR, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
+    asyncio.run(insert_session_date_from_csv(CODA_CSV, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
+    #asyncio.run(insert_processed_files(JOURNAL_REPO_DIR, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
     
