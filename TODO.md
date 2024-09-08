@@ -42,7 +42,7 @@
 - [x] label videos that have been transcribed as AssemblyAI or WhisperX, some are both, default to AssemblyAI. Update the metadata_filename to point to *.sentences.csv for 30 files found in repo
 - [x] label videos with simple.txt with WhisperX
 
-- [ ] insert date from coda csv into database, better than publishedAt date
+- [x] insert scheduled_date from coda csv into database, better than published_at date
 - [ ] upgrade database
 
 - [ ] private video? x6rwST67ugU Literature as Uncertainty Practice – Creative Encounters with the World
