@@ -599,18 +599,26 @@ async def insert_processed_files(journal_repo_dir, db_url, db_user, db_password,
                 if metadata_files:
                     # If there are matching files, use the first one
                     metadata_filename = metadata_files[0]
+                    transcript_method = "AssemblyAI"
                 else:
-                    # no files ended with .sentences.csv
-                    # look for any files in metadata_files that are not blank_document.txt
-                    # Look for any files that are not blank_document.txt
-                    metadata_files = [f for f in os.listdir(repo_path) if f != 'blank_document.txt']
-                    
+                    metadata_files = [f for f in os.listdir(repo_path) if f.endswith('.simple.txt')]
                     if metadata_files:
-                        # If there are non-blank files, use the first one
-                        # TODO: assumes AssemblyAI transcript method currently
+                        # If there are matching files, use the first one
                         metadata_filename = metadata_files[0]
+                        transcript_method = "WhisperX"
                     else:
-                        metadata_filename = None
+                        # no files ended with .sentences.csv or .simple.txt
+                        # look for any files in metadata_files that are not blank_document.txt
+                        # Look for any files that are not blank_document.txt
+                        metadata_files = [f for f in os.listdir(repo_path) if f != 'blank_document.txt']
+                        
+                        if metadata_files:
+                            # If there are non-blank files, use the first one
+                            # TODO: assumes AssemblyAI transcript method currently
+                            metadata_filename = metadata_files[0]
+                            transcript_method = "AssemblyAI"
+                        else:
+                            metadata_filename = None
                     
                 if metadata_filename:
                     # Update the session record with the metadata filename
@@ -618,7 +626,7 @@ async def insert_processed_files(journal_repo_dir, db_url, db_user, db_password,
                         UPDATE session 
                         SET 
                             metadata_filename = '{metadata_filename}',
-                            transcript_method = 'AssemblyAI',
+                            transcript_method = '{transcript_method}',
                             transcribed = True
                         WHERE id = '{session_id}'
                     """)
