@@ -128,7 +128,7 @@ Get the YouTube Data API v3 Key from https://console.developers.google.com/apis/
 
 ### Start Database
 ```bash
-surreal start --log trace --user root --pass root --bind 0.0.0.0:8080 file:///mnt/md0/projects/Journal-Utilities/data/database
+surreal start --log trace --user root --pass root --bind 0.0.0.0:8080 rocksdb:///mnt/md0/projects/Journal-Utilities/data/database
 ```
 
 ### Ingest MP4 files into Database, Convert to WAV files
@@ -146,6 +146,12 @@ python transcribe.py
 ### Query DB
 ```bash
 surreal sql --endpoint http://localhost:8080 --username root --password root --namespace actinf --database actinf
+```
+
+### Upgrade DB
+```
+sudo surreal upgrade
+surreal fix rocksdb://database
 ```
 
 ## Acknowledgements
