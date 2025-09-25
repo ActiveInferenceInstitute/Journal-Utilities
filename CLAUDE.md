@@ -12,13 +12,21 @@ Note: The AssemblyAI-based transcription tools have been archived and are no lon
 
 ### Environment Setup
 
-For WhisperX workflow (Conda environment):
+Using uv (recommended):
 ```bash
-conda create --name whisperx python=3.10
-conda activate whisperx
-conda install pytorch==2.0.0 torchaudio==2.0.0 pytorch-cuda=11.8 -c pytorch -c nvidia
-pip install git+https://github.com/m-bain/whisperx.git
-pip install python-dotenv mkl==2024.0 surrealdb pyytdata
+# Install uv if not already installed
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Setup environment
+uv venv
+source .venv/bin/activate
+
+# Install dependencies
+uv pip install -e .
+uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+# For development
+uv pip install -e ".[dev]"
 ```
 
 ### Database Operations

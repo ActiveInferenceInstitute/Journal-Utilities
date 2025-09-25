@@ -7,6 +7,7 @@ import os
 import json
 import logging
 import whisperx
+from whisperx.diarize import DiarizationPipeline
 import subprocess
 from surrealdb import Surreal
 from dotenv import load_dotenv
@@ -43,7 +44,7 @@ class TranscriptionService:
         # Load alignment model and diarization pipeline during initialization
         self.align_model, self.metadata = whisperx.load_align_model(language_code="en",
                                                                     device=device)
-        self.diarize_model = whisperx.DiarizationPipeline(use_auth_token=hf_token, device=device)
+        self.diarize_model = DiarizationPipeline(use_auth_token=hf_token, device=device)
 
     def download_audio(self, video_url, output_wav_file, ffmpeg_location='/usr/bin'):
         """Function to download and prepare the audio file"""

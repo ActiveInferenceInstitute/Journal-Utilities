@@ -9,24 +9,43 @@ This repository provides a local transcription pipeline using WhisperX with Surr
 
 ## Installation
 
-### Create Conda Environment
+### Prerequisites
+
+1. Install [uv](https://github.com/astral-sh/uv) - Fast Python package installer
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+2. Ensure CUDA 11.8 is installed for GPU support (optional but recommended)
+
+### Setup with uv
+
+```bash
+# Clone the repository
+git clone https://github.com/ActiveInferenceInstitute/Journal-Utilities.git
+cd Journal-Utilities
+
+# Create virtual environment and install dependencies
+uv venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install all dependencies including PyTorch with CUDA support
+uv pip install -e .
+# For CUDA 11.8 support (optional, for GPU acceleration)
+uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+# For development
+uv pip install -e ".[dev]"
+```
+
+### Alternative: Conda Setup (Legacy)
+
+If you prefer using Conda:
 ```bash
 conda create --name whisperx python=3.10
 conda activate whisperx
-```
-
-### Install PyTorch CUDA 11.8
-```bash
 conda install pytorch==2.0.0 torchaudio==2.0.0 pytorch-cuda=11.8 -c pytorch -c nvidia
-```
-
-### Install WhisperX and Dependencies
-```bash
-pip install git+https://github.com/m-bain/whisperx.git
-pip install python-dotenv
-pip install mkl==2024.0 # downgrade to fix `libtorch_cpu.so: undefined symbol: iJIT_NotifyEvent`
-pip install surrealdb
-pip install pyytdata
+uv pip install -e .
 ```
 
 ### Install ffmpeg

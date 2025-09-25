@@ -1,0 +1,54 @@
+[project]
+name = "journal-utilities"
+version = "0.1.0"
+description = "Transcription and processing pipeline for the Active Inference Journal"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+license = "MIT"
+authors = [
+    { name = "Holly Grimm", email = "holly.grimm@gmail.com" }
+]
+
+dependencies = [
+    "whisperx>=3.4.2",
+    "python-dotenv>=1.0.0",
+    "surrealdb>=1.0.0",
+    "pyytdata>=0.1.0",
+    "torch>=2.5.1",
+    "torchaudio>=2.5.1",
+    "yt-dlp>=2025.9.23",
+    "numpy>=2.0.2",
+    "pandas>=2.2.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.4.2",
+    "black>=25.9.0",
+    "ruff>=0.1.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.uv]
+dev-dependencies = [
+    "ipython>=9.5.0",
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+select = ["E", "F", "I", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
