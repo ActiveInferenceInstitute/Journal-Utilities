@@ -109,11 +109,17 @@ surreal sql --endpoint http://localhost:8080 --username root --password root --n
 
 Example queries:
 ```sql
--- View all transcriptions
-SELECT * FROM transcription;
+-- View all sessions
+SELECT * FROM session;
 
--- View transcriptions with status
-SELECT id, status, created_at FROM transcription WHERE status = 'completed';
+-- View transcribed sessions
+SELECT * FROM session WHERE transcribed = true;
+
+-- View sessions pending transcription
+SELECT * FROM session WHERE transcribed = false;
+
+-- View specific session by name
+SELECT * FROM session WHERE session_name = 'video_id';
 ```
 
 ### Database Maintenance
