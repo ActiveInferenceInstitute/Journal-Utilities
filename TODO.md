@@ -43,7 +43,12 @@
 - [x] label videos with simple.txt with WhisperX
 
 - [x] insert scheduled_date from coda csv into database, better than published_at date
-- [ ] upgrade database
+- [x] upgrade database
+
+- [x] run python ingest_db_create_wav.py and fix result query error. restore database and run ingest again until everything looks good.
+
+- [ ] fix transcribe.py to run download_and_transcribe for all untranscribed sessions
+
 
 - [ ] private video? x6rwST67ugU Literature as Uncertainty Practice – Creative Encounters with the World
 - [ ] future livestreams, pubishedAt publishedAt is when the livestream is scheduled

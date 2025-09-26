@@ -9,7 +9,7 @@ import logging
 import whisperx
 from whisperx.diarize import DiarizationPipeline
 import subprocess
-from surrealdb import Surreal
+from surrealdb import AsyncSurreal
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -58,7 +58,9 @@ class TranscriptionService:
         try:
             subprocess.run(command, check=True)
             # Merge the database record to indicate wav extraction is complete
-            update_result = await db.query(f"UPDATE session SET wav_extracted=True WHERE id='{session_id}'")
+            update_result = await db.query(f"""UPDATE {session_id} MERGE {{
+                wav_extracted: true
+            }};""")
             print(f"Merge result for session {session_id}: {update_result}")
             print(f"Audio extracted and database updated for session {session_id}")
         except subprocess.CalledProcessError as e:
@@ -79,15 +81,15 @@ class TranscriptionService:
         Returns:
             None
         """
-        async with Surreal(db_url) as db:
+        async with AsyncSurreal(db_url) as db:
             await db.signin({
-                'user': db_user,
-                'pass': db_password
+                'username': db_user,
+                'password': db_password
             })
-            await db.use(db_name, db_namespace)
+            await db.use(db_namespace, db_name)
 
-            result = await db.query("SELECT * FROM session WHERE wav_extracted IS NULL OR wav_extracted = false")
-            for session in result[0]["result"]:
+            result = await db.query("SELECT * FROM session WHERE (wav_extracted IS NULL OR wav_extracted = false) AND is_private != true")
+            for session in result:
                 filename = session["filename"]
                 video_path = f"{mp4_directory}/{filename}"  # Adjust path as necessary
                 print(f"{video_path}")
@@ -213,8 +215,9 @@ async def transcribe_and_update(transcription_service, db, session, wav_director
         session_id = session["id"]
         logging.info("Transcription started for session %s", session_id)
         transcription_service.transcribe(output_dir, audio_file)
-        update_result = await db.query(f"UPDATE session SET transcribed=True \
-                                       WHERE id='{session_id}'")
+        update_result = await db.query(f"""UPDATE {session_id} MERGE {{
+            transcribed: true
+        }};""")
         logging.info("Transcription and update complete for session  %s: %s",
                      session_id, update_result)
     except (IOError, RuntimeError) as e:
@@ -246,14 +249,14 @@ async def process_untranscribed_sessions(db_url, db_user, db_password, db_name, 
     try:
         transcription_service = TranscriptionService(hf_token, device, batch_size, compute_type)
 
-        async with Surreal(db_url) as db:
-            await db.signin({'user': db_user, 'pass': db_password})
-            await db.use(db_name, db_namespace)
+        async with AsyncSurreal(db_url) as db:
+            await db.signin({'username': db_user, 'password': db_password})
+            await db.use(db_namespace, db_name)
 
-            result = await db.query("SELECT * FROM session WHERE transcribed = false")
+            result = await db.query("SELECT * FROM session WHERE transcribed = false AND is_private != true")
 
-            if result and result[0].get("result"):
-                for session in result[0]["result"]:
+            if result and len(result) > 0:
+                for session in result:
                     await transcribe_and_update(transcription_service, db, session,
                                                 wav_directory, output_dir)
             else:
@@ -284,14 +287,14 @@ async def download_and_transcribe(video_url, db_url, db_user, db_password, db_na
     output_wav_file = os.path.join(wav_directory, f"{video_id}.wav")
     
     try:
-        async with Surreal(db_url) as db:
-            await db.signin({'user': db_user, 'pass': db_password})
-            await db.use(db_name, db_namespace)
+        async with AsyncSurreal(db_url) as db:
+            await db.signin({'username': db_user, 'password': db_password})
+            await db.use(db_namespace, db_name)
 
             transcription_service = TranscriptionService(hf_token, device, batch_size, compute_type)
 
             result = await db.query(f"SELECT * FROM session WHERE session_name = '{video_id}'")
-            if len(result[0]["result"]) != 0:
+            if result and len(result) > 0:
                 logging.error("Video ID %s already downloaded", video_id)
                 return
 
