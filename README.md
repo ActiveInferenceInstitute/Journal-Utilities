@@ -80,16 +80,34 @@ Update the following values in `.env`:
 surreal start --log trace --user root --pass root --bind 0.0.0.0:8080 rocksdb:///mnt/md0/projects/Journal-Utilities/data/database
 ```
 
-### Process MP4 Files and Create WAV Files
+### Download CODA JSON Data and Ingest into Database
+
+Get Your Coda API Token at https://coda.io/account, scroll to "API settings," and generate an API token. Store this token securely.
+
+```bash
+cd data/input
+curl -X GET "https://coda.io/apis/v1/docs/dTwB_SP81yq/tables/grid-cjvFiXp3a3/rows?useColumnNames=true" \
+  -H "Authorization: Bearer <YOUR_API_TOKEN>" \
+  >livestream_fulldata_table.json
+```
+
+update `ingest_db_create_wav.py` to call `insert_missing_sessions_from_json` then run:
+
 ```bash
 cd src
 python ingest_db_create_wav.py
 ```
-This script:
-- Reads MP4 files from the configured directory
-- Extracts metadata using YouTube Data API
-- Stores information in SurrealDB
-- Converts MP4 files to WAV format for transcription
+
+### Extract Metadata from YouTube Data API
+
+update `ingest_db_create_wav.py` to call `update_sessions_with_youtube_metadata` then run:
+
+```bash
+cd src
+python ingest_db_create_wav.py
+```
+
+Any "private video" failures should be added to `src\private_videos.json` to skip youtube metadata lookup and transcription.
 
 ### Run Transcription
 ```bash
@@ -101,6 +119,13 @@ This script:
 - Performs transcription using WhisperX
 - Applies speaker diarization and alignment
 - Stores results back in SurrealDB
+
+### Copy Processed Files to Journal Repository
+update `ingest_db_create_wav.py` to call `copy_files_to_journal` then run:
+```bash
+cd src
+python ingest_db_create_wav.py
+```
 
 ### Query Database
 ```bash
