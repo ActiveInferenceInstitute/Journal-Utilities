@@ -7,7 +7,6 @@ import asyncio
 import shutil
 import re
 import logging
-import csv
 import json
 import datetime
 from surrealdb import AsyncSurreal
@@ -24,159 +23,6 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s',
     level=logging.INFO
 )
-
-async def process_and_store_files(directory):
-    """
-    Read a list of MP4 files from a directory into SurrealDB.
-
-    Args:
-        directory (str): The directory containing the MP4 files to process.
-
-    Returns:
-        None
-    """
-    async with AsyncSurreal(os.getenv("DB_URL")) as db:
-        await db.signin({
-            'username': os.getenv('DB_USER'),
-            'password': os.getenv('DB_PASSWORD')
-        })
-        await db.use(os.getenv('DB_NAMESPACE'), os.getenv('DB_NAME'))
-
-        # Process mp4 files
-        for filename in os.listdir(directory):
-            processed_name = ""
-            if filename.endswith(".mp4") and filename.startswith("youtube_"):
-                # Process filename: remove "youtube_" prefix and ".mp4" suffix
-                processed_name = filename.replace("youtube_", "").replace(".mp4", "")
-            elif filename.endswith("].mp4"):
-                # Get the last 15 characters of filename and remove ""].mp4" suffix
-                processed_name = filename[-16:].replace("].mp4", "")
-
-            # Insert the processed filename into the sessions table
-            if processed_name != "":
-                record = await db.create(f'session:{processed_name}', {
-                    'session_name': processed_name,
-                    'filename': filename,
-                    'wav_extracted': False,
-                    'transcribed': False
-                })
-                print(f"Inserted: {processed_name} with result: {record}")
-
-async def check_missing_mp4(directory):
-    """
-    Read a list of MP4 files and add them to SurrealDB if not found,
-    otherwise update the filename and transcribed values
-
-    Args:
-        directory (str): The directory containing the MP4 files to process.
-
-    Returns:
-        None
-    """
-    async with AsyncSurreal(os.getenv("DB_URL")) as db:
-        print("checking")
-        await db.signin({
-            'username': os.getenv('DB_USER'),
-            'password': os.getenv('DB_PASSWORD')
-        })
-        await db.use(os.getenv('DB_NAMESPACE'), os.getenv('DB_NAME'))
-
-        # Process mp4 files
-        youtube_pattern = re.compile(r'^youtube_(.*).mp4$')
-        bracket_pattern = re.compile(r'.*\[(.{15})\].mp4$')
-
-        for filename in os.listdir(directory):
-            processed_name = ""
-            youtube_match = youtube_pattern.match(filename)
-            bracket_match = bracket_pattern.match(filename)
-            if youtube_match:
-                processed_name = youtube_match.group(1)
-            elif bracket_match:
-                processed_name = bracket_match.group(1)
-            if processed_name:
-                print(processed_name)
-                result = await db.query(f"SELECT * FROM session WHERE id = \
-                                        'session:{processed_name}'")
-                if not result or len(result) == 0:
-                    print(processed_name)
-                    record = await db.create('session', {
-                        'session_name': processed_name,
-                        'filename': filename,
-                        'wav_extracted': False,
-                        'transcribed': False
-                    })
-                    print(f"Inserted: {processed_name} with result: {record}")
-                else:
-                    print(processed_name)
-                    for session in result:
-                        session_id = session["id"]
-                        update_result = await db.query(f"""UPDATE {session_id} MERGE {{
-                            filename: '{filename}',
-                            transcribed: false
-                        }};""")
-                        print(f"Merge result for session {session_id}: {update_result}")
-
-async def insert_missing_sessions_from_csv(coda_csv, db_url, db_user, db_password, db_name, db_namespace):
-    """
-    read through coda_csv and create new sessions by session_name
-    CSV format:
-    Category,Unique event name,Guests,YouTube,Slides URL,Github,Title or name of stream,Other Participants
-    Livestream,Livestream #058.0,,https://www.youtube.com/live/_zW1BrLwACY,https://docs.google.com/presentation/d/1y7vOH6fRd71xedf95x-blBAM3E_UKJw7XIXKzU_7cO4/edit#slide=id.gc77d90b7ef_1_17,,From pixels to planning: scale-free active inference,,
-
-    Args:
-        coda_csv (str): Full path to CSV
-        db_url (str): Database URL
-        db_user (str): Database username
-        db_password (str): Database password
-        db_name (str): Database name
-        db_namespace (str): Database namespace
-    """
-
-    async with AsyncSurreal(db_url) as db:
-        await db.signin({
-            'username': db_user,
-            'password': db_password
-        })
-        await db.use(db_namespace, db_name)
-
-        # read in CSV line by line
-        with open(coda_csv, 'r') as csvfile:
-            csvreader = csv.DictReader(csvfile, quotechar="`")
-            for row in csvreader:
-                youtube_url = row.get('YouTube', '')
-                if youtube_url:
-                    # Extract YouTube ID from URL, it can be in one of four formats:
-                    # https://www.youtube.com/live/L6dhr5hUu8o https://www.youtube.com/watch?v=L6dhr5hUu8o https://youtu.be/L6dhr5hUu8o
-                    # https://youtube.com/live/L6dhr5hUu8o
-                    youtube_id_pattern = re.compile(r'(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|live\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})')
-                    match = youtube_id_pattern.search(youtube_url)
-                    if match:
-                        youtube_id = match.group(1)
-                    else:
-                        print(f"No valid YouTube ID found: {youtube_url}")
-                    
-                    # Check if session already exists
-                    result = await db.query(f"SELECT * FROM session WHERE session_name = '{youtube_id}'")
-                    if not result or len(result) == 0:
-                        unique_event_name = row.get('Unique event name', '')
-                        # if categorization fails, enter None for category, series, and episode to be filled in later
-                        category, series, episode = categorize_name(unique_event_name, True)
-                        # Create new session
-                        new_session = {
-                            'category': category,
-                            'episode': episode,
-                            'series': series,
-                            'session_name': youtube_id,
-                            'transcribed': False,
-                            'wav_extracted': False,
-                            'guests': row.get('Guests', ''),
-                            'github': row.get('Github', ''),
-                            'other_participants': row.get('Other Participants', ''),
-                            'slides_url': row.get('Slides URL', ''),
-                            'from_coda_csv': True
-                        }
-                        record = await db.create('session', new_session)
-                        print(f"Inserted new session: {youtube_id}")
 
 def is_video_private(youtube_id):
     """Check if a YouTube video ID is marked as private"""
@@ -565,164 +411,6 @@ async def get_recent_import_runs(db_url, db_user, db_password, db_name, db_names
 
         return import_runs
 
-def escape_string(value):
-    """Escape single quotes in a string, or return None if the value is None."""
-    return value.replace("'", "\\'") if value is not None else None
-
-async def insert_missing_session_data_from_csv(coda_csv, db_url, db_user, db_password, db_name, db_namespace):
-    """
-    read through coda_csv and update sessions by session_name
-
-    Args:
-        coda_csv (str): Full path to CSV
-        db_url (str): Database URL
-        db_user (str): Database username
-        db_password (str): Database password
-        db_name (str): Database name
-        db_namespace (str): Database namespace
-    """
-
-    async with AsyncSurreal(db_url) as db:
-        await db.signin({
-            'username': db_user,
-            'password': db_password
-        })
-        await db.use(db_namespace, db_name)
-
-        # read in CSV line by line
-        with open(coda_csv, 'r') as csvfile:
-            csvreader = csv.DictReader(csvfile, quotechar="`")
-            for row in csvreader:
-                youtube_url = row.get('YouTube', '')
-                if youtube_url:
-                    # Extract YouTube ID from URL, it can be in one of four formats:
-                    # https://www.youtube.com/live/L6dhr5hUu8o https://www.youtube.com/watch?v=L6dhr5hUu8o https://youtu.be/L6dhr5hUu8o
-                    # https://youtube.com/live/L6dhr5hUu8o
-                    youtube_id_pattern = re.compile(r'(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|live\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})')
-                    match = youtube_id_pattern.search(youtube_url)
-                    if match:
-                        youtube_id = match.group(1)
-                    else:
-                        print(f"No valid YouTube ID found: {youtube_url}")
-                    
-                    # Check if session already exists
-                    result = await db.query(f"SELECT * FROM session where from_coda_csv is None and session_name = '{youtube_id}'")
-
-                    # for each record in result update slides_url, other_participants, guests, from_coda_csv, github
-                    for record in result:
-                        session_id = record['id']
-
-                        # TODO: add scheduledDate here
-                        guests = escape_string(row.get('Guests', None))
-                        github = escape_string(row.get('Github', None))
-                        other_participants = escape_string(row.get('Other Participants', None))
-                        slides_url = escape_string(row.get('Slides URL', None))
-
-                        # Execute the UPDATE query
-                        update_result = await db.query(f"""UPDATE {session_id} MERGE {{
-                            guests: '{guests}',
-                            github: '{github}',
-                            other_participants: '{other_participants}',
-                            slides_url: '{slides_url}',
-                            from_coda_csv: true
-                        }};""")
-                        print(f"Updated session {session_id}: {update_result}")
-
-def parse_date(date_str):
-    try:
-        # Try parsing with time
-        return datetime.datetime.strptime(date_str, '%m/%d/%Y %I:%M %p').strftime('%Y-%m-%dT%H:%M:%S-08:00')
-    except ValueError:
-        try:
-            # Try parsing without time
-            return datetime.datetime.strptime(date_str, '%m/%d/%Y').strftime('%Y-%m-%dT%H:%M:%S-08:00')
-        except ValueError:
-            logging.error("Failed to parse date: %s", date_str)
-            return None
-
-async def insert_session_date_from_csv(coda_csv, db_url, db_user, db_password, db_name, db_namespace):
-    """
-    read through coda_csv and update session date by session_name
-
-    Args:
-        coda_csv (str): Full path to CSV
-        db_url (str): Database URL
-        db_user (str): Database username
-        db_password (str): Database password
-        db_name (str): Database name
-        db_namespace (str): Database namespace
-    """
-
-    async with AsyncSurreal(db_url) as db:
-        await db.signin({
-            'username': db_user,
-            'password': db_password
-        })
-        await db.use(db_namespace, db_name)
-
-        # read in CSV line by line
-        with open(coda_csv, 'r') as csvfile:
-            csvreader = csv.DictReader(csvfile, quotechar="`")
-            for row in csvreader:
-                youtube_url = row.get('YouTube', '')
-                if youtube_url:
-                    # Extract YouTube ID from URL, it can be in one of four formats:
-                    # https://www.youtube.com/live/L6dhr5hUu8o https://www.youtube.com/watch?v=L6dhr5hUu8o https://youtu.be/L6dhr5hUu8o
-                    # https://youtube.com/live/L6dhr5hUu8o
-                    youtube_id_pattern = re.compile(r'(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|live\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})')
-                    match = youtube_id_pattern.search(youtube_url)
-                    if match:
-                        youtube_id = match.group(1)
-                    else:
-                        print(f"No valid YouTube ID found: {youtube_url}")
-                    
-                    # Check if session already exists
-                    result = await db.query(f"SELECT * FROM session where session_name = '{youtube_id}'")
-
-                    # for each record in result update date
-                    for record in result:
-                        session_id = record['id']
-
-                        date_str = row.get('Date', None)
-                        if date_str:
-                            date = parse_date(date_str)
-                            if date:
-                                date = f"d'{date}'"
-                            else:
-                                date = None
-                        else:
-                            date = None
-
-                        # Execute the UPDATE query
-                        update_result = await db.query(f"""UPDATE {session_id} MERGE {{
-                            scheduled_date: {date}
-                        }};""")
-                        print(f"Updated session {session_id}: {update_result}")
-
-async def update_session_name():
-    """
-    Read in all the session records where session_name = NONE, set session_name = id without
-    "session:"
-
-    Returns:
-        None
-    """
-    async with AsyncSurreal(os.getenv("DB_URL")) as db:
-        await db.signin({
-            'username': os.getenv('DB_USER'),
-            'password': os.getenv('DB_PASSWORD')
-        })
-        await db.use(os.getenv('DB_NAMESPACE'), os.getenv('DB_NAME'))
-
-        result = await db.query("SELECT * FROM session WHERE session_name is NONE")
-        for session in result:
-            session_id = session['id']
-            session_name = session_id.replace("session:", "")
-            update_result = await db.query(f"""UPDATE {session_id} MERGE {{
-                session_name: '{session_name}'
-            }};""")
-            print(f"Update session_name for {session_id}: {update_result}")
-
 async def insert_metadata_youtube_api():
     """
     Looks up metadata for all the sessions where title is none, and updates the metadata in the database
@@ -935,44 +623,6 @@ def categorize_name(name, is_unique_event_name):
         print(f"match not found for {name}")
     return category, series, episode
 
-async def update_category_series_episode_by_title(db_url, db_user, db_password, db_name, db_namespace):
-    """
-    select all the sessions, using the title, figure out category, series, and episode
-    
-    Args:
-        db_url (str): Database URL
-        db_user (str): Database username
-        db_password (str): Database password
-        db_name (str): Database name
-        db_namespace (str): Database namespace
-    """
-    async with AsyncSurreal(db_url) as db:
-        await db.signin({
-            'username': db_user,
-            'password': db_password
-        })
-        await db.use(db_namespace, db_name)
-        result = await db.query("SELECT * FROM session where category is null;")
-
-        for session in result:
-            session_id = session['id']
-            title = session.get('title', '')
-
-            if title:
-                category, series, episode = categorize_name(title, False)
-                if category is None:
-                    continue  # Skip if no match
-
-                update_result = await db.query(f"""
-                    UPDATE session 
-                    SET 
-                        category = '{category}',
-                        series = {f"'{series}'" if series is not None else 'NONE'},
-                        episode = {f"'{episode}'" if episode is not None else 'NONE'}
-                    WHERE id = '{session_id}'
-                """)
-                print(f"Updated category, series, and episode for session {session_id}: {update_result}")
-
 async def copy_files_to_journal(output_dir, journal_repo_dir, db_url, db_user, db_password, db_name, db_namespace):
     """
     copy files from output_dir to journal_repo_dir based on category, series, and episode
@@ -1052,107 +702,19 @@ async def copy_files_to_journal(output_dir, journal_repo_dir, db_url, db_user, d
             """)
             logging.info("Updated journal_filename %s: %s", session_id, update_result)
 
-async def insert_processed_files(journal_repo_dir, db_url, db_user, db_password, db_name, db_namespace):
-    # Choose the best prose file where md > txt > odt > pdf
-    prose_file_priority = {'md': 3, 'txt': 2, 'odt': 1, 'pdf': 0}
-
-    async with AsyncSurreal(db_url) as db:
-        await db.signin({
-            'username': db_user,
-            'password': db_password
-        })
-        await db.use(db_namespace, db_name)
-        result = await db.query("SELECT * FROM session where metadata_filename is None;")
-
-        for session in result:
-            session_id = session['id']
-            category = session.get('category')
-            series = session.get('series')
-            # TODO: how to deal with multiple episodes in the Metadata folder
-            episode = session.get('episode', '')
-
-            logging.info("%s %s %s", category, series, episode)
-
-            if not category or not series or category is None or series is None:
-                logging.info("Category or Series missing for session %s", session_id)
-                continue
-
-            repo_path = os.path.join(journal_repo_dir, category, series, 'Metadata')
-            if os.path.exists(repo_path):
-                # check if a file exists that matches repo_path/*.sentences.csv
-                metadata_files = [f for f in os.listdir(repo_path) if f.endswith('.sentences.csv')]
-            
-                if metadata_files:
-                    # If there are matching files, use the first one
-                    metadata_filename = metadata_files[0]
-                    transcript_method = "AssemblyAI"
-                else:
-                    metadata_files = [f for f in os.listdir(repo_path) if f.endswith('.simple.txt')]
-                    if metadata_files:
-                        # If there are matching files, use the first one
-                        metadata_filename = metadata_files[0]
-                        transcript_method = "WhisperX"
-                    else:
-                        # no files ended with .sentences.csv or .simple.txt
-                        # look for any files in metadata_files that are not blank_document.txt
-                        # Look for any files that are not blank_document.txt
-                        metadata_files = [f for f in os.listdir(repo_path) if f != 'blank_document.txt']
-                        
-                        if metadata_files:
-                            # If there are non-blank files, use the first one
-                            # TODO: assumes AssemblyAI transcript method currently
-                            metadata_filename = metadata_files[0]
-                            transcript_method = "AssemblyAI"
-                        else:
-                            metadata_filename = None
-                    
-                if metadata_filename:
-                    # Update the session record with the metadata filename
-                    update_result = await db.query(f"""
-                        UPDATE session 
-                        SET 
-                            metadata_filename = '{metadata_filename}',
-                            transcript_method = '{transcript_method}',
-                            transcribed = True
-                        WHERE id = '{session_id}'
-                    """)
-                    logging.info("Updated metadata_filename for session %s: %s", session_id, metadata_filename)
-                else:
-                    logging.warning("Metadata file not found for session %s: %s", session_id, repo_path)
-            else:
-                logging.warning("Metadata directory not found for session %s: %s", session_id, repo_path)
-
-            # Check for WorkingCopy file
-            workingcopy_path = os.path.join(journal_repo_dir, category, series, 'Transcripts', 'WorkingCopy')
-            if os.path.exists(workingcopy_path):
-                workingcopy_files = [f for f in os.listdir(workingcopy_path) if f != 'blank_document.txt']
-                if workingcopy_files:
-                    workingcopy_filename = workingcopy_files[0]
-                    update_result = await db.query(f"""
-                        UPDATE session 
-                        SET 
-                            workingcopy_filename = '{workingcopy_filename}'
-                        WHERE id = '{session_id}'
-                    """)
-                    logging.info("Updated workingcopy_filename for session %s: %s", session_id, workingcopy_filename)
-
-            # Check for Prose file
-            prose_path = os.path.join(journal_repo_dir, category, series, 'Transcripts', 'Prose')
-            if os.path.exists(prose_path):
-                prose_files = [f for f in os.listdir(prose_path) if f != 'blank_document.txt']
-                if prose_files:
-                    prose_filename = max(prose_files, key=lambda f: prose_file_priority.get(f.split('.')[-1].lower(), -1))
-
-                    update_result = await db.query(f"""
-                        UPDATE session 
-                        SET 
-                            prose_filename = '{prose_filename}'
-                        WHERE id = '{session_id}'
-                    """)
-                    logging.info("Updated prose_filename for session %s: %s", session_id, prose_filename)
-
 
 if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description='Process and store MP4 files in SurrealDB')
+    parser.add_argument('--step', type=str, choices=['import', 'metadata', 'copy', 'all'],
+                        help='Which step to run: import (from JSON), metadata (YouTube API), copy (to journal), or all')
+    parser.add_argument('--json', type=str, default="/mnt/md0/projects/Journal-Utilities/data/input/livestream_fulldata_table.json",
+                        help='Path to Coda JSON file (default: data/input/livestream_fulldata_table.json)')
+
+    args = parser.parse_args()
+
+    # Load environment variables
     WAV_DIRECTORY = os.getenv('WAV_DIRECTORY')
     OUTPUT_DIR = os.getenv('OUTPUT_DIR')
     JOURNAL_REPO_DIR = os.getenv('JOURNAL_REPO_DIR')
@@ -1163,29 +725,28 @@ if __name__ == "__main__":
     DB_NAME = os.getenv('DB_NAME')
     DB_NAMESPACE = os.getenv('DB_NAMESPACE')
 
-    CODA_JSON = "/mnt/md0/projects/Journal-Utilities/data/input/livestream_fulldata_table.json"
-    
-    # STEP 1
-    # asyncio.run(insert_missing_sessions_from_json(CODA_JSON, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
+    CODA_JSON = args.json
 
-    # STEP 2
-    asyncio.run(insert_metadata_youtube_api())
+    if not args.step:
+        parser.print_help()
+        print("\nPlease specify a step to run with --step")
+        exit(1)
 
-    # STEP 3
-    # run transcribe.py
+    # STEP 1: Import sessions from JSON
+    if args.step in ['import', 'all']:
+        print("Step 1: Importing sessions from JSON...")
+        asyncio.run(insert_missing_sessions_from_json(CODA_JSON, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
 
-    # STEP 4
-    # asyncio.run(copy_files_to_journal(OUTPUT_DIR, JOURNAL_REPO_DIR, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
+    # STEP 2: Fetch metadata from YouTube API
+    if args.step in ['metadata', 'all']:
+        print("Step 2: Fetching metadata from YouTube API...")
+        asyncio.run(insert_metadata_youtube_api())
 
+    # STEP 3: Run transcribe.py (note: this is a separate script)
+    if args.step == 'all':
+        print("Step 3: Note - Run transcribe.py separately for transcription")
 
-    # Old utilities
-    # CODA_CSV = "/mnt/md0/projects/Journal-Utilities/data/input/livestream_fulldata_2024-09-05.csv"
-    # asyncio.run(insert_missing_sessions_from_csv(CODA_CSV, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
-    # asyncio.run(insert_missing_session_data_from_csv(CODA_CSV, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
-    # asyncio.run(insert_session_date_from_csv(CODA_CSV, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
-    # asyncio.run(insert_processed_files(JOURNAL_REPO_DIR, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
-    # asyncio.run(update_category_series_episode_by_title(DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
-    # asyncio.run(process_and_store_files(directory=WAV_DIRECTORY))
-    # asyncio.run(check_missing_mp4(directory=WAV_DIRECTORY))
-    # asyncio.run(update_session_name())
-    
+    # STEP 4: Copy files to journal
+    if args.step in ['copy', 'all']:
+        print("Step 4: Copying files to journal repository...")
+        asyncio.run(copy_files_to_journal(OUTPUT_DIR, JOURNAL_REPO_DIR, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE))
