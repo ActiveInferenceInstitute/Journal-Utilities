@@ -60,8 +60,9 @@ wget -O - -q  https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/f
    - [Speaker-Diarization-3.1](https://huggingface.co/pyannote/speaker-diarization-3.1)
 
 2. Get the YouTube Data API v3 Key from https://console.developers.google.com/apis/
+3. Get Your Coda API Token at https://coda.io/account, scroll to "API settings," and generate an API token.
 
-3. Configure environment variables:
+4. Configure environment variables:
 ```bash
 cp .env.sample .env
 ```
@@ -72,47 +73,59 @@ Update the following values in `.env`:
 - `WAV_DIRECTORY`: Directory for WAV file storage
 - `OUTPUT_DIR`: Output directory for processed files
 - `JOURNAL_REPO_DIR`: Path to Active Inference Journal repository
+- `CODA_API_TOKEN`: Your Coda API token (for fetching session data)
 
 ## Usage
 
-### Start Database
+### Complete Workflow
+
+The typical workflow consists of these steps:
+
 ```bash
-surreal start --log trace --user root --pass root --bind 0.0.0.0:8080 rocksdb:///mnt/md0/projects/Journal-Utilities/data/database
+# 1. Start the database
+make db-start
+
+# 2. Fetch latest data from Coda API
+make fetch-coda
+
+# 3. Import sessions into SurrealDB (with audit trail)
+make import-sessions
+
+# 4. Fetch metadata from YouTube API
+make fetch-metadata
+
+# 5. Run WhisperX transcription
+make transcribe
+
+# 6. Copy processed files to journal repository
+make copy-to-journal
 ```
 
-### Download CODA JSON Data and Ingest into Database
+### Individual Steps
 
-Get Your Coda API Token at https://coda.io/account, scroll to "API settings," and generate an API token. Store this token securely.
-
+#### Fetch Data from Coda
 ```bash
-cd data/input
-curl -X GET "https://coda.io/apis/v1/docs/dTwB_SP81yq/tables/grid-cjvFiXp3a3/rows?useColumnNames=true" \
-  -H "Authorization: Bearer <YOUR_API_TOKEN>" \
-  >livestream_fulldata_table.json
+make fetch-coda
 ```
+Downloads the latest session data from Coda API. The JSON file can be formatted in VS Code with `Format Document` for better readability.
 
-update `ingest_db_create_wav.py` to call `insert_missing_sessions_from_json` then run:
-
+#### Import Sessions
 ```bash
-cd src
-python ingest_db_create_wav.py
+make import-sessions
+# Or with custom JSON file:
+python src/ingest_db_create_wav.py --step import --json /path/to/file.json
 ```
+Imports sessions with full audit trail tracking. Use rollback functions if needed.
 
-### Extract Metadata from YouTube Data API
-
-update `ingest_db_create_wav.py` to call `update_sessions_with_youtube_metadata` then run:
-
+#### Fetch YouTube Metadata
 ```bash
-cd src
-python ingest_db_create_wav.py
+make fetch-metadata
 ```
+Any "private video" failures should be added to `src/private_videos.json` to skip youtube metadata fetching and transcription.
 
-Any "private video" failures should be added to `src\private_videos.json` to skip youtube metadata lookup and transcription.
-
-### Run Transcription
+#### Run Transcription
 ```bash
-cd src
-python transcribe.py
+make transcribe
 ```
 This script:
 - Loads WAV files from the database
@@ -120,12 +133,11 @@ This script:
 - Applies speaker diarization and alignment
 - Stores results back in SurrealDB
 
-### Copy Processed Files to Journal Repository
-update `ingest_db_create_wav.py` to call `copy_files_to_journal` then run:
+#### Copy to Journal
 ```bash
-cd src
-python ingest_db_create_wav.py
+make copy-to-journal
 ```
+Organizes transcripts by category/series/episode in the journal repository.
 
 ### Query Database
 ```bash
@@ -141,10 +153,16 @@ SELECT * FROM session;
 SELECT * FROM session WHERE transcribed = true;
 
 -- View sessions pending transcription
-SELECT * FROM session WHERE transcribed = false;
+SELECT * FROM session WHERE transcribed = false AND is_private != true;
 
 -- View specific session by name
 SELECT * FROM session WHERE session_name = 'video_id';
+
+-- View import audit trail
+SELECT * FROM import_audit ORDER BY timestamp DESC LIMIT 10;
+
+-- View recent import summary
+SELECT * FROM import_audit WHERE operation = 'import_summary' ORDER BY timestamp DESC;
 ```
 
 ### Database Maintenance
@@ -169,21 +187,25 @@ python -m unittest tests.test_transcript
 ```
 Journal-Utilities/
 ├── src/                     # Main transcription pipeline
-│   ├── ingest_db_create_wav.py
-│   └── transcribe.py
+│   ├── ingest_db_create_wav.py  # Multi-step ingestion with CLI
+│   ├── transcribe.py            # WhisperX transcription
+│   ├── output_final_artifacts.py # Process final outputs
+│   └── private_videos.json      # List of private video IDs
 ├── tests/                   # Unit tests
 ├── data/                    # Database and output files
 │   ├── database/           # SurrealDB storage
-│   ├── input/              # Input data files
+│   ├── input/              # Input data files (Coda JSON)
 │   └── output/             # Processed outputs
 ├── Archive/                 # Archived AssemblyAI tools
 │   ├── 1_youtube_to_audio/
 │   ├── 2_audio_to_markdown/
 │   ├── 5_markdown_to_final/
 │   └── ...
+├── Makefile                # Workflow automation
 ├── CLAUDE.md               # Documentation for Claude Code
 ├── README.md               # This file
-└── .env.sample             # Environment configuration template
+├── .env.sample             # Environment configuration template
+└── pyproject.toml          # Python package configuration
 ```
 
 ## Archived Components
