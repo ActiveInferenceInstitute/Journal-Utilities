@@ -162,36 +162,48 @@ class TranscriptionService:
         """
         try:
             # 1. Transcribe with original whisper (batched)
+            logging.info("Loading audio file: %s", audio_file)
             audio = whisperx.load_audio(audio_file)
+            logging.info("Starting transcription with WhisperX model")
             result = self.model.transcribe(audio, batch_size=self.batch_size)
+            logging.info("Transcription complete, %d segments found", len(result.get("segments", [])))
 
             # 2. Align whisper output
+            logging.info("Starting alignment")
             result = whisperx.align(result["segments"], self.align_model, self.metadata, audio,
                                     self.device, return_char_alignments=False)
+            logging.info("Alignment complete")
 
             # 3. Assign speaker labels
+            logging.info("Starting diarization")
             diarize_segments = self.diarize_model(audio)
+            logging.info("Diarization complete, assigning speaker labels")
             result = whisperx.assign_word_speakers(diarize_segments, result)
+            logging.info("Speaker assignment complete")
 
             # 4. Write to JSON file
             result_segments = result["segments"]
             base_filename = os.path.splitext(os.path.basename(audio_file))[0]
             output_file = os.path.join(output_dir, f"{base_filename}.json")
+            logging.info("Writing full JSON to %s", output_file)
             with open(output_file, "w", encoding="utf-8") as f:
                 json.dump(result_segments, f, indent=2)
             logging.info("Transcription saved to %s", output_file)
 
             # 5. Write simplified JSON file without the 'words' list
             output_simple_file = os.path.join(output_dir, f"{base_filename}.simple.json")
+            logging.info("Writing simplified JSON to %s", output_simple_file)
             result_simple = self.simplify_transcript(result_segments)
             with open(output_simple_file, "w", encoding="utf-8") as f:
                 json.dump(result_simple, f, indent=2)
 
             # 6. Write simplified TXT file
             output_simple_txt_file = os.path.join(output_dir, f"{base_filename}.simple.txt")
+            logging.info("Writing simplified TXT to %s", output_simple_txt_file)
             result_simple_txt = self.output_text(result_simple)
             with open(output_simple_txt_file, "w", encoding="utf-8") as f:
                 f.write(result_simple_txt)
+            logging.info("All output files written successfully")
         except Exception as e:
             logging.error("An error occurred during transcription of %s: %s", audio_file, e)
             raise  # Re-raise the exception to propagate it
@@ -294,25 +306,31 @@ async def download_and_transcribe(video_url, db_url, db_user, db_password, db_na
             transcription_service = TranscriptionService(hf_token, device, batch_size, compute_type)
 
             result = await db.query(f"SELECT * FROM session WHERE session_name = '{video_id}'")
-            if result and len(result) > 0:
-                logging.error("Video ID %s already downloaded", video_id)
+            if not result or len(result) == 0:
+                logging.error("Session with video_id %s not found in database", video_id)
                 return
 
-            transcription_service.download_audio(video_url, output_wav_file)
-            logging.info("Successfully downloaded audio for video ID: %s", video_id)
+            session = result[0]
 
-            # Create a new session in the database
-            session = {
-                "session_name": video_id,
-                "filename": f"{video_id}.wav",
-                "wav_extracted": True,
-                "transcribed": False
-            }
-            create_result = await db.create("session", session)
-            logging.info("Created new session in database: %s", create_result)
+            if not session.get('wav_extracted'):
+                transcription_service.download_audio(video_url, output_wav_file)
+                logging.info("Successfully downloaded audio for video ID: %s", video_id)
 
-            # Transcribe the audio and update the database
-            await transcribe_and_update(transcription_service, db, session, wav_directory, output_dir)
+                # Update the existing session in the database
+                update_result = await db.query(
+                    f"UPDATE {session['id']} MERGE {{filename: '{video_id}.wav', wav_extracted: true}}"
+                )
+                logging.info("Updated session in database: %s", update_result)
+                session['filename'] = f"{video_id}.wav"
+                session['wav_extracted'] = True
+            else:
+                logging.info("Video ID %s already downloaded", video_id)
+
+            # Transcribe the audio and update the database if not already transcribed
+            if not session.get('transcribed'):
+                await transcribe_and_update(transcription_service, db, session, wav_directory, output_dir)
+            else:
+                logging.info("Video ID %s already transcribed", video_id)
     except subprocess.CalledProcessError as e:
         logging.error("Failed to download audio for video ID %s: %s", video_id, str(e))
         return
@@ -337,7 +355,7 @@ if __name__ == '__main__':
     # asyncio.run(process_untranscribed_sessions(DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE, WAV_DIRECTORY,
     #                             OUTPUT_DIR, HF_TOKEN, DEVICE, BATCH_SIZE, COMPUTE_TYPE))
 
-    VIDEO_URL = "https://www.youtube.com/watch?v=v4sAeY06ngs"
+    VIDEO_URL = "https://www.youtube.com/watch?v=85ob-jrG7xQ"
     # TODO: Test
     asyncio.run(download_and_transcribe(VIDEO_URL, DB_URL, DB_USER, DB_PASSWORD, DB_NAME, DB_NAMESPACE, WAV_DIRECTORY,
                                 OUTPUT_DIR, HF_TOKEN, DEVICE, BATCH_SIZE, COMPUTE_TYPE))

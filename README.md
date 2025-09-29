@@ -16,7 +16,7 @@ This repository provides a local transcription pipeline using WhisperX with Surr
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-2. Ensure CUDA 11.8 is installed for GPU support (optional but recommended)
+2. Ensure CUDA 12.8 is installed for GPU support (optional but recommended)
 
 ### Setup with uv
 
@@ -31,21 +31,20 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 # Install all dependencies including PyTorch with CUDA support
 uv pip install -e .
-# For CUDA 11.8 support (optional, for GPU acceleration)
-uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+# For CUDA 12.8 support (required for GPU acceleration)
+uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+
+# Install cuDNN 8 (required for pyannote speaker embeddings)
+sudo apt install libcudnn8 libcudnn8-dev -y
+sudo ldconfig
 
 # For development
 uv pip install -e ".[dev]"
 ```
 
-### Alternative: Conda Setup (Legacy)
-
-If you prefer using Conda:
+**Note:** After installation, you'll need to apply compatibility patches to WhisperX for pyannote.audio 4.0+. Run:
 ```bash
-conda create --name whisperx python=3.10
-conda activate whisperx
-conda install pytorch==2.0.0 torchaudio==2.0.0 pytorch-cuda=11.8 -c pytorch -c nvidia
-uv pip install -e .
+python scripts/patch_whisperx.py
 ```
 
 ### Install ffmpeg
@@ -58,6 +57,7 @@ wget -O - -q  https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/f
 1. [Generate a Hugging Face Token](https://huggingface.co/settings/tokens) and accept the user agreement for the following models:
    - [Segmentation](https://huggingface.co/pyannote/segmentation-3.0)
    - [Speaker-Diarization-3.1](https://huggingface.co/pyannote/speaker-diarization-3.1)
+   - [Speaker-Diarization-Community-1](https://hf.co/pyannote/speaker-diarization-community-1) (for speaker embeddings)
 
 2. Get the YouTube Data API v3 Key from https://console.developers.google.com/apis/
 3. Get Your Coda API Token at https://coda.io/account, scroll to "API settings," and generate an API token.
