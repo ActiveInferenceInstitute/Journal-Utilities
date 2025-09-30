@@ -48,6 +48,7 @@
 - [x] run python ingest_db_create_wav.py and fix result query error. restore database and run ingest again until everything looks good.
 
 - [ ] restore database, fix transcribe.py to run download_and_transcribe for all untranscribed sessions
+- [ ] remove video_url from session table
 - [ ] test scheduled_date fix in ingest json code
 - [ ] review these: SELECT * FROM session where scheduled_date is NONE and transcribed = false;
   - [ ] no longer a private video? x6rwST67ugU Literature as Uncertainty Practice – Creative Encounters with the World, run insert youtube metadata and run transcribe

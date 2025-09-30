@@ -221,7 +221,7 @@ async def process_untranscribed_sessions(db_url, db_user, db_password, db_name, 
             await db.signin({'username': db_user, 'password': db_password})
             await db.use(db_namespace, db_name)
 
-            result = await db.query("SELECT * FROM session WHERE transcribed = FALSE AND is_private != TRUE AND from_coda_json = TRUE AND scheduled_date < time::now() - 1d LIMIT 2;")
+            result = await db.query("SELECT * FROM session WHERE transcribed = FALSE AND is_private != TRUE AND from_coda_json = TRUE AND scheduled_date < time::now() - 1d LIMIT 10;")
 
             if result and len(result) > 0:
                 for session in result:
@@ -272,12 +272,11 @@ async def download_and_transcribe(session_name, db, transcription_service, wav_d
 
             # Update the existing session in the database
             update_result = await db.query(
-                f"UPDATE {session['id']} MERGE {{filename: '{session_name}.wav', wav_extracted: true, video_url: '{video_url}'}}"
+                f"UPDATE {session['id']} MERGE {{filename: '{session_name}.wav', wav_extracted: true}}"
             )
             logging.info("Updated session in database: %s", update_result)
             session['filename'] = f"{session_name}.wav"
             session['wav_extracted'] = True
-            session['video_url'] = video_url
         else:
             logging.info("Session %s already downloaded", session_name)
 
