@@ -211,9 +211,12 @@ async def process_untranscribed_sessions(db_url, db_user, db_password, db_name, 
         compute_type (str): Compute type (e.g., 'float16', 'int8').
 
     Returns:
-        None    
+        None
     """
     try:
+        # Create a single TranscriptionService instance to reuse across all sessions
+        transcription_service = TranscriptionService(hf_token, device, batch_size, compute_type)
+
         async with AsyncSurreal(db_url) as db:
             await db.signin({'username': db_user, 'password': db_password})
             await db.use(db_namespace, db_name)
@@ -227,34 +230,24 @@ async def process_untranscribed_sessions(db_url, db_user, db_password, db_name, 
                         logging.warning("Session %s has no session_name, skipping", session.get('id'))
                         continue
 
-                    await download_and_transcribe(session_name, db_url, db_user, db_password,
-                                                  db_name, db_namespace, wav_directory,
-                                                  output_dir, hf_token, device, batch_size,
-                                                  compute_type)
+                    await download_and_transcribe(session_name, db, transcription_service,
+                                                  wav_directory, output_dir)
             else:
                 logging.info("No unprocessed sessions found.")
     except (Exception) as e: # pylint: disable=broad-except
         logging.error("An error occurred during query and transcription: %s", e)
 
-async def download_and_transcribe(session_name, db_url, db_user, db_password, db_name, db_namespace,
-                                  wav_directory, output_dir, hf_token, device, batch_size, compute_type):
+async def download_and_transcribe(session_name, db, transcription_service, wav_directory, output_dir):
     """
-    Downloads an audio file to the wav_directory, creates a session in the database,
-    transcribes the wav file, and saves the transcript to the output_dir
+    Downloads an audio file to the wav_directory, transcribes the wav file,
+    and saves the transcript to the output_dir
 
     Args:
         session_name: youtube video ID (e.g., 'v4sAeY06ngs')
-        db_url (str): Database URL
-        db_user (str): Database username
-        db_password (str): Database password
-        db_name (str): Database name
-        db_namespace (str): Database namespace
-        wav_directory (str): The directory containing the WAV files.
+        db (AsyncSurreal): Database connection
+        transcription_service (TranscriptionService): The transcription service instance
+        wav_directory (str): The directory containing the WAV files
         output_dir (str): Path to folder to store the json and txt files
-        hf_token (str): Hugging Face token for authentication.
-        device (str): Device to use for computation (e.g., 'cuda').
-        batch_size (int): Batch size for transcription.
-        compute_type (str): Compute type (e.g., 'float16', 'int8').
 
     Returns:
         None
@@ -263,42 +256,36 @@ async def download_and_transcribe(session_name, db_url, db_user, db_password, db
     output_wav_file = os.path.join(wav_directory, f"{session_name}.wav")
 
     try:
-        async with AsyncSurreal(db_url) as db:
-            await db.signin({'username': db_user, 'password': db_password})
-            await db.use(db_namespace, db_name)
+        result = await db.query(f"SELECT * FROM session WHERE session_name = '{session_name}'")
+        if not result or len(result) == 0:
+            logging.error("Session with session_name %s not found in database", session_name)
+            return
 
-            transcription_service = TranscriptionService(hf_token, device, batch_size, compute_type)
+        session = result[0]
 
-            result = await db.query(f"SELECT * FROM session WHERE session_name = '{session_name}'")
-            if not result or len(result) == 0:
-                logging.error("Session with session_name %s not found in database", session_name)
-                return
+        # Construct video URL from session_name
+        video_url = f"https://www.youtube.com/watch?v={session_name}"
 
-            session = result[0]
+        if not session.get('wav_extracted'):
+            transcription_service.download_audio(video_url, output_wav_file)
+            logging.info("Successfully downloaded audio for session: %s", session_name)
 
-            # Construct video URL from session_name
-            video_url = f"https://www.youtube.com/watch?v={session_name}"
+            # Update the existing session in the database
+            update_result = await db.query(
+                f"UPDATE {session['id']} MERGE {{filename: '{session_name}.wav', wav_extracted: true, video_url: '{video_url}'}}"
+            )
+            logging.info("Updated session in database: %s", update_result)
+            session['filename'] = f"{session_name}.wav"
+            session['wav_extracted'] = True
+            session['video_url'] = video_url
+        else:
+            logging.info("Session %s already downloaded", session_name)
 
-            if not session.get('wav_extracted'):
-                transcription_service.download_audio(video_url, output_wav_file)
-                logging.info("Successfully downloaded audio for session: %s", session_name)
-
-                # Update the existing session in the database
-                update_result = await db.query(
-                    f"UPDATE {session['id']} MERGE {{filename: '{session_name}.wav', wav_extracted: true, video_url: '{video_url}'}}"
-                )
-                logging.info("Updated session in database: %s", update_result)
-                session['filename'] = f"{session_name}.wav"
-                session['wav_extracted'] = True
-                session['video_url'] = video_url
-            else:
-                logging.info("Session %s already downloaded", session_name)
-
-            # Transcribe the audio and update the database if not already transcribed
-            if not session.get('transcribed'):
-                await transcribe_and_update(transcription_service, db, session, wav_directory, output_dir)
-            else:
-                logging.info("Session %s already transcribed", session_name)
+        # Transcribe the audio and update the database if not already transcribed
+        if not session.get('transcribed'):
+            await transcribe_and_update(transcription_service, db, session, wav_directory, output_dir)
+        else:
+            logging.info("Session %s already transcribed", session_name)
     except subprocess.CalledProcessError as e:
         logging.error("Failed to download audio for session %s: %s", session_name, str(e))
         return
