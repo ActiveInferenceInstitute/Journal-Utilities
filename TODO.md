@@ -48,7 +48,7 @@
 - [x] run python ingest_db_create_wav.py and fix result query error. restore database and run ingest again until everything looks good.
 
 - [ ] restore database, fix transcribe.py to run download_and_transcribe for all untranscribed sessions
-
+- [ ] test scheduled_date fix in ingest json code
 - [ ] private video? x6rwST67ugU Literature as Uncertainty Practice – Creative Encounters with the World
 - [ ] future livestreams, pubishedAt publishedAt is when the livestream is scheduled
 

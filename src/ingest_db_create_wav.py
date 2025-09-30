@@ -117,7 +117,7 @@ async def insert_missing_sessions_from_json(coda_json, db_url, db_user, db_passw
                         if date_str:
                             try:
                                 # Parse ISO format date: "2024-10-29T00:00:00.000-07:00"
-                                scheduled_date = datetime.datetime.fromisoformat(date_str).isoformat()
+                                scheduled_date = datetime.datetime.fromisoformat(date_str)
                             except (ValueError, TypeError):
                                 logging.warning(f"Could not parse date: {date_str}")
 
@@ -141,9 +141,9 @@ async def insert_missing_sessions_from_json(coda_json, db_url, db_user, db_passw
                             'from_coda_json': True
                         }
 
-                        # Add scheduled_date if available
+                        # Add scheduled_date if available (as datetime object, SurrealDB will handle it)
                         if scheduled_date:
-                            new_session['scheduled_date'] = f"d'{scheduled_date}'"
+                            new_session['scheduled_date'] = scheduled_date
 
                         record = await db.create('session', new_session)
                         print(f"Inserted new session from JSON: {youtube_id}")
