@@ -1,0 +1,3216 @@
+SPEAKER_06:
+Hello and welcome everyone.
+
+It is November 13th, 2024.
+
+We're live and kicking off the fourth Applied Active Inference Symposium.
+
+It will be a great program and we will begin with Carl Friston and Lance DaCosta.
+
+discussing scale-free active inference.
+
+We discussed in live stream 58.1 with Lance last week and in 58.0 with Arun two weeks ago, a bit about this work.
+
+And today, Carl, thank you so much for joining and presenting on it.
+
+So looking forward to it and throughout in a live chat, please feel free to write any comments.
+
+Thanks again, everyone for joining and looking forward to this.
+
+
+SPEAKER_03:
+Thank you, Daniel.
+
+It's a great pleasure to kick off the symposium this year.
+
+I'm going to rehearse a presentation I made at the Active Inference workshop a few months ago.
+
+but this time I hope in a slightly more relaxed and unpackable way, so I'm fondly hoping for lots of questions and embellishments from the audience and from Lance.
+
+This is a bit of a colloquial presentation, it's just going to focus on something specifically that we've been working on
+
+for the past few months, which is effectively addressing the question, how can one scale active inference for high dimensional real world problems?
+
+And the solution that we've been pursuing is to adopt a scale free approach.
+
+This work has been written up and put on archives.
+
+However, it's also been submitted for publication, peer-reviewed publication, to a special collection in memory of Herman Haken.
+
+And we've equipped the peer-reviewed version with a little forward.
+
+So I just wanted to frame or preempt the scientific part of this presentation just by motivating why the work of Herman Haken is
+
+foundational and underwrites many of the ideas and procedures that underlie this scale-free approach to active inference.
+
+Herman Haken was famous for synergetics, a physics-led approach to self-organization, and in particular, the importance of understanding the coupling between different scales of dynamics in self-organization.
+
+And if you go to the Wikipedia entry, you will read about macroscopic and microscopic variables and how they are coupled to each other in a
+
+in the fashion of circular causality.
+
+So there's both bottom-up and top-down causation, where the top-down causation is sometimes read in terms of the slaving principle.
+
+I'm going to present this approach to harnessing this notion of a scale free universe in terms of installing that scale free aspect in the generative models that we bring to the table to solve decision making, to simulate or emulate active inference under discrete state space models.
+
+Let me start at the beginning, the nature of things and the free energy principle.
+
+And this is just to rehearse the fundaments of the free energy principle.
+
+It all rests upon the notion of a Markov blanket where we can separate internal and external states.
+
+by boundary states or constitute the Markov blanket namely the sensory states and the active states and for those people not familiar with this particular partition of states of any random dynamical system it's just specifying systemically a system say a brain in terms of its inputs and outputs and just formalizing
+
+the conditional dependencies that define what is an input to a brain or an agent and what is its output in terms of the sensory and active states that thereby render the system of interest, in this instance a brain, open to the environment, the eco-niche, the heat bath if you're a physicist or a chemist,
+
+in virtue of the fact that the inside can influence the outside via the active states, the outputs, and the outside can influence the inside via the sensory states or the inputs.
+
+And with this setup,
+
+we can elaborate a kind of physics, namely Bayesian mechanics, that is almost formally related and inherits exactly the same mathematical and functional form as all the other mechanics that we find in physics, including quantum mechanics, statistical mechanics and classical mechanics.
+
+The only thing that separates the Bayesian mechanics is the fact that we have in mind explicitly this partition between internal states and external states and the blanket states that intervene and couple the internal to the external.
+
+And that basic mechanics is effectively summarised here in terms of variational and expected free energy, where we can read the expected free energy as effectively prior beliefs about the kind of outputs or actions that, in this instance, a brain could exert on the external states.
+
+and the variation of free energy keeping it implicitly the um the internal states uh a good model so it's tracking in a probabilistic sense the um the dynamics on the outside and we can combine this to uh create a generalized free energy um that now
+
+teleologically or perhaps even anthropomorphically, we can now read the gradient flows that subtend this Bayesian mechanics in terms of action and perception just by identifying the internal and active states of any agent as autonomous states and noting that they effectively flow on the same free energy functionals.
+
+So that's the basic setup.
+
+But what I want to do before applying the free energy principle in the service of things like active inference is just back up and reflect upon the fundamental role of the Markov blanket and how that leads to a scale invariant picture or view of dynamics and self-organization.
+
+What I'm going to assume is that ultimately we will assume that basic mechanics means that the dynamics of anything that is defined in terms of its boundary or Markov blanket can be described in terms of active inference.
+
+But before that, we have to think about the nature of things and in particular,
+
+If one goes back to the particular physics paper, the nature of the states that constitute things or particles, and there's a bit of a subtlety here because before you can start talking about states, you really have to define what is a state.
+
+Is it the state of something?
+
+Is it the state of a particle?
+
+And that presents an issue because you're defining a particle in terms of this particular partition into internal, external and boundary or blanket states.
+
+So there's a slight, not tautology, but there's a slight problem in resolving
+
+how you define states of things or particles and particles that possess states.
+
+And the resolution of that is to adopt a recursive definition so that the particles constitute a set of microscopic blanket and internal states.
+
+while the states are a set of macroscopic eigenfunctions, eigenmodes, or just simply mixtures of the blanket states.
+
+So I'm here deliberately using the notion of macroscopic and microscopic states just as a nod to synergetics, and in particular the kind of synergetics that Hermann Haken developed and subsequently championed.
+
+This is cartooned or illustrated on the right-hand side here.
+
+So we sort of take some states and then apply a particular partition on the basis of which states are coupled to which other states and the conditional independences that ensue.
+
+um and then having done that we can then take mixtures eigenmixtures of the boundary states that then generate new states um and then we can um effectively by taking those mixtures we effectively reduce the dimensionality so that the higher scale
+
+um coarse grains the lower scale and then we reduce it and then we just rinse wash and repeat and we do that and every time we sort of pass through this cycle of rg operators um reduction and coarse graining operators we move to one scale above successively and this is the scale invariant aspect of um that i want to leverage in in the remainder um of this presentation
+
+I use the word RG deliberately because one way of looking at this or articulating this is to use the apparatus of the renormalization group.
+
+So this is where renormalization gets into the game, that you're recursively applying these operators, coarse-graining things,
+
+in a way that conserves their dynamics.
+
+And that's an easy criteria to meet for us because we know that anything that has a particular partition can be described in terms of a gradient flow on a variation or generalized free energy.
+
+So we have everything that we require in order to apply the apparatus of the renormalization group.
+
+So what that basically does for us, once we recognise that particles are composed of states where the states are eigenmixtures of particles in this scale invariant fashion, gives us a view of any universe that comprises things of things of things as inherently resolving a chicken and egg problem.
+
+through scale invariance by application of the renormalization group.
+
+So here's just another illustration of how that actually works in practice when you write down the equations.
+
+I'm not going to bother going through the equations.
+
+This is just used iconically just to make the observation
+
+that as you move up scales, so, for example, in an evolutionary context, this would be the dynamics of phenotypes, and then we move up to an evolutionary scale by effectively coarse-graining in a way that Hermann Haken would exactly prescribe in terms of taking those slow macroscopic variables that decay very, very slowly
+
+are technically the eigenmixtures equipped with very small eigenvalues whose real part approaches zero from below, effectively saying that these patterns decay very, very, very slowly and they have a kind of persistence that lends higher and higher scales
+
+a temporal dilation, so things change more and more slowly as you increasingly coarse-grain things.
+
+This falls out of the maths when you simply apply a particular partition and put that partition in as the coarse-graining operator in this scale-free formalism.
+
+In short, Bayesian mechanics entail a generative model of external dynamics.
+
+But we've just seen that just by defining things in terms of particles that have states and defining states in terms of the functions of particles, that external dynamics are inevitably scale invariant.
+
+It can be no other way.
+
+And therefore the generative model must be scale invariant, or when expressed as a graphical model, scale free.
+
+And I just slipped that in as a nod to the fact that people often talk about scale freeness.
+
+Generally speaking, when people apply the notion of scale invariance to anything, if that thing is a graph, then you can call it scale free.
+
+So a scale free thing is a graph that has this scale invariance.
+
+Crucially,
+
+in both time and in space because we are dealing with dynamical systems and we're doing this dimension reduction or coarse graining using these eigenfunctions that necessarily pick out these slow macroscopic, sometimes called stable modes.
+
+They're stable because they don't decay or dissipate almost infinitely quickly.
+
+So they're stable in the sense that they decay very, very slowly.
+
+So how can we harness that observation, that truism, at least truism under the world as described by Haken, in the construction of plausible generative models and in particular, generalized Markov decision or partially observed Markov decision processes?
+
+Well, what we can do is we can just look at the different kinds of depth,
+
+and ask at what point would we be able to leverage this renormalising aspect of the cause-effect architecture of any given world that we're trying to navigate and predict.
+
+So here's the normal depiction of a
+
+a generalized Markov decision process.
+
+And by generalized, what I mean is that there's an explicit representation of not just the states of things that are generating outputs or things that can be measured or observed on the sensory sector of a Markov blanket, but also their dynamics in terms of the paths that
+
+specify the transitions between states, as we know, normally encoded in terms of a transition tensor B here.
+
+So just by putting in the paths as explicit random variables that accompany for each given factor,
+
+The hidden states, we have a generalized kind of Markov decision process encoded in the usual way in this instance in terms of tensors that themselves can be parameterized as Dirichlet distributions.
+
+so that parameterization equips these kinds of models with a parametric depth in the sense that if something is deep parametrically that means that the parameters of various probability distributions are themselves random variables that have their own
+
+probability distributions.
+
+So, for example, the likelihood mapping that maps from sensory states to outcomes here, usually encoded by an A tensor here, mapping from latent states to observations, is itself encoded in terms of
+
+Dirichlet parameters lending this kind of model a parametric depth and one can ask what the implications of that are well the implications are another kind of depth in terms of you now have to optimize
+
+or apply Bayesian mechanics to the latent states, the hidden states, and that would be inference.
+
+And then you also have to consider, at a slightly slower time scale, the optimization of the Dirichlet parameters, and that would correspond to learning and so on, if I wanted to go to the structure learning of the model in and of itself.
+
+We also have implicitly a temporal depth in the sense that we're going to be rolling out into the future and that there are dynamics here.
+
+And this temporal depth is generalized in virtue of having these explicit path variables that we're going to exploit later on.
+
+We can also have hierarchical depth in the sense that we can put
+
+compose many Markov decision processes in the sense that the outputs of one process now constitute the inputs or the empirical priors, the top-down constraints, the inductive biases on the dynamics and states of the level below.
+
+and the dynamics, the kind of inputs, sorry, outputs of the upper level that provide empirical powers on the paths and the initial conditions are supplied or mediated by a mapping between higher levels, slower states, and the initial conditions or initial states of the lower level by this detensor here.
+
+that you can lump together in terms of a sort of high, you can lump together the D and the E tensors, they play the role effectively of the A tensors in sort of mapping from one level to the next level.
+
+There's also a factorial depth, which many people will be familiar with in terms of for any one of these tensors.
+
+lumped states here.
+
+There may be many, many different factors that have a certain independent structure such that you have interactions between factors in determining outcomes.
+
+You can look at this in terms of a generative model
+
+when equipped with factorial depth, effectively entangles latent states to generate outputs or outcomes which themselves can be prior constraints on the states and dynamics of the level below, such that the inversion of these models effectively disentangles the data or the content that is being observed to explain it in terms of
+
+a disentangled representation, which is the latent state and dynamics of the generative model.
+
+So what we have here then is a generalized discrete state-to-face model with paths as random variables.
+
+just to return to this fundamental aspect that as one ascends scales in real life, in terms of the external states,
+
+things slow down in virtue of the synergetic mapping from fast microscopic states to slow macroscopic states.
+
+The same thing can now be implemented in these
+
+Markov decision processes that have a hierarchical depth.
+
+And the way that is done is effectively to discretize or quantize time, such that there are more updates at any given level than the level above.
+
+So for every update at this level, there are say three updates or two updates at the level below.
+
+and that
+
+affords a temporal scaling in accord with the scale invariance implied by the synergetic view of self-organization.
+
+And I've tried to cartoon that here in terms of, if you imagine lots of these little Markov decision processes populating this circumference here, and that as we go deeper and deeper and deeper into a model with hierarchical depth,
+
+As we consider updates in universal or clock time, there are more updates at the peripheral level exposed, say, to the external states of an entire brain relative to the updates as you get deeper and deeper and deeper into the model.
+
+So that's where the temporal depth becomes, if you like, intimately tied to the hierarchical depth of the hierarchy, the slower the updates, which is why we generally parameterize the initial conditions or generate the initial conditions and the initial path.
+
+from the states above, and that path can pursue a trajectory over multiple time steps until a certain horizon, in which case it then sends messages back to the level above, likelihood messages that then cause belief updating
+
+and the subsequent step at the level above and then generating priors about the subsequent path, the next path at the level below, and then so on recursively to the depth of the model.
+
+So that's the time bit.
+
+What about the spatial bit?
+
+What about the spatial coarse graining, the lumping together of various states?
+
+And of course, this depends upon the particular partition.
+
+So in the general physics formulation, you'd be looking at Markov blankets of Markov blankets.
+
+In practical applications, one can take a shortcut.
+
+And that shortcut effectively rests upon the simplifying assumption that for most systems that are composed of coupled dynamical systems, the interactions are usually local.
+
+So if we just think about some
+
+system that can be described in terms of local interactions so for example in a Euclidean world that comprises some massive objects that bounce around and if we ignore gravity for the moment then they're only going to influence each other or depend upon each other
+
+when they're touching, when they're proximate.
+
+Effectively, what that means is that the particular partition that defines all the Markov blankets in this particular state space is composed of lots of local little tiles.
+
+So what we can do is we can use a device
+
+very prevalent or indeed ubiquitous applications of the renormalization group, which is called a block or a spin operator that just groups together local tiles or quadrants of a, say, two-dimensional arrangement of tile, of states.
+
+So I've illustrated that here just by, in terms of,
+
+how we do the spatial coarse graining in these, what we will refer to as a renormalizing generative model with spin block transformations in terms of this hidden state or hidden factor with its states and paths here.
+
+is responsible for generating predictions about the dynamics of these two factors at the lower level.
+
+And in so doing,
+
+what we are effectively doing is successively grouping together sets of sets of sets of sets so that any set or group at one level is accountable for or trying to generate the dynamics of a small local group about the at the lower level um this is quite fundamental this kind of architecture is quite fundamental because what that means is
+
+anything at the lower level only has one parent and if it only has one parent and if you remember the Markov blanket is constituted by the parents and the children the parents of the children because there are no co-parents there are no parents of the children and what this means practically
+
+is that we can now ignore dependencies between or effectively resolve or dissolve any dependencies between the factors at any given level because each factor is only responsible for its children and it doesn't share any children in virtue of this particular spin block transformation.
+
+So this leads to a very efficient kind of generative model
+
+or certainly an efficient kind of inversion of the generative model, where we've got all these converging streams, but the streams don't have to talk to each other until at the point that they come together through these blocking or spin block transformations at some point.
+
+all the tiles or the groups at the lowest level will actually come together at the top or very deep in the model at which point we're now encoding quite long trajectories technically two to the power of the depth minus one in terms of updates but at the lower level
+
+there are no interactions between the different blocks as we ascend them.
+
+And this is just to remind you, we can treat these D and E, the initial states and the initial paths, effectively as likelihoods that couple one scale or level to the scale below.
+
+So if that's the kind of model that we aspire to, because we think that's appropriate for any world that shows this scale invariant aspect in space and in time, or in state space and in time, how are we going to build one of these things?
+
+And this is the sort of second, if you like,
+
+that we have been working on because it's going to be very difficult to specify by hand these scale-free or renormalizing generative models.
+
+We really want the model to learn itself.
+
+So basically, how does one build a renormalizing generative model?
+
+And what we're going to do, we're going to use very fast structure learning.
+
+And this particular kind of structure learning is necessarily recursive and in the sense that we're going to build these models through the recursive application of these RG operators or renormalizing operators.
+
+So what's fast structure learning?
+
+So fast structural learning basically equips the model with unique states and transitions as they are encountered.
+
+So to put that simply, what we're going to do is grow a model from scratch, from nothing.
+
+And how are we going to do that?
+
+Well, we're effectively going to take one observation and say, okay, that was generated by some latent state.
+
+And then we're going to take the next observation
+
+and say okay i haven't seen that particular observation before so i'm going to induce a second latent state and furthermore i've seen these two observations in sequence therefore i'm going to encode that with a transition from the first to the second state
+
+And then I just repeat, I take the third one.
+
+And if I haven't seen that before, I induce a third latent state and a second transition, accumulating all the unseen or unique instances of observations in a likelihood mapping that just grows and grows and grows until we have seen something before.
+
+So we don't induce a new
+
+state or implicitly column of the likelihood matrix if we've seen the previous state.
+
+That's just an instance of something that has been seen before.
+
+it may well now come along with a different path so the next state may not be the same as the subsequent state following the previously seen instance of this state and therefore i'm going to induce a new path and slowly grow my b tensors and my probability transition matrices until i can basically encode all the dynamical structure of the
+
+effectively the training sequence of observations summarised in a maximally efficient way.
+
+And I mean maximally efficient in a technical sense, in the sense that the implicit mapping that we are growing from
+
+from scratch has the highest mutual information between the latent states and the observations that are at hand.
+
+The way that you can think of that in terms of free energy is that the expected free energy is just the mutual information in the absence of any expected cost.
+
+So the expected free energy is just the mutual information of any mapping.
+
+plus or minus an expected cost, where cost is defined the usual way in terms of constraints or prior preferences.
+
+So one can actually look at this fast structure learning as a particular kind of active inference, but not about active inference over states or active learning over parameters.
+
+It's active selection of the right model in terms of the size of the
+
+likelihood tensors and the transition tensors and the criteria for whether we accept a new latent state or a new transition is simply does it
+
+optimise or improve the expected free energy, namely, does it preserve or conserve or maximise the mutual information?
+
+So we can actually look at this structural learning as just another instance of active inference, but here deployed in terms of Bayesian model selection, or some people call this structural learning, that has exactly the same rules as
+
+planning and
+
+and accepting parameter updates provided they maximize expected free energy as well.
+
+The application of this kind of fast structural learning to these renormalizing models looks complicated.
+
+Here's the algorithmic description of it.
+
+Again, please don't worry about the details here.
+
+It's relatively simple.
+
+All we're doing basically is ingesting
+
+observations but we're just doing it for local groups and then we are combining the initial conditions and the paths into new outcomes for the next level and so because we are doing this for local groups the number of groups just gets smaller and smaller and smaller as you as you get higher and higher and higher but obviously the number of combinations of
+
+paths and state initial states increases as you get deeper and deeper into the model and you may be asking well you know how do you ban that you know how can you um possibly assimilate all the data without having an extremely large number of latent states very deep in the model that are now encoding effectively evolving patterns or paths over quite a large number of time points into the future well
+
+it's trivial to do that because the size of the highest level i'll call them generalized states that basically generate paths and initial conditions for the lower levels is upper bounded by the number of elements in your training set so that you can control and upper bound the size of these renormalizing operators or likelihood mappings and transition
+
+tensors simply by giving it canonical training data, the kind of data that you want this agent to generate or this agent to recognize and thereby predict.
+
+So here's a particular example of that.
+
+What we've done here
+
+is just ask can we very very quickly learn a generative model that will generate a um a simple movie and this might movie is simple because um it begins and ends in the same state so it just loops over and over and over again um so we only have to supply one loop
+
+um to this fast structure learning so the model builds itself and can then be used in generative mode to generate the movie time and time and time again so here's one depiction of the results of
+
+the learning, the first spectral learning and subsequent inference when exposed to this kind of image.
+
+So the coarse graining here at the very bottom, in fact, uses
+
+a slightly finessed version of the spin block operator by harvesting local eigenmodes or eigenimages of little patches of the video to get it into a reduced or coarse-grained representation that then is just passed up using these spin block operators.
+
+And in this instance, we just need two levels to the model to have the highest level see the entire image.
+
+And then if we present the image after discretization using the singular value decomposition or the sequences of images to a model, it learns the model and then we can generate little movies simply by moving through these paths or episodes
+
+I use the word episode because remember these generalized states at the highest level encode paths or trajectories over two to the n minus one time steps in the future when n is the depth of the model.
+
+And these episodes themselves have dynamics.
+
+So we just go through a little loop here, go back to the beginning and thereby generate this image at the bottom.
+
+What else can we do with these kinds of models?
+
+Well, one thing we can do is present not the entire data, but just a little prompt.
+
+So in this example, what we've done is actually show it just the upper right quadrant of the movie and
+
+and see what this generative model believes is going on in terms of the predictive posterior in output space, in image space in this instance.
+
+Now, because during training it's only learned to recognise a dove flapping her wings,
+
+That's all it can believe is the cause of its sensations, even if those sensations are very partial.
+
+So basically what we have here is a kind of pattern completion that inherits from the fact that this gerative model only knows about latent causes that constitute an entire dove flapping her wings.
+
+So even though this is what the dove is actually exposed to, it's sensing,
+
+This is the predicted, after a couple of frames, it very quickly is able to predict what it should be seeing or what it would have seen had it been given the entire data.
+
+And another way of thinking about this remarkable ability to sort of fill in the gaps is from the point of view of compression.
+
+So just a little digression here.
+
+a lot of the Bayesian mechanics and variational inference that ensues from variational mechanics can also be likened to
+
+the same fundaments that underwrite efficient information transfer.
+
+So we've talked about maximizing mutual information in the context of algorithmic complexity and
+
+the associated universal computation, then what the objective function looks like is basically how much can I compress this content to represent it in the most efficient way.
+
+So you can look at this past structure learning under these renormalizing or scale-free generative models as the most efficient way of compressing
+
+whatever your data you've been exposed to.
+
+And because we've compressed it in such a way that it can only now recognise a dove flapping their wings, then it can, if you like, fill in the gaps in a very efficient way when just given partial or noisy data.
+
+And I use the word noisy here because you can regard the missing three quadrants here as extremely imprecise data, data that has extremely low signal to noise, for example.
+
+So here's another example.
+
+In the previous example, we took an effectively
+
+a movie or a dynamic or a system that had a periodic orbit, which was each flap of the wings.
+
+Will this work for aperiodic orbits and generally for stochastic chaos?
+
+Yes, it works relatively efficiently.
+
+So this example,
+
+we used training data that was generated through creating images of a white ball that moved with a chaotic trajectory governed by a Lorentz system.
+
+So this is the kind of system that governs or is used to describe chaotic events in meteorological systems or in fluid convection.
+
+So by applying exactly the same procedures as in the previous example, we're now generating this as a three level hierarchical or renormalizing model that now accommodates the stochasticness or randomness induced
+
+by not only random fluctuations on the dynamics of this stochastic random dynamical system, but also if there were any deterministic aspects, the deterministic chaos that ensues from exponential divergence of trajectories that now has been summarized stochastically in terms of probabilistic transition matrices here, which means that we can,
+
+having compressed the training data, we can now withhold not a quadrant, but just simply withhold the data to stop the data.
+
+But the model will keep on generating what it predicts would have happened, given the statistics of the dynamics that have been installed
+
+in this renormalizing generative model.
+
+And what we've done here is for the first few hundred time bins at the lowest level, we've basically rendered the images or the input very, very imprecise so that everything is governed now, everything is generated from these top-down priors or posterior, posterior,
+
+predictive posteriors that inherit from from precise priors because there's no precise likelihood um and then we've actually uh removed the um removed the um imprecise input completely and just allowed the um the agent to generate its own beliefs about what's about what's going on um so here this is
+
+fairly precise in the first instance, and then we remove completely the stimulus, but it still imagines or generates or predicts what's going on in terms of this chaotic dynamics.
+
+with a degree of uncertainty then, continues to then generate the dynamics associated with this kind of stochastic chaos.
+
+Here's a prettier example using exactly the same technology and approach, but here explicitly talking about video compression.
+
+So we literally just presented a video of naturalistic dynamics and in this instance a little bird, a robin, feeding itself and
+
+compress that using this renormalizing generative model such that we can, again, simply remove stimuli at certain points in the video.
+
+And yet in the agent's mind, nothing has really happened because all it knows is that if it was like this previously, then this must have happened and so on through this in this instance.
+
+um orbit that doesn't have a closure it's just a trajectory through from the beginning to the end of the sequence and here's the posterior prediction after just being exposed to a couple of frames right at the beginning um in the first um six uh time frames of um of about 120 sorry of um 18. um
+
+This example moves, applies exactly the same approach as previously.
+
+But now we're not talking about ingesting or learning or compressing images.
+
+We're talking now about compressing or ingesting sound files.
+
+And that is, if you like, a simple or limiting case of this two-dimensional compression that we talked about before.
+
+So in this instance now, what we're doing is compressing one-dimensional frequency summaries of a particular wave file or file that describes fluctuations in the intensity of a sound.
+
+that then is summarized in terms of a continuous wavelet transform.
+
+And then the succession of different trajectories in this time frequency space is then ingested or assimilated or learned by the generative model.
+
+Now, unfortunately, you can't hear this, so I'm not going to bother playing it.
+
+This is what the agent was trained on.
+
+It's basically jazz piano.
+
+And these are the ensuing predictions in the absence of any inputs.
+
+It's being used to generate music using the stochastic transitions through various bars of music that it has learned, returning to one or other bars of the music when it reaches the end of the orbit to generate something that sounds at least jazzy, if not,
+
+So to summarize what we've done so far, we've gone beyond generative AI in the sense of having a true generative model that entails active inference and agency.
+
+And in the setting of these
+
+Well, sorry, what we are going to do now is go beyond just simply generating content, having been trained on the basis of some training data.
+
+We're going to now consider agency by putting action into the mix.
+
+And in the setting of the simplified setting of optimal state action policies, where we can effectively ignore the imperative to
+
+maximize expected information gain or explore in the sense of responding to epistemic affordances, we can
+
+do one of two things.
+
+We can either use some universal function approximators, say deep learning, to optimize the mapping from sensory to active states to maximize the expected cost or the expected utility part of the expected free energy.
+
+Or we can use active inference to realize predictions under a normalizing generative model of rewarded events.
+
+So what I'm doing here is deliberately setting up a dichotomy that tries to distinguish the active inference approach to purposeful behaviour, where the purpose is provided purely by the prior preferences or the constraints.
+
+usually encoded in the C tensor, against a sort of reinforcement learning approach.
+
+And this is a rather busy slide, but I think it's probably worth just briefly rehearsing the distinctions between active inference and reinforcement learning.
+
+So the story with respect to action
+
+as a gradient flow on free energy, which basically reduces to
+
+picking those actions that maximize the predictive accuracy in the sense that if you look at the expression for the variational free energy the only thing that you can change is the accuracy in the sense that free energy can be written as accuracy minus complexity minus accuracy and the complexity does not depend upon action whereas the accuracy does
+
+So that picture basically says I can describe behaviour in terms of a generative model that is optimised through perception in the usual way, cast in terms of, say, variational inference, that basically generates predictions about what should happen next.
+
+And then I can pick my actions to fulfill those predictions in continuous state formulations.
+
+This would be minimizing the prediction error, usually in a proprioceptive domain, but you can generalize this to any consequence of action.
+
+I'm just going to pick that action.
+
+that brings about or is most likely to bring about what I predict will happen next and what I predict will happen next is optimised through perception, through variational inference based upon my learned and selected generative model.
+
+So this is very similar to sort of model predictive control and neurobiology could be cast in terms of perceptual control theory
+
+which puts action in the game basically of realising, evidencing,
+
+predicted states.
+
+So I've tried to summarise that here just in terms of, you know, our Markov blanket, where we're optimising our beliefs about the world.
+
+Noting that planning in this instance, so planning as inference, is all about the paths.
+
+It does not have to be about action.
+
+It's just about how does this world unfold?
+
+And from the point of view of these scale-free generative models, we're really thinking about how do episodes follow each other?
+
+Which episode is going to follow this episode?
+
+And we can say, well, you know, you are in control of that.
+
+Imagine a benevolent world in which everything happens according to your beliefs about how to be an expert in this particular world.
+
+And the agent can plan a series of episodes, generating predictions all the way down to the bottom, which then slavishly, action can fulfill just by fulfilling those predictions.
+
+So one could, in some sense, think of this in terms of control as inference at the bottom level in the spirit of model predictive control and planning as inference at the top level, so belt and braces, in terms of realising active inference in this particular example where, I repeat, we are really just wowed about state action policies.
+
+Why are we worried about seduction policies?
+
+Well, these are the kind of policies that reward learning schemes are aimed at and have a similar architecture, but to my mind, a slightly more over-engineered architecture.
+
+First of all, you actually need explicit inputs, which are rewards.
+
+There are some proxy for the constraints of, you know,
+
+under which the basic mechanics would normally operate.
+
+But more importantly, you're basically sending, your inference scheme is basically about selecting the right policy.
+
+I've used Q-learning here to maximise the discounted reward.
+
+So similarities and differences, but we're gonna focus on active inference.
+
+in the particular setting of these renormalising models, where I repeat, planning and thinking or imagining a future
+
+can proceed at the very highest level that has no notion of action they're just patterns that unfold they may or not be caused by me i don't know i don't care um but the action at the lowest level the reflexes as it were um do um are in a position to make my um proposed predictive posters come true simply by picking those actions that realize the predicted outcomes um so
+
+How are we going to leverage that kind of merely reflexive active inference in the context of building or learning from scratch renormalising or scale-free generative models that would be apt for doing something, implementing a state action policy?
+
+And I'm going to appeal here again to this notion of
+
+active selection as one way of looking at action, which can always be at least mathematically expressed in terms of doing something if it minimizes expected free energy.
+
+And in this instance, what we can do is actually apply it not to the selection of the model, but the selection of the training data.
+
+So if we just apply the dicta that you only select something if it minimizes expected free energy,
+
+that includes the expected cost.
+
+What that basically means is I'm only going to select those data features or those training sequences that don't come along with a high cost, namely those that are rewarded.
+
+And that's what we're going to do here.
+
+We're basically going to learn to play a very simplified game of Pong, where this ball bounces around inside a circle.
+
+and we can move the bat in a way to return the ball so that we can avoid penalties when the ball hits the upper boundary and secure a reward whenever there's contact of the ball and the bat and how can we learn
+
+this kind of dynamic, these episodes in exactly the same way we learned the video of the robin or the dove flapping her wings.
+
+Well, what we can do is we can just select instances of random play that conform with our diktat that we cannot include those costly events.
+
+And so what we've done here is just
+
+generate training data training sequences using random play but omitted anything that
+
+that contains a costly outcome.
+
+And furthermore, just to make things more efficient, we've restarted the random play after a reward is secured and then just use the subsequent play if it actually attained a subsequent reward.
+
+So basically chained together, bootstrapping together or splicing together sequences of rewarded play.
+
+and then use that to submitting that for fast structure learning.
+
+And now we have a generative model on expert play effectively, or a generative model that entails a state action policy that can be realised through
+
+reflexive active inference.
+
+So active data selection, and I'm sort of cartooning that here in terms of applying a certain kind of Maxwell's demon that only lets through non-costly episodes.
+
+Basically, yes, admit this sequence for fast structure learning if there is a reward, if not, ignore this sequence.
+
+And this effectively
+
+or furnishes a generative model of events that lead to a reward and nothing else.
+
+So now this agent can only recognise expert play.
+
+And therefore all of its predictions have to be the predictions of an expert player.
+
+And because action is fulfilling the predictions, it will look as if it is an expert player.
+
+and here are the learned trajectories at the highest level of different episodes that we'll see shown in an alternative format in the next slide so here's the initial starting episodes little events here the red dots correspond to reward so you know first hit
+
+second hit and then it falls into a nice little orbit and this completes this orbit indefinitely by it's the way that it has learned so remember it's only been trained on random data so this particular style of play is unique to this agent but it is sufficient now to play with a hundred percent
+
+performance, simply because it's now going round and round its orbit, very much like the wing flapping her wings.
+
+These are just different ways of portraying the same dynamics and the things that have been learned, the first eight frames and then subsequent frames of expert play.
+
+This is the usual format showing the posteriors at different levels, the posteriors over the states and the posteriors or predicted posteriors over the paths, and then rewarded play as a function of the free energy at different levels here, illustrated by the red dots every time there's a hit up until 512 timeframes here.
+
+and here's this rather long orbit through 50 episodes um each four uh time steps in in length that subtends this kind of play this is an interesting one and speaks to the fact that we've actually switched on inductive inference at the highest level um so what does that mean well what we've done is just um basically take each of these highest level states
+
+worked out the sequence that it encodes is by computing or projecting down through the model and if that sequence includes a hit we said that's an intended state that's the kind of state that I want to work towards through the successive four time step epochs and
+
+If I want to be at some point in the future in one of these intended states, in this instance rewarded states or episodes, what states must I avoid in order to
+
+preserve or conserve the possibility of getting in or getting to one of these intended states and basically that's the technology behind inductive inference and it's sort of summarized here in terms of the latent states of you know 50 or so of these latent states in terms of how many time steps would it would it what's the shortest number of time steps until the intended state
+
+And basically, as we move from state to state to state, we want to keep in the white areas here, avoiding these dead ends, if you like, from which there is no possibility of reaching an intended state.
+
+And it's really,
+
+to evaluate these areas that you have to avoid because you know the probability transition matrices.
+
+So you just multiply it by itself a given number of times and you can work out, can I get from this state to this state?
+
+And if you can't, then you get this black area here and you know you have to move from here to here to here to here to get to your intended state.
+
+So that's inductive inference in brief.
+
+and we've applied it at the top level.
+
+So we just told the agent, this world is under your control.
+
+Imagine what you want, noting that these particular episodes or events are things that you should pass through or should experience and then deploying inductive inference to basically predict what will happen all the way down at the bottom and then using reflexes to make that happen.
+
+We can apply exactly the same technology or the same procedure to different kinds of games in a slightly more complicated game.
+
+It's meant to emulate Breakout, where we've introduced
+
+certain stochasticity in terms of the initial conditions and sticky action, but the overall behavior is the same.
+
+It's just basically choosing paths through episodes into the future, given what it knows that can be achieved in order to get to rewarded states.
+
+So effectively what we've done is create an attracting set
+
+of episodes at the highest level of these scale-free generative models where all the allowable paths and paths that now in this generalized state space or event space lead to reward.
+
+We can go a little bit further and just add in various episodes by merging or assimilating new data, new training data
+
+if and only if the path actually leads to an existing part of this attracting set.
+
+And I've just illustrated that here in this final example.
+
+So this is the path or the orbit or the attracting set that was learned at the highest level by the ping pong playing agent.
+
+But now we can fill in this effectively
+
+allowable dynamics to include all states that lead to a path on the orbit and thereby all paths will eventually lead to reward or to roam.
+
+So we can augment the model of expert play with paths that lead to an orbit, namely this attracting set and paths that lead to event that lead to the orbit recursively and get quite a dense set of allowable transitions that we can be guaranteed
+
+always keep within the attracting set that will contain these preferred states or states that we have constraints where we have constrained the states that are not visited simply because they cannot be recognized.
+
+And that's it.
+
+Thank you very much indeed.
+
+
+SPEAKER_06:
+Amazing, Carl.
+
+Thank you.
+
+Awesome.
+
+
+SPEAKER_04:
+okay arun if you'd like to lead in with a first question and lance too thank you but go for it first uh yeah thanks very much carl um so my first question is um based on a sentence in the paper which talks about any model being sparse must be renormalizable could you say a little bit more about why that must be oh that's
+
+
+SPEAKER_03:
+I can't remember.
+
+Give me a clue.
+
+
+SPEAKER_04:
+I'm presuming it has to do with Markov blankets.
+
+Yes, yes.
+
+Yeah, that's as far as I go.
+
+
+SPEAKER_03:
+I see, yes, I remember now.
+
+It may have been in reference to some work done by Dalton showing that with probability one, provided the system is large enough, there will be Markov blankets.
+
+And as soon as there are Markov blankets, there is now an opportunity to take Markov blankets of Markov blankets in the spirit of that applying the renormalization group that I started off with.
+
+So as soon as you've got, as soon as any sparsely coupled random dynamical system can now support a particular partition into Markov blankets, you've now got the opportunity to take Markov blankets and Markov blankets and then apply that renormalizing procedure that I said before.
+
+So all you need to posit,
+
+is any system that has a Markov blanket at any given level and as soon as you've got that you've got Markov blankets all the way up not necessarily all the way down but you've certainly got them all the way up and the physics approach would actually also actually require for there to be Markov packets all the way down as well but that's another issue so
+
+what that basically means is that all you require is a sufficient degree of sparsity
+
+that would lead to the conditional independences that are definitive of Markov blankets.
+
+And in one sense, much of the maths behind the free energy principle, as it inherits from random dynamical systems or in physics, say, Langevin equations, is simply showing
+
+that a sparse coupling, a sparse causal coupling in a physics or control theoretic sense, not a philosophical or Granger or cause-effect structure sense, but in the physics sense of a coupling.
+
+So the change, this state,
+
+influences the rate of change of that state.
+
+So that kind of, which could be written as an influence graph.
+
+So if there's a sparse coupling on the influence graph, the equivalent Bayesian graph or probabilistic graphical model induced by that sparse coupling now can be interpreted in the sense of Pearl's Markov blankets.
+
+So all you need
+
+to get to the application of the renormalisation group to Markov blankets is sparse causal coupling, hence sparse random dynamical system that is sparsely coupled.
+
+Just out of interest, the spin block, the motivation for the spin block, applying the spin block or blocking transformations,
+
+That basically comes from the assumption that many systems that people deal with, both in computer vision and in idealised models in physics, has an exquisitely sparse distribution.
+
+And that's because the causal inferences are all local.
+
+So as soon as you look at a coupled map lattice or a globally coupled map,
+
+you'll notice let's take the lattice for example let's take a sort of idealized um crystal so what you're saying when you write down a lattice is i'm only connected to my neighbors to my more neighborhood or to my markov blanket that means that in a large lattice where i could be connected to n squared neighbors
+
+i'm only connected to one two three four five six seven eight so a fantastically small almost empty set of possible connections and i use that phrase because there's i can't remember who said it now but i really liked it the notion that if one looks at the connectome in the brain in terms of the connections it's almost empty
+
+you know the number of actual connections you know white matter connections external connections and indeed intrinsic external connections
+
+are almost zero in comparison to the total number of possible connections between the 10 to the 11 or whatever neurons in the brain.
+
+So that's not surprising.
+
+It's one of those nice examples that the anatomy, the functional architecture of the brain recapitulates the anatomy of the lived world.
+
+in that it has this incredible sparsity.
+
+And that just means that universes in which there is, the action at a distance is quite rare, means that, you know,
+
+you're just interacting, you're just coupled to your neighbours and that gives you, if you then look at the Markov blanket structure or the particular partition for these lattice structures, you get to the spin block, the blocking transformations as a way of carving up nature in terms of little patches on Markov blankets.
+
+
+SPEAKER_04:
+I do have a follow-up question on that, but then I'll hand it back to Daniel or Lance.
+
+So the lattice example is really interesting because I think there's a symmetry there that maybe we lose when we talk about blankets that only have one parent.
+
+So in a normal lattice, as you say, you're just connected to your eight neighbors in 3D space.
+
+When we looked at the spin block transformations before,
+
+we were going, let's look at this square and everything in this square has one parent, but then the square along is connected to a separate parent.
+
+So now if you're at the boundary, we are breaking some symmetry there.
+
+
+SPEAKER_03:
+Yes, technically or practically a very good point.
+
+It doesn't really have any material impact upon the algorithms or the partitioning.
+
+So just practically what happens is you just take your tiles and then you have a half tile or a partial tile.
+
+until you get to the boundary.
+
+So these groups in the grouping operation or the blocking operation are not necessarily the same.
+
+You know, they're not the same size and indeed,
+
+current work, we're actually dealing with sort of multiple streams.
+
+So you can have sort of audio files and video files separately tiled and then converging right at the top.
+
+Ideally, what you'd want to do is not use this
+
+blocking transformation but to try and identify the Markov blanket structure at the particular scale in question and actually use the Markov blankets based upon well there are a number of ways of doing that you can either use a Markov blanket discovery algorithm of the kind that Jeff Beck works upon or you can use empirical analyses of the
+
+the dynamical coupling by estimating, affecting the Jacobians.
+
+You know, for those people who are interested, there's a worked example of that in the
+
+particles and parcels in the brain paper in network neuroscience.
+
+It's really framed in terms of data analysis, but you can use the same principles to identify a particular partition from a large number of states or voxels or pixels in 3D and 2D respectively.
+
+There's another thing though that I think your question speaks to,
+
+which is, you know, you've got one block of four and then another block of four, and then because of the sparsity, they're separately modelled at the level above.
+
+So I thought you were going to ask, how on earth now do you start to repair
+
+the obviously rather facile assumption that you've got just local action because of course in our world there's lots of action to distance you know we are um talking to each other over over over thousands of miles or kilometers and you know we we have vision uh so all the uh and we have uh linguistic communication by sound so you know it is interesting that we have actually violated
+
+much of the local action.
+
+If I was a virus, this would be perfectly okay because the only thing that's really going to affect me as a virus is the things that actually are in molecular contact with me.
+
+But for you and me and the worlds in which we live in, we can't, there is no such thing as just, you know, the action distance now starts to really matter.
+
+And effectively, because the two latent states, generalized latent states, generating stuff, initial conditions and paths for the two blocks below, because they themselves now contribute to a single latent state at the level above, as you move deeper and deeper, you start to now repair
+
+the simplifying assumption of conditional independence between the groups so it is at the higher levels that you now become you're able to see these actions this action at a distance is coupling your well what happens over here really matters in terms of what's going on over here but you'll only ever see that you only have that as part of the generative model right at the top which is why all the inductive inference
+
+is implemented right at the top level where you see everything so it becomes you know if you like you are now you are now in a position to model and thereby generate appropriate predictions that rest upon these long-range dependencies
+
+And of course, you know, using the word long range, I mean, in the sense of the coupling distance, you know, in a dynamical sense.
+
+Is that what you had in mind?
+
+
+SPEAKER_04:
+That was exactly what I had in mind.
+
+
+SPEAKER_06:
+Thank you.
+
+Thank you, Arun.
+
+Lance, do you have any remarks or want to add a question?
+
+Yes, please go for it.
+
+
+SPEAKER_01:
+Yeah, I have lots of questions.
+
+Thanks a lot, Carl, for the talk.
+
+So I'm just wondering about this all roads lead to Rome slide that you had at the end.
+
+And I'm wondering whether you have some sort of a curse of dimensionality as you increase the dimensionality of the system.
+
+So it sounds to me like the manifold of expert play.
+
+Because you're taking temporal trajectories, that's going to be a one-dimensional manifold.
+
+Now, as the state space of the game increases in dimensionality, you're going to have an ambient space of trajectories that's much, much higher dimensional.
+
+And so it sounds like the amount of trajectories that you need to, you know, construe to bring you back to your one-dimensional expert manifold is just going to grow and grow and grow.
+
+And it sounds like it might be hard to fill that space
+
+So could you comment a little bit on that and whether it's a problem?
+
+
+SPEAKER_03:
+Right.
+
+Yeah.
+
+In general, in my world, these things aren't problems, but they're challenges.
+
+And I think that challenge is yet to be met.
+
+So what I imagine people will do is that you will ingest
+
+extra episodes or sequences
+
+that bring you onto your attracting set up until some bound.
+
+And then you will switch off active selection, by which I mean the structure learning.
+
+So you'll stop growing the model.
+
+And then you switch on parameter learning so that now you're forcing the transitions and the expression of various generalized states
+
+to accommodate variations around the training data that you have been previously exposed to.
+
+So that fixes the size of the tensors and hence the dimensionality of the state spaces in question.
+
+um but will in principle now accommodate by preserving by using sort of active learning in the technical sense that you only update a parameter if it does not increase expected free energy or decrease mutual information
+
+then you're now in a position to become more robust.
+
+And perhaps I should qualify this answer.
+
+The whole point of this adding in extra, if you like, insets onto an attracting set is just to equip the agent with a certain robustness should it find itself outside or off that attracting set.
+
+So I know Lance knows this, but I'll just make this explicit for everybody else.
+
+This kind of learning and state action policy implementation is very much like learning to ride a bike.
+
+um so you you basically um just accumulate and remember those experiences that were successful so for example i you know managed to rotate the pedals by one cycle and i don't fall off and i remember that and then i have another go and i wait until i've actually done two cycles and i don't fall off and i remember that i forget
+
+everything uh every time i i fall off and then i keep on going until at some point i connect back my last cycle was identical to the first cycle and then i've learned to ride the bike but because i've forgotten all the falling off i can't recognize or know where i am when i when i've fallen off so i've got a very brittle expertise that will not allow me to recover if i fall off the edge
+
+So another example which makes this slightly clearer, I think, is like mountain climbing.
+
+If I want to be an expert mountain climber, I cannot learn by my mistakes, provided I'm climbing a sufficiently high mountain.
+
+Should I fall off it, then I will die.
+
+Another example here is learning how to cross the road as a child.
+
+you know you cannot learn by um experiencing being run over but the cost you um you pay or the price that you pay is you can't recognize when you are being run over
+
+And that, I repeat, lends a certain brittleness and a lack of robustness to agents who may be exposed to danger that doesn't actually terminate them.
+
+So putting this robustness back in by growing the attracting set, or basically putting these insets on in this sort of generalized phase space.
+
+It's just to make it more robust.
+
+In numerical studies, it does seem to converge.
+
+It doesn't seem to grow indefinitely.
+
+So those are likely violations are moving off the attracting set.
+
+are themselves quite small, relatively small in number.
+
+Practically speaking, if you've controlled the sources of stochasticity or unpredictability.
+
+So it may not be always the case that you need to have an explicit bound on the upper, the size of the very high level tensors.
+
+If you do
+
+then one has to now think of a principled way of making that upper bound an emergent property of expected free energy minimisation.
+
+It may be that you violate now the mutual information that certain rare events are just so rare
+
+you're actually compromising the mutual information by including them as a particular option or a particular column of a likelihood mapping.
+
+But I don't know, but these are all really interesting questions to pursue.
+
+Thank you, Carl.
+
+
+SPEAKER_06:
+All right, Arun, go for it.
+
+
+SPEAKER_04:
+Yeah, so following on from that, I think it's an interesting question on the uniqueness part of ingesting data.
+
+And the question is, are there many more ways to fail than there are to succeed?
+
+So if you're passing your data into sort of Maxwell's demon, with a gate saying, accept this data, reject this data, if this improves my mutual information, if there are many more ways to fail, but then get back onto the
+
+a successful path, but there are only a few paths that actually keep you there, would it not make sense to just continually accumulate these sort of recovery states?
+
+Because the mutual information will keep increasing, and then you stop there.
+
+Then you learn parameter-wise, because we're not including the sort of prior distribution of how likely you are to be succeeding at any given moment.
+
+Because with the uniqueness thing, you don't know, oh, 10 times out of 10, I'm cycling.
+
+Or like nine times out of 10, I'm cycling, and one times out of 10, I've fallen off the bike.
+
+
+SPEAKER_03:
+Yeah, I think it depends.
+
+Again, I don't have any explicit numerical analyses or analytical analyses of this, but intuitively, I think during learning, there may well be...
+
+um good mileage in ingesting failures um or routes to success if you like or to the attracting set that actually traverse regimes that would normally be excluded by my constraints or my prior preferences um
+
+Just taking the view of the role of the C tensors or prior preferences from the point of view of physics, what that basically is saying is it's actually carving out vast regimes of latent state space that you should not be in because it would be uncharacteristic of you to be in these things.
+
+So it's really not so much about the rewards and the preferences.
+
+It's really where you shouldn't be.
+
+And that's what defines the attracting set.
+
+However, before you've learned that attracting set, it may be useful to include constrained regions of state space that offer a route into or onto that attracting set.
+
+So I can certainly see that that would be a useful device.
+
+But notice that once you're on the attracting set, you will never visit the constrained regions.
+
+because you now keep yourself on the attracting set and therefore if you've encoded those but you never visit them your mutual information will actually fall so what that means operationally is what you probably do is have this sort of slightly over inclusive structure learning
+
+learn how to cope with all the necessary sources of randomness so that your attracting set is sufficiently robust.
+
+And you do actually visit from time to time, but not never.
+
+Excursions from the attracting set are drawn back onto the attracting set.
+
+And then use Bayesian model reduction to eliminate all the states that you don't want to recognize simply because you never go there.
+
+Once when I was younger, I would certainly be able to recognise what it's like to fall off my bike.
+
+But now as an expert bike rider, I really don't want or need that.
+
+So yeah, and that's just basically getting old and wise and implementing Bayesian model reduction to remove the redundant parameters, which in this instance just be the columns and associated slices or rows of the transition matrices.
+
+So I think you could perhaps another way then of answering Lance's question is, yeah, you just keep accumulating, but start to engage Bayesian model reduction.
+
+At some point you should reach an equilibrium, which will be an attracting set that allows you to survive in the characteristic states that define you in this particular environment with this particular volatility.
+
+
+SPEAKER_06:
+Thank you.
+
+Awesome.
+
+Okay, I'm going to bring in a question from the live chat.
+
+Okay, Javier wrote, so stochastic plus dynamical probabilities learned by the agent itself are scale-free.
+
+Will this hierarchical learning also be applied to the goals of the agent, different abstractions, granularities of goals self-learned?
+
+
+SPEAKER_03:
+My answer would be yes, but I'm going to ask Lance to answer that one.
+
+
+SPEAKER_01:
+Oh, that's cheeky.
+
+Yeah, I would say for sure.
+
+Because typically when we operationalize the goals in our genitive model, they need to have the same structure in our genitive model itself.
+
+So I would imagine then we would have a hierarchical renormalizable goals.
+
+It's going to make sense.
+
+
+SPEAKER_06:
+Cool.
+
+Okay.
+
+I'll bring in... Yeah, go for it, Carl.
+
+
+SPEAKER_03:
+But I was just going to say, you know, just to unpack what Lance just said in terms of practical things, you know, if you're trying to say,
+
+What my goal is to have dinner, that naturally unpacks hierarchically into, I've got to move from the living room to the kitchen, then I have to open the fridge, sorry, I have to find the food, which then unpacks into, I have to open the, and all the way down to the finest muscle movements.
+
+So almost by definition, intended narratives.
+
+can always be decomposed in this scale-free way and you know there's a this is very similar to sort of motor chunking and hierarchical decomposition in theoretical motor control for example and you probably find it a lot in robotics that there's a sort of global
+
+long-term plan that provides empirical prize of constraints on shorter little chunks that themselves provide constraints on shorter and shorter chunks.
+
+And that's exactly the, if you like, the architecture implicit in these scale-free models.
+
+
+SPEAKER_06:
+Awesome, and totally ties back to the synergetics.
+
+Okay.
+
+I'll ask two questions from ML Don.
+
+He wrote, how can we inject the same separation of timescales by imposing smoothness constraints on, say, the parameters as opposed to playing with proportional update rates at different levels?
+
+And this relates to something Arun and I talked a lot about in the .zero and leading up to it is,
+
+identifying which windows to use.
+
+You could imagine picking the right separation of timescales.
+
+If the classes on campus really do shift on the hour, then the hour core screening is going to be great and effective.
+
+But the 59 or the 61 minute might alias you with the real variability of the system.
+
+And so there's not necessarily even a smooth
+
+landscape for determining the windowing or the binning of coarse graining.
+
+And coarse grainings may have dependencies on each other.
+
+So how do you go about playing and finding viable approaches and robust ones amidst all these different levels of meta optimization that are opening up?
+
+
+SPEAKER_03:
+I'll take this one and the lads could take the next one.
+
+That's a really good question because there is an implicit separation in timescales between vanilla implementations of inference and learning.
+
+However, in these schemes, there isn't.
+
+So the MATLAB version of our implementation
+
+of active inference under these and, in fact, all Markov decision process models, unlike
+
+procedures that you might find in data analysis where you acquire, you basically do some filtering on an epoch of data.
+
+And then at the end you update your parameters and then you rinse, wash and repeat.
+
+In active inference simulations and also in some applications of what's called generalized filtering, you have continual learning.
+
+So the update of the parameters actually occurs at every time step.
+
+um at each level of the model so the likelihood parameters at the lowest level are updated every time that routine is called um so there is continual learning the learning um is yes you're absolutely right it's smooth in the sense that you're slowly accumulating traditionally parameters but the temple scale of that learning is the same as the inference
+
+And you could also argue, well, could one also put Bayesian model reduction into play at the same timescale?
+
+So basically, can you at every time point at each level in the model identify redundant parameters and remove them using Bayesian model reduction?
+
+In effect, that's what's done using active learning.
+
+What I said before, active learning will only proceed
+
+if the expected free energy of mutual information improves.
+
+That's actually also implemented.
+
+So the rate at which it looks as though things change between inference learning and the model selection
+
+is certainly distinct i don't think that's quite the same kind of separation of time scales that is implied in the renormalization group that's as you were intimating uh daniel exactly specified by the number of ticks or updates at level n per single update at the uh level n plus one and and that is i think you know the you know the key question you're asking how would you get that right
+
+And of course, the answer to that is the model that has the greatest model evidence or smallest free energy or greatest marginal likelihood for the kind of data generated by this environment in this world.
+
+So are there any sort of useful prize you can put over this?
+
+Well, one useful prior is that things are changing as, well, one prior which is actually used in operation is you take the lower limit on what's called the temporal RG flow, which is basically the length of the window at each and every level.
+
+At the moment, that's two.
+
+What does that mean?
+
+How can you motivate that?
+
+Well, it's the most expressive in the following sense.
+
+But if I just imagine what this discrete discretization of time means from the point of view of classical notions in continuous state space like position and momentum or position and velocity, if I use a scaling of two, which basically means
+
+there are two time steps for every time step of the level above.
+
+What I'm effectively doing is modelling two time steps for every state at the level above.
+
+And that basically means I can model the initial condition and the subsequent condition, basically in terms of the change, which of course is the velocity.
+
+And what does that mean for the level above that?
+
+Well, it now means that I'm modelling the change in the velocity.
+
+So I'm now modelling the acceleration.
+
+and then so on up until the highest order of motion.
+
+So what that means is by taking this limiting case of
+
+T, the temporal horizon, or the ratio of time steps from one level to the other level, as two, means that I got a very expressive model that can handle, can recognise things that change very, very quickly, and then acceleration, then jerk, and the implicit context sensitivity that that gives you.
+
+If I didn't do that, I'd have to assume
+
+that I coarse-grain over long periods of time, and therefore the path is consistent during that time.
+
+Now, that sometimes is a useful approximation.
+
+And indeed, there's a whole industry called switching linear dynamical systems that makes that approximation.
+
+And it means you can approximate all the non-linear complicated high-order motions
+
+in some evolving pattern or system with a series of um linear trajectories that basically go you know that intercede between a series of points so which you which you which you switch the problem with that is that the length of the linear trajectories
+
+For us, for example, I'm committed to one path U, so one slice of my B matrix for the next eight time steps.
+
+The problem with this is that you don't know when you deviate from that transition dynamics.
+
+So then you get into the game, well, perhaps I could make my scheme reactive.
+
+So sometimes I do three steps, sometimes I do eight steps, sometimes I do one step, and I have some criteria for saying your predictions about my trajectory have now been met.
+
+Please, I'm going to tell you, give you the evidence that I'd be pursuing this path.
+
+You update your privacy to the level above and tell me what you expect me to do next.
+
+So this now speaks to a particular kind of reactive message passing that starts to have implications for the computer science and the CRD, or as I think we've rehearsed before,
+
+at the Institute, the original conception behind
+
+the actor modeling computer science from the 1990s.
+
+So it's all about reactive message passing.
+
+I will send you a message when you send me, I will return a message to you if you send me a message.
+
+And what these renormalizing in time models have, and I should say that this also applies in the absence of the spatial renormalization.
+
+So any deep temporal model will have this aspect.
+
+What that means is that from the point of view of any given level, I will be responding to messages more quickly from my subordinates than from my superiors.
+
+So once in a while, I'll get a request from a superior.
+
+My response to that is to ask my juniors to do a series of things.
+
+They report back to me and when they report I give them the next request or guidance until they complete their job.
+
+And when all my juniors have completed their job, of course in the re-normalising, spatially re-normalising context, I'll have a whole group of juniors to worry about, then I have gathered enough evidence for me to then return the message to my superior.
+
+So you get the, in terms of the reactive message passing in this sort of actor model of computer message passing, you get the separation of temporal scales inherits from the number of messages or requests and responses exchanged with the people lower down in the hierarchy.
+
+relative to the number immediately subordinate and in principle they don't have to be fixed so there could be a criteria before I pass the message back back up to the to the higher level I think that's Daniel probably what you were getting at and I'm not there may be somebody who's done that but I'm I
+
+I haven't done that, and I don't know, I can't give you an example of somebody who has done that.
+
+You may find somebody in Bert DeVries's group, some of the world experts in reactive message passing who have considered these kinds of things.
+
+In principle, there should be a way of
+
+each level testing whether I have fulfilled the predictions of my superiors.
+
+And now it's time to get more guidance, you know, based upon the free energy.
+
+
+SPEAKER_06:
+Awesome.
+
+the organizational technology i didn't know that my phd needed okay i'll ask a question as we get close to the end and and this will be for for anyone ml don wrote
+
+How does the training time of active inference compare to that of reinforcement learning and how does their scalability compare?
+
+And it would be interesting just to hear anyone's very 2024 takes.
+
+Where are we at with that entire arc from problem conceptualization
+
+on through the training and the inference how do we even grapple and describe with similarities and differences in the training time and resources and all of this that's definitely lance for at least five minutes i think
+
+
+SPEAKER_01:
+I'm a bit incapacitated in terms of talking.
+
+I think there's actually a good question for Arun.
+
+But yeah, I mean, I can say a few things.
+
+So scalability in active inference, I would say it has been a challenge.
+
+And there has been much less man work hours that have been put into that than in reinforcement learning.
+
+Now, for the past few years, we've had a lot of work, a lot of it led by CAL actually, trying to scale the structured learning and active inference.
+
+And I think we've done a lot of mileage on that.
+
+So there's been the supervised structured learning paper, there's this paper, there was also some interesting work presented at the International Workshop on Active Inference.
+
+I personally think there are still some challenges ahead.
+
+And I think one of them is the one that we just talked a few questions ago about, you know, if you learn an expert orbit, how do you get back on the orbit as the dimensionality of the system increases?
+
+So this is definitely one challenge.
+
+Now I know much less about reinforcement learning, so maybe Arun has more things to say there.
+
+But what I will say is a lot of reinforcement learning is powered by deep neural networks.
+
+When we use deep neural networks, we sacrifice the interpretability of our generative model.
+
+This is one of the strengths of active inference is having more interpretable dynamic global models where we can actually
+
+peer into them and see, okay, well, this representation includes this, this other one includes that, and so forth.
+
+The fact, though, that reinforcement learning typically uses deep neural networks means that it has been much more scalable, just because there has been so much work done in training deep neural networks.
+
+This is a bit of my perspective.
+
+I don't think it fully answers the question, though.
+
+
+SPEAKER_04:
+I can come in with a little bit on that, but I must admit that I've not trained any reinforcement learning agents myself.
+
+I have worked with people who have.
+
+I'd agree, Lance, that the infrastructure generally is much more advanced for training RL agents for doing stuff and completely agree with, as you say, the explainability and the interpretability of why did an RL agent
+
+pick a particular action is very opaque.
+
+And I think the deeper those networks become, the harder it is to understand what's going on in the hidden layers and generally why they do what they do.
+
+I think with active inference, yes, we do have more explainability,
+
+But I do wonder if we go the fast structure learning approach.
+
+I think Carl had a particular comment earlier about looking at the highest level, identifying the desirable states learned by the agent.
+
+From what I understand, the identification has to be done by a human.
+
+They have to look at the model that's been learned by this renormalization approach, look at those top levels, and then say, ah, what do these levels mean?
+
+So an example in the paper is the MNIST classification.
+
+It's the case of a human being looking at those top levels and going, ah, these top levels each correspond to a digit in the handwriting task.
+
+We are sacrificing some explainability, I think, by doing this vast structural learning compared to what might be the old fashioned way of creating general models by hand, by thinking, sitting in my armchair and thinking, this is how I might model the world.
+
+these structures, these likelihoods, these states.
+
+And when you do that, I think just by hand, you have 100% explainability.
+
+That model just might not perform very well.
+
+So I think there's always going to be that tension there.
+
+But in terms of how quickly these things learn,
+
+Having not trained either, I'd be having a reckon, and at the moment I would say probably an RG Active Inference Agent would train faster, simply because it's able to use the structure and the data much more effectively.
+
+That would be my take, and I think as well, really interesting thinking about the active data selection part of this too.
+
+I know that there is some stuff in the paper about the efficiency being both a curse and a burden, but I'll hand over to Lance and Carl to give more details on that.
+
+
+SPEAKER_01:
+Yeah, Lance?
+
+Yeah, just to echo what Arun said, also, so the structural learning and active inference in reinforcement learning is also very different.
+
+In reinforcement learning, we typically have a model with deep neural networks that's massively overparameterized.
+
+They have some fixed representational capacity from the outset because the structure of that model will be specified.
+
+And then typically the model will learn, and then probably you would prune it using some techniques like dropout or other things.
+
+If we looked at that from the perspective of active inference, it would be like specifying a massively overparameterized model and then pruning it with Bayesian model reduction.
+
+But now in active inference, we have this Bayesian model expansion, for example, in this paper,
+
+And what this basic model expansion does is it learns from the get-go the minimum model for explaining the data.
+
+And so in that sense, it's extremely efficient and also provably because it extremizes the marginal likelihood or the mutual information.
+
+
+SPEAKER_03:
+Yeah, I just wanted to echo that last point.
+
+That's a really important point.
+
+So Lance is drawing the distinction, and there are many distinctions you can draw with deep RL and deep active inference read in its generic sense.
+
+And that distinction at the level of structure learning or model selection, I think is absolutely crucial.
+
+So, you know, deep RL starts with an overly expressive model with a known functional form.
+
+that is deliberately overparameterised and then shrinks it or reduces it to maximise the mutual information, the expected free energy, sometimes referred to as a cross entropy in machine learning.
+
+So the reward function now becomes there's no explicit reward in unsupervised learning.
+
+It's just replaced by the mutual information or the cross entropy.
+
+should be distinguished between supervised reinforcement learning such as you know digit classification for example um whereas the you know active inference um under these under fast structure learning is exactly as uh land says it starts from nothing and stops when it's minimally
+
+complex which means it's maximally efficient and that efficiency translates in many guises through to sample efficiency through to statistical efficiency through to thermodynamic efficiency and this matters because from the point of view of climate change this is the right way to do it as opposed to building power stations to power large language models and transformers
+
+that need big data so the efficiency on all levels whether it's the sample efficiency or using the right data or whether it's right through to how much electricity do you need to actually train your model and how many millions of dollars do you need to train a foundation model all of these are reflections of the failure of machine learning
+
+to write in the efficiency into the ultimate objective function which as lance said is just the marginal likelihood of the evidence that this model of this kind of content or world
+
+
+SPEAKER_06:
+Awesome.
+
+Okay, final question and a very apt one as we head into the rest of the symposium.
+
+So just give any short thoughts.
+
+Tin Tin wrote, Hi all, thanks for the incredible event.
+
+Does the sequence in which the training data is fed to the AI structure learning model impact what the resulting learned structure would be?
+
+So the learning curriculum, a.k.a.
+
+symposium program challenge.
+
+
+SPEAKER_03:
+Well, the answer is yes.
+
+I'm mindful that Lance is recovering from his jaw surgery.
+
+Yeah, absolutely.
+
+And this is, again, just in relation to the last question, something I think that eludes
+
+conventional RL certainly that rests upon classification procedures because the active inference as an application of the free energy principle is all about the dynamics of self-organisation and dynamics means time
+
+And time means sequence matters.
+
+So inevitably, at some level, the order in which you see things is absolutely crucial for getting the right kind of generative model.
+
+that is even in the case actually of static image recognition because you're assuming that there's no ordinal structure or correlation structure to the presentation say of endless digits you're assuming that they are selected at random as opposed to seeing all the tens and then all the all the ones and then all the all the sevens so even you know in these edge cases
+
+which are the focus of 20th century RL, static image classification, for example.
+
+Order does matter, but it matters absolutely acutely because, of course, the order in which you see content in
+
+this infrastructure learning determines how you populate the transition tensors.
+
+And it's the transition tensors that enable separation of temporal scales, that enables the ability to encode narratives and plans that far transcend the actual rate at which you sample the environment.
+
+You could also argue that this issue has emerged in a strange kind of guise in transformer models, so the attention heads operate on the past.
+
+So the way you select from the past in terms of which token is going to predict the next token most efficiently, again, is exquisitely dependent upon and sensitive to the order in which you train these models.
+
+So, Daniel, have you thought carefully about your ordinal approach to things?
+
+
+SPEAKER_06:
+What's coming next?
+
+I let the structure of the niche and others' constraints provide the first pass and make requests from there.
+
+So, thank you, Carl.
+
+Thank you, Lance, for joining again.
+
+Thank you, Arun, for all the contributions with .Zero.
+
+Carl, great to see you.
+
+next up we'll take a 30 second break and we'll be back with michael lennon so thanks fellows see you soon
+
+okay welcome back from that brief brief break we're here with michael lennon and the session is co-inferencing organizational symbiosis so michael thank you for joining take it away
+
+
+SPEAKER_02:
+Hello, yes.
+
+I am so grateful to be here.
+
+I would like to approach today's conversation in a conversational style where I share what led me to Active Inference and how the discovery of the principles
+
+of free energy principle and active interest changed how I understood as a practitioner and how that has led both to both personal, professional and organizational shifts in conversations, one of which will conclude in an invitation to this community to experiment with an organizational structure
+
+designed for building both the global knowledge commons as well as building individual Ventures so similar to the way in which for example Linux is open source and then you have Ventures building off of Linux to do things in the world that that experimenting with such a
+
+an organizational model for the active inference comments is an experiment worth taking on.
+
+So I don't want to let the final invite get away, but I'm going to backtrack and do this very much in a storytelling fashion.
+
+So I have some slides, but I'm not going to spend too much time.
+
+Well, in fact, let me just
+
+skip that just just to recap what this um what this conversation is about is different ways in which not just active inference but um science has collided with internal intuition and led to transformational journeys of different kinds and so um
+
+and so um i would describe the um you know i i started out as an individual uh as a economist and as a technologist working at institutions such as the world bank and ibm and
+
+doing large scale IT implementation projects.
+
+And that work often, although there was a lot of engineering, it was often the human factors that got in the way of success or failure.
+
+And so that has been a kind of orienting how to both be informed by what the science and the math provides
+
+and uh then build uh how does the biologically based if you will a way of sense making um affect or um alter the the the evolution of of successful project implementation so um just um a little bit about um
+
+about where this project prior to coming to Active Inference well I said project my journey led me through was was I had a
+
+I had, as I said, been trained as an economist.
+
+And one of the things that economists have is a point of view about what it means to grow the culture, to grow the society and primarily denominated in dollars and using GDP as a way of
+
+of tracking whether or not one was impacting the experience of flourishing.
+
+And I came across a chart by an economist that showed that GDP had tripled in the last 60 years, both in the UK and the US, and that well-being had not changed at all.
+
+And this economist who had been in office in the UK at the time when he left office was kicked out.
+
+He went back to academia and started looking into what does science show moves the needle of well-being and how do we make this socially more contagious?
+
+And I both loved the idea, but I also was shocked by that information because as someone who was trained in a particular lens, a particular perspective,
+
+what I had been trained to do and how to cause effect and impact was in fact not moving the needle of well-being and so there was this kind of personal and professional crisis that arose from this from this knowledge and um as I say that that led to this this journey of unlearning in some ways and um and
+
+and in both personal, interpersonal, and organizational ways, recalibrating the experience of what does it mean to pay attention to thriving.
+
+And so that journey has been very satisfying.
+
+Not only do I understand how I need to be to experience more goosebumps in my life, I understand how I need to be to experience connection and belonging and to co-create with others a sense of
+
+of purpose and of meaning that um that i had not had previously and it's uh one of the ways i sometimes uh describe this relationship between the subjective uh internal experience and the scientifically objective let's call it was that i might know how to go to the gym and flex my arms to get a workout but by understanding anatomy i could learn um
+
+the bicep had a particular placement in the body a particular arrangement and i still had to do the workout but i could more effectively and um skillfully do the work that needed to be done of working out and so similarly the study of the science of well-being and social uh social uh sciences of of connections of groups and of um
+
+and of how, for example, one of the surprising findings for me in the realm of happiness was a finding by an epidemiologist.
+
+And basically, he was studying how do emotions spread.
+
+And he, in studying this, realized that your happiness was not only more heavily influenced by the people that you're surrounded by, but also by the next degree of separation, the people to whom they are connected, and even the third degree of separation.
+
+And so that these three degrees of separation predicted your happiness more than the way that I explained, I had been explained what happiness was, which was that it is an inalienable right, like life and liberty, the pursuit of happiness, and that it's subject to individual traits of my own, that if I just do me the best I can, that I'm gonna be happier.
+
+And so all of a sudden there's this disorienting
+
+um insight in that it's not about being my best but it's just as important to enter be my best and so it's like well what the heck does that mean what does it what does it look like to to inhabit one's own experience and one's own skin in in a completely different way and and I know
+
+a conversation that you and I, Daniel, once had about the impact of active inference.
+
+You were describing how you might have been driving on the right-hand side of the road your whole life.
+
+And that all of a sudden, you go to a place where everybody drives on the left.
+
+And so some intuitions still work exactly as they used to, but others are completely counterintuitive.
+
+And so this developing the capacity to go against intuition, against the familiar, is...
+
+is part of what sometimes these these these new forms of knowledge there's there's knowledge that that adds to what we know and then there's knowledge that changes how we understand and and happiness first did that for me intuitively at the personal experiential level right at first was like okay i i am playing the game of my own life
+
+inappropriately, how do I begin to inter-be my best instead of be my best?
+
+And this is where some subsequent work in working personally and with groups and organizationally led to paying attention to what was happening in a different way.
+
+And so I, I mean,
+
+As I say, this crisis led to a very fruitful learning journey.
+
+And, excuse me, I got distracted.
+
+Some of this led to writing different ways of describing how to do work.
+
+And so, for example, one of the spaces that I've been working in was in government consulting.
+
+And in government consulting, top down is often the way to direct the effectiveness of the organization.
+
+You come up with the right strategy, you figure out all the components, and you then execute on the plan.
+
+And so in a sense, if there are two forms of probabilistic prediction, Bayesian being one at the heart of active inference and another one being Fisher, Fisher is one that says it knows where you need to go and the way that you relate to surprises and to mistakes and to errors is you correct back to what you felt your original plan was.
+
+whereas bayesian probabilism probably obviously can have similar results but also can update instead of reacting to surprise as something to be fixed it can sometimes be something to be adapted to and it changes the way
+
+that you manage the emergence of differing information from what you originally predicted.
+
+And so in the same way that I described that happiness had a disorienting effect on how to practice it, active inference has a similar disorienting effect about how to co-regulate
+
+how to supervise the evolution of differences between what you expect and what you get.
+
+And one way in which I describe this to folks is it changes your understanding or changed my understanding of how cause and effect works.
+
+That, you know, as I arrived to
+
+to active inference, there were a couple of intuitions about how the world operated that active inference helped evolve.
+
+The first was that instead of the world being composed of objects that were fixed and stable, that the mathematics of how to explain things was much more of a dynamic verb.
+
+And so to look at the world as being
+
+not nouns but verbs and and a way that i describe this for myself when talking to people about it is that instead of seeing myself as a self a noun that i'm a a b a being and so um that paying attention to the continuous verbing and the relating uh to to to others is is a is a different um uh a different game and so
+
+The interesting thing about active inference was that there was a mathematics for describing this that related the internal states and the external states through mathematics of information, that the way in which science works
+
+is familiar and intuitive to many of us.
+
+Let me rephrase this in a different way, that when I say the inside and the outside are informationally connected, that the outside is all the information, all the stimulus of the world, and that the inside creates a map of that world,
+
+and that the mathematics of creating that map not only reduce the world and is a mathematically efficient way of describing how to make the how to get the most signal for for all the information that's being received but that it also um it also um enables
+
+like I was describing earlier with the understanding of the bicep, a more accurate way of sensing the world, of orienting to the world, and of responding to the world.
+
+I
+
+
+SPEAKER_06:
+should have shared my my slides instead of trying to talk through them but i'm going to take a pause and ask any any questions or shall i proceed yeah i'll ask one question and then looking forward to slides dsk wrote there has been a lot of talk around gdp not being a good enough metric of national development has your research informed you on a better metric if so does it have a working name
+
+
+SPEAKER_02:
+so yes and it's a different um answer than a single metric so the metric a single metric was one of the problems and the fact that it was denominating currency was one of the problems so
+
+One of the things that has shifted some of the work of the UN, of really a group led by Bill Bowie and Ralph Thurm on what are called contextual indicators, are that
+
+are that instead of an indicator being GDP is both currency and it's set to a single, the denominator and the nominator of the indicator are both set in the same thing.
+
+So let me describe this in a different way.
+
+um there has been a diversification of what are the things to pay attention to so not only dollars but also subjective experience of well-being for example better predicts the outcome of elections than does financial income
+
+and so um the idea that dollars are are predictive accurately predictive of um of outcomes has been often relied upon and turns out to be maladaptive right and so that's um
+
+whether you're talking about biological phenomena, whether you're talking about social phenomena, there's a whole range of extra indicators that are now seen as not a single one, but better visibility into these different nested levels of life.
+
+the second what I would call breakthrough type of indicator beyond GDP that I was describing denominator and uh not numerator is that um most organizational reporting for example is is um for example um Starbucks might say we are using 10 000 gallons less of water than we did last year so we are improving
+
+um our consumption and the way that we are related to um the watershed that we might be related to and and all that um reporting is if you will individual centric and when you center your just like as as with happiness you know where if you're just looking at the at the individual you're missing an important part of the picture
+
+when when measuring your relationship to resources to commons to natural commons and social commons if you if you put your
+
+individual behavior within the context of the collective.
+
+So let's say Starbucks says we used 10,000 gallons last year out of the total watershed.
+
+Then you can begin to draw comparisons about how everybody is using the watershed as a whole and how the percentage
+
+the percentage behavior of of usage of the water has shifted that can be compared from one to the next to the next so if you will you're putting these indicators in a in a similar language in a similar uh they're speaking in a in a similar base than um then when they are um
+
+reported individually and so you know when when looking at at well-being it's it's important not only to to add additional things beyond money but it's also important that these indicators be set to the same um denominator or or you wind up not having the visibility that you need and there's a huge cat fight about this because of there have been a whole series of um
+
+privileges and a whole series of um social practices that are grounded in the way in which um uh individual corporations are um are structured and so this this kind of points to a different kind of natural meme that I wanted to bring up that might be of interest so
+
+So we talked about how with happiness, we're doing it individually and that we're missing the relational.
+
+When you look at cells that are part of an organism, if they are traumatized, they become more individualistic.
+
+They consume more, they reproduce more, and they grow into what we call a cancer because their, if you will, relationality is traumatized and they become more and more selfish.
+
+And so there's...
+
+both a huge importance of paying attention to relationality at the level of the cell at the level of the individual human and some would say at the level of clusters of humans such as organizations and that with cancer
+
+Part of the new form of treatment has been to call the cells informationally back into relation.
+
+So instead of punitive burning those cells and killing them, it's to remind them of their relatedness, to restore them from a traumatized state back into relationship with other cells.
+
+And they begin to behave again in better relation to the body around them.
+
+and so that metaphor speaks to the importance of how do we call each other back into relation if the language of individualism is permeating both our individual behavior and the language of corporations is equally um traumatized because originally when when uh
+
+Corporations were first formed in the 1600s in the Netherlands.
+
+They were really people coming together to venture and do together what they could not do alone.
+
+So trading with the Far East was something that no individual business owner could afford to venture, but by pooling their funds, they were able to do, and they were able to become a great trading power globally.
+
+this model of groups behaving as groups so a different cluster of um of of existence groups and then behaving um
+
+prosocially with each other is what grew the next level of economic performance and economic effectiveness however over time some would say that organizations have become traumatized and have become disconnected both from the places where they originated
+
+as well as from all the stakeholders that they were serving and so for example here in the u.s when when the supreme court last century two centuries ago now almost decided that financially financial stakeholders were the foremost important um stakeholders in corporations they distorted the relationality of of corporations and so it has become a kind of cancer
+
+that has become extractivist, both upon its employees, upon the ecosystems in which it inhabits, by architecture.
+
+So there are plenty of people that will tell you in an organization, we want to be more attentive to these other considerations beyond finance, but we don't even have permission because the agreements of the corporation have evolved from mutualism
+
+to um to selfishness if you will to more consumerism more productivity more surplus and those all have a place they're they're they're important but they've become like like the cells in the body that become cancerous they've become overly
+
+um overly uh they become individually uh oriented alone and and not sufficiently skillful at mutualism and so this all comes back to a new basis for equipping organizations to pay attention to how they're interrelating within between and to things beyond their current purview and it is as much of a disorienting and challenging
+
+bit of information as I was just as I was sharing the idea of learning how to be more skillful at happiness was to me personally you know it's like oh I have to pay more attention to you to for for us to be happier or to be the third degree of separation as I was describing earlier means that not only the people to whom I'm directly connected but that really that it's my Dunbar number the Dunbar number being presumably the
+
+150 to the 250 people that you have meaningful relationships in your life, the Dunbar cubed.
+
+So it's beyond your direct sensory observation.
+
+And it's like, how do you co harmonize across groups?
+
+How do you sing to use a different kind of language?
+
+songs in common to which are core co oriented.
+
+And, and these are some of the things that active inference provides a mathematics for how this works, you know, that is fascinating of how the synchronization of the individual to the group, and the nesting, and how the signaling happens across the nested groups.
+
+And so it's, it's, it's fascinating, the mathematics can be daunting.
+
+But the promise
+
+of it and the ability to do these things more skillfully and reliably is just it gives me goosebumps it gives me goosebumps and this is part of um why i'm trying to tell this somewhat ineffectively i would say today in a story manner and through experience so that people can pull on the intuitions that they have the memories that they have and say i dare to tackle this uncertainty
+
+building upon these intuitions and feelings that I have, and co experimenting with others forward.
+
+And so this is at the heart of what the
+
+uh what the original invitation that i mentioned was about was you know that instead of the classic hierarchical um corporation that um that has as part of its founding documents when you when you plant a seed and you use the template that says we are we're organizing according to these rules
+
+even if you want to change it's like it's a lot harder to change the constitution than it is some minor policy in a back office in a you know in your in your um
+
+you know it's some app that you might be writing the code for you know and and similarly it's important to to incubate um uh organisms that have the relationality the mutualism and the holistic perspective
+
+codified into and and the interhiving codified into how they behave individually inter inter clustering and then in relation to the comments that they might serve and so before i take a turn into the case for um the experiment that i was hoping to invite people to uh do together any any any more questions popping up
+
+
+SPEAKER_06:
+sure I can ask some short questions then slides and invitation okay lightning round okay Arun asked isn't there a cyclic dependency of economic factors and happiness for example high inflation made everyone sad over 2024. so there there is um uh there are um time lag factors uh that impact um
+
+
+SPEAKER_02:
+uh when we how the economy operates and how individuals operate and these are not necessarily in sync one of the things that um that I found from the um from the science of happiness was more effective ways to carry the suffering
+
+And so some have that this change that just happened politically, for example, is a bad thing.
+
+Often when things break open, there are whole new realms of possibility to be had.
+
+And so happiness is not just about having all positive emotions.
+
+It's about taking well being is the word actually I should be using is about absorbing all of the signal that the universe is giving all that's coming in, and then optimizing within that.
+
+and so um the breaking down can also be a breaking open for what there is to to uh become and so that is not to say that there is a lack of struggle or pain or friction one of the
+
+great intuitions for me um that that arose from from studying people explaining active inference was um how things emerge and the person explaining it was using water and uh they they were describing still water as being the way in which
+
+different conventions of how things got done and how people calculate it so if you're if you're in still water if you're in a lake and you're trying to get across the way you rode your boat or the way you swim is all set by the conditions of the water in um in flowing water
+
+um even though those that same water has the same physical properties uh as still water weighs the same no matter whether it's moving or not um when when the friction of the water over rocks um creates new dynamics that emerge it creates whirlpools right and that those structures um that persist um
+
+know the creation of order out of disorder um allow for the emergence of also other meta patterns that are again described by informational mathematics rather than the physics of the water itself and and this is this is again trying to get it what is so hard to intuit it's like oh these whether whether it's a single whirlpool coming into existing
+
+or whirlpools into whirlpooling into into greater movements that that these frictions are also creative.
+
+And so to really be willing to settle into what you were calling the cyclical disconnect in a symmetry as something that is a signal also that can be driving learning, driving better calibration, can be driving new learning.
+
+Because at the heart of all of active inference is a mathematics of continuous learning.
+
+Yes.
+
+
+SPEAKER_06:
+I love that.
+
+It just flows like water with our previous sessions.
+
+Okay, next question, and then back into the flow we go.
+
+Social Design Studio wrote, So curious about the transition away from individualistic and mechanical into collective and organic.
+
+Where is the most levered locality to start?
+
+
+SPEAKER_02:
+Well, that's a great question, and here's a way in which I would answer this.
+
+In the world of project evaluation, so there's a point of view in the world of systems thinking.
+
+There's a certain order of what to, what are the, you know, Donella Meadows is well known for the way in which she created this categorization of ways to intervene in a system.
+
+And
+
+In the world of evaluating projects and programs, complex projects and programs over time, there's been some meta studies done about what are the things that best predict that if the supervision is done, attending to certain factors, what are the things that seem to produce
+
+effective and positive results.
+
+Because we're talking about complexity, you could pick 1000 things.
+
+But in this research, they identified three things, and I'll add to the three things that they said, you know, when people look at the following things, they, they tend to not only manage what they thought they were looking for, but also what emerges, in other words, managing the surprise and the unexpected more effectively.
+
+and these three things were looking at the interrelationality surprise surprise right we're talking paying attention to the interbeing and the interbeing across not just the individual or whatever whatever our individual unit of focus was originally but but who were
+
+seeing the system more holistically second um multi-perspectivity um and the way that i and my my the way i uh describe this for myself is um i say looking within looking between and looking beyond having
+
+one or more disciplines and perspectives and ways of knowing about those lenses of attention on what is happening.
+
+If we look within, we often become a better compass for our own lives.
+
+If we look between, we often develop and harness the intelligence that collectively and the insight that we have.
+
+And when we look beyond, we often detect patterns that are beyond our collective purview that might break open and enable us to transform in powerful ways.
+
+So again, to return to that second point, multi-perspectivity,
+
+and i suggest with those three uh lenses which is what i call the me to we to all you know um and it's it's kind of the label that i'm putting on on this invitation i'm going to bring up later um is um is it is a good starting point is it enough no but it's a great starting point and then thirdly and here's where it gets messy and is the non-answer to your original question is um scope definition
+
+because the moment you pick what are the boundaries, what is my Markov blanket?
+
+What are the boundaries of the map that I'm going to use as my lens?
+
+You begin to abstract everything else into what fits in that lens.
+
+so so if you say we're going to have this conversation in english the way that we everything we describe will be denominated mostly in nouns instead of in verbs and with concepts that exist in english but don't exist in other languages and so um the attending to what are the boundaries that we will use to focus is is a gigantic
+
+mechanism for seeing how you're holding your attention.
+
+And so again, it's not a fixed answer, but it's a way of attending to perception.
+
+Again, repeating relationships
+
+diversity of perspectives, and scope definition.
+
+The other two that I like to add in that were not part of that research, so that research, by the way, was 100 years of developmental evaluation, you know, hundreds of studies, and so it's very robust, and you can go to the bank, that that's a good place to start building your dashboard, or not the dashboard, your conversations about the dashboard.
+
+um the other two that i would add and and these in part come from active inference and from other systemic places and views is looking at patterns how are we you know what are we clustering and looking at flows
+
+you know, what are the core flows?
+
+Are we looking at energy?
+
+If we're looking at biological systems, are we looking at the water flows?
+
+You know, life organizes around water.
+
+So do we understand what are the core flows of information, of energy, whatever, in the system that we are observing?
+
+That gives us a
+
+key insight into the way in which causality unfolds and causality organizes itself around and that it's not the mechanistic you know geometry that we we may have intuited in uh for the longest time but that by looking at source by looking at flow we we develop a better compass for for the world
+
+
+SPEAKER_06:
+thank you it's it's awesome and the live chat is super lit you'll see it after um in the last 20 minutes do you want to share your slides and open the invitation letter yes so uh let me um switch here to share i'll share
+
+
+SPEAKER_02:
+Are you seeing my screen?
+
+OK.
+
+So the invitation was to test a new way of organizing.
+
+And Fair Share Commons is a kind of a mutualistic co-op.
+
+that um first originated in the uk and has been endorsed by the financial i should have read it down here because i can't remember like the finance trust accounting board of of the uk it's a spread through many countries of the commonwealth of the last uh 15 20 years and it's primarily an adapted form of organizational structure that is intended to both
+
+cultivate the practice of mutualism within the group.
+
+So it's kind of like a co-op in that everybody has power to participate.
+
+It's self-governing.
+
+And that it attends to the relationality of the founders, the workers, and external, whether they're investors or they self-organize.
+
+It's really, there is a pattern language about forming co-ops.
+
+and one can use that pattern language to form these commons.
+
+And that these, whether they are to create ventures or to create full businesses, that the pattern language is useful for that effect.
+
+And so, as I described earlier, akin to Linux, you know, it's intended to grow the commons, but also to support the application of those commons and build the organizational traits for successful ventures.
+
+And what I am hoping to find allies around... Oops, let me...
+
+so it um these are again suggested and there are many ways to to go about it but um you know there's certain core agreements that differ from if you will the extractivism and the foundation is uh relationality um which drives mutualism and symbiosis um and uh the the invitation um
+
+is to constitute one in service of the active inference community for growing both the commons and the capacity to prototype and develop both the experience of mutualism but also projects
+
+and that there'd be two starting experiments.
+
+The first around prototyping agents for accelerating access to money.
+
+So often folks incubating a new project are looking to find funding for that project.
+
+um find uh funding for what that project might serve and often there are people willing to fund those projects and the idea of writing up what are the sources of different funding what are the sources of what what are the needs that they have that they're looking to fund how do i discover and engage that funding
+
+is an important agent that can be used in common after common after common and so possibly developing uh um an agent or uh there are plenty of methods but but agent defying if you will uh that component as one of the key flows you know that in business the flow of money is is uh an important element to to inactivate and and that the second
+
+is about um finding um resources of a different kind competence and complementarity and um what are they what are the components often for example a uh the active influence community has a wide diversity of competencies um the but but it is highly highly technical and so to engage with people who
+
+who have complimentary skills and to support the accelerated discovery of allies, not only based on competencies, but also on other holistic considerations is the attending to the flow of mutualism.
+
+And so those three actions is kind of a starting point.
+
+is um is something that i would like to um i'm already in action on the uh with with other groups um and a variety of groups on the constituting the legal structure of a fair sharing commons and i would like to enroll um the active inference community to become an ally with with kind of other competencies and other types of mutualistic
+
+Eco minded socially minded groups to grow the capacity for mutualism and its early stage.
+
+I literally This this is germinating you could say and really would like to Would like to find allies who who knowing that we don't have all the answers but that we're willing to grow not just the methods but the relational soil and
+
+
+SPEAKER_06:
+um is um is what this is really about so um yeah i'll stop there awesome exciting i can ask some questions from live chat and we can explore just a little bit of a show and leave this on the screen or keep going sure you can leave it up i'll ask there's a lot of great comments i'll just start with the direct questions so people can add more in this last 15 minutes okay social design studio wrote
+
+Does the commons use emergent hierarchy so as to accommodate contextual expertise and thus relational power?
+
+
+SPEAKER_02:
+So, great question.
+
+And there are
+
+several definitions of Commons um but I'm going to go with Eleanor Armstrong she won the Nobel Prize for it and um and she he basically defined it as it's whatever Markov blanket people choose and then self-organize around so so um there are many variations and um
+
+and in order she she identified eight principles for common to not just be a nice idea but to be able to persist sustainably right um just to do a little sidebar she she was trying to make a business the reason she won the Nobel Prize is because in the profession um everybody was explaining most of the economy's activities as either being driven through hierarchies
+
+or through marketplaces, the dynamics of those two collective groups.
+
+And she said there's a third kind of group, a common, and it has the following properties.
+
+And the socially mutualistic side of the world was just in love with her, and this is why she won the Nobel Prize, because she developed not only a body of science and a series of eight principles that predictably describe those that succeed,
+
+these eight include you know a sense of boundaries that they have in common and whether they decide to self-organize around the fishery whether they decide to organize around um a data commons around uh a knowledge comments that is up for the group to to decide and then um the the way in which they co-regulate um she did there were many variations but but basically there was a um
+
+There had to be agreements on where to place shared attention.
+
+And as people diverged from the norms, that there were ways to call them back into relationship and to have escalating consequences if people deviated.
+
+Now, all of that sounds lovely, but that was not enough either.
+
+There had to be the ability to enforce one's boundaries, not only internally, but externally.
+
+And so I'll give you an example.
+
+I have some First Nation friends with whom I've been meeting every Friday for weeks.
+
+years to work on decolonizing our minds and they have a point of view about a piece of land that um that is their garden of eden and sacred and how it should be used or not be used and they use all these principles but they cannot enforce their agreements
+
+on other people and so they really what they have is a wish list i mean i know that's kind of rude and they'll be very pissed to hear me say this but without the capacity to enforce your your boundaries you um you don't have a commons and so um this idea of uh how enforcement happens
+
+And whether that is done in a hierarchical manner or whether that's done by self-organizing, you know, like when in Valencia recently there was a gigantic flash flood, you know, the government did a very poor job for the first week and the response was done by self-organizing and behavior of neighbors helping neighbors coming in,
+
+doing whatever they and that happens in crisis after crisis after crisis and um and so there is a capacity to self-organize if you will and get things done often what a government structure can do is help prioritize
+
+bring order to the what are the most pressing needs how to discern what will make the biggest difference collectively and so there is a value to having a coordinating role but um but uh you know how that emerges or evolves or unfolds is um neither be by by
+
+cultural precedent of what the rules are, or it can emerge through and from the group.
+
+So that's my long comment about commons and commoning and how to be in relationship to the common.
+
+
+SPEAKER_06:
+Awesome.
+
+I'll read a comment from Scott.
+
+Even before you mentioned Ostrom, Scott had written, Commons, Eleanor Ostrom, is a co-management regime framing, nicely consistent with active inference in human organizational contexts.
+
+c scott shackleford at all at u of indiana for awesome's commons programs commons analyses have historically been focused on quote asset based commons this nicely anticipates commons co-management beyond asset management i.e risk management skills coordination etc yep
+
+
+SPEAKER_02:
+I should have made the point that one of the things that commons do that the marketplaces and the institutions have not been able to do is, for example, it is financially rational to fish to extinction, to deplete the forests, because the price just keeps on going up.
+
+So the logic of markets is insufficient for sustainability.
+
+And this is why organizations that don't have a logic of that friction of considering other factors other than
+
+profit maximization will inevitably deplete the resource and so what she created with this case for commons was that there were sustainable organizations and that these existed both in indigenous you know in
+
+in original peoples cultures they exist throughout developed economies they exist in a variety of places and are unrecognized and what what you're hearing this in this invitation is like let's let's let's use commoning even though it's unfamiliar even though it's different it's actually much more widespread than we ever
+
+of experience you know it's it's like believing that there might be something other McDonald's you see McDonald's everywhere so you think I have to eat burgers but there are other ways to eat than McDonald's and not trying to pick a fight with uh fast food but how are we going to carry this forward into 2025 and Beyond
+
+Yes, so the invitation to join a conversation is the beginning.
+
+One of the allies that is both co-incubating other commons and that I wanted to use for if there's energy here is a group called Evolut6.
+
+based in Germany and South Africa and UK.
+
+It's a small firm dedicated to incubating and helping commons-type organizations grow.
+
+It's kind of the...
+
+And so trying to both invite the interested to begin, join the conversation, sharpen a vision and an understanding of what it is that we think we can be an action on.
+
+What is it that, how that active inference can be applied to particular problems, the search for funding, there might be a better way.
+
+I had to, I had to scramble to get something plausible, but if, as we have conversations, we might very well identify much more
+
+important points of intervention with the question that somebody else was asking earlier we might decide that there are certain flows and certain dynamics that are in fact a great a better starting point than what I imagine right now but the invitation is come let's convene and do this in a systematic way and both be transformed individually interpersonally and Ripple out into the world
+
+
+SPEAKER_06:
+awesome okay few more questions while we're still here frazier wrote i'm not sure what this language of trauma means i'd like to hear this elaborated yes
+
+
+SPEAKER_02:
+Excellent.
+
+Sorry, I forgot to explain that.
+
+So lately in psychology and in organizational psychology, there has become a modified use of the word trauma.
+
+And what it refers to is the equivalent of memory in computation.
+
+so you can have a traumatic event and be traumatized by it and then the traumas as as i'm using it is the memory the scar that's left either in you or the um if it's it's a if it's a collective trauma that has a different um property i'll describe it in a moment but but when i say it's the memory the scar is what remains in you and how you carry that whether you heal fully or whether it becomes a
+
+A debilitating dynamic is when the word trauma can be used to describe it.
+
+Collective trauma is, and this is an important distinction because sometimes the same language can create confusion.
+
+When I'm acting as an individual cognitive system, all the trauma happens within my body.
+
+So I feel something, I fix something, or I have a story about something happening.
+
+All of that is personal trauma.
+
+If I'm part of a hive, the hiving is happening in the signals that we are sending back and forth to each other.
+
+And so the language of how we signal and the meaning of what that means is what can become traumatized.
+
+And let me give you a simple little example.
+
+And those are called trauma agreements, ways in which you agree to carry the significance, the pain, the feeling about the situation that you're looking at.
+
+So my father took me fishing when I was eight years old for the first time, and we caught a fish with fish and hook, and the fish was flapping and resisting, you know, and I was kind of shocked.
+
+I'm like, oh, my God, that fish is suffering.
+
+My father's like, no, no, no, no, no.
+
+You just...
+
+grab you know whack them on the head knock them out and they don't feel pain and in that moment i entered into a trauma agreement a different understanding of how to be with what i was observing and as a group we would talk about the our reality assuming that shared trauma agreement that shared way of understanding
+
+that same kind of dynamic whether it is how what it means to be a certain gender what it means to be an organization that is beneficial to the world is it because it makes a profit is it because it makes a contribution there's a whole series of assumed agreements
+
+that that it's like oh we need to surface them that they're not the truth they are an agreement into which we stepped and we're now willing to reevaluate and this is both the the gateway to disorientation but also transformative adaptation
+
+because it changes what has been a habitual way.
+
+When I started considering that maybe animals are still an omnivore, but when I started considering that maybe animals had feelings, I had to start thinking differently about what had been my ordinary eating patterns.
+
+And so this is a language for surfacing
+
+
+SPEAKER_06:
+um anti-symbiotic ways of being that we are now developing a pattern and a way of recognizing them and renegotiating them awesome great answer last question music minded wrote how does Michael see the future of businesses or more simply do you have exemplar businesses that are Commons type in your view
+
+
+SPEAKER_02:
+Yes, there's a whole range of commons businesses.
+
+And so even though we're talking here about incubating a new one, in a sense, I believe that the important work is about what I was describing about treating cancer, calling back into relation.
+
+And so some of us, and this, you know, if there's interest in this, I've been working with global standard setting groups about how to measure and monitor wellbeing and then how to, so there's the sensing it, and then there's the, what do I, how do we digest it?
+
+You know, and this was another benefit,
+
+you know, benefit from from active inference was the way of framing the cognitive process, not just think, but sensing, integrating, predicting, responding, adapting and really helping organizations think about in that cognitive flow, in that collective cognitive flow, how to recalibrate them, their their attention so that they see more of the world with with a denominator, a planetary denominator rather than an organizational denominator.
+
+And how do they then more skillfully interrelate with the different factors in which they're engaging?
+
+
+SPEAKER_06:
+Perfect.
+
+Thank you, Michael.
+
+Great presentation.
+
+A lot of people appreciated it in the chat.
+
+So see you next time.
+
+Thank you.
+
+
+SPEAKER_00:
+Thank you.
+
+
+SPEAKER_06:
+Okay, welcome back, everyone.
+
+We are here in part one of the workshop that John Klippinger and our partners at First Principles First are coordinating.
+
+So with that, for the next session, please, John, to you and take it away.
+
+
+SPEAKER_07:
+Thank you very much.
+
+I would like to just to share a deck with the group here, if I could, and provide a sort of an overview of what we'll be talking about in this particular session.
+
+Can you see that now?
+
+Is this good for you?
+
+Okay, great.
+
+And we'll be anticipating with Andrew is,
+
+James Rattling Leafs, she will be coming on and providing the tutorial, but what I would like to do this in the first instance of this is is being able to provide an overview of why.
+
+active inference is important, why active inference agents, this whole perspective that we're taking here, is worth people's attention and being concerned about.
+
+And what it has to offer to address some of the limitations of the current AI systems, for example, large language models and some of the agentic architectures that have come out of them.
+
+And in that context, what I'm looking at is sort of what is the current state of a large language models and agents.
+
+And I think,
+
+There's a lot of activity that's been talked about, but there is still no mission-critical applications yet.
+
+There's a lot of exploration.
+
+You have people like Salesforce developing little Einsteins that can do various kinds of workflow automation.
+
+You have Copilot and Microsoft, but it's not really core critical.
+
+Not to say that it won't be, but it is still on the experimental phase.
+
+It's still a black box.
+
+We do not know a lot how it works.
+
+Hence, you have issues of data providence.
+
+You have a question of how to govern it.
+
+And there's more recently, there's a concern about you've invested a trillion dollars, but there's an unknown business model coming out.
+
+So there's a lot of money that's going into it, but it's not clear that the current framing of AI as it's now known is really, it's gonna be viable.
+
+And part of the issue here is that we, and I love this example from the New Yorker, is like, who's modeling who?
+
+We're actually putting data into the models.
+
+We're trying to write representations and we have that interaction, but there's not necessarily an abstraction that's coming out.
+
+So it's kind of this relationship of seeing ourselves, mirroring ourselves, and going into this sort of cycle.
+
+And what we have now is a certain hype cycle.
+
+So it's around the peak of the, this is 2023 from the Gartner Group,
+
+And so the generative AI is at the top of the hype cycle.
+
+And then it's hard to read this particular graph, but you'll see that principle of AI is basically on the early cycle.
+
+It's on the early phase of it, but it's not seen as taking very long, where something like you're going to have...
+
+AGI is seen as being like 20 years out.
+
+It's at the top of the hype cycle.
+
+I think if we update this now, I think it's starting to be appreciated that the generative models and expectations and the kind of problems and the costs associated with them and then the lack of improvement
+
+The lack of degree of improvement through successive models is starting to show through.
+
+So the next generation open AI shift strategy is the rate of GPT AI improvement slows.
+
+In other words, the new Orion model did not have the level of improvements that they were expecting.
+
+I think that is something to take into account.
+
+And hence, the cost of training and inferencing is extremely high.
+
+And with that, the fact that you have this enormous consumption of energy, Microsoft is going to have to recommission Three Mile Island and drive one of their own data centers.
+
+This shows the impracticality of having to have so much computation in order to make these models work.
+
+And I think that this is starting to be recognized within the limitations of large language models and sort of the parametric approach to AI modeling.
+
+And I think just to start to step into what we have now, what we're looking at, I mean, this is like another cartoon from the New Yorker.
+
+So to think it all began with letting autocomplete finish our sentences.
+
+And well, autocomplete is a sort of Markov chain.
+
+So we are having this sort of chains on top of chains, and we've been able to develop some pretty rich representations of human activity of text and actually forms of cognition, but there's not an underlying model there.
+
+And so what we're looking at, there may be some foundational issues that are coming up in very large language models.
+
+And the fact that it is a black box is not explicable.
+
+It lacks internal causal models.
+
+There's not a way of reducing the complexity.
+
+It's sort of a batch processing.
+
+There's no real-time updating.
+
+And that batch processing we see is extremely expensive.
+
+And so we're caught on that issue.
+
+It's not energetic.
+
+It has no notion, no means of a spontaneous adaptation and correction on its own.
+
+And it certainly doesn't know what it, it doesn't know.
+
+And it has no way of representing its completeness of this knowledge and adapting coherently to that.
+
+And also I would say it's not derived from sort of fundamental scientific principles.
+
+It's really sort of an engineering phenomenon on a case by case basis.
+
+Now this is changing.
+
+And I think the same issue, if you start to see foundational issues for multi-agent LLMs, in other words, the transition to making agentic architectures where you can create a particular agent that's optimized to do a particular task or role, a lot of the success of that agent is depending on the quality of the prompts of that.
+
+And sometimes those prompts are good, sometimes the prompts are bad, but there's not a really principled way of doing that currently.
+
+And so they have a very fixed way of, and specialized kind of goals.
+
+It's sort of a mechanical, it's sort of the instantiation of an industrial model that we see.
+
+Now, what we, rather than having a sort of biological self-correcting model, there is sort of these fixed static models.
+
+Now, what I would say the active inference difference here is that it's really developed from first principles.
+
+And I think you're going to see that Andrew's going to go into this much more detail.
+
+But it really cuts across different disciplines that themselves have been maturing fairly quickly in the last two or three decades.
+
+And so it is in basic physics, quantum information theory, the whole idea of computational science, biology, and cognitive science, all these are intersecting.
+
+into creating a new way of looking at what intelligence and life are and how they're interconnected.
+
+And it also builds on well-established statistical methods, including Markov blankets, Blasian belief models, the stuff that work has been done
+
+with Jadea Pearl.
+
+And basically what you look at active empycin does, and I just sort of highlight, is it codifies a predictive brain thesis that's been nurturing in neuroscience.
+
+And then that in turn sort of mimics the processes of the scientific method.
+
+So think about what the method is that you're trying to codify.
+
+And in turn to Richard Feynman's comment, well quoted comment,
+
+I can't, what I can't create, I can't understand.
+
+So there's a new kind of criteria for what it means to have a, to understand something, is be able to model, to create a digital twin.
+
+If I can recreate something, then I understand what it is.
+
+And if I can replicate that behavior, and that's sort of the principles that you find in active inference from the very beginning is, ah, how do I create a generative model?
+
+How does a living agent have a generative model of itself and its world?
+
+And this really owes its origins back to the work that's done with J.D.F.
+
+Pearl on his understanding of causal reasoning and also Markov blankets.
+
+What is an autonomous thing?
+
+And this is where Carl Fritz and his work, how does something maintain a separation from the world in which it is in?
+
+And so it is not governed by the things, but maintains its autonomy.
+
+And there's a certain kind of topology there
+
+that something has certain kinds of internal states, it has external states, observer states, and action states.
+
+So there's a lot of deep concepts that's in it.
+
+I'm sure Andrew will go into that in much more detail.
+
+And then what we have is the active inference agents themselves as sentient, alive things.
+
+So you're creating something
+
+And it's very different than, say, a large language model.
+
+You're taking something that has agency and it has a representation of itself in the context in which it's trying to stay alive.
+
+And so it's self-organizing, it's self-healing, it's self-replicating, and it's symbiotic in the sense that it involves complexity, mutual synchrony with other living things in its world, in its niche.
+
+It's a joint niche construction.
+
+Hence, sentience is a kind of situational intelligence, an awareness that's granted in the survival of that particular agent.
+
+And the context of the person who's really behind this is Carl Friston.
+
+my own experience of being someone who was very interested in sort of an artificial intelligence from from many many years ago and self-organizing systems of cybernetics it really hasn't been until the last five or six maybe ten years that this has come together in a coherent uh not only a coherent theory but a whole coherent formalism um and to what what Carl would call physics of living things and he's one of the most scientists scientists in the world as a neuroscientist
+
+that's done, basically developed a reputation in neuroimaging and inferring the structure from the brain from neuroimaging, and he applied the free energy principle, which we'll go into more discussion to later.
+
+And so one of the, I love this idea of a trefoil knot.
+
+It's sort of like, okay, it's,
+
+It is sort of this auto-catalytic biotic system.
+
+It's really important that it's a living system and it has certain kinds of characteristics that are all intertwined with itself.
+
+One cycle synchronizes its ectoception or its representation of the external world to minimize uncertainty.
+
+The other does it internally.
+
+It has to align that with the external world.
+
+And then you have another cycle that has expected free energy minimization.
+
+It makes predictions about how to change itself in its world.
+
+Um, and so what we have here is basically a, a, a, what I think active inverse offers is a really a soundness, a grounding in bio and biology and physics.
+
+And so you have a sort of a ground truth and evidence base.
+
+Do I make predictions and do those predictions allow me to act and survive in the world?
+
+Um, so it can be explicit.
+
+It can be explainable and we'll see, we'll talk about this later, but you can have.
+
+Since it has causal models and language and knowledge graphs, it can explain why it's doing what it's doing.
+
+It also can talk about, explain why, how much it does, and its degrees of uncertainty associated with it.
+
+And there's also the potential self-policing, self-correcting mechanism.
+
+And I think this is really important.
+
+In other words, you can design a active inference agent to live within certain constraints and bounds, and you can build in certain mechanisms that have self-governance that cannot be captured.
+
+So actions are within the limits of its design mission and not to generate negative externalities.
+
+So this, I will sort of leave with this one.
+
+And then just to quote William Blake, who talks about this in a poetic form as a fractal nature of reality, see the world in a grain of sand and heaven in a wildflower and hold infinity in the palm of your hand and eternity in an hour.
+
+This just sort of pulls it together in a more poetic sense.
+
+So on this, I would hope to hand off to Andrew.
+
+Thank you.
+
+Great.
+
+
+SPEAKER_00:
+Thanks, John.
+
+Hi, everyone.
+
+I'm Andrew Pache.
+
+I'm currently involved with the Active Inference Institute.
+
+It's been great partnering with
+
+with Dr. Klippinger, with the director of the Institute.
+
+We've been doing some really exciting work lately.
+
+And I want to address a lot of the points that John has made, although most of that will come tomorrow when we give some major updates on our bio firm.
+
+So today, in the spirit of an initial workshop and kind of introduction to Active Inference, I'm actually going to refer back to this tutorial that I gave a couple of months ago.
+
+at an international conference for computational social science, meaning folks who are involved in sociology, economics, a broad range of fields.
+
+And the context was applying active inference, a lot of these principles that John is referring to, to social science research.
+
+And I basically make the claim and the argument, this is already being done, so I'm not necessarily providing a bunch of new information, but it's just to kind of extend the dialogue
+
+to computational social scientists like here's how we can apply active inference to you know your particular setting in different ways so uh we'll just kind of cover some of of what i went over and you know i apologize if there's any whiplash from how quickly i go through these slides um but we're just going to move a little quickly um so the context again of this this uh this tutorial that i gave
+
+was uh it was split into three parts it was a 3.5 hour workshop where we actually we started with talking about agent-based modeling you know how it's traditionally been done and then followed by that something that i would call a cognitive turn in agent-based modeling that's happened over the past couple decades as you know there are these kind of calls for you know we have the computational resources now we have an immense amount more of uh you know empirical
+
+research and validation of different kinds of principles related to human cognition coming from neuroscience, neurobiology, cognitive modeling.
+
+uh studies of neuronal dynamics uh organisms in their environment all those the kind of things so so there's a ship to that and then uh the most recent you know means of trying to establish that the broader state of the art area is uh using reinforcement learning agents so we'll touch on what those are and kind of how that works and you know anyone who's kind of been looking at the the agentic
+
+uh framework for for what's being done today they'll probably already be familiar with reinforcement learning then after that we'll go into active inference and how that kind of kind of bridges together a lot of these different things um and apologies i want to just mention real quick uh you can actually go to this this link uh the quickest way of following that is just by going to google type you know my name andrew pache and then
+
+You can type GitHub or IC2S2.
+
+In any case, you'll come up to the landing page for this.
+
+You'll see links to all previous slides I've made, slides that I'm making for tomorrow.
+
+I'm also making a lot of this open access.
+
+So there's code that people can play around with and things like that.
+
+agent based modeling.
+
+This has been done, you know, this goes back to roughly 70s 80s, with a lot of, you know, initial developments of computer technology and being able to realize that, oh, we can we can simulate people.
+
+Right.
+
+In some loose sense, in some kind of simplistic sense, how can we simulate people and why would we want to do that?
+
+We would want to do that so that we could maybe imagine hypothetical scenarios.
+
+Imagine you're designing some kind of policy or want to test a policy and see, you know, oh, if I recreate that in a simulation.
+
+and have people in the environment where I'm implementing that policy, what happens?
+
+What's the collective outcome?
+
+What occurs?
+
+So all kinds of fascinating work from shelling in the traditional way of looking at housing segregation, for example, handling those kinds of problems.
+
+Where do people land?
+
+How do they settle in a residential environment?
+
+even more interesting work later after that santa fe institute recreating an artificial stock market uh where you where you have agents who are basically interacting with this kind of financial environment where they're looking at stock prices changing they make choices to you know buy or sell etc and see how that plays out recreation of housing booms and busts excuse me not housing financial so
+
+This can be applied in many different ways to the point.
+
+And so what is agent-based modeling in its fundamental principles?
+
+And how does that relate back to active inference, which we'll get to?
+
+Key components of agent-based modeling is that we have agents, kind of the catch word of the day.
+
+Traditionally, agents are, you know, they just represent some entity, a living organism.
+
+You know, this can be used for biological and zoological studies of trying to understand, you know, how ants or insects, you know, interact in an environment or at a broader scale, how humans and entire societies and cultures might interact with their environment.
+
+And so what's really important about this with agents, environments, simulations that we just kind of run a simulation over a series of time steps.
+
+And so we let dynamics play out.
+
+And then what is it that composes those dynamics?
+
+It's the assumptions we make about agents.
+
+What is their behavior?
+
+What do we think that they do?
+
+Do we program them in this way or in that way?
+
+And then also what are the aspects or characteristics of the environment?
+
+know and so again given that a lot of this work was done starting in the 80s going forward with with very you know we're nearly archaic at this point uh forms of like computational resources it's like things were kept as simple as as possible and there are a variety of guidelines that need to be used to develop agent-based models for running these kinds of simulations uh you know and so so some of them even running up to 2007 here this is the work of
+
+of doctors laser and friedman or respectively uh have been involved with northeastern university and stanford um you know they give some guidelines for how to do this um guideline one and two uh in some is you need realistic uh assumptions that you're making about your agents but not
+
+too realistic in the sense that they're too complex one because we don't have computers that are advanced enough to run highly sophisticated complex agents and then also you know if we make if we make too many assumptions then the situation won't generalize well you might be making an agent-based model for one very very particular scenario
+
+where it's not adaptable across different real world circumstances, right?
+
+So we need some kind of balance in terms of the complexity of the assumptions we're making and the simplicity of the assumptions we're making.
+
+The rest are a bit more plain, which are one,
+
+reproducibility, you should publish your code.
+
+You should document it very well.
+
+Other researchers should be able to kind of take up the torch and be able to experiment with your code.
+
+We at the Active Inference Institute, we're constantly putting out new GitHub repositories and documenting our processes so that other people can come and get involved.
+
+So I just want to mention that there's a big problem in reproducibility in science.
+
+today and it's very well known you know so uh just want to touch on that the non-triviality it's like why do agent-based modeling uh if it doesn't help us uncover anything you know why not just sit down and have a conversation about you know what what do we expect to happen what are our thoughts about what's going to happen
+
+Why do all of this with setting up these programs and agent based models and designing them if we can just come up to the same conclusions you're speaking?
+
+So you want your results to be interesting.
+
+You want to make realistic assumptions that we can kind of have all these things synthesized together.
+
+so i made some points about balancing simplicity and complexity this is just a representation of uh you know these these are common problems in machine learning and deep learning you know you you go and get uh you know the university education these are the core components of all of your courses you know this isn't
+
+specific to active emphasis, like wide ranging, you know, concern, how do you create a model that is realistic enough to capture and explain the phenomenon you're looking at?
+
+But
+
+uh simple enough to where it's adaptable to different circumstances you know and there's you know these are kind of in part uh you know just as uh uh dr clippinger referred to richard feinman you know just some reminders from uh you know famous statistician george e.p box you know all models are wrong but some models are useful right we're always trying to approximate a reality and so the question is how do we come closer to approximating uh our reality and so
+
+How do we actually, using modern computational resources, using all of these new advances and all these fields, how do we actually make new forms of what we'll call cognitive agents who exhibit the kind of mental dynamics and social dynamics between them that actually better approximate real human behavior?
+
+So I give some definitions, the differences between traditional agent based models and what agent assumptions are being made.
+
+And more often than not, simplicity and agent is pretty one dimensional.
+
+If they observe
+
+X, then they do Y, otherwise they do Z. These very simple pre-programmed rules.
+
+They're not autonomous.
+
+They're kind of like, you can think of them as like thermostats or something like that, right?
+
+If the temperature is too high, you turn it down.
+
+If it's too low, you turn it up.
+
+That kind of reactive framework.
+
+There's no beliefs about what's going on.
+
+There's no internal goals per se, aside from a single homeostat that is, you know, maintain the temperature at what you set.
+
+of cognitive agents, however, the expectation for those, this is throughout the recent agent-based modeling literature is like, how do we achieve cognitive agents who exhibit internal cognitive mechanisms, they exhibit perception, action, they actually learn, update their models,
+
+i'll make a point that you know as john referenced in the case of llms which i'll cover much more deeply tomorrow llms do not i mean it's so expensive to train them and you typically just train them once right and so um they don't learn in real time they're kind of stuck with the knowledge that they have they have a lot of it to be fair they've been trained on you know thousands thousands thousands
+
+documents and so on but but that's it like that's what you have and then and then we have to figure out how to work with elements from there with cognitive active inference agents as well as other kinds of cognitive agency ideas that they can learn in real time
+
+meaning in the moment and adjust their expectations and their beliefs to what's actually going on now.
+
+And then also planning.
+
+So the capacity for being able to infer or guess using evidence that they take in, like what's going to happen in the future.
+
+Right.
+
+And that's immensely important in today's climate.
+
+Right.
+
+I mean, that's in part.
+
+The reason we're doing agent-based modeling is to attempt to plan, to test things, to come up with our own inference about what's going to happen in the future, and then act in actionable ways to realize our own goals in the future.
+
+So ideally, that's what an agent would do and be capable of.
+
+then with you know this cognitive turn we're also looking at a broad synthesis of all these fields you know as john mentioned we're looking at things like cybernetics and machine learning we're looking at physics information theory um people are starting to it's great it's fascinating that so many uh interdisciplinary conversations can come up and collaborations between researchers of various backgrounds because it's like oh you know once we once we realize what it is we're trying to do here
+
+we can start to pull from maybe principles or relate principles from other fields to this field what works what makes sense what's empirically but you know what can be validated and so on so it's it's it's um you know it's a very rich field right now and then furthermore a lot of traditional agent-based modeling has been done using a software called netlogo
+
+which is very specific.
+
+It's good if you want to do agent-based modeling, like you just learned this one programming language, there's a GUI, like an interface for using it.
+
+Highly simplistic.
+
+It is not integratable with other tools, not integratable with LLMs, with natural language, all those kinds of things.
+
+And so it's very narrow.
+
+It's good at what it does.
+
+With cognitive agents, we would want to be able to pull from
+
+all kinds of other resources that are, you know, available, including open source ones, being able to use API's being able to pull in other kinds of real world data, not just purely simulations, you know, so there's just a lot of richness behind this idea of moving to cognitive agents.
+
+And then there's some basic, you know, ideas of what makes a cognitive agent again,
+
+perception they take in observations and they infer what's going on in the world and kind of like we what we do my stomach growls when i infer that i'm hungry for example it's a very simplistic example um and then agents are generative in the sense that they actually come up with
+
+uh their own plans or you know choices of what actions to take based upon what they believe such as i observe my stomach is growling i infer i'm hungry i will now choose to go eat food as like an affordance that's available to me in my environment
+
+So this is a new way in a certain sense of doing agent-based modeling, where before we were looking at modeling an environment with a bunch of one-dimensional agents, predictable agents on the inside.
+
+If they see X, then they do Y, otherwise they do Z. And now we have models in a model in the sense that we're actually able to internally inspect our agents, right?
+
+By having this beliefs-based framework where agents observe real data or information
+
+and then infer beliefs about it, we're able to then retroactively look inside the agent and see what its beliefs are, as opposed to these kind of, you know, very difficult to interpret black box models that we find very commonly in deep learning and, you know, very
+
+very highly performative yet very difficult to interpret like neural networks and architectures like that with with agents we would want to be able to see in a in almost like a human sense like what are their beliefs that they're holding and why are they doing what they're doing so we need to be able to accomplish that in order to actually realize all the additional benefit of doing this which is being able to look at you know internal cognition what are agents learning whenever I
+
+whenever I implement a new policy or something.
+
+I want to be able to know what's going on with them internally.
+
+I want to know the full impact of what it is, this plan I'm considering actualizing.
+
+So to bring it back, how do we address all these traditional criteria?
+
+How do we make realistic assumptions?
+
+How do we make our code reproducible?
+
+That's an easy one because it's like, well, we're still coding the whole time.
+
+And then how do we derive useful insights from this?
+
+And what are other problems that are going on?
+
+Like now that we're getting into cognitive architectures,
+
+and we are starting to brush up against the potential of recreating more black box models, right?
+
+We need to keep things simple enough.
+
+Like, how do we navigate all this?
+
+A common problem in social science research in general, but also in data science, machine learning, and those kinds of fields, reinforcement learning, a common issue is how do we handle what's called the explore-exploit trade-off?
+
+This is famously an issue.
+
+If you have an agent,
+
+who comes up with a suboptimal solution to a problem.
+
+Let's say an agent who's trying to figure something out.
+
+They find something that they deem to be good.
+
+They get a positive reward signal or positive feedback from that.
+
+But it's suboptimal.
+
+There's actually a better solution exists.
+
+They just don't know about it yet.
+
+How do you get an agent to actually be willing to explore?
+
+And same thing for humans, right?
+
+We don't always stick with the first decent looking option available to us.
+
+Sometimes we explore in the sense that we seek better solutions to problems.
+
+And this is especially important in something to be addressed in agentic frameworks, where if you're trying to use agents for, say, software application or a use case,
+
+like you want them to be able to find better solutions ideally you know at any given moment especially in a changing context that might call going forward for better solutions you know say agents who are maintaining an environment that's subject to uh natural disaster or or or climate change right like that that might call for a whole new set of of policies or actions that need to be taken uh you know that that couldn't be relied upon in the past so we need agents who
+
+seek new information.
+
+Unfortunately, in reinforcement learning, this is still an issue.
+
+People are trying to figure out
+
+how to kind of manually define what defines exploratory behavior.
+
+And it tends to boil down to kind of simple mathematics of defining like, okay, well, we'll modify these agents so that 90% of the time they go with the best solution they know about.
+
+And then 10% of the time, they'll just pick something random.
+
+That way they're at least exploring 10% of the time.
+
+You know, you could put it that way.
+
+Active inference,
+
+Again, I'm sorry, I'm kind of zooming through a lot of this recall, this is an over three hour tutorial.
+
+But with active inference agents, this kind of gets naturally resolved in terms of what's called the free energy principle, which we'll be getting into.
+
+But basically, the idea is if you're able to have agents who naturally seek information, perhaps in line with how we do,
+
+When they come up against something, they see, oh, there's value in seeking new information to find even better solutions than the ones they already have.
+
+And being able to do that in a way that isn't some kind of ad hoc rule of the 90% versus 10%, as I mentioned.
+
+That's kind of a key component, a key consideration in designing agents.
+
+So, this brings us to the active inference, which I describe here as the framework for doing agent-based modeling.
+
+It begins with the free energy principle.
+
+I'll make a lot of mentions to this nice textbook that Thomas Parr, Carl Friston, and their other co-authors published a couple of years ago.
+
+There are perhaps even some more updates to be made because it's such a lively field, but that textbook really lays out a lot of the core principles and ways of getting started with active inference.
+
+The free energy principle, everything that changes in the brain must minimize free energy.
+
+Now, despite all of this interdisciplinary communication dialogue between, you know, again, cybernetics and psychology with behavioral economics, that actually sounds quite simple, right?
+
+To be able to boil everything down to, oh, we have a brain.
+
+It's trying to minimize free energy.
+
+That almost sounds simple enough to where we might be able to employ that.
+
+as a kind of simple assumption that we made in agent-based modeling.
+
+It's quantifiable.
+
+It's a presumed
+
+presumed is the wrong word, but something like a principle that can be applied in any given circumstance whenever we're looking at these organisms who are self organizing, such as humans, such as living organisms, such as plants in an environment that's being taken care of, that they exhibit this kind of characteristic of minimizing free energy as a form of quantifiable uncertainty.
+
+So we'll touch back on that again in a moment.
+
+What active inference provides is a kind of normative, holistic framework for what I argue should be applied to agent-based modeling.
+
+It itself addresses agent-based modeling.
+
+That phrase is used in the textbook.
+
+This is not a foreign, out-of-left-field kind of invasion of active inference into agent-based modeling.
+
+I'm proposing there's so much overlap, and I think it's just an underutilized connection that's already been made.
+
+Active inference is based in, you know, it provides neural process theories, meaning that we're not just, you know, assuming in the same way with agent-based modeling, we might assume, oh, all people are utility maximizers.
+
+In this case, we're not just assuming it.
+
+We're looking at neuronal dynamics.
+
+We're looking at, you know, decades of research into using neural imaging.
+
+looking at how does the brain really function, how does it handle uncertainty, different kinds of behavioral studies and tasks where you can record FMRI or EEG along the way and look at the dynamics of that data that's being collected along the way.
+
+And then from there, we can start to kind of model how that works.
+
+So as I already mentioned,
+
+We're still looking at a kind of belief based framework, which is to say, you know, we're looking at for agents who have beliefs and they update their beliefs and they do that by way of the free energy principle, which is minimizing uncertainty.
+
+We start to see these organisms that we're modeling, humans or otherwise, they start to have naturally emergent adaptive behaviors.
+
+right by by trying to figure out what's going on in your environment and then adapting your actions or to better understand it to better realize your own goals you're effectively minimizing your uncertainty and uh and the free energy principle basically uh is a kind of
+
+free energy is like a proxy for that uncertainty that that renders a lot of these things computationally tractable meaning that we're able to quantify it we're able to report it whenever we run agent-based modeling we're able to like actually look on a chart and graph how much the free energy is being reduced uh over time you know and look at the agent's internal beliefs about you know what what is it that they're figuring out uh
+
+it within their environment over the course of simulation the view from from this perspective is that another aspect i already addressed the export exploration exploitation balance and trade-off self-evidence
+
+This means that agents, in order to minimize their uncertainty, one way that they can do that is to try and act to realize their goals.
+
+There's something they want, something that they expect, right?
+
+And so it's as if you have this prior set of beliefs of what you want to see in reality.
+
+This is the kind of framework that active inference deals with, but also referring back to Judea Pearl, as Flippinger mentioned,
+
+uh you know this is a kind of bayesian idea you know this is rooted in something like like bayesian uh statistics or even mechanics but the idea is that you you have your prior knowledge
+
+You bring it to the situation and then that will impact how you update your beliefs based on new information, right?
+
+So we're not always starting from some blank state, some starting from scratch.
+
+We're always coming to a situation with what we thought before and then that gets updated.
+
+How does that get updated from active inference?
+
+That standpoint is through free energy principle.
+
+So, you know, it's
+
+I made some points in this tutorial because I realized we're really, you know, I want to make sure we have time to kind of bring this back.
+
+But with active inference that we already have so many aspects of reinforcement learning,
+
+and active inference which overlap.
+
+We're trying to create cognitive models, active inference.
+
+I don't want to say it's necessarily competing.
+
+I don't know if that's the right word, but it's making advances that reinforcement learning is trying to make itself.
+
+With active inference, we're actually basing this on a variety of principles that
+
+and again sorry zooming through you know we're able to like cognitively model you know what's what's going on in the mind in various ways that reinforcement learning is really lacking um today it's really lacking that it's it's uh you know these models are being built to be highly performative but they're missing the mark whenever it comes to something like realism and basing uh basing these reinforcement learnings and something like that you know
+
+science that extends beyond just the mathematics of machine learning right we want to be able to find biological physiological substrates for how all these things happen right we want to be able from there to be able to apply everyday words and interpretability so what is it that defines what a habit is what what processes involve whenever a goal
+
+is formed and made and then from there uh you know attempted to be achieved through action uh you know what defines planning what is prediction um so i just want to see if there's anything else i might be able to touch on this is a nice um
+
+know for for anyone and maybe i should have started with this but this is a little bit more of an intuitive glance and this is actually these are not words from uh carl friston surprisingly uh they're from uh sarah feldman barrett who's at northeastern she's uh you know nearly as reputable as uh carl friston in the neuroscience field and i just personally uh as someone who's also interested in in neuroscience and cognition you know i find her work fascinating she's done a lot of work
+
+on emotions and kind of affective neuroscience.
+
+So it has to do a lot with looking at what's going on inside the mind of, you know, especially humans.
+
+And so this is kind of trying to provide an intuitive glance that, you know, how can we think about
+
+Bayesian frameworks about inference, about active inference as well.
+
+So it's like, this is a long quote from a podcast that she did.
+
+Your brain receives sense data from the world, sights and sounds, smells and so on, receives sense data from the body.
+
+So when there's a loud bang or a tug in your chest, your brain receives that information as the outcomes of some set of causes.
+
+But what caused that loud bang?
+
+What caused that tug in your chest?
+
+Your brain actually doesn't know.
+
+It only receives the outcomes.
+
+it has to guess at what the causes are this is called an inverse problem you know what the outcome is you don't know what the cause is so your brain has one uh you know another source of information available to it that is past experience memory um
+
+Apologies for just doing a slideshow karaoke here, but you can read it for yourself, I suppose.
+
+But the point is, and with some of this highlighting, it's like we're actually taking account of a variety of things.
+
+We're taking account of interoception, meaning observations that arise from within the body, or for an active inference agent,
+
+You know, it has to kind of model itself.
+
+You know, I mentioned earlier that, you know, if I'm hungry, this goes beyond the five senses in that kind of perspective, right?
+
+Touch, taste, feel, all of that.
+
+With this, it's like, well, I need to understand what's going on within my body.
+
+I need to understand what's going on outside of my body.
+
+As Klippinger, you know, referred to earlier, the idea of a Markov blanket.
+
+It's like I need to figure out what defines the boundaries between myself and what's around me.
+
+On the one hand, I need to have a model of myself in order to maintain it.
+
+Otherwise, I succumb to the environments around me to use some
+
+the language that's used in, uh, you know, the textbook, it sounds a little bleak, but you know, we're referring to real world circumstances.
+
+If I, you know, if I don't take care of myself, I will naturally decay.
+
+Like that is kind of the, the sort of the principle of the world is entropy, so to speak.
+
+Right.
+
+It's like, if I don't eat food,
+
+know i i fall apart so i i need to have a model of myself what's going on within i need to have a sense of what's going on without uh and then and then i need to be able to kind of synchronize those things in such a way that i can continue to exist as an entity within this environment around me that's a that's a that's a very intuitive you know perhaps perhaps not very well technically described but for now an intuitive sense
+
+of kind of what defines a Markov blanket.
+
+So, you know, this is a sort of foreshadowing for tomorrow.
+
+We'll talk about this really interesting project we're working on for the bio firm with, you know, Daniel and under guidance of John.
+
+You know, in that sense, we're trying to develop homeostatic agents.
+
+Homeostatic meaning agents who, you know, their own sense of their survival is predicated on
+
+the homeostasis of their environment around them.
+
+So we're trying to create agents who actually take care of and attend to the environment around them as if their own survival depended upon it.
+
+You know, this is a very interesting
+
+kind of flip where you actually want to match and model the environment around you, but also take care of it in a way that you can maintain it within those bounds, just as I have to eat in order to maintain my energy levels, the agents need to take care of their environment
+
+within some kind of range where it has enough caloric energy, so to speak.
+
+So I think for now, John, is there anything that you think I have not addressed that might be useful to our audience?
+
+Or if anyone else would like me to touch on anything, maybe something I skipped or otherwise, I'd be happy to speak more of it.
+
+
+SPEAKER_07:
+No, I think you've covered some of the really key points that what I think is what differentiates active inference from the more traditional agent-based modeling.
+
+I think it's important because when people think about agent-based modeling, they sort of default to what the traditional models are.
+
+And I think that you've done an excellent job of sort of highlighting
+
+what the difference is and having that broader perspective, that more grounded interdisciplinary perspective, you're able to not only represent the complexity of it, but also provide a way of modeling agents within that complexity.
+
+And I think that the notion of the homeostatic
+
+nature of of an agent trying to live in in conjunction or really harmony with the world around itself is depending upon its survival and its ability to stay alive and differentiate and have complexity but the synchrony of the environment is really another key point because I uh I think
+
+Well, a lot of people, they think, oh, well, you may say navigating a fitness landscape, you're just trying to optimize different levels.
+
+But in fact, the landscape itself is shaped, you're doing joint niche construction.
+
+So it's a much more complex notion than traditionally understood general modeling.
+
+And I think in consideration of what we're looking at tomorrow, this whole idea of the biometric character of modeling and having it based upon principles and biology and nature,
+
+and being able to create an economic agent that acts that way, I think is really quite important.
+
+And so maybe some people have some questions about that that we want to focus on or not, but that's something that I think is important to highlight.
+
+
+SPEAKER_06:
+yeah awesome presentation Andrew Ernesto if you have a question also anyone in the live chat is welcome to ask a question no questions thank you very much this is so inspiring but and also just to put it in context I know this is something that you're very interested in in this whole idea of a bi-manic
+
+
+SPEAKER_07:
+uh economic system and been looking at this yourself so this is really trying to lay down the principles really the the scientific principles the computational principles are doing this and and and uh and we'll get in more to that tomorrow but that that's the the intent here
+
+
+SPEAKER_06:
+yeah a lot more to say again in our remaining 40 minutes i'm happy to read questions from the live chat i'm also happy to screen share and look at some of the registered participants backgrounds and interests sure okay okay you can unshare intro and all pull up some word clouds all right
+
+okay okay so let it load okay these are word clouds that are generated from the participants registration information
+
+and we'll zoom in on them.
+
+And I'll just kind of mention them and we'll zoom in.
+
+And if anyone has a remark or something that they want to highlight or call out about it, just go for it.
+
+Okay, so this is a word cloud of the 150 or 200 registered presenters overall asking about what is your
+
+Personal background.
+
+So the biggest, and this is scaled just by number of uses of each term.
+
+So one person mentioning a term a ton of times
+
+might make it large.
+
+So just to be taken as sort of a representative, we see those tiny two letters, AI, which could mean almost anything at this point.
+
+And a lot of other terms like computational research systems, neuroscience, cognitive, philosophy, social, academic, robotics, technology, practice,
+
+This kind of speaks to the broad range of topics that leads people into joining in, at least entering that information on the form.
+
+Any thoughts on this or we'll keep on exploring these word clouds?
+
+Okay.
+
+All right.
+
+Again, just raise your hand or go for it.
+
+interesting okay well there's a i'm interested in the notion of community and systems i mean uh applications the community seems very strong yeah yeah and now that's the the sensor of a of a later one so here we asked what would be useful and by asking what would be useful and what would be interesting
+
+we alluded a little bit to the dual composition of the expected free energy.
+
+What would be useful?
+
+What would be utility?
+
+What would be pragmatic?
+
+And then what would be interesting?
+
+What would be epistemic?
+
+hearing what would be useful you know here we are in in applied active inference symposium wondering about how does active inference go from being a unifying framework for ecosystems of shared intelligences and all these different kinds of things that we've heard already and we're going to hear in the symposium to come so interesting that systems
+
+a way to operationalize and really move forward from framings of complex adaptive systems to having the implementations and also the community and the people understanding research models collaborators and then a lot of different topics that are being explored in more mainstream
+
+computational science fields like multi-agent algorithms.
+
+Andrew alluded to that and kind of brought that up in the context of the Goldilocks parameterization question.
+
+The agent-based model can be so simple, it gives you a great intuition.
+
+It shows at a demonstration layer how simple behavior can lead to complex outputs.
+
+On the other hand, the agent-based modeling can go the other extreme where it's so sophisticated, then it loses its transferability.
+
+So that's what people would find useful.
+
+And then here's what they put for what they would find interesting.
+
+Applications.
+
+make sense as that's what this symposium is all about and again a lot of other ideas thinking about different specific systems research ideas architectures synergies toolkits insights implementations support collective directions
+
+Here's asking, what would help you in your learning and applying Active Inference?
+
+And community looms large.
+
+Other people, as well as some of the more tool, resource, textbook, education, examples, frameworks, interactive tutorials, different languages, Python,
+
+What does anyone think about this?
+
+
+SPEAKER_00:
+I'm a little surprised that we're not seeing the phrase LLM anywhere.
+
+I just kind of noticed that.
+
+One of the points that I've been trying to work out and hope to speak more on tomorrow is
+
+know integrating active inference with llms and uh you know there have been attempts to to do this and even even with first and par and other folks you know there there's been attempts at trying to pull out an agent's beliefs and then use an llm to process those beliefs like kind of decode them and re-encode them in natural language so to speak it's as if the agent is speaking and saying what it
+
+thinks and believes and why it did what it did is you know another layer of interpretability and uh i don't know i'm slightly surprised to not see llms anywhere um you know maybe it's a little too maybe that's a little too on the frontier right now um i know it is in uh many other areas you know it's uh and sorry in a couple minutes we have it just uh
+
+know something that i've been working on personally and this is feeding into the the bio firm is um how do we how do we use llms in a way that we can actually integrate them with you know all these major priorities that we have uh where we want to have agents who actually have defined goals right and and ways of trying to stay alive you know in a way that they interact with their environment the way that it's as if their own survival depends upon it we don't want
+
+llms which you know again i'm just saying this quickly you know i don't mean to sound disparaging but llms in one sense can act as like functionally as talking heads where you just send in some text and they try to predict what would be the best text in response they're still subject to hallucination to confabulation making things up so to speak even though the answer looks structurally sound
+
+And so my point is that rather than viewing LLMs as agents, I don't think they are, I think that you could have an active inference agent who is augmented with the capacity for natural language
+
+by having it interact with an LLM, right?
+
+
+SPEAKER_06:
+So, sorry to- Yeah, I mean, scanning across all the registration fields for LLM mentions.
+
+So how does Active Inference apply to the design of LLM systems?
+
+AI outside of LLMs, better ways of designing internet scale protocols and governance systems, and
+
+should converge with tiny ml to challenge llm's deep learning so it's it is interesting that that it's uh referenced with only a glancing blow and and uh we've even seen earlier like in the responses to similarities and differences with reinforcement learning with friston earlier about the
+
+increased amount of attention and tool development and the later and more professional maturity of training environments and this is like one of the key foci for the open source active inference ecosystem and for the institute is to develop those kinds of methods and trainings and all onboardings all these different aspects of of increasing the professionalization
+
+So let's look at the challenges.
+
+So this was, what are the challenges facing your learning and applying active influence?
+
+People, interesting.
+
+The problem and the solution.
+
+Models, the math, software, maths, again, mathematical understanding, difficult physics, scaling,
+
+
+SPEAKER_07:
+simple examples you know it's it's it's interesting um because in the larger conversation about what ai is i mean it's it's that that conversation is so dominated by uh large language models and quote generative models within large language models um and and well at least i've been observing i tried to refer to my my
+
+initial slides is that they're starting to appreciate the limitations of the large language models moved towards more agentic models and more towards causal models and hence creating agentic architectures that do work with large language models but there's still
+
+there's not, they're still not based upon biological principles that we're discussing in active inference.
+
+There's more of the mechanical models being applied over.
+
+And I think, from a point of view of sort of the sociology of science, there seem to be these different worlds that
+
+I mean, the number of people I've known sort of in the open AI world, they're very unaware of active inference.
+
+And some of the critiques that are, if you listen to Gary Marcus, he's got a very pointed critique of,
+
+of large language models and not being able to achieve abstractions.
+
+But that doesn't extend to appreciation and appreciating what the opportunities are in active inference.
+
+And so there are some of these islands of understanding that they still exist.
+
+And I think that's one of the challenges.
+
+And when you talk about developing an infrastructure, I mean, you need this huge financial resources are going into the large language models infrastructure.
+
+And where I think that the, totally biased, I think all,
+
+The opportunity is totally within the active members of free energy principle.
+
+And I think that's where the science is going.
+
+And yet it's still, it's sort of in this isolate world.
+
+And I think the only way to get out of that is start to really start to show in the applications and showing with results.
+
+And because, but it's interesting.
+
+I mean, just say that they're different worlds.
+
+But I think that there's a peaking in the hype curve around the large language models, and they're going to descend, my bet is they're going to descend into a valley of doubt, and you're going to see that showing up in the NVIDIA stock going down, and then people are saying you can't destroy all the natural resources around these models.
+
+You don't have to.
+
+know the other thing and carl alluded to this in his earlier comments today you know i mean he was talking about climate change and models and compression and i and i think that's going to be a driver of this um so but that that's to my my observations on on these yeah clouds is
+
+Yeah.
+
+
+SPEAKER_06:
+I'll bring in a question from the live chat.
+
+Also, welcome, Mao.
+
+Just thought I'd bring you on if you wanted to participate in this panel or just chill.
+
+So Steven Slet wrote, is the lack of LLMs mentioned because large language models are different to dynamic agent belief modeling?
+
+
+SPEAKER_07:
+And do you want to take that?
+
+
+SPEAKER_00:
+Could you repeat that question?
+
+
+SPEAKER_06:
+Is the lack of LLMs in the word clouds here, but just more generally thinking about similarities and differences between active inference generative models and LLMs?
+
+Is that because large language models are different than dynamic agents or belief modeling?
+
+
+SPEAKER_00:
+I don't want to approach this question in the wrong way, but I will say that as far as whenever it comes to LLMs and dealing with
+
+Their internal parameters are obviously highly quantitative, and then they're dealing with natural languages tokens.
+
+And then switch back to looking at active inference agents, which are highly quantitative in nature.
+
+And typically, if you're making continuous time models,
+
+uh you're looking at again quantitative information and then even with discrete models you're looking at you know these kind of discrete values that you could potentially move in the direction of trying to you know make it i think this has already been done uh but uh you know there are agents who um you know have been used to try and understand like oh we can read individual tokens then move up to another layer and then we have entire sentences and move up to another
+
+layer we have entire you know paragraphs or ideas that kind of thing is done but i think this kind of like llm with quantitative uh uh grounded agents like that connection uh is still in my view that's kind of the frontier of where things are at and so it's difficult for people to conceive like how can we how can we translate encode decode re-encode
+
+natural language in a way that's readable by these quantitatively oriented agents and then vice versa how do we transition quantitative beliefs into natural language that's the very thing that i've been uh you know looking at thinking about uh recently i made like a active inference like plmdp agent who uh you know they what they do is that they use their beliefs about which action to take and then that action that they carry out is actually corresponding
+
+to a prompt to an llm and you can actually take those beliefs the quantitative beliefs find some way of meaningfully interpreting them and then putting that into these blank spaces in the prompt as if you can have the agent say in real time i currently believe this with probability this
+
+give me you know a solution to this problem you know based on that so so being able to find this kind of numeric versus the quantitative and the qualitative you know it's a historical problem we're working with with data goes back centuries at this point so um it's really exciting though it's really exciting to think about how to bridge that kind of gap and i i still haven't seen anyone you know nail that down this this is the frontier this is where we're at and i think that's kind of
+
+the next thing for everyone to really be considering thinking about working on.
+
+And I'll give my view on how that could be done tomorrow.
+
+
+SPEAKER_05:
+Mal?
+
+Yeah, I mean, effectively, LLMs don't really encode explicit beliefs or really maintain a persistent model of the world.
+
+um even when we sort of give them a sort of loop by which we communicate with them that loop in itself doesn't actually factor into the predictions that it's going to do um so they just lack a framework for recursively updating beliefs which is probably why it's not being thought of here um but also mainly that
+
+you know, LLM agents are only agents by virtue of sometimes being connected to stuff and having explicitly stated goal, but I don't think that actually qualifies them to the agents.
+
+
+SPEAKER_07:
+Yeah, I totally concur with that.
+
+From my perspective, I think that the reason that LLMs are not looking at
+
+that are not looking at, or that whole mindset is not looking at belief structures and intersubjective experiences, I think is a product
+
+of a whole sort of objectivist reductionist methodology that has been tuned not to look at agentic systems.
+
+I mean, in my generation, if you were in , and you talked about agentic systems, you were outed.
+
+I mean, that was verboten.
+
+And I think there's a whole school of thought, there's a whole,
+
+set of, in a Kuhnian sense, a normal science built around a sort of objectivist, reductionist, non-agentic notion.
+
+And so there's a new generation that's coming in, both in biology and in modeling and cognition.
+
+is recognizing this notion of an energetic perspective of beliefs and updates and and and that's a huge shift I think in in sort of the epistemological perspective of a lot of what has been traditional science that's really interesting there's also just operationally
+
+
+SPEAKER_06:
+the difference between taking a very large, fixed number of parameters in a given model, 70 or seven or 405, training on existing data, and then finding patterns or eigenmodes or activation patterns
+
+summaries that have secondary interpretability but there's not really an effort of trying to find interpretability at the level of activation of a given neuron it's about looking at patterns and trying to find collective level interpretabilities like in in the ai interpretability field contrast that with designing from the ground up an example
+
+agents where the beliefs are explicitly encoded numerically and so that's a different mode of building and also one that's hinted at in in this 2023 paper with Mao and others that highlights that element of explicit semantic interpretability and also explicit semantic interpretability of uncertainty estimates
+
+Whereas a string of tokens emitted by an LLM that says, I'm not sure, it's sure about saying that, but that doesn't mean that it has a given certainty about the reference.
+
+So understanding what the communication semantics of LLMs are is incredible and what they do.
+
+And I think when we look at this cloud for people's responses,
+
+how can active inference make a difference in 2025, where there is LLMs.
+
+Here, many, many kinds of systems, and that's sort of like a microcosm of what the symposium is, different people with different systems of interest asking how do these different,
+
+attributes of the model that we're talking about the first principles grounding semantic interpretability surprise and uncertainty and it's bounding as a central component as opposed to reward how do all those things really play out what is that demonstration look like in in different systems
+
+
+SPEAKER_00:
+here's another go for it andrew i was just gonna say on that that previous one you were just looking at i i really appreciate the kind of uh broad-mindedness that people seem to be exercising i like seeing terms like uh symbology scientists governance um industry i mean those are some very
+
+I'm very excited to see people who want to, you know, so much work has been put into kind of the theoretical and then sort of like in vitro and in lab and in simulation kind of work that's been put into active inference.
+
+So I'm just really excited to see, you know, with the international
+
+the conference, the back of inference conference that was given recently and being able to see like a drone that's flying based upon the free energy principle and things like that.
+
+I'm just really excited to see more like kind of real world applications, right.
+
+And, and, and kind of creating you know, systems and applications for like real world use cases.
+
+It's, it's really cool to see some of those terms there.
+
+
+SPEAKER_07:
+Yeah.
+
+I think that's going to be really critical since he, yeah.
+
+
+SPEAKER_06:
+here's the cloud for how are you applying active inference again systems i think just reflecting people talking about variety of different systems types but and also reminding me of my own journey to active inference being excited about complex adaptive systems however not really having a software toolkit
+
+or a formal way to proceed past, okay, we think about nested multi-agent systems, and then where's the software toolkit?
+
+And then we're right back to where Andrew showed us on the slide.
+
+It's like, well, we can do a really simple one in NetLogo, or we can engage on this enterprise scale engineering research program
+
+And here's a more incremental, interoperable way to have portfolios of motifs and generative model components and be assembling and scanning across these different kinds of compositions, like three ant nest mates in the desert.
+
+three ant mates, nest mates in the forest and these different kinds of environments, being able to compose them.
+
+And over the last several years, seeing a lot of the advances in the category theory, in the first principles, physics surrounding all of these sort of research things.
+
+And it's like, that's kind of the water drawing out
+
+And then that's the question about how it looks when it is applied.
+
+And that's what I guess we convene around in this symposium and are seeing differently in 2024 than in previous years.
+
+
+SPEAKER_07:
+Just curious.
+
+So what's the change that you've seen in previous years versus this year?
+
+And then so looking forward, more of an application?
+
+
+SPEAKER_06:
+andrew or mal what what what do you think i was yeah but absolutely that that that is i oh yeah please
+
+
+SPEAKER_05:
+Yeah, I mean, I feel like the work of Maxwell Ramstad, Caspar Hasp, I mean, obviously Carl, but a lot of people who perhaps came from more dynamics decided to take a real interest in what we could do with something that was so scale free.
+
+And I find that it's been
+
+really, really rich in terms of the different kinds of theories we've tried to sort of reformalize.
+
+I know that's what most of my work is, is a reformalization of existing social sciences.
+
+And to your point, Daniel, the problem we still have is that we're missing these key little plugs that, yes, you could couch as just different schemes of message passing, but
+
+you still need some interesting tools to to have a very good description of the vast vast variety of types of structures that we have which social sciences have done a really great job at if not intuiting at least describing properly but we still don't have the best tools to make accurate predictions and that's part of the reason why most of our polls will make them
+
+They're useless.
+
+And that should be the main thing we apply them to is just literally just
