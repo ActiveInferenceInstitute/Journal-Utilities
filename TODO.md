@@ -50,9 +50,9 @@
 - [ ] restore database, fix transcribe.py to run download_and_transcribe for all untranscribed sessions
 - [ ] remove video_url from session table
 - [ ] test scheduled_date fix in ingest json code
-- [ ] review these: SELECT * FROM session where scheduled_date is NONE and transcribed = false;
+- [x] review these: SELECT * FROM session where scheduled_date is NONE and transcribed = false;
   - [ ] no longer a private video? x6rwST67ugU Literature as Uncertainty Practice – Creative Encounters with the World, run insert youtube metadata and run transcribe
-- [ ] set this to is_private, couldn't download: ZRNQ8ZzMc_c
+- [ ] set these to is_private? couldn't download: ZRNQ8ZzMc_c, cPv4TVBFANc
 - [ ] future livestreams, pubishedAt publishedAt is when the livestream is scheduled
 
 - add `insert_metadata_youtube_api` to `download_and_transcribe`, `pip install yt-dlp` and test

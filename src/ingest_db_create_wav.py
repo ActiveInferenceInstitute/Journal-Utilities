@@ -474,7 +474,7 @@ def categorize_name(name, is_unique_event_name):
 
         # probably won't work with the event name in the coda table
         textbookgroup_pattern = r'ActInf Textbook Group ~ Cohort (\d+) ~ Meeting (\d+)'
-        textbook_parr_pattern = r'Parr, Pezzulo, Friston 2022 Textbook Cohort (\d+), Session (\d+)'
+        textbook_parr_pattern = r'Parr, Pezzulo, Friston 2022 Textbook Cohort (\d+), Meeting (\d+)'
         symposium_2021_pattern = r'Prof\. Karl Friston ~ Applied Active Inference Symposium'
         symposium_2022_pattern = r'2nd Applied Active Inference Symposium'
         symposium_pattern = r'Applied Active Inference Symposium (\d{4}) part (\d+)'
