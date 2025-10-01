@@ -221,7 +221,7 @@ async def process_untranscribed_sessions(db_url, db_user, db_password, db_name, 
             await db.signin({'username': db_user, 'password': db_password})
             await db.use(db_namespace, db_name)
 
-            result = await db.query("SELECT * FROM session WHERE transcribed = FALSE AND is_private != TRUE AND from_coda_json = TRUE AND scheduled_date < time::now() - 1d LIMIT 10;")
+            result = await db.query("SELECT * FROM session WHERE transcribed = FALSE AND is_private != TRUE AND from_coda_json = TRUE AND scheduled_date < time::now() - 1d LIMIT 20;")
 
             if result and len(result) > 0:
                 for session in result:
