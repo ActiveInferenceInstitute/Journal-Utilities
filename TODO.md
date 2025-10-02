@@ -46,20 +46,19 @@
 - [x] upgrade database
 
 - [x] run python ingest_db_create_wav.py and fix result query error. restore database and run ingest again until everything looks good.
-- [ ] make sure transcript_method = WhisperX is being set on latest transcriptions
-- [ ] restore database, fix transcribe.py to run download_and_transcribe for all untranscribed sessions
+- [x] make sure transcript_method = WhisperX is being set on latest transcriptions
+- [x] restore database, fix transcribe.py to run download_and_transcribe for all untranscribed sessions
 - [x] remove video_url from session table
-- [ ] test scheduled_date fix in ingest json code
 - [x] review these: SELECT * FROM session where scheduled_date is NONE and transcribed = false;
   - [x] transcribed: x6rwST67ugU Literature as Uncertainty Practice – Creative Encounters with the World, run insert youtube metadata and run transcribe
   - [x] transcribed: cPv4TVBFANc
-- [ ] set these to is_private: dtw7RaxaFTo, s8MLTd_HzRc, I6sy9fMRcTs, i9oij02oje0, qDilepcGCNs, WnC3mZ1TAxk, 9DNxiBDYLzg, E6DZTYdQJik, XQKjFV-pCXQ, MUcsN43HPoI, yIS0OW2o18s
-- [ ] I don't think these are private, but there is a connection reset by peer error? yICyXcr2idI, ZRNQ8ZzMc_c
-- [x] deleted duplicate record: BNLnbOFdgc0
-- [ ] future livestreams, pubishedAt publishedAt is when the livestream is scheduled
-
-- add `insert_metadata_youtube_api` to `download_and_transcribe`, `pip install yt-dlp` and test
-- Collect speaker information for all transcripts
+- [x] set these to is_private: dtw7RaxaFTo, s8MLTd_HzRc, I6sy9fMRcTs, i9oij02oje0, qDilepcGCNs, WnC3mZ1TAxk, 9DNxiBDYLzg, E6DZTYdQJik, XQKjFV-pCXQ, MUcsN43HPoI, yIS0OW2o18s
+- [x] deleted duplicate record: BNLnbOFdgc0, JkORFoyk8o8
+- [ ] fix transcript_method = WhisperX on old records select * from session where transcribed = true and transcript_method = NULL or transcript_method = NONE and filename != NONE;
+- [ ] test scheduled_date fix in ingest json code
+- [ ] I don't think these are private, but there is a connection reset by peer error, tried multiple times? yICyXcr2idI, ZRNQ8ZzMc_c
+- [ ] future livestreams, publishedAt is when the livestream is scheduled
+- [ ] Collect speaker information for all transcripts
 
 ---
 
