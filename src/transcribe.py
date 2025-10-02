@@ -183,7 +183,8 @@ async def transcribe_and_update(transcription_service, db, session, wav_director
         logging.info("Transcription started for session %s", session_id)
         transcription_service.transcribe(output_dir, audio_file)
         update_result = await db.query(f"""UPDATE {session_id} MERGE {{
-            transcribed: true
+            transcribed: true,
+            transcript_method: 'WhisperX'
         }};""")
         logging.info("Transcription and update complete for session  %s: %s",
                      session_id, update_result)
@@ -221,7 +222,7 @@ async def process_untranscribed_sessions(db_url, db_user, db_password, db_name, 
             await db.signin({'username': db_user, 'password': db_password})
             await db.use(db_namespace, db_name)
 
-            result = await db.query("SELECT * FROM session WHERE transcribed = FALSE AND is_private != TRUE AND scheduled_date < time::now() - 1d LIMIT 20;")
+            result = await db.query("SELECT * FROM session WHERE transcribed = FALSE AND is_private != TRUE AND scheduled_date < time::now() - 1d LIMIT 50;")
 
             if result and len(result) > 0:
                 for session in result:
