@@ -54,7 +54,7 @@
   - [x] transcribed: cPv4TVBFANc
 - [x] set these to is_private: dtw7RaxaFTo, s8MLTd_HzRc, I6sy9fMRcTs, i9oij02oje0, qDilepcGCNs, WnC3mZ1TAxk, 9DNxiBDYLzg, E6DZTYdQJik, XQKjFV-pCXQ, MUcsN43HPoI, yIS0OW2o18s
 - [x] deleted duplicate record: BNLnbOFdgc0, JkORFoyk8o8
-- [ ] fix transcript_method = WhisperX on old records select * from session where transcribed = true and transcript_method = NULL or transcript_method = NONE and filename != NONE;
+- [x] fix transcript_method = WhisperX on old records select * from session where transcribed = true and transcript_method = NULL or transcript_method = NONE and filename != NONE;
 - [ ] test scheduled_date fix in ingest json code
 - [ ] I don't think these are private, but there is a connection reset by peer error, tried multiple times? yICyXcr2idI, ZRNQ8ZzMc_c
 - [ ] future livestreams, publishedAt is when the livestream is scheduled
