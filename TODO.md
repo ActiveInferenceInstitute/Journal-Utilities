@@ -52,7 +52,7 @@
 - [ ] test scheduled_date fix in ingest json code
 - [x] review these: SELECT * FROM session where scheduled_date is NONE and transcribed = false;
   - [ ] no longer a private video? x6rwST67ugU Literature as Uncertainty Practice – Creative Encounters with the World, run insert youtube metadata and run transcribe
-- [ ] set these to is_private? couldn't download: ZRNQ8ZzMc_c, cPv4TVBFANc, dtw7RaxaFTo, s8MLTd_HzRc, I6sy9fMRcTs
+- [ ] set these to is_private? couldn't download: ZRNQ8ZzMc_c, cPv4TVBFANc, dtw7RaxaFTo, s8MLTd_HzRc, I6sy9fMRcTs, i9oij02oje0, qDilepcGCNs, WnC3mZ1TAxk, 9DNxiBDYLzg, E6DZTYdQJik, XQKjFV-pCXQ, Gt5vADpuw_g, yIS0OW2o18s, MUcsN43HPoI, yICyXcr2idI
 - [ ] future livestreams, pubishedAt publishedAt is when the livestream is scheduled
 
 - add `insert_metadata_youtube_api` to `download_and_transcribe`, `pip install yt-dlp` and test
