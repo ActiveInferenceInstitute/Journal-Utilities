@@ -58,12 +58,14 @@
 - [ ] split 2024 Symposium Part 1 because too long for WAV conversion
   - [x] download https://www.youtube.com/watch?v=cIBIecj7UZE `yt-dlp -f bestaudio -o "cIBIecj7UZE.%(ext)s" -- cIBIecj7UZE` and add the 4 missing segment times before splitting.
   - [x] `mv cIBIecj7UZE.webm /mnt/docs/actinf/activeinference`
-  - [ ] split `ffmpeg -i cIBIecj7UZE.webm -vn -acodec pcm_s16le -ar 48000 -ac 2     -f segment -segment_times "0,7175,10765,16190,18095,21580,25292,28665,32470,35963,37975,38100,39018,40285,41704,43245,44945,48000,51120" cIBIecj7UZE_sess%02d.wav`
+  - [x] split `ffmpeg -i cIBIecj7UZE.webm -vn -acodec pcm_s16le -ar 48000 -ac 2     -f segment -segment_times "0,7175,10765,16190,18095,21580,25292,28665,32470,35963,37975,38100,39018,40285,41704,43245,44945,48000,51120" cIBIecj7UZE_sess%02d.wav`
+  - [ ] test splits
   - [ ] delete ee6_mNOfP38 from the database
 - [ ] split 2024 Symposium Part 2
   - [x] download https://www.youtube.com/watch?v=nCZZBuk_wmU `yt-dlp -f bestaudio -o "nCZZBuk_wmU.%(ext)s" -- nCZZBuk_wmU` and use the command above to split, the last segment was cut off
   - [x] `mv nCZZBuk_wmU.webm /mnt/docs/actinf/activeinference`
-  - [ ] `ffmpeg -i nCZZBuk_wmU.webm -vn -acodec pcm_s16le -ar 48000 -ac 2 -f segment -segment_times "0,3879,7256,10878,14467,18062,20383,21649,23564,28785,32471,33652,41688" nCZZBuk_wmU_sess%02d.wav`
+  - [x] `ffmpeg -i nCZZBuk_wmU.webm -vn -acodec pcm_s16le -ar 48000 -ac 2 -f segment -segment_times "0,3879,7256,10878,14467,18062,20383,21649,23564,28785,32471,33652,41688" nCZZBuk_wmU_sess%02d.wav`
+  - [x] test splits
   - [ ] delete fWOuX8NuQck from the database
 - [ ] test scheduled_date fix in ingest json code
 - [ ] I don't think these are private, but there is a connection reset by peer error, tried multiple times? yICyXcr2idI, ZRNQ8ZzMc_c
