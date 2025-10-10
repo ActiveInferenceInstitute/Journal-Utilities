@@ -55,20 +55,23 @@
 - [x] set these to is_private: dtw7RaxaFTo, s8MLTd_HzRc, I6sy9fMRcTs, i9oij02oje0, qDilepcGCNs, WnC3mZ1TAxk, 9DNxiBDYLzg, E6DZTYdQJik, XQKjFV-pCXQ, MUcsN43HPoI, yIS0OW2o18s
 - [x] deleted duplicate record: BNLnbOFdgc0, JkORFoyk8o8
 - [x] fix transcript_method = WhisperX on old records select * from session where transcribed = true and transcript_method = NULL or transcript_method = NONE and filename != NONE;
+- [x] transcribed ZRNQ8ZzMc_c
+- [x] transcribe yICyXcr2idI
 - [ ] split 2024 Symposium Part 1 because too long for WAV conversion
   - [x] download https://www.youtube.com/watch?v=cIBIecj7UZE `yt-dlp -f bestaudio -o "cIBIecj7UZE.%(ext)s" -- cIBIecj7UZE` and add the 4 missing segment times before splitting.
   - [x] `mv cIBIecj7UZE.webm /mnt/docs/actinf/activeinference`
   - [x] split `ffmpeg -i cIBIecj7UZE.webm -vn -acodec pcm_s16le -ar 48000 -ac 2     -f segment -segment_times "0,7175,10765,16190,18095,21580,25292,28665,32470,35963,37975,38100,39018,40285,41704,43245,44945,48000,51120" cIBIecj7UZE_sess%02d.wav`
   - [x] test splits
-  - [ ] set ee6_mNOfP38 as private in the database
+  - [x] set ee6_mNOfP38 as private in the database, delete cut-off transcriptions
+  - [x] insert and transcribe cIBIecj7UZE_sess01, cIBIecj7UZE_sess02, cIBIecj7UZE_sess03
+  - [ ] insert and transcribe remaining cIBIecj7UZE_*
 - [ ] split 2024 Symposium Part 2
   - [x] download https://www.youtube.com/watch?v=nCZZBuk_wmU `yt-dlp -f bestaudio -o "nCZZBuk_wmU.%(ext)s" -- nCZZBuk_wmU` and use the command above to split, the last segment was cut off
   - [x] `mv nCZZBuk_wmU.webm /mnt/docs/actinf/activeinference`
   - [x] `ffmpeg -i nCZZBuk_wmU.webm -vn -acodec pcm_s16le -ar 48000 -ac 2 -f segment -segment_times "0,3879,7256,10878,14467,18062,20383,21649,23564,28785,32471,33652,41688" nCZZBuk_wmU_sess%02d.wav`
   - [x] test splits
-  - [ ] set fWOuX8NuQck as private in the database
+  - [x] set fWOuX8NuQck as private in the database, delete cut-off transcriptions
 - [ ] test scheduled_date fix in ingest json code
-- [ ] I don't think these are private, but there is a connection reset by peer error, tried multiple times? yICyXcr2idI, ZRNQ8ZzMc_c
 - [ ] future livestreams, publishedAt is when the livestream is scheduled
 - [ ] Collect speaker information for all transcripts
 
