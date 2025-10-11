@@ -64,7 +64,7 @@
   - [x] test splits
   - [x] set ee6_mNOfP38 as private in the database, delete cut-off transcriptions
   - [x] insert and transcribe cIBIecj7UZE_sess01, cIBIecj7UZE_sess02, cIBIecj7UZE_sess03
-  - [ ] insert and transcribe remaining cIBIecj7UZE_*
+  - [x] insert and transcribe remaining cIBIecj7UZE_*
 - [ ] split 2024 Symposium Part 2
   - [x] download https://www.youtube.com/watch?v=nCZZBuk_wmU `yt-dlp -f bestaudio -o "nCZZBuk_wmU.%(ext)s" -- nCZZBuk_wmU` and use the command above to split, the last segment was cut off
   - [x] `mv nCZZBuk_wmU.webm /mnt/docs/actinf/activeinference`
