@@ -71,6 +71,7 @@
   - [x] `ffmpeg -i nCZZBuk_wmU.webm -vn -acodec pcm_s16le -ar 48000 -ac 2 -f segment -segment_times "0,3879,7256,10878,14467,18062,20383,21649,23564,28785,32471,33652,41688" nCZZBuk_wmU_sess%02d.wav`
   - [x] test splits
   - [x] set fWOuX8NuQck as private in the database, delete cut-off transcriptions
+  - [x] insert and transcribe nCZZBuk_wmU
 - [ ] test scheduled_date fix in ingest json code
 - [ ] future livestreams, publishedAt is when the livestream is scheduled
 - [ ] Collect speaker information for all transcripts
