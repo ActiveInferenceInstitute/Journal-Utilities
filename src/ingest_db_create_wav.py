@@ -16,6 +16,9 @@ load_dotenv('../.env')
 
 # TODO: change all print statements to logging.* and pass in SURREALDB as arguments
 
+# Constants
+GITHUB_JOURNAL_BASE_URL = "https://github.com/ActiveInferenceInstitute/ActiveInferenceJournal/tree/main/"
+
 # Set up logging
 logging.basicConfig(
     filename='transcription.log',
@@ -643,7 +646,7 @@ async def copy_files_to_journal(output_dir, journal_repo_dir, db_url, db_user, d
             'password': db_password
         })
         await db.use(db_namespace, db_name)
-        result = await db.query("SELECT * FROM session where category is 'Projects/General'")
+        result = await db.query("SELECT * FROM session WHERE transcribed AND metadata_filename is NONE AND prose_filename is NONE AND workingcopy_filename is NONE AND category = 'ModelStream' AND from_coda_csv")
         for session in result:
             session_id = session['id']
             filename = session.get('filename', '')
@@ -651,7 +654,7 @@ async def copy_files_to_journal(output_dir, journal_repo_dir, db_url, db_user, d
             series = session.get('series', '')
             episode = session.get('episode', '')
 
-            # root_filename, remove .mp4 from filename youtube_gx9yAF607ko.mp4
+            # root_filename, remove .mp4 from filename gx9yAF607ko.mp4
             root_filename = os.path.splitext(filename)[0]
 
             # create full path by journal_repo_dir + '/' + category + '/' + series + '/Metadata'
@@ -694,13 +697,14 @@ async def copy_files_to_journal(output_dir, journal_repo_dir, db_url, db_user, d
                 else:
                     logging.error("Source file not found: %s", source_path)
 
-            update_result = await db.query(f"""
-                UPDATE session 
-                SET 
-                    journal_filename = '{new_filename_prefix}{root_filename}.simple.txt'
-                WHERE id = '{session_id}'
-            """)
-            logging.info("Updated journal_filename %s: %s", session_id, update_result)
+            # Construct GitHub URL
+            github_url = f"{GITHUB_JOURNAL_BASE_URL}{category}/{series}"
+
+            update_result = await db.query(f"""UPDATE {session_id} MERGE {{
+                metadata_filename: '{new_filename_prefix}{root_filename}.simple.txt',
+                github: '{github_url}'
+            }};""")
+            logging.info("Updated metadata_filename and github URL for %s: %s", session_id, update_result)
 
 
 if __name__ == "__main__":
