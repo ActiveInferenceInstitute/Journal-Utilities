@@ -76,6 +76,11 @@
   - [x] copy ModelStream transcripts to Journal from_coda_csv sessions and test
   - [x] copy GuestStream transcripts to Journal from_coda_csv sessions
   - [x] copy Insights transcripts to Journal from_coda_csv sessions
+  - [x] copy Livestream transcripts to Journal from_coda_csv sessions
+  - [x] copy MathStream transcripts to Journal from_coda_csv sessions
+  - [x] copy MorphStream transcripts to Journal from_coda_csv sessions
+  - [x] copy OrgStream transcripts to Journal from_coda_csv sessions
+  - [x] copy Roundtable transcripts to Journal from_coda_csv sessions
 - [ ] test scheduled_date fix in ingest json code
 - [ ] future livestreams, publishedAt is when the livestream is scheduled
 - [ ] Collect speaker information for all transcripts
