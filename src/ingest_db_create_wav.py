@@ -646,7 +646,7 @@ async def copy_files_to_journal(output_dir, journal_repo_dir, db_url, db_user, d
             'password': db_password
         })
         await db.use(db_namespace, db_name)
-        result = await db.query("SELECT * FROM session WHERE transcribed AND metadata_filename is NONE AND prose_filename is NONE AND workingcopy_filename is NONE AND category = 'ModelStream' AND from_coda_csv")
+        result = await db.query("SELECT * FROM session WHERE transcribed AND metadata_filename is NONE AND prose_filename is NONE AND workingcopy_filename is NONE AND category = 'GuestStream' AND from_coda_csv;")
         for session in result:
             session_id = session['id']
             filename = session.get('filename', '')

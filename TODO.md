@@ -74,6 +74,7 @@
   - [x] insert and transcribe nCZZBuk_wmU
 - [ ] fix copy-to-journal code
   - [x] copy ModelStream transcripts to Journal from_coda_csv sessions and test
+  - [x] copy GuestStream transcripts to Journal from_coda_csv sessions
 - [ ] test scheduled_date fix in ingest json code
 - [ ] future livestreams, publishedAt is when the livestream is scheduled
 - [ ] Collect speaker information for all transcripts
