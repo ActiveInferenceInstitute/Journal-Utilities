@@ -81,6 +81,10 @@
   - [x] copy MorphStream transcripts to Journal from_coda_csv sessions
   - [x] copy OrgStream transcripts to Journal from_coda_csv sessions
   - [x] copy Roundtable transcripts to Journal from_coda_csv sessions
+  - [x] ArtStream from_coda_csv
+  - [x] InferAntStream from_coda_csv
+  - [x] TextbookGroup from_coda_csv
+  - [x] missing GuestStream 91 and 10 from_coda_csv
 - [ ] test scheduled_date fix in ingest json code
 - [ ] future livestreams, publishedAt is when the livestream is scheduled
 - [ ] Collect speaker information for all transcripts
