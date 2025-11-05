@@ -1,0 +1,152 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Active Inference Transcript Detailed Analysis",
+  "description": "Detailed schema for extracting methods, equations, tools, research problems, and applications from Active Inference and neuroscience video transcripts",
+  "type": "object",
+  "properties": {
+    "methods_techniques": {
+      "type": "array",
+      "description": "Methodologies, algorithms, or techniques discussed in detail",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the method or technique"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the method"
+          },
+          "application": {
+            "type": "string",
+            "description": "How or where it's applied"
+          },
+          "implementation": {
+            "type": "string",
+            "description": "Implementation details if mentioned"
+          }
+        },
+        "required": ["name", "description"]
+      }
+    },
+    "mathematical_notation": {
+      "type": "array",
+      "description": "Important mathematical symbols and notation explained",
+      "items": {
+        "type": "object",
+        "properties": {
+          "notation": {
+            "type": "string",
+            "description": "The mathematical notation or symbol"
+          },
+          "meaning": {
+            "type": "string",
+            "description": "What it represents"
+          },
+          "context": {
+            "type": "string",
+            "description": "Context in which it's used"
+          }
+        },
+        "required": ["notation", "meaning"]
+      }
+    },
+    "equations": {
+      "type": "array",
+      "description": "Key equations explicitly discussed (only include if equation is clearly presented)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name or description of the equation"
+          },
+          "formula": {
+            "type": "string",
+            "description": "The equation itself (plain text or LaTeX)"
+          },
+          "context": {
+            "type": "string",
+            "description": "Where/how this equation is used"
+          }
+        },
+        "required": ["formula"]
+      }
+    },
+    "tools_resources": {
+      "type": "array",
+      "description": "Software, libraries, datasets, or other resources mentioned",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the tool or resource"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["software", "library", "framework", "dataset", "repository", "documentation", "platform"],
+            "description": "Type of resource"
+          },
+          "url": {
+            "type": "string",
+            "description": "URL if explicitly mentioned (must be actual URL starting with http:// or https://, not placeholder text)"
+          },
+          "purpose": {
+            "type": "string",
+            "description": "Purpose or use case"
+          }
+        },
+        "required": ["name", "type"]
+      }
+    },
+    "research_problems": {
+      "type": "array",
+      "description": "Research problems, challenges, or open questions discussed",
+      "items": {
+        "type": "object",
+        "properties": {
+          "problem": {
+            "type": "string",
+            "description": "Description of the problem"
+          },
+          "current_approaches": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "Current approaches to addressing it"
+          },
+          "proposed_solution": {
+            "type": "string",
+            "description": "Solution proposed in the presentation"
+          }
+        },
+        "required": ["problem"]
+      }
+    },
+    "applications": {
+      "type": "array",
+      "description": "Real-world applications or use cases mentioned",
+      "items": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string",
+            "description": "Application domain (e.g., robotics, neuroscience, AI)"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the application"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["proposed", "in_development", "demonstrated"],
+            "description": "Status of the application"
+          }
+        },
+        "required": ["domain", "description"]
+      }
+    }
+  },
+  "required": ["methods_techniques"]
+}

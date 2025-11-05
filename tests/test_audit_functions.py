@@ -5,8 +5,7 @@ import sys
 from dotenv import load_dotenv
 from datetime import datetime
 
-sys.path.append('src')
-from ingest_db_create_wav import (
+from journal_utilities.ingest_db_create_wav import (
     get_recent_import_runs,
     get_import_summary,
     get_failed_imports,

@@ -1,40 +1,54 @@
 [project]
 name = "journal-utilities"
 version = "0.1.0"
-description = "Transcription and processing pipeline for the Active Inference Journal"
+description = "Transcription, entity extraction, and processing pipeline for the Active Inference Journal"
 readme = "README.md"
-requires-python = ">=3.10,<3.13"
+requires-python = ">=3.12"
 license = "MIT"
 authors = [
-    { name = "Holly Grimm", email = "holly.grimm@gmail.com" }
+    { name = "Holly Grimm", email = "holly.grimm@gmail.com" },
+    { name = "Active Inference Institute" }
 ]
 
 dependencies = [
-    "whisperx @ git+https://github.com/jim60105/whisperX.git@update-requirements",
-    "python-dotenv>=1.0.0",
-    "surrealdb>=1.0.0",
-    "pyytdata>=0.1.0",
-    "torch>=2.5.1",
-    "torchaudio>=2.5.1",
+    # Transcription pipeline (includes PyTorch with CUDA 12.8 support)
+    "whisperx @ git+https://github.com/m-bain/whisperX.git",
     "yt-dlp>=2025.9.26",
     "numpy>=2.0.2",
     "pandas>=2.2.3",
     "omegaconf>=2.3.0",
+    "pyytdata>=0.1.0",
+    # Entity extraction (JournalRAG)
+    "cohere>=5.11.0",
+    "pydantic>=2.6.0",
+    "pydantic-settings>=2.1.0",
+    "structlog>=25.5.0",
+    "rich>=14.2.0",
+    # Shared dependencies
+    "python-dotenv>=1.0.0",
+    "surrealdb>=1.0.6",
 ]
 
 [project.optional-dependencies]
 dev = [
     "pytest>=8.4.2",
+    "pytest-asyncio>=1.2.0",
+    "pytest-cov>=7.0.0",
     "black>=25.9.0",
-    "ruff>=0.1.0",
+    "ruff>=0.2.0",
+    "mypy>=1.8.0",
+    "ipython>=9.6.0",
 ]
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+[tool.hatch.metadata]
+allow-direct-references = true
+
 [tool.hatch.build.targets.wheel]
-packages = ["src"]
+packages = ["src/journal_utilities", "src/journalrag"]
 
 [tool.uv]
 dev-dependencies = [
@@ -43,13 +57,38 @@ dev-dependencies = [
 
 [tool.black]
 line-length = 100
-target-version = ["py310"]
+target-version = ["py312"]
 
 [tool.ruff]
 line-length = 100
-target-version = "py310"
-select = ["E", "F", "I", "UP"]
+target-version = "py312"
+src = ["src"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "N",   # pep8-naming
+    "UP",  # pyupgrade
+    "ANN", # flake8-annotations
+    "B",   # flake8-bugbear
+    "A",   # flake8-builtins
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["ANN"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+asyncio_mode = "auto"
 python_files = ["test_*.py"]
+addopts = "-v --cov=src --cov-report=term-missing"
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true

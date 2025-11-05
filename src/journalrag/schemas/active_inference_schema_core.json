@@ -1,0 +1,139 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Active Inference Transcript Core Entity Extraction",
+  "description": "Core schema for extracting primary entities from Active Inference and neuroscience video transcripts - concepts, researchers, citations, terms, and insights",
+  "type": "object",
+  "properties": {
+    "concepts": {
+      "type": "array",
+      "description": "Main concepts, theories, or frameworks discussed",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the concept"
+          },
+          "definition": {
+            "type": "string",
+            "description": "Definition or explanation provided"
+          },
+          "category": {
+            "type": "string",
+            "enum": ["theoretical", "mathematical", "computational", "neuroscience", "philosophy", "methodology"],
+            "description": "Category of the concept"
+          },
+          "related_concepts": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "Names of related concepts mentioned"
+          }
+        },
+        "required": ["name", "definition", "category"]
+      }
+    },
+    "researchers": {
+      "type": "array",
+      "description": "Key researchers, scientists, or scholars mentioned",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Full name of the researcher"
+          },
+          "affiliation": {
+            "type": "string",
+            "description": "Institution or organization (omit if unknown)"
+          },
+          "role": {
+            "type": "string",
+            "enum": ["collaborator", "cited_author", "mentioned", "speaker", "advisor"],
+            "description": "Role in relation to the presentation"
+          },
+          "contribution": {
+            "type": "string",
+            "description": "Their contribution or relevance to the discussion"
+          }
+        },
+        "required": ["name", "role"]
+      }
+    },
+    "citations": {
+      "type": "array",
+      "description": "Papers, books, or other works cited or referenced (only include if specific details are mentioned)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["paper", "book", "workshop", "conference", "preprint", "thesis"],
+            "description": "Type of citation"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the work"
+          },
+          "authors": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "Authors if mentioned"
+          },
+          "venue": {
+            "type": "string",
+            "description": "Publication venue (journal, conference, etc.)"
+          },
+          "year": {
+            "type": "integer",
+            "description": "Year of publication if mentioned"
+          },
+          "url": {
+            "type": "string",
+            "description": "URL if explicitly mentioned (must be actual URL starting with http:// or https://, not placeholder text)"
+          },
+          "context": {
+            "type": "string",
+            "description": "Brief context of how it was referenced"
+          }
+        },
+        "required": ["type", "title"]
+      }
+    },
+    "technical_terms": {
+      "type": "array",
+      "description": "Technical terminology with explanations (avoid duplicating concepts already listed above)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "term": {
+            "type": "string",
+            "description": "The technical term"
+          },
+          "explanation": {
+            "type": "string",
+            "description": "Explanation or definition provided"
+          },
+          "domain": {
+            "type": "string",
+            "enum": ["mathematics", "neuroscience", "machine_learning", "physics", "statistics", "biology"],
+            "description": "Domain the term belongs to"
+          },
+          "synonyms": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "Alternative terms or synonyms mentioned"
+          }
+        },
+        "required": ["term", "explanation", "domain"]
+      }
+    },
+    "key_insights": {
+      "type": "array",
+      "description": "Main takeaways or key insights from the presentation (2-5 most important points)",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": ["concepts", "researchers", "technical_terms"]
+}

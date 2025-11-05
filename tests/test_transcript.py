@@ -1,10 +1,8 @@
 import sys
 import os
-
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import unittest
 from unittest.mock import patch, MagicMock
-from src.transcribe import TranscriptionService
+from journal_utilities.transcribe import TranscriptionService
 
 class TestOutputText(unittest.TestCase):
     def setUp(self):
@@ -12,7 +10,7 @@ class TestOutputText(unittest.TestCase):
         # Mock the model loading functions to avoid needing actual models
         with patch('whisperx.load_model') as mock_load_model, \
              patch('whisperx.load_align_model') as mock_align_model, \
-             patch('src.transcribe.DiarizationPipeline') as mock_diarize:
+             patch('journal_utilities.transcribe.DiarizationPipeline') as mock_diarize:
 
             # Configure mocks
             mock_load_model.return_value = MagicMock()

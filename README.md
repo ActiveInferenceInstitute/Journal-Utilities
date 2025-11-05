@@ -2,7 +2,10 @@
 Utilities and Documentation for creating contents for the Active Inference Journal
 https://github.com/ActiveInferenceInstitute/ActiveInferenceJournal
 
-This repository provides a local transcription pipeline using WhisperX with SurrealDB for storage and retrieval.
+This repository provides a complete pipeline for processing Active Inference Journal content:
+- **Transcription**: Local transcription pipeline using WhisperX
+- **Entity Extraction**: Extract entities and relationships from transcripts using Cohere AI
+- **Graph Storage**: Store and query data in SurrealDB graph database
 
 ---
 ## WhisperX Transcription Pipeline
@@ -64,7 +67,7 @@ wget -O - -q  https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/f
 
 4. Configure environment variables:
 ```bash
-cp .env.sample .env
+cp .env.example .env
 ```
 
 Update the following values in `.env`:
@@ -139,6 +142,100 @@ make copy-to-journal
 ```
 Organizes transcripts by category/series/episode in the journal repository.
 
+---
+## Entity Extraction Pipeline (JournalRAG)
+
+### Overview
+
+The entity extraction pipeline uses Cohere AI to analyze transcripts and extract:
+- **Entities**: People, organizations, concepts, theories, methodologies, publications, events, and locations
+- **Relationships**: Connections between entities (collaborations, studies, applications, etc.)
+
+All extracted data is stored in the SurrealDB graph database for semantic queries and analysis.
+
+### Entity Types
+
+- **Person**: Researchers, contributors, speakers
+- **Organization**: Institutions, research groups
+- **Concept**: Theoretical concepts, ideas
+- **Theory**: Formal theories, frameworks
+- **Methodology**: Research methods, approaches
+- **Publication**: Papers, books, articles
+- **Event**: Conferences, workshops, meetings
+- **Location**: Physical or virtual locations
+
+### Relationship Types
+
+- `collaborates_with`: Between persons or organizations
+- `studies`: Person studying a concept/theory
+- `applies`: Application of methodology/theory
+- `extends`: One theory extending another
+- `member_of`: Person member of organization
+- `located_at`: Entity at a location
+- `publishes`: Publication relationships
+
+### Usage
+
+#### Process a Transcript for Entity Extraction
+
+```python
+import asyncio
+from pathlib import Path
+from journalrag.main import JournalRAGPipeline
+
+async def main():
+    pipeline = JournalRAGPipeline()
+    await pipeline.connect()
+
+    # Process a transcript file
+    transcript_path = Path("path/to/transcript.txt")
+    stats = await pipeline.process_transcript_file(transcript_path)
+
+    print(f"Extracted {stats['entities']} entities")
+    print(f"Extracted {stats['relationships']} relationships")
+
+    await pipeline.disconnect()
+
+asyncio.run(main())
+```
+
+#### Query Extracted Entities
+
+```python
+import asyncio
+from journalrag.graph import SurrealDBClient
+
+async def main():
+    client = SurrealDBClient()
+    await client.connect()
+
+    # Get an entity by name
+    entity = await client.get_entity_by_name("Active Inference")
+    print(entity)
+
+    # Query entities by type
+    results = await client.query(
+        "SELECT * FROM entity WHERE type = $type",
+        {"type": "concept"}
+    )
+    print(results)
+
+    await client.disconnect()
+
+asyncio.run(main())
+```
+
+### Configuration
+
+The entity extraction pipeline requires additional environment variables in `.env`:
+
+```env
+# Cohere API (for entity extraction)
+COHERE_API_KEY=your_cohere_api_key_here
+COHERE_MODEL=command-a-03-2025
+```
+
+---
 ### Query Database
 ```bash
 surreal sql --endpoint http://localhost:8080 --username root --password root --namespace actinf --database actinf
@@ -186,26 +283,37 @@ python -m unittest tests.test_transcript
 
 ```
 Journal-Utilities/
-├── src/                     # Main transcription pipeline
-│   ├── ingest_db_create_wav.py  # Multi-step ingestion with CLI
-│   ├── transcribe.py            # WhisperX transcription
-│   ├── output_final_artifacts.py # Process final outputs
-│   └── private_videos.json      # List of private video IDs
-├── tests/                   # Unit tests
-├── data/                    # Database and output files
-│   ├── database/           # SurrealDB storage
-│   ├── input/              # Input data files (Coda JSON)
-│   └── output/             # Processed outputs
-├── Archive/                 # Archived AssemblyAI tools
-│   ├── 1_youtube_to_audio/
-│   ├── 2_audio_to_markdown/
-│   ├── 5_markdown_to_final/
-│   └── ...
-├── Makefile                # Workflow automation
-├── CLAUDE.md               # Documentation for Claude Code
-├── README.md               # This file
-├── .env.sample             # Environment configuration template
-└── pyproject.toml          # Python package configuration
+├── src/
+│   ├── journal_utilities/       # Transcription pipeline
+│   │   ├── ingest_db_create_wav.py
+│   │   ├── transcribe.py
+│   │   └── fix_scheduled_dates.py
+│   ├── journalrag/             # Entity extraction pipeline
+│   │   ├── main.py             # Main pipeline
+│   │   ├── extractors/         # Entity extraction (Cohere)
+│   │   │   └── cohere_extractor.py
+│   │   ├── graph/              # Graph database (SurrealDB)
+│   │   │   └── surreal_client.py
+│   │   ├── models/             # Pydantic data models
+│   │   │   └── entities.py
+│   │   ├── adapters/           # Data adapters
+│   │   │   └── entity_adapter.py
+│   │   ├── schemas/            # JSON schemas for entity extraction
+│   │   ├── settings.py         # Configuration management
+│   │   └── utils/              # Utilities
+│   │       └── logging.py
+│   └── private_videos.json     # List of private video IDs
+├── tests/                      # Unit tests
+├── data/                       # Database and output files
+│   ├── database/               # SurrealDB storage
+│   ├── input/                  # Input data files (Coda JSON)
+│   └── output/                 # Processed outputs
+├── Archive/                    # Archived AssemblyAI tools
+├── Makefile                    # Workflow automation
+├── CLAUDE.md                   # Documentation for Claude Code
+├── README.md                   # This file
+├── .env.example                # Environment configuration template
+└── pyproject.toml              # Python package configuration
 ```
 
 ## Archived Components

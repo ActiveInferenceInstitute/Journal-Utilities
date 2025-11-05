@@ -1,4 +1,4 @@
-.PHONY: help install install-dev clean test lint format db-start db-stop transcribe fetch-coda import-sessions fetch-metadata copy-to-journal
+.PHONY: help install install-dev clean test lint format db-start db-stop transcribe fetch-coda import-sessions fetch-metadata copy-to-journal extract-entities
 
 # Load .env file if it exists
 ifneq (,$(wildcard .env))
@@ -8,28 +8,35 @@ endif
 
 help:
 	@echo "Available commands:"
+	@echo ""
+	@echo "Installation & Setup:"
 	@echo "  make install      - Install project dependencies"
 	@echo "  make install-dev  - Install project with dev dependencies"
 	@echo "  make clean        - Clean up cache and temporary files"
+	@echo ""
+	@echo "Development:"
 	@echo "  make test         - Run tests"
 	@echo "  make lint         - Run linter (ruff)"
 	@echo "  make format       - Format code with black"
+	@echo ""
+	@echo "Database:"
 	@echo "  make db-start     - Start SurrealDB"
+	@echo ""
+	@echo "Transcription Pipeline:"
 	@echo "  make fetch-coda   - Fetch latest data from Coda API"
 	@echo "  make import-sessions - Import sessions from Coda JSON to DB"
 	@echo "  make fetch-metadata - Fetch YouTube metadata for sessions"
 	@echo "  make transcribe   - Run transcription pipeline (WhisperX)"
 	@echo "  make copy-to-journal - Copy transcripts to journal repository"
+	@echo ""
+	@echo "Entity Extraction Pipeline:"
+	@echo "  make extract-entities - Extract entities from transcripts (Cohere AI)"
 
 install:
-	uv venv
-	. .venv/bin/activate && uv pip install -e .
-	. .venv/bin/activate && uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+	uv sync
 
 install-dev:
-	uv venv
-	. .venv/bin/activate && uv pip install -e ".[dev]"
-	. .venv/bin/activate && uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+	uv sync --all-extras
 
 clean:
 	find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
@@ -65,16 +72,24 @@ fetch-coda:
 
 import-sessions:
 	@echo "Importing sessions from Coda JSON to database..."
-	. .venv/bin/activate && cd src && python ingest_db_create_wav.py --step import
+	. .venv/bin/activate && cd src/journal_utilities && python ingest_db_create_wav.py --step import
 
 fetch-metadata:
 	@echo "Fetching YouTube metadata for sessions..."
-	. .venv/bin/activate && cd src && python ingest_db_create_wav.py --step metadata
+	. .venv/bin/activate && cd src/journal_utilities && python ingest_db_create_wav.py --step metadata
 
 transcribe:
 	@echo "Starting transcription pipeline..."
-	. .venv/bin/activate && cd src && python transcribe.py
+	. .venv/bin/activate && cd src/journal_utilities && python transcribe.py
 
 copy-to-journal:
 	@echo "Copying transcripts to journal repository..."
-	. .venv/bin/activate && cd src && python ingest_db_create_wav.py --step copy
+	. .venv/bin/activate && cd src/journal_utilities && python ingest_db_create_wav.py --step copy
+
+extract-entities:
+	@echo "Extracting entities from transcripts using Cohere AI..."
+	@if [ -z "$(COHERE_API_KEY)" ]; then \
+		echo "Error: COHERE_API_KEY not found in .env file"; \
+		exit 1; \
+	fi
+	. .venv/bin/activate && python -m journalrag.main
