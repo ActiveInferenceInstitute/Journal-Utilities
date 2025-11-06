@@ -4,7 +4,7 @@ These tests make actual API calls to Cohere and should be run less frequently
 than unit tests. They require a valid COHERE_API_KEY environment variable.
 
 Run these tests with:
-    uv run pytest tests/integration/ -v -s
+    uv run pytest tests/journalrag/integration/ -v -s
 """
 
 import os
@@ -22,7 +22,7 @@ from journalrag.settings import settings
 @pytest.fixture
 def sample_transcript_file() -> Path:
     """Get path to sample transcript file."""
-    return Path(__file__).parent.parent / "fixtures" / "sample_transcript.txt"
+    return Path(__file__).parent.parent.parent / "fixtures" / "sample_transcript.txt"
 
 
 @pytest.fixture

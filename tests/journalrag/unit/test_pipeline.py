@@ -1,7 +1,7 @@
 """Unit tests for JournalRAG pipeline.
 
 These tests use mocked dependencies for fast, isolated testing.
-For integration tests with real Cohere API, see tests/integration/test_pipeline_integration.py
+For integration tests with real Cohere API, see tests/journalrag/integration/test_pipeline_integration.py
 """
 
 from datetime import datetime
@@ -17,7 +17,7 @@ from journalrag.models import CoreEntities, Transcript
 @pytest.fixture
 def sample_transcript_file() -> Path:
     """Get path to sample transcript file."""
-    return Path(__file__).parent.parent / "fixtures" / "sample_transcript.txt"
+    return Path(__file__).parent.parent.parent / "fixtures" / "sample_transcript.txt"
 
 
 @pytest.fixture
