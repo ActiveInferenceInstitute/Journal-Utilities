@@ -152,6 +152,7 @@ class SurrealDBClient:
                 return str(entity_id)
             else:
                 # Create new entity
+                from datetime import datetime, timezone
                 result = await self.db.create(
                     "entity",
                     {
@@ -162,7 +163,7 @@ class SurrealDBClient:
                         "mentions": entity.mentions,
                         "context": entity.context,
                         "metadata": entity.metadata,
-                        "created_at": "2025-10-30T00:00:00Z",  # Use current time
+                        "created_at": datetime.now(timezone.utc).isoformat(),
                     },
                 )
                 entity_id = result[0]["id"]
