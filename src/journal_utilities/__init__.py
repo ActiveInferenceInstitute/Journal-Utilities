@@ -1,6 +1,8 @@
 # Source package
 """Journal Utilities — Active Inference YouTube processing pipeline."""
 
+__version__ = "0.1.0"
+
 # ---------------------------------------------------------------------------
 # Lazy submodule imports — avoids pulling heavy deps (pyytdata, yt-dlp, …)
 # when only one submodule is needed (e.g. export).
